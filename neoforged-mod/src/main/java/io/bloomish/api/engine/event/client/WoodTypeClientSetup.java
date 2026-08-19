@@ -5,9 +5,9 @@ import net.minecraft.world.level.block.state.properties.WoodType;
 
 import java.util.List;
 
-public class WoodTypeClientSetupStrategy implements ClientSetupStrategy<WoodType> {
+public class WoodTypeClientSetup implements ClientSetup<WoodType> {
     @Override
-    public void execute(List<WoodType> source) {
+    public void setup(List<WoodType> source) {
         source.forEach(Sheets::addWoodType);
     }
 }

@@ -1,7 +1,5 @@
 package io.bloomish.api.engine.event.handler;
 
-import com.bloomish.api.core.engine.event.client.*;
-import io.bloomish.api.core.engine.event.client.*;
 import io.bloomish.api.engine.event.client.*;
 import io.bloomish.api.engine.metadata.annotation.injection.Handler;
 import net.minecraft.core.Holder;
@@ -19,21 +17,21 @@ public class FMLClientSetupEventHandler implements EventHandler {
     public static final List<Holder<? extends Item>> SHIELDS = new ArrayList<>();
     public static final List<Holder<? extends Item>> INSTRUMENTS = new ArrayList<>();
     public static final List<WoodType> WOOD_TYPES = new ArrayList<>();
-    private static final ClientSetupStrategy<Holder<? extends Item>> BOW_STRATEGY = new BowClientSetupStrategy();
-    private static final ClientSetupStrategy<Holder<? extends Item>> CROSSBOW_STRATEGY = new CrossbowClientSetupStrategy();
-    private static final ClientSetupStrategy<Holder<? extends Item>> SHIELD_STRATEGY = new ShieldClientSetupStrategy();
-    private static final ClientSetupStrategy<Holder<? extends Item>> INSTRUMENT_STRATEGY = new InstrumentClientSetupStrategy();
-    private static final ClientSetupStrategy<WoodType> WOOD_TYPE_STRATEGY = new WoodTypeClientSetupStrategy();
+    private static final ClientSetup<Holder<? extends Item>> BOW_STRATEGY = new BowClientSetup();
+    private static final ClientSetup<Holder<? extends Item>> CROSSBOW_STRATEGY = new CrossbowClientSetup();
+    private static final ClientSetup<Holder<? extends Item>> SHIELD_STRATEGY = new ShieldClientSetup();
+    private static final ClientSetup<Holder<? extends Item>> INSTRUMENT_STRATEGY = new InstrumentClientSetup();
+    private static final ClientSetup<WoodType> WOOD_TYPE_STRATEGY = new WoodTypeClientSetup();
 
     @Override
     public void handle() {
         this.subscribeModEvent(FMLClientSetupEvent.class, event -> {
-            WOOD_TYPE_STRATEGY.execute(WOOD_TYPES);
+            WOOD_TYPE_STRATEGY.setup(WOOD_TYPES);
             event.enqueueWork(() -> {
-                BOW_STRATEGY.execute(BOWS);
-                CROSSBOW_STRATEGY.execute(CROSSBOWS);
-                SHIELD_STRATEGY.execute(SHIELDS);
-                INSTRUMENT_STRATEGY.execute(INSTRUMENTS);
+                BOW_STRATEGY.setup(BOWS);
+                CROSSBOW_STRATEGY.setup(CROSSBOWS);
+                SHIELD_STRATEGY.setup(SHIELDS);
+                INSTRUMENT_STRATEGY.setup(INSTRUMENTS);
             });
         });
     }
