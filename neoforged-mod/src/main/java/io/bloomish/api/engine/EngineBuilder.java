@@ -17,9 +17,10 @@ import io.bloomish.api.engine.registry.RegistryLayerCustomizer;
 import java.util.function.Consumer;
 
 public class EngineBuilder {
-    private final LayerContainer layerContainer = LayerContainer.getInstance();
+    private final LayerContainer layerContainer;
 
     protected EngineBuilder() {
+        this.layerContainer = new LayerContainer();
     }
 
     public EngineBuilder initializationLayer(Consumer<InitializationLayerCustomizer> customizerConsumer) {
@@ -86,12 +87,12 @@ public class EngineBuilder {
     }
 
     public EngineBuilder addLayer(EngineLayer engineLayer) {
-        this.layerContainer.add(engineLayer);
+        this.layerContainer.addLayer(engineLayer);
         return this;
     }
 
     public EngineBuilder disableLayer(Class<? extends EngineLayer> engineLayerClass) {
-        this.layerContainer.delete(engineLayerClass);
+        this.layerContainer.deleteLayer(engineLayerClass);
         return this;
     }
 

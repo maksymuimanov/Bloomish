@@ -2,57 +2,44 @@ package io.bloomish.api.engine;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
+import java.util.Collections;
 
 public class LayerContainer {
-    private static volatile LayerContainer instance;
-    private final List<EngineLayer> layers;
+    private final Collection<EngineLayer> layers;
 
-    private LayerContainer() {
+    public LayerContainer() {
         this.layers = new ArrayList<>();
     }
 
-    protected void addAll(Collection<EngineLayer> engineLayers) {
+    public LayerContainer(Collection<? extends EngineLayer> layers) {
+        this.layers = new ArrayList<>(layers);
+    }
+
+    protected void addAll(Collection<? extends EngineLayer> engineLayers) {
         layers.addAll(engineLayers);
     }
 
-    protected void add(EngineLayer engineLayer) {
+    protected void addLayer(EngineLayer engineLayer) {
         layers.add(engineLayer);
     }
 
-    public List<EngineLayer> getLayers() {
-        return layers;
-    }
-
-    public EngineLayer getLayer(Integer id) {
-        return layers.get(id);
+    public Collection<EngineLayer> getLayers() {
+        return Collections.unmodifiableCollection(layers);
     }
 
     @SuppressWarnings("unchecked")
-    public <T extends EngineLayer> T getLayer(Class<? extends EngineLayer> layer) {
+    public <T extends EngineLayer> T getLayer(Class<T> clazz) {
         return (T) layers.stream()
-                .filter(iterationLayer -> iterationLayer.getClass().equals(layer))
+                .filter(engineLayer -> engineLayer.getClass().equals(clazz))
                 .findAny()
-                .orElseThrow();
+                .orElseThrow(() -> new IllegalArgumentException("Could not find layer with class: " + clazz));
     }
 
-    protected void delete(Class<? extends EngineLayer> layer) {
-        layers.removeIf(engineLayer -> engineLayer.getClass().equals(layer));
+    protected void deleteLayer(Class<? extends EngineLayer> clazz) {
+        layers.removeIf(engineLayer -> engineLayer.getClass().equals(clazz));
     }
 
     protected void deleteAll(Collection<Class<? extends EngineLayer>> layers) {
-        layers.forEach(this::delete);
-    }
-
-    public static LayerContainer getInstance() {
-        if (instance == null) {
-            synchronized (LayerContainer.class) {
-                if (instance == null) {
-                    instance = new LayerContainer();
-                }
-            }
-        }
-
-        return instance;
+        layers.forEach(this::deleteLayer);
     }
 }

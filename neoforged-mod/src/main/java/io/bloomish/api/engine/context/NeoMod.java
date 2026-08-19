@@ -1,6 +1,5 @@
 package io.bloomish.api.engine.context;
 
-import com.google.common.base.MoreObjects;
 import io.bloomish.api.ApiMod;
 import io.bloomish.api.engine.initialization.scanner.ModClassScanner;
 import net.neoforged.fml.common.Mod;
@@ -8,6 +7,7 @@ import net.neoforged.fml.common.Mod;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.StringJoiner;
 
 public class NeoMod {
     private String name;
@@ -15,20 +15,30 @@ public class NeoMod {
     private String modId;
     private Set<Class<?>> classes;
 
-    public NeoMod(String name, Class<?> clazz, String modId, Set<Class<?>> classes) {
-        this.name = name;
-        this.clazz = clazz;
-        this.modId = modId;
-        this.classes = classes;
-    }
-
-    public static NeoMod create(Class<?> clazz, List<ModClassScanner> classScanners) {
-        String name = clazz.getSimpleName();
-        Mod modAnnotation = clazz.getDeclaredAnnotation(Mod.class);
-        if (modAnnotation == null) throw new IllegalArgumentException("Missing @Mod annotation on " + clazz.getName());
-        String modId = modAnnotation.value();
+    public static NeoMod discover(Class<?> clazz, List<ModClassScanner> classScanners) {
+        String modId = extractModId(clazz);
         ApiMod.LOGGER.info("Creating NeoMod instance for class={} with modId={}", clazz.getName(), modId);
         Set<Class<?>> classes = new LinkedHashSet<>();
+        gatherClassesForMod(clazz, classScanners, modId, classes);
+        String name = clazz.getSimpleName();
+        ApiMod.LOGGER.info("Discovered {} for modId: {} (modName: {})", classes, modId, name);
+        return new NeoMod(name, clazz, modId, classes);
+    }
+
+    private static String extractModId(Class<?> clazz) {
+        Mod modAnnotation = clazz.getDeclaredAnnotation(Mod.class);
+        if (modAnnotation == null) {
+            throw new IllegalArgumentException("Missing @Mod annotation on " + clazz.getName());
+        }
+        return modAnnotation.value();
+    }
+
+    private static void gatherClassesForMod(
+            Class<?> clazz,
+            List<ModClassScanner> classScanners,
+            String modId,
+            Set<Class<?>> classes
+    ) {
         for (ModClassScanner scanner : classScanners) {
             try {
                 ApiMod.LOGGER.debug("Running ModClassScanner: {} for modId: {}", scanner.getClass().getName(), modId);
@@ -38,8 +48,13 @@ public class NeoMod {
                 throw new RuntimeException(e);
             }
         }
-        ApiMod.LOGGER.info("Discovered {} for modId: {} (modName: {})", classes, modId, name);
-        return new NeoMod(name, clazz, modId, classes);
+    }
+
+    private NeoMod(String name, Class<?> clazz, String modId, Set<Class<?>> classes) {
+        this.name = name;
+        this.clazz = clazz;
+        this.modId = modId;
+        this.classes = classes;
     }
 
     public String getName() {
@@ -76,11 +91,11 @@ public class NeoMod {
 
     @Override
     public String toString() {
-        return MoreObjects.toStringHelper(this)
-                .add("name", name)
-                .add("clazz", clazz)
-                .add("modId", modId)
-                .add("classes", classes)
+        return new StringJoiner(", ", NeoMod.class.getSimpleName() + "[", "]")
+                .add("name='" + name + "'")
+                .add("clazz=" + clazz)
+                .add("modId='" + modId + "'")
+                .add("classes=" + classes)
                 .toString();
     }
 }

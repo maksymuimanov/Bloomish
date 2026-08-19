@@ -22,7 +22,7 @@ public class InitializationLayer implements EngineLayer {
 
     @Override
     public void processAllTasks() {
-        NeoMod mod = NeoMod.create(this.modClass, this.classScanners);
+        NeoMod mod = NeoMod.discover(this.modClass, this.classScanners);
         String modId = mod.getModId();
         Set<Class<?>> classes = mod.getClasses();
         ModContext.NEO_MOD = mod;
