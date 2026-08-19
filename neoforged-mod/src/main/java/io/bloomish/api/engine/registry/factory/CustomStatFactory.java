@@ -1,6 +1,6 @@
 package io.bloomish.api.engine.registry.factory;
 
-import io.bloomish.api.engine.context.InjectionPool;
+import io.bloomish.api.engine.context.DefaultObjectRegistry;
 import io.bloomish.api.engine.registry.TemporalRegister;
 import io.bloomish.api.util.ResourceUtils;
 import net.minecraft.resources.ResourceLocation;
@@ -8,7 +8,7 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 
 public class CustomStatFactory extends AbstractObjectFactory<ResourceLocation> {
     public CustomStatFactory() {
-        this(InjectionPool.getFromInstance("$CustomStats"));
+        this(DefaultObjectRegistry.getFromInstance("$CustomStats"));
     }
 
     public CustomStatFactory(TemporalRegister<ResourceLocation> register) {

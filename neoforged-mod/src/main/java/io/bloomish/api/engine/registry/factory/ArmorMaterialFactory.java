@@ -1,6 +1,6 @@
 package io.bloomish.api.engine.registry.factory;
 
-import io.bloomish.api.engine.context.InjectionPool;
+import io.bloomish.api.engine.context.DefaultObjectRegistry;
 import io.bloomish.api.engine.registry.TemporalRegister;
 import io.bloomish.api.util.ResourceUtils;
 import net.minecraft.core.Holder;
@@ -21,7 +21,7 @@ import java.util.stream.Collectors;
 
 public class ArmorMaterialFactory extends AbstractObjectFactory<ArmorMaterial> {
     public ArmorMaterialFactory() {
-        this(InjectionPool.getFromInstance("$ArmorMaterials"));
+        this(DefaultObjectRegistry.getFromInstance("$ArmorMaterials"));
     }
 
     public ArmorMaterialFactory(TemporalRegister<ArmorMaterial> register) {

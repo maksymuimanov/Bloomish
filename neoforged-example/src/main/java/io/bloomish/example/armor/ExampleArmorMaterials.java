@@ -1,18 +1,18 @@
 package io.bloomish.example.armor;
 
-import io.bloomish.api.engine.context.InjectionPool;
+import io.bloomish.api.engine.context.DefaultObjectRegistry;
 import io.bloomish.api.engine.registry.factory.ArmorMaterialFactory;
+import io.bloomish.example.sound.ExampleSounds;
+import io.bloomish.example.tag.ExampleItemTags;
 import net.minecraft.Util;
 import net.minecraft.core.Holder;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArmorMaterial;
-import io.bloomish.example.sound.ExampleSounds;
-import io.bloomish.example.tag.ExampleItemTags;
 
 import java.util.EnumMap;
 
 public final class ExampleArmorMaterials {
-    private static final ArmorMaterialFactory ARMOR_MATERIAL_FACTORY = InjectionPool.getFromInstance(ArmorMaterialFactory.class);
+    private static final ArmorMaterialFactory ARMOR_MATERIAL_FACTORY = DefaultObjectRegistry.getFromInstance(ArmorMaterialFactory.class);
 
     public static Holder<ArmorMaterial> EXAMPLE_ARMOR_MATERIAL = ARMOR_MATERIAL_FACTORY.create("example", Util.make(new EnumMap<>(ArmorItem.Type.class), (map) -> {
         map.put(ArmorItem.Type.BOOTS, 4);

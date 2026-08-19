@@ -1,7 +1,7 @@
 package io.bloomish.api.engine.registry.factory;
 
 import com.mojang.serialization.Codec;
-import io.bloomish.api.engine.context.InjectionPool;
+import io.bloomish.api.engine.context.DefaultObjectRegistry;
 import io.bloomish.api.engine.registry.TemporalRegister;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.network.RegistryFriendlyByteBuf;
@@ -10,7 +10,7 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 
 public class DataComponentTypeFactory extends AbstractObjectFactory<DataComponentType<?>> {
     public DataComponentTypeFactory() {
-        this(InjectionPool.getFromInstance("$DataComponentTypes"));
+        this(DefaultObjectRegistry.getFromInstance("$DataComponentTypes"));
     }
 
     public DataComponentTypeFactory(TemporalRegister<DataComponentType<?>> register) {

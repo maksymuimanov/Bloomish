@@ -1,6 +1,6 @@
 package io.bloomish.api.engine.event.pool;
 
-import io.bloomish.api.engine.context.InjectionPool;
+import io.bloomish.api.engine.context.DefaultObjectRegistry;
 import io.bloomish.api.engine.event.handler.EventHandler;
 import io.bloomish.api.util.MapUtils;
 import io.bloomish.api.util.ReflectionUtils;
@@ -130,6 +130,6 @@ public class SimpleHandlerPool implements HandlerPool {
     }
 
     public static SimpleHandlerPool getInstance() {
-        return InjectionPool.getFromInstance(SimpleHandlerPool.class);
+        return DefaultObjectRegistry.getFromInstance(SimpleHandlerPool.class);
     }
 }

@@ -1,6 +1,6 @@
 package io.bloomish.api.engine.event.data.recipe.strategy;
 
-import io.bloomish.api.engine.context.ModContext;
+import io.bloomish.api.engine.context.EngineContext;
 import io.bloomish.api.engine.event.data.recipe.ApiRecipeProvider;
 import io.bloomish.api.engine.event.data.recipe.description.ShapedRecipeDescription;
 import net.minecraft.data.recipes.RecipeOutput;
@@ -20,7 +20,7 @@ public class ShapedRecipeStrategy implements RecipeStrategy<ShapedRecipeDescript
         for (var translation : patternTranslation.entrySet()) builder = builder.define(translation.getKey(), translation.getValue());
         for (ItemLike item : patternTranslation.values()) builder = builder.unlockedBy(ApiRecipeProvider.getHasName(item), ApiRecipeProvider.has(item));
         if (description.getName() != null) {
-            builder.save(recipeOutput, ModContext.NEO_MOD.getModId() + ":" + description.getName());
+            builder.save(recipeOutput, EngineContext.currentMod.getModId() + ":" + description.getName());
         } else {
             builder.save(recipeOutput);
         }

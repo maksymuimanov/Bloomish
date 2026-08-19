@@ -1,6 +1,6 @@
 package io.bloomish.api.engine.registry.factory;
 
-import io.bloomish.api.engine.context.InjectionPool;
+import io.bloomish.api.engine.context.DefaultObjectRegistry;
 import io.bloomish.api.engine.registry.TemporalRegister;
 import net.minecraft.world.flag.FeatureFlagSet;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -11,7 +11,7 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 
 public class MenuFactory extends AbstractObjectFactory<MenuType<?>> {
     public MenuFactory() {
-        this(InjectionPool.getFromInstance("$Menus"));
+        this(DefaultObjectRegistry.getFromInstance("$Menus"));
     }
 
     public MenuFactory(final TemporalRegister<MenuType<?>> register) {

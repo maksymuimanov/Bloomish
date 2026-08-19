@@ -1,13 +1,13 @@
 package io.bloomish.api.engine.registry.factory;
 
-import io.bloomish.api.engine.context.InjectionPool;
+import io.bloomish.api.engine.context.DefaultObjectRegistry;
 import io.bloomish.api.engine.registry.TemporalRegister;
 import net.minecraft.world.entity.schedule.Activity;
 import net.neoforged.neoforge.registries.DeferredHolder;
 
 public class ActivityFactory extends AbstractObjectFactory<Activity> {
     public ActivityFactory() {
-        this(InjectionPool.getFromInstance("$Activities"));
+        this(DefaultObjectRegistry.getFromInstance("$Activities"));
     }
 
     public ActivityFactory(TemporalRegister<Activity> register) {

@@ -3,12 +3,13 @@ package io.bloomish.api.engine;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.List;
 
 public class LayerContainer {
     private final Collection<EngineLayer> layers;
 
     public LayerContainer() {
-        this.layers = new ArrayList<>();
+        this(List.of());
     }
 
     public LayerContainer(Collection<? extends EngineLayer> layers) {

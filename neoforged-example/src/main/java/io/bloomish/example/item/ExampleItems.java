@@ -1,9 +1,8 @@
 package io.bloomish.example.item;
 
-import io.bloomish.api.engine.context.InjectionPool;
+import io.bloomish.api.engine.context.DefaultObjectRegistry;
 import io.bloomish.api.engine.metadata.annotation.data.language.TranslateAmericanEnglish;
 import io.bloomish.api.engine.metadata.annotation.data.language.TranslateMultiple;
-import com.bloomish.api.core.engine.metadata.annotation.data.model.item.*;
 import io.bloomish.api.engine.metadata.annotation.data.model.item.*;
 import io.bloomish.api.engine.metadata.annotation.data.properties.Compostable;
 import io.bloomish.api.engine.metadata.annotation.data.properties.FurnaceFuel;
@@ -12,18 +11,18 @@ import io.bloomish.api.engine.metadata.annotation.event.creative.AddCreativeMode
 import io.bloomish.api.engine.metadata.annotation.event.fml.SetupBow;
 import io.bloomish.api.engine.metadata.annotation.event.fml.SetupCrossbow;
 import io.bloomish.api.engine.metadata.constant.CreativeModeTabType;
-import net.minecraft.world.item.ArmorItem;
-import net.minecraft.world.item.Tiers;
-import net.neoforged.neoforge.registries.DeferredItem;
 import io.bloomish.example.armor.ExampleArmorMaterials;
 import io.bloomish.example.block.ExampleBlocks;
 import io.bloomish.example.entity.ExampleEntityTypes;
 import io.bloomish.example.instrument.ExampleInstrumentTags;
 import io.bloomish.example.jukebox.ExampleJukeboxSongs;
 import io.bloomish.example.tag.ExampleBannerPatternTags;
+import net.minecraft.world.item.ArmorItem;
+import net.minecraft.world.item.Tiers;
+import net.neoforged.neoforge.registries.DeferredItem;
 
 public final class ExampleItems {
-    private static final ExampleItemFactory ITEM_FACTORY = InjectionPool.getFromInstance(ExampleItemFactory.class);
+    private static final ExampleItemFactory ITEM_FACTORY = DefaultObjectRegistry.getFromInstance(ExampleItemFactory.class);
 
     @AddCreativeModeTab(CreativeModeTabType.INGREDIENTS)
     @GenerateBasicItemModel

@@ -1,6 +1,6 @@
 package io.bloomish.api.engine.event.data.recipe.strategy;
 
-import io.bloomish.api.engine.context.ModContext;
+import io.bloomish.api.engine.context.EngineContext;
 import io.bloomish.api.engine.event.data.recipe.ApiRecipeProvider;
 import io.bloomish.api.engine.event.data.recipe.description.ShapelessRecipeDescription;
 import net.minecraft.data.recipes.RecipeOutput;
@@ -14,7 +14,7 @@ public class ShapelessRecipeStrategy implements RecipeStrategy<ShapelessRecipeDe
         for (var entry : description.getItemAndCountMap().entrySet()) builder = builder.requires(entry.getKey(), entry.getValue())
                 .unlockedBy(ApiRecipeProvider.getHasName(entry.getKey()), ApiRecipeProvider.has(entry.getKey()));
         if (description.getName() != null) {
-            builder.save(recipeOutput, ModContext.NEO_MOD.getModId() + ":" + description.getName());
+            builder.save(recipeOutput, EngineContext.currentMod.getModId() + ":" + description.getName());
         } else {
             builder.save(recipeOutput);
         }

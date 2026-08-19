@@ -1,6 +1,6 @@
 package io.bloomish.api.engine.registry.factory;
 
-import io.bloomish.api.engine.context.InjectionPool;
+import io.bloomish.api.engine.context.DefaultObjectRegistry;
 import io.bloomish.api.engine.registry.TemporalRegister;
 import io.bloomish.api.util.ResourceUtils;
 import net.minecraft.resources.ResourceLocation;
@@ -11,7 +11,7 @@ import org.jetbrains.annotations.ApiStatus;
 @ApiStatus.Experimental
 public class DecoratedPotPatternFactory extends AbstractObjectFactory<DecoratedPotPattern> {
     public DecoratedPotPatternFactory() {
-        this(InjectionPool.getFromInstance("$DecoratedPotPatterns"));
+        this(DefaultObjectRegistry.getFromInstance("$DecoratedPotPatterns"));
     }
 
     public DecoratedPotPatternFactory(TemporalRegister<DecoratedPotPattern> register) {

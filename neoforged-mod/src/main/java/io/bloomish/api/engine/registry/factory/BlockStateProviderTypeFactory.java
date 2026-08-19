@@ -1,7 +1,7 @@
 package io.bloomish.api.engine.registry.factory;
 
 import com.mojang.serialization.MapCodec;
-import io.bloomish.api.engine.context.InjectionPool;
+import io.bloomish.api.engine.context.DefaultObjectRegistry;
 import io.bloomish.api.engine.registry.TemporalRegister;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProvider;
 import net.minecraft.world.level.levelgen.feature.stateproviders.BlockStateProviderType;
@@ -9,7 +9,7 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 
 public class BlockStateProviderTypeFactory extends AbstractObjectFactory<BlockStateProviderType<?>> {
     public BlockStateProviderTypeFactory() {
-        this(InjectionPool.getFromInstance("$BlockstateProviderTypes"));
+        this(DefaultObjectRegistry.getFromInstance("$BlockstateProviderTypes"));
     }
 
     public BlockStateProviderTypeFactory(TemporalRegister<BlockStateProviderType<?>> register) {

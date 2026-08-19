@@ -1,13 +1,13 @@
 package io.bloomish.api.engine.registry.factory;
 
-import io.bloomish.api.engine.context.InjectionPool;
+import io.bloomish.api.engine.context.DefaultObjectRegistry;
 import io.bloomish.api.engine.registry.TemporalRegister;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.neoforged.neoforge.registries.DeferredHolder;
 
 public class GameEventFactory extends AbstractObjectFactory<GameEvent> {
     public GameEventFactory() {
-        this(InjectionPool.getFromInstance("$GameEvents"));
+        this(DefaultObjectRegistry.getFromInstance("$GameEvents"));
     }
 
     public GameEventFactory(TemporalRegister<GameEvent> register) {

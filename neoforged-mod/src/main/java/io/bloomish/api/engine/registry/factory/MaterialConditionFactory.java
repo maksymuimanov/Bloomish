@@ -1,7 +1,7 @@
 package io.bloomish.api.engine.registry.factory;
 
 import com.mojang.serialization.MapCodec;
-import io.bloomish.api.engine.context.InjectionPool;
+import io.bloomish.api.engine.context.DefaultObjectRegistry;
 import io.bloomish.api.engine.registry.TemporalRegister;
 import net.minecraft.util.KeyDispatchDataCodec;
 import net.minecraft.world.level.levelgen.SurfaceRules;
@@ -9,7 +9,7 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 
 public class MaterialConditionFactory extends AbstractObjectFactory<MapCodec<? extends SurfaceRules.ConditionSource>> {
     public MaterialConditionFactory() {
-        this(InjectionPool.getFromInstance("$MaterialConditions"));
+        this(DefaultObjectRegistry.getFromInstance("$MaterialConditions"));
     }
 
     public MaterialConditionFactory(TemporalRegister<MapCodec<? extends SurfaceRules.ConditionSource>> register) {

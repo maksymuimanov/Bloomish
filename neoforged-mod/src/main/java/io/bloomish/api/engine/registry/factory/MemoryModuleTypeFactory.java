@@ -1,7 +1,7 @@
 package io.bloomish.api.engine.registry.factory;
 
 import com.mojang.serialization.Codec;
-import io.bloomish.api.engine.context.InjectionPool;
+import io.bloomish.api.engine.context.DefaultObjectRegistry;
 import io.bloomish.api.engine.registry.TemporalRegister;
 import net.minecraft.world.entity.ai.memory.MemoryModuleType;
 import net.neoforged.neoforge.registries.DeferredHolder;
@@ -10,7 +10,7 @@ import java.util.Optional;
 
 public class MemoryModuleTypeFactory extends AbstractObjectFactory<MemoryModuleType<?>> {
     public MemoryModuleTypeFactory() {
-        this(InjectionPool.getFromInstance("$MemoryModuleTypes"));
+        this(DefaultObjectRegistry.getFromInstance("$MemoryModuleTypes"));
     }
 
     public MemoryModuleTypeFactory(TemporalRegister<MemoryModuleType<?>> register) {

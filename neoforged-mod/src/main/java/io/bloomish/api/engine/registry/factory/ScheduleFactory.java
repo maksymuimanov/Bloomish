@@ -1,6 +1,6 @@
 package io.bloomish.api.engine.registry.factory;
 
-import io.bloomish.api.engine.context.InjectionPool;
+import io.bloomish.api.engine.context.DefaultObjectRegistry;
 import io.bloomish.api.engine.registry.TemporalRegister;
 import net.minecraft.world.entity.schedule.Schedule;
 import net.minecraft.world.entity.schedule.ScheduleBuilder;
@@ -10,7 +10,7 @@ import java.util.function.Consumer;
 
 public class ScheduleFactory extends AbstractObjectFactory<Schedule> {
     public ScheduleFactory() {
-        this(InjectionPool.getFromInstance("$Schedules"));
+        this(DefaultObjectRegistry.getFromInstance("$Schedules"));
     }
 
     public ScheduleFactory(TemporalRegister<Schedule> register) {

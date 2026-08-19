@@ -1,10 +1,6 @@
 package io.bloomish.api.engine.event.data.language.provider;
 
-import io.bloomish.api.engine.context.ModContext;
-import com.bloomish.api.core.engine.event.data.language.resolver.*;
-import com.bloomish.api.core.engine.event.data.language.transformer.*;
-import io.bloomish.api.core.engine.event.data.language.resolver.*;
-import io.bloomish.api.core.engine.event.data.language.transformer.*;
+import io.bloomish.api.engine.context.EngineContext;
 import io.bloomish.api.engine.event.data.language.resolver.*;
 import io.bloomish.api.engine.event.data.language.transformer.*;
 import net.minecraft.core.Registry;
@@ -82,7 +78,7 @@ public abstract class ApiLanguageProvider extends LanguageProvider {
     }
 
     public ApiLanguageProvider(PackOutput output, String locale) {
-        super(output, ModContext.NEO_MOD.getModId(), locale);
+        super(output, EngineContext.currentMod.getModId(), locale);
     }
 
     @Override

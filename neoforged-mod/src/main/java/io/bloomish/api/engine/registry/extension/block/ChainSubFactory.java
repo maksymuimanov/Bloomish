@@ -1,6 +1,6 @@
 package io.bloomish.api.engine.registry.extension.block;
 
-import io.bloomish.api.engine.context.InjectionPool;
+import io.bloomish.api.engine.context.DefaultObjectRegistry;
 import io.bloomish.api.engine.registry.factory.BlockFactory;
 import io.bloomish.api.engine.registry.factory.BlockPropertiesFactory;
 import net.minecraft.world.item.Item;
@@ -19,7 +19,7 @@ public interface ChainSubFactory {
     }
 
     default DeferredBlock<ChainBlock> createChain(String name, BlockBehaviour.Properties properties, Item.Properties itemProperties) {
-        final BlockFactory blockFactory = InjectionPool.getFromInstance(BlockFactory.class);
+        final BlockFactory blockFactory = DefaultObjectRegistry.getFromInstance(BlockFactory.class);
         return blockFactory.create(name, properties.sound(SoundType.CHAIN).noOcclusion(), ChainBlock::new, itemProperties);
     }
 }

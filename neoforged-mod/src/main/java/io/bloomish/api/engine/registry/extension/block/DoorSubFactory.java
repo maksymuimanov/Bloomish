@@ -1,6 +1,6 @@
 package io.bloomish.api.engine.registry.extension.block;
 
-import io.bloomish.api.engine.context.InjectionPool;
+import io.bloomish.api.engine.context.DefaultObjectRegistry;
 import io.bloomish.api.engine.registry.factory.BlockFactory;
 import io.bloomish.api.engine.registry.factory.BlockPropertiesFactory;
 import net.minecraft.world.item.Item;
@@ -19,7 +19,7 @@ public interface DoorSubFactory {
     }
 
     default DeferredBlock<DoorBlock> createDoor(String name, BlockBehaviour.Properties properties, Item.Properties itemProperties, BlockSetType setType) {
-        final BlockFactory blockFactory = InjectionPool.getFromInstance(BlockFactory.class);
+        final BlockFactory blockFactory = DefaultObjectRegistry.getFromInstance(BlockFactory.class);
         return blockFactory.create(name, properties, props -> new DoorBlock(setType, props), itemProperties);
     }
 }

@@ -1,6 +1,6 @@
 package io.bloomish.api.engine.registry.extension.item;
 
-import io.bloomish.api.engine.context.InjectionPool;
+import io.bloomish.api.engine.context.DefaultObjectRegistry;
 import io.bloomish.api.engine.registry.factory.ItemFactory;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
@@ -16,7 +16,7 @@ public interface SpawnEggSubFactory {
     }
 
     default DeferredItem<DeferredSpawnEggItem> createSpawnEgg(String name, Item.Properties properties, Supplier<? extends EntityType<? extends Mob>> type, int backgroundColor, int highlightColor) {
-        ItemFactory itemFactory = InjectionPool.getFromInstance(ItemFactory.class);
+        ItemFactory itemFactory = DefaultObjectRegistry.getFromInstance(ItemFactory.class);
         return itemFactory.create(name, properties, props -> new DeferredSpawnEggItem(type, backgroundColor, highlightColor, props));
     }
 }

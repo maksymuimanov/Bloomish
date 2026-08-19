@@ -2,7 +2,7 @@ package io.bloomish.api.engine.registry.extension.block;
 
 import io.bloomish.api.common.block.LogBlock;
 import io.bloomish.api.common.block.StrippableLogBlock;
-import io.bloomish.api.engine.context.InjectionPool;
+import io.bloomish.api.engine.context.DefaultObjectRegistry;
 import io.bloomish.api.engine.registry.factory.BlockFactory;
 import io.bloomish.api.engine.registry.factory.BlockPropertiesFactory;
 import net.minecraft.world.item.Item;
@@ -22,7 +22,7 @@ public interface LogSubFactory {
     }
 
     default DeferredBlock<StrippableLogBlock> createLog(String name, BlockBehaviour.Properties properties, Item.Properties itemProperties, Supplier<? extends Block> strippedBlock) {
-        final BlockFactory blockFactory = InjectionPool.getFromInstance(BlockFactory.class);
+        final BlockFactory blockFactory = DefaultObjectRegistry.getFromInstance(BlockFactory.class);
         return blockFactory.create(name, properties, props -> new StrippableLogBlock(strippedBlock.get(), props), itemProperties);
     }
 
@@ -35,7 +35,7 @@ public interface LogSubFactory {
     }
 
     default DeferredBlock<LogBlock> createLog(String name, BlockBehaviour.Properties properties, Item.Properties itemProperties) {
-        final BlockFactory blockFactory = InjectionPool.getFromInstance(BlockFactory.class);
+        final BlockFactory blockFactory = DefaultObjectRegistry.getFromInstance(BlockFactory.class);
         return blockFactory.create(name, properties, LogBlock::new, itemProperties);
     }
 }

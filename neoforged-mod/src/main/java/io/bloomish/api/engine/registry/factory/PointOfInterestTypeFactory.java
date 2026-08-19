@@ -1,7 +1,7 @@
 package io.bloomish.api.engine.registry.factory;
 
 import com.google.common.collect.ImmutableSet;
-import io.bloomish.api.engine.context.InjectionPool;
+import io.bloomish.api.engine.context.DefaultObjectRegistry;
 import io.bloomish.api.engine.registry.TemporalRegister;
 import net.minecraft.world.entity.ai.village.poi.PoiType;
 import net.minecraft.world.level.block.Block;
@@ -12,7 +12,7 @@ import java.util.Set;
 
 public class PointOfInterestTypeFactory extends AbstractObjectFactory<PoiType> {
     public PointOfInterestTypeFactory() {
-        this(InjectionPool.getFromInstance("$PointOfInterestTypes"));
+        this(DefaultObjectRegistry.getFromInstance("$PointOfInterestTypes"));
     }
 
     public PointOfInterestTypeFactory(TemporalRegister<PoiType> register) {

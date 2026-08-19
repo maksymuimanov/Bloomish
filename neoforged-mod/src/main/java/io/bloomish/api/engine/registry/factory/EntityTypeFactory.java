@@ -1,6 +1,6 @@
 package io.bloomish.api.engine.registry.factory;
 
-import io.bloomish.api.engine.context.InjectionPool;
+import io.bloomish.api.engine.context.DefaultObjectRegistry;
 import io.bloomish.api.engine.registry.TemporalRegister;
 import io.bloomish.api.util.ResourceUtils;
 import net.minecraft.core.registries.Registries;
@@ -12,7 +12,7 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 
 public class EntityTypeFactory extends AbstractObjectFactory<EntityType<?>> {
     public EntityTypeFactory() {
-        this(InjectionPool.getFromInstance("$EntityTypes"));
+        this(DefaultObjectRegistry.getFromInstance("$EntityTypes"));
     }
 
     public EntityTypeFactory(TemporalRegister<EntityType<?>> register) {

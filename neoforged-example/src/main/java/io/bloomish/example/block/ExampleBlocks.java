@@ -1,11 +1,8 @@
 package io.bloomish.example.block;
 
-import io.bloomish.api.engine.context.InjectionPool;
+import io.bloomish.api.engine.context.DefaultObjectRegistry;
 import io.bloomish.api.engine.event.data.model.RenderTypes;
 import io.bloomish.api.engine.metadata.annotation.data.language.TranslateAmericanEnglish;
-import com.bloomish.api.core.engine.metadata.annotation.data.loot.*;
-import com.bloomish.api.core.engine.metadata.annotation.data.model.block.*;
-import com.bloomish.api.core.engine.metadata.annotation.data.model.item.*;
 import io.bloomish.api.engine.metadata.annotation.data.loot.*;
 import io.bloomish.api.engine.metadata.annotation.data.model.block.*;
 import io.bloomish.api.engine.metadata.annotation.data.model.item.*;
@@ -14,16 +11,16 @@ import io.bloomish.api.engine.metadata.annotation.event.block.AddBlockEntityType
 import io.bloomish.api.engine.metadata.annotation.event.creative.AddCreativeModeTab;
 import io.bloomish.api.engine.metadata.constant.CreativeModeTabType;
 import io.bloomish.api.engine.registry.factory.BlockPropertiesFactory;
+import io.bloomish.example.worldgen.ExampleConfiguredFeatures;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.level.block.CeilingHangingSignBlock;
 import net.minecraft.world.level.block.StandingSignBlock;
 import net.minecraft.world.level.block.WallHangingSignBlock;
 import net.minecraft.world.level.block.WallSignBlock;
 import net.neoforged.neoforge.registries.DeferredBlock;
-import io.bloomish.example.worldgen.ExampleConfiguredFeatures;
 
 public final class ExampleBlocks {
-    private static final ExampleBlockFactory BLOCK_FACTORY = InjectionPool.getFromInstance(ExampleBlockFactory.class);
+    private static final ExampleBlockFactory BLOCK_FACTORY = DefaultObjectRegistry.getFromInstance(ExampleBlockFactory.class);
 
     @AddCreativeModeTab(CreativeModeTabType.BUILDING_BLOCKS)
     @GenerateCubedBlockModel

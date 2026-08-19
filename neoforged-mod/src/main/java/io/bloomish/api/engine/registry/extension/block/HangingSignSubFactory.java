@@ -1,6 +1,6 @@
 package io.bloomish.api.engine.registry.extension.block;
 
-import io.bloomish.api.engine.context.InjectionPool;
+import io.bloomish.api.engine.context.DefaultObjectRegistry;
 import io.bloomish.api.engine.registry.factory.BlockFactory;
 import io.bloomish.api.engine.registry.factory.BlockPropertiesFactory;
 import net.minecraft.world.level.block.CeilingHangingSignBlock;
@@ -17,7 +17,7 @@ public interface HangingSignSubFactory {
     }
 
     default DeferredBlock<CeilingHangingSignBlock> createCeilingHangingSignWithoutItem(String name, BlockBehaviour.Properties properties, float strength, WoodType woodType) {
-        BlockFactory factory = InjectionPool.getFromInstance(BlockFactory.class);
+        BlockFactory factory = DefaultObjectRegistry.getFromInstance(BlockFactory.class);
         return factory.createWithoutItem(name, properties.mapColor(MapColor.WOOD)
                 .forceSolidOn()
                 .instrument(NoteBlockInstrument.BASS)
@@ -31,7 +31,7 @@ public interface HangingSignSubFactory {
     }
 
     default DeferredBlock<WallHangingSignBlock> createWallHangingSignWithoutItem(String name, BlockBehaviour.Properties properties, float strength, WoodType woodType) {
-        BlockFactory factory = InjectionPool.getFromInstance(BlockFactory.class);
+        BlockFactory factory = DefaultObjectRegistry.getFromInstance(BlockFactory.class);
         return factory.createWithoutItem(name, properties.mapColor(MapColor.WOOD)
                 .forceSolidOn()
                 .instrument(NoteBlockInstrument.BASS)

@@ -1,6 +1,6 @@
 package io.bloomish.api.engine.registry.extension.block;
 
-import io.bloomish.api.engine.context.InjectionPool;
+import io.bloomish.api.engine.context.DefaultObjectRegistry;
 import io.bloomish.api.engine.registry.factory.BlockFactory;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -19,7 +19,7 @@ public interface StairSubFactory {
     }
 
     default DeferredBlock<StairBlock> createStair(String name, BlockBehaviour.Properties properties, Item.Properties itemProperties, Block block) {
-        final BlockFactory blockFactory = InjectionPool.getFromInstance(BlockFactory.class);
+        final BlockFactory blockFactory = DefaultObjectRegistry.getFromInstance(BlockFactory.class);
         return blockFactory.create(name, properties, props -> new StairBlock(block.defaultBlockState(), props), itemProperties);
     }
 }

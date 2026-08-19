@@ -1,6 +1,6 @@
 package io.bloomish.api.engine.registry.factory;
 
-import io.bloomish.api.engine.context.InjectionPool;
+import io.bloomish.api.engine.context.DefaultObjectRegistry;
 import io.bloomish.api.engine.registry.TemporalRegister;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -15,11 +15,11 @@ public class BlockFactory extends AbstractObjectFactory<Block> {
     private final ItemFactory itemFactory;
 
     public BlockFactory() {
-        this(InjectionPool.getFromInstance("$Blocks"));
+        this(DefaultObjectRegistry.getFromInstance("$Blocks"));
     }
 
     public BlockFactory(TemporalRegister<Block> register) {
-        this(register, InjectionPool.getFromInstance(ItemFactory.class));
+        this(register, DefaultObjectRegistry.getFromInstance(ItemFactory.class));
     }
 
     public BlockFactory(TemporalRegister<Block> register, ItemFactory itemFactory) {

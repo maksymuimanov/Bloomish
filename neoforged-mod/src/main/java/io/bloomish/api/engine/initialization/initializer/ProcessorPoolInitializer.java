@@ -1,6 +1,6 @@
 package io.bloomish.api.engine.initialization.initializer;
 
-import io.bloomish.api.engine.context.ObjectPool;
+import io.bloomish.api.engine.context.ObjectRegistry;
 import io.bloomish.api.engine.metadata.annotation.injection.Processor;
 import io.bloomish.api.engine.metadata.pool.ProcessorPool;
 import io.bloomish.api.engine.metadata.pool.ProcessorScope;
@@ -14,7 +14,7 @@ import java.util.List;
 public class ProcessorPoolInitializer implements ObjectPoolInitializer {
     @Override
     @SuppressWarnings("unchecked")
-    public void initialize(Collection<Class<?>> classes, List<?> externalObjects, ObjectPool objectPool) {
+    public void initialize(Collection<Class<?>> classes, List<?> externalObjects, ObjectRegistry objectRegistry) {
         ProcessorPool processorPool = new SimpleProcessorPool();
         classes.stream()
                 .filter(clazz -> clazz.isAnnotationPresent(Processor.class))
@@ -28,6 +28,6 @@ public class ProcessorPoolInitializer implements ObjectPoolInitializer {
                         processorPool.put(scope, (Class<? extends AnnotationProcessor>) clazz);
                     }
                 });
-        objectPool.put(processorPool);
+        objectRegistry.register(processorPool);
     }
 }

@@ -1,6 +1,6 @@
 package io.bloomish.api.engine.registry.factory;
 
-import io.bloomish.api.engine.context.InjectionPool;
+import io.bloomish.api.engine.context.DefaultObjectRegistry;
 import io.bloomish.api.engine.registry.TemporalRegister;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
@@ -12,7 +12,7 @@ import java.util.Collection;
 
 public class CreativeModeTabFactory extends AbstractObjectFactory<CreativeModeTab> {
     public CreativeModeTabFactory() {
-        this(InjectionPool.getFromInstance("$CreativeModeTabs"));
+        this(DefaultObjectRegistry.getFromInstance("$CreativeModeTabs"));
     }
 
     public CreativeModeTabFactory(TemporalRegister<CreativeModeTab> register) {

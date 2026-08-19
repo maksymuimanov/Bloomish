@@ -1,6 +1,6 @@
 package io.bloomish.api.engine.event.data.loot;
 
-import io.bloomish.api.engine.context.InjectionPool;
+import io.bloomish.api.engine.context.DefaultObjectRegistry;
 import io.bloomish.api.engine.event.data.loot.spec.BlockLootTableSpec;
 import io.bloomish.api.engine.registry.factory.BlockFactory;
 import io.bloomish.api.util.RegistryUtils;
@@ -313,7 +313,7 @@ public abstract class ApiBlockLootTableProvider extends BlockLootSubProvider {
     @Override
     @NotNull
     public Iterable<Block> getKnownBlocks() {
-        return InjectionPool.getFromInstance(BlockFactory.class)
+        return DefaultObjectRegistry.getFromInstance(BlockFactory.class)
                 .getRegistry()
                 .getEntries()
                 .stream()

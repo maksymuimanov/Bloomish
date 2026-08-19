@@ -1,7 +1,7 @@
 package io.bloomish.api.engine.registry.factory;
 
 import com.mojang.datafixers.types.Type;
-import io.bloomish.api.engine.context.InjectionPool;
+import io.bloomish.api.engine.context.DefaultObjectRegistry;
 import io.bloomish.api.engine.registry.TemporalRegister;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -10,7 +10,7 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 
 public class BlockEntityTypeFactory extends AbstractObjectFactory<BlockEntityType<?>> {
     public BlockEntityTypeFactory() {
-        this(InjectionPool.getFromInstance("$BlockEntityTypes"));
+        this(DefaultObjectRegistry.getFromInstance("$BlockEntityTypes"));
     }
 
     public BlockEntityTypeFactory(TemporalRegister<BlockEntityType<?>> register) {

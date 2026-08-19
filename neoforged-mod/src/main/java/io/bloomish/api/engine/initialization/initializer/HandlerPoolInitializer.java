@@ -1,6 +1,6 @@
 package io.bloomish.api.engine.initialization.initializer;
 
-import io.bloomish.api.engine.context.ObjectPool;
+import io.bloomish.api.engine.context.ObjectRegistry;
 import io.bloomish.api.engine.event.handler.EventHandler;
 import io.bloomish.api.engine.event.pool.HandlerPool;
 import io.bloomish.api.engine.event.pool.SimpleHandlerPool;
@@ -13,7 +13,7 @@ import java.util.List;
 public class HandlerPoolInitializer implements ObjectPoolInitializer {
     @Override
     @SuppressWarnings("unchecked")
-    public void initialize(Collection<Class<?>> classes, List<?> externalObjects, ObjectPool objectPool) {
+    public void initialize(Collection<Class<?>> classes, List<?> externalObjects, ObjectRegistry objectRegistry) {
         HandlerPool handlerPool = new SimpleHandlerPool();
         classes.stream()
                 .filter(clazz -> clazz.isAnnotationPresent(Handler.class))
@@ -27,6 +27,6 @@ public class HandlerPoolInitializer implements ObjectPoolInitializer {
                         handlerPool.put(annotation.value(), eventHandlerClass);
                     }
                 });
-        objectPool.put(handlerPool);
+        objectRegistry.register(handlerPool);
     }
 }

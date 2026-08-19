@@ -1,7 +1,7 @@
 package io.bloomish.api.engine.registry.factory;
 
 import com.mojang.serialization.MapCodec;
-import io.bloomish.api.engine.context.InjectionPool;
+import io.bloomish.api.engine.context.DefaultObjectRegistry;
 import io.bloomish.api.engine.registry.TemporalRegister;
 import net.minecraft.world.level.levelgen.heightproviders.HeightProvider;
 import net.minecraft.world.level.levelgen.heightproviders.HeightProviderType;
@@ -9,7 +9,7 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 
 public class HeightProviderTypeFactory extends AbstractObjectFactory<HeightProviderType<?>> {
     public HeightProviderTypeFactory() {
-        this(InjectionPool.getFromInstance("$HeightProviderTypes"));
+        this(DefaultObjectRegistry.getFromInstance("$HeightProviderTypes"));
     }
 
     public HeightProviderTypeFactory(TemporalRegister<HeightProviderType<?>> register) {

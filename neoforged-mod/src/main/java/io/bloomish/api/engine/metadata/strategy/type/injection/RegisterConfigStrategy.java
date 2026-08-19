@@ -1,6 +1,6 @@
 package io.bloomish.api.engine.metadata.strategy.type.injection;
 
-import io.bloomish.api.engine.context.InjectionPool;
+import io.bloomish.api.engine.context.DefaultObjectRegistry;
 import io.bloomish.api.engine.initialization.initializer.StrategyPoolInitializer;
 import io.bloomish.api.engine.metadata.annotation.injection.RegisterConfig;
 import io.bloomish.api.engine.metadata.annotation.injection.Strategy;
@@ -29,7 +29,7 @@ public class RegisterConfigStrategy implements ClassAnnotationStrategy<RegisterC
                 throw new RuntimeException(e);
             }
         });
-        ModContainer modContainer = InjectionPool.getFromInstance(ModContainer.class);
+        ModContainer modContainer = DefaultObjectRegistry.getFromInstance(ModContainer.class);
         modContainer.registerConfig(annotation.value(), configuration.getRight());
     }
 

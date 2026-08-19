@@ -1,6 +1,6 @@
 package io.bloomish.api.engine.registry.extension.item;
 
-import io.bloomish.api.engine.context.InjectionPool;
+import io.bloomish.api.engine.context.DefaultObjectRegistry;
 import io.bloomish.api.engine.registry.factory.ItemFactory;
 import net.minecraft.world.entity.vehicle.Boat;
 import net.minecraft.world.item.BoatItem;
@@ -29,7 +29,7 @@ public interface BoatSubFactory {
     }
 
     default DeferredItem<BoatItem> createBoat(String name, Item.Properties properties, Boat.Type type, boolean hasChest) {
-        ItemFactory itemFactory = InjectionPool.getFromInstance(ItemFactory.class);
+        ItemFactory itemFactory = DefaultObjectRegistry.getFromInstance(ItemFactory.class);
         return itemFactory.create(name, properties.stacksTo(1), props -> new BoatItem(hasChest, type, props));
     }
 }

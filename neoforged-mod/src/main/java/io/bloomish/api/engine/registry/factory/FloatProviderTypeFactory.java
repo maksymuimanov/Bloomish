@@ -1,7 +1,7 @@
 package io.bloomish.api.engine.registry.factory;
 
 import com.mojang.serialization.MapCodec;
-import io.bloomish.api.engine.context.InjectionPool;
+import io.bloomish.api.engine.context.DefaultObjectRegistry;
 import io.bloomish.api.engine.registry.TemporalRegister;
 import net.minecraft.util.valueproviders.FloatProvider;
 import net.minecraft.util.valueproviders.FloatProviderType;
@@ -9,7 +9,7 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 
 public class FloatProviderTypeFactory extends AbstractObjectFactory<FloatProviderType<?>> {
     public FloatProviderTypeFactory() {
-        this(InjectionPool.getFromInstance("$FloatProviderTypes"));
+        this(DefaultObjectRegistry.getFromInstance("$FloatProviderTypes"));
     }
 
     public FloatProviderTypeFactory(TemporalRegister<FloatProviderType<?>> register) {

@@ -1,7 +1,7 @@
 package io.bloomish.api.engine.registry.factory;
 
 import com.mojang.serialization.MapCodec;
-import io.bloomish.api.engine.context.InjectionPool;
+import io.bloomish.api.engine.context.DefaultObjectRegistry;
 import io.bloomish.api.engine.registry.TemporalRegister;
 import net.minecraft.world.level.levelgen.feature.featuresize.FeatureSize;
 import net.minecraft.world.level.levelgen.feature.featuresize.FeatureSizeType;
@@ -9,7 +9,7 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 
 public class FeatureSizeFactory extends AbstractObjectFactory<FeatureSizeType<?>> {
     public FeatureSizeFactory() {
-        this(InjectionPool.getFromInstance("$FeatureSizeTypes"));
+        this(DefaultObjectRegistry.getFromInstance("$FeatureSizeTypes"));
     }
 
     public FeatureSizeFactory(TemporalRegister<FeatureSizeType<?>> register) {

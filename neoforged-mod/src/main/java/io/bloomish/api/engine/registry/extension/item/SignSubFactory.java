@@ -1,6 +1,6 @@
 package io.bloomish.api.engine.registry.extension.item;
 
-import io.bloomish.api.engine.context.InjectionPool;
+import io.bloomish.api.engine.context.DefaultObjectRegistry;
 import io.bloomish.api.engine.registry.factory.ItemFactory;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.SignItem;
@@ -16,7 +16,7 @@ public interface SignSubFactory {
     }
 
     default DeferredItem<SignItem> createSign(String name, Item.Properties properties, Supplier<StandingSignBlock> standingSignBlock, Supplier<WallSignBlock> wallSignBlock) {
-        ItemFactory factory = InjectionPool.getFromInstance(ItemFactory.class);
+        ItemFactory factory = DefaultObjectRegistry.getFromInstance(ItemFactory.class);
         return factory.create(name, properties, props -> new SignItem(props, standingSignBlock.get(), wallSignBlock.get()));
     }
 }

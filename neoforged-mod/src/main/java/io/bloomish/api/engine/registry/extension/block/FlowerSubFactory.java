@@ -1,6 +1,6 @@
 package io.bloomish.api.engine.registry.extension.block;
 
-import io.bloomish.api.engine.context.InjectionPool;
+import io.bloomish.api.engine.context.DefaultObjectRegistry;
 import io.bloomish.api.engine.registry.factory.BlockFactory;
 import io.bloomish.api.engine.registry.factory.BlockPropertiesFactory;
 import net.minecraft.core.Holder;
@@ -24,7 +24,7 @@ public interface FlowerSubFactory {
     }
 
     default DeferredBlock<FlowerBlock> createFlower(String name, BlockBehaviour.Properties properties, Item.Properties itemProperties, Holder<MobEffect> mobEffect, int duration) {
-        final BlockFactory blockFactory = InjectionPool.getFromInstance(BlockFactory.class);
+        final BlockFactory blockFactory = DefaultObjectRegistry.getFromInstance(BlockFactory.class);
         return blockFactory.create(name, properties.noOcclusion().noCollission(), props -> new FlowerBlock(mobEffect, duration, props), itemProperties);
     }
 
@@ -34,7 +34,7 @@ public interface FlowerSubFactory {
 
     @SuppressWarnings("deprecation")
     default DeferredBlock<FlowerPotBlock> createPottedFlower(String name, BlockBehaviour.Properties properties, Supplier<? extends Block> flower) {
-        final BlockFactory blockFactory = InjectionPool.getFromInstance(BlockFactory.class);
+        final BlockFactory blockFactory = DefaultObjectRegistry.getFromInstance(BlockFactory.class);
         return blockFactory.createWithoutItem(name, properties, props -> new FlowerPotBlock(flower.get(), props));
     }
 }

@@ -1,6 +1,6 @@
 package io.bloomish.api.engine.registry.extension.entity;
 
-import io.bloomish.api.engine.context.InjectionPool;
+import io.bloomish.api.engine.context.DefaultObjectRegistry;
 import io.bloomish.api.engine.registry.factory.EntityTypeFactory;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
@@ -9,7 +9,7 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 
 public interface ThrowableProjectileSubFactory {
     default <T extends ThrowableProjectile> DeferredHolder<EntityType<?>, EntityType<T>> createProjectile(String name, float width, float height, EntityType.EntityFactory<T> entityFactory) {
-        EntityTypeFactory factory = InjectionPool.getFromInstance(EntityTypeFactory.class);
+        EntityTypeFactory factory = DefaultObjectRegistry.getFromInstance(EntityTypeFactory.class);
         return factory.create(name, entityFactory, MobCategory.MISC, width, height);
     }
 }

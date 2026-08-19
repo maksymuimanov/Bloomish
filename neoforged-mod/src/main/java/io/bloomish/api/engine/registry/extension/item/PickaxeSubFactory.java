@@ -1,6 +1,6 @@
 package io.bloomish.api.engine.registry.extension.item;
 
-import io.bloomish.api.engine.context.InjectionPool;
+import io.bloomish.api.engine.context.DefaultObjectRegistry;
 import io.bloomish.api.engine.registry.factory.ItemFactory;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.PickaxeItem;
@@ -13,7 +13,7 @@ public interface PickaxeSubFactory {
     }
 
     default DeferredItem<PickaxeItem> createPickaxe(String name, Item.Properties properties, Tier tier, int damage, float speed) {
-        ItemFactory itemFactory = InjectionPool.getFromInstance(ItemFactory.class);
+        ItemFactory itemFactory = DefaultObjectRegistry.getFromInstance(ItemFactory.class);
         return itemFactory.create(name, properties.attributes(PickaxeItem.createAttributes(tier, damage, speed)), props -> new PickaxeItem(tier, props));
     }
 }

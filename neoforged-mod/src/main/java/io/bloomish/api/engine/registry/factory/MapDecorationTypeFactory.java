@@ -1,6 +1,6 @@
 package io.bloomish.api.engine.registry.factory;
 
-import io.bloomish.api.engine.context.InjectionPool;
+import io.bloomish.api.engine.context.DefaultObjectRegistry;
 import io.bloomish.api.engine.registry.TemporalRegister;
 import io.bloomish.api.util.ResourceUtils;
 import net.minecraft.resources.ResourceLocation;
@@ -9,7 +9,7 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 
 public class MapDecorationTypeFactory extends AbstractObjectFactory<MapDecorationType> {
     public MapDecorationTypeFactory() {
-        this(InjectionPool.getFromInstance("$MapDecorationTypes"));
+        this(DefaultObjectRegistry.getFromInstance("$MapDecorationTypes"));
     }
 
     public MapDecorationTypeFactory(TemporalRegister<MapDecorationType> register) {

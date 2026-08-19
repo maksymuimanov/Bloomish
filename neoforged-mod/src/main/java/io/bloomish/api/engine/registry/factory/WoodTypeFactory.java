@@ -1,6 +1,6 @@
 package io.bloomish.api.engine.registry.factory;
 
-import io.bloomish.api.engine.context.ModContext;
+import io.bloomish.api.engine.context.EngineContext;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
@@ -11,10 +11,10 @@ public final class WoodTypeFactory {
     }
 
     public static WoodType create(String name, BlockSetType setType, SoundType soundType, SoundType hangingSignSoundType, SoundEvent fenceGateClose, SoundEvent fenceGateOpen) {
-        return WoodType.register(new WoodType(ModContext.NEO_MOD.getModId() + ":" + name, setType, soundType, hangingSignSoundType, fenceGateClose, fenceGateOpen));
+        return WoodType.register(new WoodType(EngineContext.currentMod.getModId() + ":" + name, setType, soundType, hangingSignSoundType, fenceGateClose, fenceGateOpen));
     }
 
     public static WoodType create(String name, BlockSetType setType) {
-        return WoodType.register(new WoodType(ModContext.NEO_MOD.getModId() + ":" + name, setType));
+        return WoodType.register(new WoodType(EngineContext.currentMod.getModId() + ":" + name, setType));
     }
 }

@@ -1,7 +1,7 @@
 package io.bloomish.api;
 
 import com.mojang.logging.LogUtils;
-import io.bloomish.api.engine.context.ModContext;
+import io.bloomish.api.engine.context.EngineContext;
 import io.bloomish.api.util.ReflectionUtils;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
@@ -14,6 +14,6 @@ public class ApiMod {
     public static final Logger LOGGER = LogUtils.getLogger();
 
     public ApiMod(IEventBus modEventBus, ModContainer modContainer) {
-        ModContext.ALL_CLASSES.addAll(ReflectionUtils.getApiDependentsClasses());
+        EngineContext.ALL_CLASSES.addAll(ReflectionUtils.getApiDependentsClasses());
     }
 }

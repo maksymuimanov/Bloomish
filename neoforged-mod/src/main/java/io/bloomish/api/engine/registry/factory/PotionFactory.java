@@ -1,6 +1,6 @@
 package io.bloomish.api.engine.registry.factory;
 
-import io.bloomish.api.engine.context.InjectionPool;
+import io.bloomish.api.engine.context.DefaultObjectRegistry;
 import io.bloomish.api.engine.registry.TemporalRegister;
 import net.minecraft.core.Holder;
 import net.minecraft.world.effect.MobEffect;
@@ -10,7 +10,7 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 
 public class PotionFactory extends AbstractObjectFactory<Potion> {
     public PotionFactory() {
-        this(InjectionPool.getFromInstance("$Potions"));
+        this(DefaultObjectRegistry.getFromInstance("$Potions"));
     }
 
     public PotionFactory(TemporalRegister<Potion> register) {

@@ -1,13 +1,13 @@
 package io.bloomish.api.engine.registry.factory;
 
 import com.mojang.serialization.MapCodec;
-import io.bloomish.api.engine.context.InjectionPool;
+import io.bloomish.api.engine.context.DefaultObjectRegistry;
 import io.bloomish.api.engine.registry.TemporalRegister;
 import net.minecraft.world.item.enchantment.effects.EnchantmentLocationBasedEffect;
 
 public class EnchantmentLocationBasedEffectTypeFactory extends AbstractObjectFactory<MapCodec<? extends EnchantmentLocationBasedEffect>> {
     public EnchantmentLocationBasedEffectTypeFactory() {
-        this(InjectionPool.getFromInstance("$EnchantmentLocationBasedEffectTypes"));
+        this(DefaultObjectRegistry.getFromInstance("$EnchantmentLocationBasedEffectTypes"));
     }
 
     public EnchantmentLocationBasedEffectTypeFactory(TemporalRegister<MapCodec<? extends EnchantmentLocationBasedEffect>> register) {

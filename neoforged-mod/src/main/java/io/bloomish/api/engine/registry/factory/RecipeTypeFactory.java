@@ -1,6 +1,6 @@
 package io.bloomish.api.engine.registry.factory;
 
-import io.bloomish.api.engine.context.InjectionPool;
+import io.bloomish.api.engine.context.DefaultObjectRegistry;
 import io.bloomish.api.engine.registry.TemporalRegister;
 import io.bloomish.api.util.ResourceUtils;
 import net.minecraft.world.item.crafting.Recipe;
@@ -9,7 +9,7 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 
 public class RecipeTypeFactory extends AbstractObjectFactory<RecipeType<?>> {
     public RecipeTypeFactory() {
-        this(InjectionPool.getFromInstance("$RecipeTypes"));
+        this(DefaultObjectRegistry.getFromInstance("$RecipeTypes"));
     }
 
     public RecipeTypeFactory(TemporalRegister<RecipeType<?>> register) {

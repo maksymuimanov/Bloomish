@@ -1,6 +1,6 @@
 package io.bloomish.api.engine.registry.factory;
 
-import io.bloomish.api.engine.context.InjectionPool;
+import io.bloomish.api.engine.context.DefaultObjectRegistry;
 import io.bloomish.api.engine.registry.TemporalRegister;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.RangedAttribute;
@@ -10,7 +10,7 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 
 public class AttributeFactory extends AbstractObjectFactory<Attribute> {
     public AttributeFactory() {
-        this(InjectionPool.getFromInstance("$Attributes"));
+        this(DefaultObjectRegistry.getFromInstance("$Attributes"));
     }
 
     public AttributeFactory(TemporalRegister<Attribute> register) {

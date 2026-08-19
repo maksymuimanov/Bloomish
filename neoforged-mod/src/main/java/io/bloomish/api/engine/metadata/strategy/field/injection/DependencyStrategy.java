@@ -1,7 +1,7 @@
 package io.bloomish.api.engine.metadata.strategy.field.injection;
 
-import io.bloomish.api.engine.context.InjectionPool;
-import io.bloomish.api.engine.context.ObjectPool;
+import io.bloomish.api.engine.context.DefaultObjectRegistry;
+import io.bloomish.api.engine.context.ObjectRegistry;
 import io.bloomish.api.engine.initialization.initializer.StrategyPoolInitializer;
 import io.bloomish.api.engine.metadata.annotation.injection.Dependency;
 import io.bloomish.api.engine.metadata.annotation.injection.Strategy;
@@ -17,8 +17,8 @@ public class DependencyStrategy implements FieldAnnotationStrategy<Dependency> {
     @Override
     public void execute(Field field, Object object, Dependency annotation) throws Exception {
         field.setBoolean(object, ModList.get().isLoaded(annotation.value()));
-        ObjectPool objectPool = InjectionPool.getInstance();
-        objectPool.put(object);
+        ObjectRegistry objectRegistry = DefaultObjectRegistry.getInstance();
+        objectRegistry.register(object);
     }
 
     @Override

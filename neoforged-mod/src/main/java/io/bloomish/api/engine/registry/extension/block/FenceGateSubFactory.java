@@ -1,6 +1,6 @@
 package io.bloomish.api.engine.registry.extension.block;
 
-import io.bloomish.api.engine.context.InjectionPool;
+import io.bloomish.api.engine.context.DefaultObjectRegistry;
 import io.bloomish.api.engine.registry.factory.BlockFactory;
 import io.bloomish.api.engine.registry.factory.BlockPropertiesFactory;
 import net.minecraft.sounds.SoundEvent;
@@ -27,7 +27,7 @@ public interface FenceGateSubFactory {
     }
 
     default DeferredBlock<FenceGateBlock> createFenceGate(String name, BlockBehaviour.Properties properties, Item.Properties itemProperties, WoodType woodType, SoundEvent openSound, SoundEvent closeSound) {
-        final BlockFactory blockFactory = InjectionPool.getFromInstance(BlockFactory.class);
+        final BlockFactory blockFactory = DefaultObjectRegistry.getFromInstance(BlockFactory.class);
         return blockFactory.create(name, properties, (props) -> new FenceGateBlock(Optional.of(woodType), props, Optional.of(openSound), Optional.of(closeSound)), itemProperties);
     }
 }

@@ -1,6 +1,6 @@
 package io.bloomish.api.engine.registry.factory;
 
-import io.bloomish.api.engine.context.InjectionPool;
+import io.bloomish.api.engine.context.DefaultObjectRegistry;
 import io.bloomish.api.engine.registry.TemporalRegister;
 import io.bloomish.api.util.ResourceUtils;
 import net.minecraft.resources.ResourceLocation;
@@ -11,7 +11,7 @@ public class CatVariantFactory extends AbstractObjectFactory<CatVariant> {
     public static final String ENTITY_CAT_PATH = "textures/entity/cat/%s.png";
 
     public CatVariantFactory() {
-        this(InjectionPool.getFromInstance("$CatVariants"));
+        this(DefaultObjectRegistry.getFromInstance("$CatVariants"));
     }
 
     public CatVariantFactory(TemporalRegister<CatVariant> register) {

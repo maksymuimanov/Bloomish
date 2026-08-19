@@ -1,6 +1,6 @@
 package io.bloomish.api.engine.registry.extension.item;
 
-import io.bloomish.api.engine.context.InjectionPool;
+import io.bloomish.api.engine.context.DefaultObjectRegistry;
 import io.bloomish.api.engine.registry.factory.ItemFactory;
 import net.minecraft.core.Holder;
 import net.minecraft.world.item.ArmorItem;
@@ -14,7 +14,7 @@ public interface ArmorSubFactory {
     }
 
     default DeferredItem<ArmorItem> createArmor(String name, Item.Properties properties, Holder<ArmorMaterial> material, ArmorItem.Type type) {
-        ItemFactory itemFactory = InjectionPool.getFromInstance(ItemFactory.class);
+        ItemFactory itemFactory = DefaultObjectRegistry.getFromInstance(ItemFactory.class);
         return itemFactory.create(name, properties.stacksTo(1), props -> new ArmorItem(material, type, props));
     }
 }

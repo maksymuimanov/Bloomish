@@ -1,6 +1,6 @@
 package io.bloomish.api.engine.registry.extension.item;
 
-import io.bloomish.api.engine.context.InjectionPool;
+import io.bloomish.api.engine.context.DefaultObjectRegistry;
 import io.bloomish.api.engine.registry.factory.ItemFactory;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.Item;
@@ -14,7 +14,7 @@ public interface MusicDiscSubFactory {
     }
 
     default DeferredItem<Item> createMusicDisc(String name, Item.Properties properties, ResourceKey<JukeboxSong> jukeboxSong) {
-        ItemFactory itemFactory = InjectionPool.getFromInstance(ItemFactory.class);
+        ItemFactory itemFactory = DefaultObjectRegistry.getFromInstance(ItemFactory.class);
         return itemFactory.create(name, properties.stacksTo(1)
                 .jukeboxPlayable(jukeboxSong)
                 .rarity(Rarity.RARE), Item::new);

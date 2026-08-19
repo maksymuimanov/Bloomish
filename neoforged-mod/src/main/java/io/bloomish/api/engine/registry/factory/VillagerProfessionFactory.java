@@ -1,7 +1,7 @@
 package io.bloomish.api.engine.registry.factory;
 
 import com.google.common.collect.ImmutableSet;
-import io.bloomish.api.engine.context.InjectionPool;
+import io.bloomish.api.engine.context.DefaultObjectRegistry;
 import io.bloomish.api.engine.registry.TemporalRegister;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.entity.ai.village.poi.PoiType;
@@ -12,7 +12,7 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 
 public class VillagerProfessionFactory extends AbstractObjectFactory<VillagerProfession> {
     public VillagerProfessionFactory() {
-        this(InjectionPool.getFromInstance("$VillagerProfessions"));
+        this(DefaultObjectRegistry.getFromInstance("$VillagerProfessions"));
     }
 
     public VillagerProfessionFactory(TemporalRegister<VillagerProfession> register) {

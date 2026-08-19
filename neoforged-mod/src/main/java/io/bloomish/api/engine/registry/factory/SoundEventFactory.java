@@ -1,6 +1,6 @@
 package io.bloomish.api.engine.registry.factory;
 
-import io.bloomish.api.engine.context.InjectionPool;
+import io.bloomish.api.engine.context.DefaultObjectRegistry;
 import io.bloomish.api.engine.registry.TemporalRegister;
 import io.bloomish.api.util.ResourceUtils;
 import net.minecraft.sounds.SoundEvent;
@@ -8,7 +8,7 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 
 public class SoundEventFactory extends AbstractObjectFactory<SoundEvent> {
     public SoundEventFactory() {
-        this(InjectionPool.getFromInstance("$SoundEvents"));
+        this(DefaultObjectRegistry.getFromInstance("$SoundEvents"));
     }
 
     public SoundEventFactory(TemporalRegister<SoundEvent> register) {

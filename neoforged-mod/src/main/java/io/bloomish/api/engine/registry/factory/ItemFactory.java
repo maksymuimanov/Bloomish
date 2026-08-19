@@ -1,6 +1,6 @@
 package io.bloomish.api.engine.registry.factory;
 
-import io.bloomish.api.engine.context.InjectionPool;
+import io.bloomish.api.engine.context.DefaultObjectRegistry;
 import io.bloomish.api.engine.registry.TemporalRegister;
 import net.minecraft.world.item.Item;
 import net.neoforged.neoforge.registries.DeferredItem;
@@ -9,7 +9,7 @@ import java.util.function.Function;
 
 public class ItemFactory extends AbstractObjectFactory<Item> {
     public ItemFactory() {
-        this(InjectionPool.getFromInstance("$Items"));
+        this(DefaultObjectRegistry.getFromInstance("$Items"));
     }
 
     public ItemFactory(TemporalRegister<Item> register) {

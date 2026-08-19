@@ -1,7 +1,7 @@
 package io.bloomish.api.engine.registry.factory;
 
 import com.mojang.serialization.MapCodec;
-import io.bloomish.api.engine.context.InjectionPool;
+import io.bloomish.api.engine.context.DefaultObjectRegistry;
 import io.bloomish.api.engine.registry.TemporalRegister;
 import net.minecraft.util.valueproviders.IntProvider;
 import net.minecraft.util.valueproviders.IntProviderType;
@@ -9,7 +9,7 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 
 public class IntProviderTypeFactory extends AbstractObjectFactory<IntProviderType<?>> {
     public IntProviderTypeFactory() {
-        this(InjectionPool.getFromInstance("$IntProviderTypes"));
+        this(DefaultObjectRegistry.getFromInstance("$IntProviderTypes"));
     }
 
     public IntProviderTypeFactory(TemporalRegister<IntProviderType<?>> register) {

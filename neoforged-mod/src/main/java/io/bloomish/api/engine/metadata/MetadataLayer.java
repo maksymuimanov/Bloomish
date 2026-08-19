@@ -2,8 +2,8 @@ package io.bloomish.api.engine.metadata;
 
 import io.bloomish.api.ApiMod;
 import io.bloomish.api.engine.EngineLayer;
-import io.bloomish.api.engine.context.InjectionPool;
-import io.bloomish.api.engine.context.ModContext;
+import io.bloomish.api.engine.context.DefaultObjectRegistry;
+import io.bloomish.api.engine.context.EngineContext;
 import io.bloomish.api.engine.metadata.consumer.AnnotationStrategyConsumer;
 import io.bloomish.api.engine.metadata.consumer.AsyncStrategyConsumer;
 import io.bloomish.api.engine.metadata.consumer.SimpleStrategyConsumer;
@@ -22,11 +22,11 @@ public class MetadataLayer implements EngineLayer {
     @Override
     public void processAllTasks() {
         ApiMod.LOGGER.debug("Processing defaulted {} annotation directors", annotationDirectors.size());
-        Set<Class<?>> classes = ModContext.NEO_MOD.getClasses();
+        Set<Class<?>> classes = EngineContext.currentMod.getClasses();
         annotationDirectors.forEach(annotationDirector -> {
             annotationDirector.directAll(classes);
         });
-        List<? extends AnnotationDirector> dynamicAnnotationDirectors = InjectionPool.getInstance().getAll(AnnotationDirector.class);
+        List<? extends AnnotationDirector> dynamicAnnotationDirectors = DefaultObjectRegistry.getInstance().getAll(AnnotationDirector.class);
         ApiMod.LOGGER.debug("Processing dynamic {} annotation directors", dynamicAnnotationDirectors.size());
         dynamicAnnotationDirectors.forEach(annotationDirector -> {
             annotationDirector.directAll(classes);

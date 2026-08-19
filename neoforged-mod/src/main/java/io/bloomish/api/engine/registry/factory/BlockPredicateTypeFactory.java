@@ -1,7 +1,7 @@
 package io.bloomish.api.engine.registry.factory;
 
 import com.mojang.serialization.MapCodec;
-import io.bloomish.api.engine.context.InjectionPool;
+import io.bloomish.api.engine.context.DefaultObjectRegistry;
 import io.bloomish.api.engine.registry.TemporalRegister;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicate;
 import net.minecraft.world.level.levelgen.blockpredicates.BlockPredicateType;
@@ -9,7 +9,7 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 
 public class BlockPredicateTypeFactory extends AbstractObjectFactory<BlockPredicateType<?>> {
     public BlockPredicateTypeFactory() {
-        this(InjectionPool.getFromInstance("$BlockPredicateTypes"));
+        this(DefaultObjectRegistry.getFromInstance("$BlockPredicateTypes"));
     }
 
     public BlockPredicateTypeFactory(TemporalRegister<BlockPredicateType<?>> register) {

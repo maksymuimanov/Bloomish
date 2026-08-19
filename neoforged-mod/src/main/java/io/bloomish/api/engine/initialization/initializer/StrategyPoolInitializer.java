@@ -1,6 +1,6 @@
 package io.bloomish.api.engine.initialization.initializer;
 
-import io.bloomish.api.engine.context.ObjectPool;
+import io.bloomish.api.engine.context.ObjectRegistry;
 import io.bloomish.api.engine.metadata.annotation.injection.Strategy;
 import io.bloomish.api.engine.metadata.pool.SimpleStrategyPool;
 import io.bloomish.api.engine.metadata.pool.StrategyPool;
@@ -29,7 +29,7 @@ public class StrategyPoolInitializer implements ObjectPoolInitializer {
 
     @Override
     @SuppressWarnings("unchecked")
-    public void initialize(Collection<Class<?>> classes, List<?> externalObjects, ObjectPool objectPool) {
+    public void initialize(Collection<Class<?>> classes, List<?> externalObjects, ObjectRegistry objectRegistry) {
         StrategyPool strategyPool = new SimpleStrategyPool();
         classes.stream()
                 .filter(clazz -> clazz.isAnnotationPresent(Strategy.class))
@@ -44,6 +44,6 @@ public class StrategyPoolInitializer implements ObjectPoolInitializer {
                         strategyPool.put(scope, strategyClass);
                     }
                 });
-        objectPool.put(strategyPool);
+        objectRegistry.register(strategyPool);
     }
 }

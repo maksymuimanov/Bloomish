@@ -1,6 +1,6 @@
 package io.bloomish.api.engine.metadata.pool;
 
-import io.bloomish.api.engine.context.InjectionPool;
+import io.bloomish.api.engine.context.DefaultObjectRegistry;
 import io.bloomish.api.engine.metadata.strategy.AnnotationStrategy;
 import io.bloomish.api.util.MapUtils;
 import io.bloomish.api.util.ReflectionUtils;
@@ -142,6 +142,6 @@ public class SimpleStrategyPool implements StrategyPool {
     }
 
     public static SimpleStrategyPool getInstance() {
-        return InjectionPool.getFromInstance(SimpleStrategyPool.class);
+        return DefaultObjectRegistry.getFromInstance(SimpleStrategyPool.class);
     }
 }

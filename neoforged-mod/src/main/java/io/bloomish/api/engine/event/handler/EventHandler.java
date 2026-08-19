@@ -1,6 +1,6 @@
 package io.bloomish.api.engine.event.handler;
 
-import io.bloomish.api.engine.context.InjectionPool;
+import io.bloomish.api.engine.context.DefaultObjectRegistry;
 import io.bloomish.api.engine.event.adapter.EventAdapter;
 import net.neoforged.bus.api.Event;
 import net.neoforged.bus.api.EventPriority;
@@ -51,6 +51,6 @@ public interface EventHandler {
     }
 
     default IEventBus getModEventBus() {
-        return InjectionPool.getFromInstance(IEventBus.class);
+        return DefaultObjectRegistry.getFromInstance(IEventBus.class);
     }
 }
