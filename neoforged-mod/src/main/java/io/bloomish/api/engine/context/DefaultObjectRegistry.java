@@ -18,51 +18,58 @@ public class DefaultObjectRegistry implements ObjectRegistry {
     }
 
     @Override
-    public void register(String name, Class<?> clazz) {
-        ObjectKey<?> key = new ObjectKey<>(name, clazz);
-        Object object = ReflectionUtils.createObject(clazz);
-        this.register(key, object);
+    public void registerAllValues(Object... values) {
+        if (values == null) throw new ObjectRegistryException("Values cannot be null");
+        for (Object value : values) {
+            this.registerValue(value);
+        }
     }
 
     @Override
-    public void register(Class<?> clazz) {
+    public void registerValue(Object value) {
+        ObjectKey<?> key = new ObjectKey<>(value);
+        this.registerValueByKey(value, key);
+    }
+
+    @Override
+    public void registerValueByName(Object value, String name) {
+        ObjectKey<?> key = new ObjectKey<>(name, value);
+        this.registerValueByKey(value, key);
+    }
+
+    @Override
+    public void registerValueByClass(Class<?> clazz) {
         ObjectKey<?> key = new ObjectKey<>(clazz);
         Object object = ReflectionUtils.createObject(clazz);
-        this.register(key, object);
+        this.registerValueByKey(object, key);
     }
 
     @Override
-    public void register(Object value) {
-        ObjectKey<?> key = new ObjectKey<>(value);
-        this.register(key, value);
-    }
-
-    @Override
-    public void register(String name, Object value) {
-        ObjectKey<?> key = new ObjectKey<>(name, value);
-        this.register(key, value);
-    }
-
-    @Override
-    public <T> void register(Class<? extends T> clazz, T value) {
+    public <T> void registerValueByClass(T value, Class<? extends T> clazz) {
         ObjectKey<? extends T> key = new ObjectKey<>(clazz);
-        this.register(key, value);
+        this.registerValueByKey(value, key);
     }
 
     @Override
-    public <T> void register(ObjectKey<? extends T> key, T value) {
+    public void registerValueByKey(ObjectKey<?> key) {
+        Object object = ReflectionUtils.createObject(key.clazz());
+        this.registerValueByKey(object, key);
+    }
+
+    @Override
+    public <T> void registerValueByKey(T value, ObjectKey<? extends T> key) {
         this.objects.put(key, value);
     }
 
     @Override
-    public void unregister(String name) {
-        ObjectKey<?> key = this.getKey(name);
+    public void unregisterByName(String name) {
+        ObjectKey<?> key = this.getKeyByName(name);
         this.objects.remove(key);
     }
 
     @Override
-    public void unregister(Class<?> clazz) {
-        ObjectKey<?> key = this.getKey(clazz);
+    public void unregisterByClass(Class<?> clazz) {
+        ObjectKey<?> key = this.getKeyByClass(clazz);
         this.objects.remove(key);
     }
 
@@ -81,11 +88,6 @@ public class DefaultObjectRegistry implements ObjectRegistry {
     }
 
     @Override
-    public boolean isRegistered(ObjectKey<?> key) {
-        return this.objects.containsKey(key);
-    }
-
-    @Override
     public Collection<?> getAll() {
         return List.copyOf(this.objects.values());
     }
@@ -100,38 +102,38 @@ public class DefaultObjectRegistry implements ObjectRegistry {
     }
 
     @Override
-    public Object get(String name) {
-        ObjectKey<?> key = this.getKey(name);
+    public Object getByName(String name) {
+        ObjectKey<?> key = this.getKeyByName(name);
         return this.get(key);
     }
 
     @Override
-    public Object getOrNull(String name) {
-        ObjectKey<?> key = this.getKeyOrNull(name);
+    public Object getByNameOrNull(String name) {
+        ObjectKey<?> key = this.getKeyByNameOrNull(name);
         return this.getOrNull(key);
     }
 
     @Override
-    public <T> T get(String name, Class<T> clazz) {
-        ObjectKey<?> key = this.getKey(name);
+    public <T> T getByName(String name, Class<T> clazz) {
+        ObjectKey<?> key = this.getKeyByName(name);
         return clazz.cast(this.get(key));
     }
 
     @Override
-    public <T> T getOrNull(String name, Class<T> clazz) {
-        ObjectKey<?> key = this.getKeyOrNull(name);
+    public <T> T getByNameOrNull(String name, Class<T> clazz) {
+        ObjectKey<?> key = this.getKeyByNameOrNull(name);
         return clazz.cast(this.getOrNull(key));
     }
 
     @Override
-    public <T> T get(Class<? extends T> clazz) {
-        ObjectKey<? extends T> key = this.getKey(clazz);
+    public <T> T getByClass(Class<? extends T> clazz) {
+        ObjectKey<? extends T> key = this.getKeyByClass(clazz);
         return this.get(key);
     }
 
     @Override
-    public <T> T getOrNull(Class<? extends T> clazz) {
-        ObjectKey<? extends T> key = this.getKeyOrNull(clazz);
+    public <T> T getByClassOrNull(Class<? extends T> clazz) {
+        ObjectKey<? extends T> key = this.getKeyByClassOrNull(clazz);
         return this.getOrNull(key);
     }
 
@@ -149,24 +151,24 @@ public class DefaultObjectRegistry implements ObjectRegistry {
     }
 
     @Override
-    public ObjectKey<?> getKey(String name) {
+    public ObjectKey<?> getKeyByName(String name) {
         return this.getKey(key -> key.name().equals(name));
     }
 
     @Override
-    public ObjectKey<?> getKeyOrNull(String name) {
+    public ObjectKey<?> getKeyByNameOrNull(String name) {
         return this.getKeyOrNull(key -> key.name().equals(name));
     }
 
     @SuppressWarnings("unchecked")
     @Override
-    public <T> ObjectKey<T> getKey(Class<? extends T> clazz) {
+    public <T> ObjectKey<T> getKeyByClass(Class<? extends T> clazz) {
         return (ObjectKey<T>) this.getKey(key -> clazz.isAssignableFrom(key.clazz()));
     }
 
     @SuppressWarnings("unchecked")
     @Override
-    public <T> ObjectKey<T> getKeyOrNull(Class<? extends T> clazz) {
+    public <T> ObjectKey<T> getKeyByClassOrNull(Class<? extends T> clazz) {
         return (ObjectKey<T>) this.getKeyOrNull(key -> clazz.isAssignableFrom(key.clazz()));
     }
 

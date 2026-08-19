@@ -1,7 +1,7 @@
 package io.bloomish.api.engine.metadata.strategy.field.data.tag;
 
 import io.bloomish.api.engine.event.data.tag.EntityTypeTagsProvider;
-import io.bloomish.api.engine.initialization.initializer.StrategyPoolInitializer;
+import io.bloomish.api.engine.initialization.initializer.StrategyInitializer;
 import io.bloomish.api.engine.metadata.annotation.data.tag.AddEntityTypeTag;
 import io.bloomish.api.engine.metadata.annotation.injection.Strategy;
 import io.bloomish.api.engine.metadata.pool.ProcessorScope;
@@ -14,7 +14,7 @@ import net.minecraft.world.entity.EntityType;
 
 import java.lang.reflect.Field;
 
-@Strategy(StrategyPoolInitializer.DEFAULT_FIELD_DATA)
+@Strategy(StrategyInitializer.DEFAULT_FIELD_DATA)
 public class AddEntityTypeTagStrategy implements FieldAnnotationStrategy<AddEntityTypeTag> {
     @Override
     public void execute(Field field, Object object, AddEntityTypeTag annotation) throws Exception {

@@ -1,7 +1,7 @@
 package io.bloomish.api.engine.metadata.strategy.field.event.block;
 
 import io.bloomish.api.engine.event.handler.BlockEntityTypeEventHandler;
-import io.bloomish.api.engine.initialization.initializer.StrategyPoolInitializer;
+import io.bloomish.api.engine.initialization.initializer.StrategyInitializer;
 import io.bloomish.api.engine.metadata.annotation.event.block.AddBlockEntityType;
 import io.bloomish.api.engine.metadata.annotation.injection.Strategy;
 import io.bloomish.api.engine.metadata.pool.ProcessorScope;
@@ -16,7 +16,7 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 
 import java.lang.reflect.Field;
 
-@Strategy(StrategyPoolInitializer.DEFAULT_FIELD_EVENT_BLOCK)
+@Strategy(StrategyInitializer.DEFAULT_FIELD_EVENT_BLOCK)
 public class AddBlockEntityTypeStrategy implements FieldAnnotationStrategy<AddBlockEntityType> {
     @Override
     public void execute(Field field, Object object, AddBlockEntityType annotation) throws Exception {

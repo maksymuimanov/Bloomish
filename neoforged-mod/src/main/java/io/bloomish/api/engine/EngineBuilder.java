@@ -105,7 +105,7 @@ public class EngineBuilder {
     private void processLayer(EngineLayer engineLayer) {
         String layerName = engineLayer.getClass().getName();
         ApiMod.LOGGER.info("Layer: {} is going to be processed!", layerName);
-        engineLayer.processAllTasks();
+        engineLayer.process();
         ApiMod.LOGGER.info("Layer: {} has been processed!", layerName);
     }
 }

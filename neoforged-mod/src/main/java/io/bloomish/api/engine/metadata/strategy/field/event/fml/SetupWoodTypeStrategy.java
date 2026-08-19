@@ -1,7 +1,7 @@
 package io.bloomish.api.engine.metadata.strategy.field.event.fml;
 
 import io.bloomish.api.engine.event.handler.FMLClientSetupEventHandler;
-import io.bloomish.api.engine.initialization.initializer.StrategyPoolInitializer;
+import io.bloomish.api.engine.initialization.initializer.StrategyInitializer;
 import io.bloomish.api.engine.metadata.annotation.event.fml.SetupWoodType;
 import io.bloomish.api.engine.metadata.annotation.injection.Strategy;
 import io.bloomish.api.engine.metadata.pool.ProcessorScope;
@@ -12,7 +12,7 @@ import net.minecraft.world.level.block.state.properties.WoodType;
 
 import java.lang.reflect.Field;
 
-@Strategy(StrategyPoolInitializer.DEFAULT_FIELD_EVENT_FML)
+@Strategy(StrategyInitializer.DEFAULT_FIELD_EVENT_FML)
 public class SetupWoodTypeStrategy implements FieldAnnotationStrategy<SetupWoodType> {
     @Override
     public void execute(Field field, Object object, SetupWoodType annotation) throws Exception {

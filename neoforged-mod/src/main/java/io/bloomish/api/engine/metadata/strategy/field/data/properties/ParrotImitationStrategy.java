@@ -2,7 +2,7 @@ package io.bloomish.api.engine.metadata.strategy.field.data.properties;
 
 import io.bloomish.api.engine.event.data.map.ApiDataMapProvider;
 import io.bloomish.api.engine.event.data.map.ParrotImitationDto;
-import io.bloomish.api.engine.initialization.initializer.StrategyPoolInitializer;
+import io.bloomish.api.engine.initialization.initializer.StrategyInitializer;
 import io.bloomish.api.engine.metadata.annotation.data.properties.ParrotImitation;
 import io.bloomish.api.engine.metadata.annotation.injection.Strategy;
 import io.bloomish.api.engine.metadata.pool.ProcessorScope;
@@ -14,7 +14,7 @@ import net.minecraft.world.entity.EntityType;
 
 import java.lang.reflect.Field;
 
-@Strategy(StrategyPoolInitializer.DEFAULT_FIELD_DATA)
+@Strategy(StrategyInitializer.DEFAULT_FIELD_DATA)
 public class ParrotImitationStrategy implements FieldAnnotationStrategy<ParrotImitation> {
     @Override
     public void execute(Field field, Object object, ParrotImitation annotation) throws Exception {

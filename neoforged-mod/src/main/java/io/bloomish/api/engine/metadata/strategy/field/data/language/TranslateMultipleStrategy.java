@@ -1,6 +1,6 @@
 package io.bloomish.api.engine.metadata.strategy.field.data.language;
 
-import io.bloomish.api.engine.initialization.initializer.StrategyPoolInitializer;
+import io.bloomish.api.engine.initialization.initializer.StrategyInitializer;
 import io.bloomish.api.engine.metadata.annotation.data.language.TranslateMultiple;
 import io.bloomish.api.engine.metadata.annotation.injection.Strategy;
 import io.bloomish.api.engine.metadata.pool.ProcessorScope;
@@ -13,7 +13,7 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
-@Strategy(StrategyPoolInitializer.DEFAULT_FIELD_DATA)
+@Strategy(StrategyInitializer.DEFAULT_FIELD_DATA)
 public class TranslateMultipleStrategy implements FieldAnnotationStrategy<TranslateMultiple> {
     @Override
     @SuppressWarnings({"rawtypes", "unchecked"})

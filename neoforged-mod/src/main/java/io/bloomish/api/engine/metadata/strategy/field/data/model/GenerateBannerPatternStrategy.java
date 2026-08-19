@@ -2,7 +2,7 @@ package io.bloomish.api.engine.metadata.strategy.field.data.model;
 
 import io.bloomish.api.engine.event.data.banner.ApiBannerPatternProvider;
 import io.bloomish.api.engine.event.data.banner.BannerPatternDescription;
-import io.bloomish.api.engine.initialization.initializer.StrategyPoolInitializer;
+import io.bloomish.api.engine.initialization.initializer.StrategyInitializer;
 import io.bloomish.api.engine.metadata.annotation.data.model.GenerateBannerPattern;
 import io.bloomish.api.engine.metadata.annotation.injection.Strategy;
 import io.bloomish.api.engine.metadata.pool.ProcessorScope;
@@ -14,7 +14,7 @@ import net.minecraft.world.level.block.entity.BannerPattern;
 
 import java.lang.reflect.Field;
 
-@Strategy(StrategyPoolInitializer.DEFAULT_FIELD_DATA)
+@Strategy(StrategyInitializer.DEFAULT_FIELD_DATA)
 public class GenerateBannerPatternStrategy implements FieldAnnotationStrategy<GenerateBannerPattern> {
     @Override
     public void execute(Field field, Object object, GenerateBannerPattern annotation) throws Exception {

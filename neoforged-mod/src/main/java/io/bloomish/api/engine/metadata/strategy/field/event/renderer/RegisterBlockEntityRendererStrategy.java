@@ -1,7 +1,7 @@
 package io.bloomish.api.engine.metadata.strategy.field.event.renderer;
 
 import io.bloomish.api.engine.event.handler.EntityRendererRegisterRendererEventHandler;
-import io.bloomish.api.engine.initialization.initializer.StrategyPoolInitializer;
+import io.bloomish.api.engine.initialization.initializer.StrategyInitializer;
 import io.bloomish.api.engine.metadata.annotation.event.renderer.RegisterBlockEntityRenderer;
 import io.bloomish.api.engine.metadata.annotation.injection.Strategy;
 import io.bloomish.api.engine.metadata.pool.ProcessorScope;
@@ -16,7 +16,7 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 
-@Strategy(StrategyPoolInitializer.DEFAULT_FIELD_EVENT_RENDERER)
+@Strategy(StrategyInitializer.DEFAULT_FIELD_EVENT_RENDERER)
 public class RegisterBlockEntityRendererStrategy implements FieldAnnotationStrategy<RegisterBlockEntityRenderer> {
     @Override
     @SuppressWarnings("unchecked")

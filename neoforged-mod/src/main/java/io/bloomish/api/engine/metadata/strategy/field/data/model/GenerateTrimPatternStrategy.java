@@ -2,7 +2,7 @@ package io.bloomish.api.engine.metadata.strategy.field.data.model;
 
 import io.bloomish.api.engine.event.data.trim.pattern.ApiTrimPatternProvider;
 import io.bloomish.api.engine.event.data.trim.pattern.TrimPatternDescription;
-import io.bloomish.api.engine.initialization.initializer.StrategyPoolInitializer;
+import io.bloomish.api.engine.initialization.initializer.StrategyInitializer;
 import io.bloomish.api.engine.metadata.annotation.data.model.GenerateTrimPattern;
 import io.bloomish.api.engine.metadata.annotation.injection.Strategy;
 import io.bloomish.api.engine.metadata.pool.ProcessorScope;
@@ -14,7 +14,7 @@ import net.minecraft.world.item.armortrim.TrimPattern;
 
 import java.lang.reflect.Field;
 
-@Strategy(StrategyPoolInitializer.DEFAULT_FIELD_DATA)
+@Strategy(StrategyInitializer.DEFAULT_FIELD_DATA)
 public class GenerateTrimPatternStrategy implements FieldAnnotationStrategy<GenerateTrimPattern> {
     @Override
     public void execute(Field field, Object object, GenerateTrimPattern annotation) throws Exception {

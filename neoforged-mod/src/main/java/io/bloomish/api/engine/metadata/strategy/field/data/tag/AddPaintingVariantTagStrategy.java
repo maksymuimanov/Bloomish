@@ -1,7 +1,7 @@
 package io.bloomish.api.engine.metadata.strategy.field.data.tag;
 
 import io.bloomish.api.engine.event.data.tag.PaintingVariantTagsProvider;
-import io.bloomish.api.engine.initialization.initializer.StrategyPoolInitializer;
+import io.bloomish.api.engine.initialization.initializer.StrategyInitializer;
 import io.bloomish.api.engine.metadata.annotation.data.tag.AddPaintingVariantTag;
 import io.bloomish.api.engine.metadata.annotation.injection.Strategy;
 import io.bloomish.api.engine.metadata.pool.ProcessorScope;
@@ -14,7 +14,7 @@ import net.minecraft.world.entity.decoration.PaintingVariant;
 
 import java.lang.reflect.Field;
 
-@Strategy(StrategyPoolInitializer.DEFAULT_FIELD_DATA)
+@Strategy(StrategyInitializer.DEFAULT_FIELD_DATA)
 public class AddPaintingVariantTagStrategy implements FieldAnnotationStrategy<AddPaintingVariantTag> {
     @Override
     public void execute(Field field, Object object, AddPaintingVariantTag annotation) throws Exception {

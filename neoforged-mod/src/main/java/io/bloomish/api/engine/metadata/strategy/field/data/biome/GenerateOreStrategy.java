@@ -4,7 +4,7 @@ import io.bloomish.api.engine.event.data.biome.GenerationDescriptionContainer;
 import io.bloomish.api.engine.event.data.biome.dto.Ore;
 import io.bloomish.api.engine.event.data.preparer.tag.BiomeTagDynamicPreparer;
 import io.bloomish.api.engine.event.data.preparer.tag.BlockTagDynamicPreparer;
-import io.bloomish.api.engine.initialization.initializer.StrategyPoolInitializer;
+import io.bloomish.api.engine.initialization.initializer.StrategyInitializer;
 import io.bloomish.api.engine.metadata.annotation.data.biome.GenerateOre;
 import io.bloomish.api.engine.metadata.annotation.injection.Strategy;
 import io.bloomish.api.engine.metadata.pool.ProcessorScope;
@@ -18,7 +18,7 @@ import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
 
 import java.lang.reflect.Field;
 
-@Strategy(StrategyPoolInitializer.DEFAULT_FIELD_DATA)
+@Strategy(StrategyInitializer.DEFAULT_FIELD_DATA)
 public class GenerateOreStrategy implements FieldAnnotationStrategy<GenerateOre> {
     @Override
     public void execute(Field field, Object object, GenerateOre annotation) throws Exception {

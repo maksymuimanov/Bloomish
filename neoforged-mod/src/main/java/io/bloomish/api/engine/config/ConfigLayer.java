@@ -3,7 +3,7 @@ package io.bloomish.api.engine.config;
 import io.bloomish.api.ApiMod;
 import io.bloomish.api.engine.EngineLayer;
 import io.bloomish.api.engine.config.screen.ConfigShowcaser;
-import io.bloomish.api.engine.context.DefaultObjectRegistry;
+import io.bloomish.api.engine.context.EngineContext;
 import io.bloomish.api.engine.context.ObjectRegistry;
 import io.bloomish.api.engine.metadata.processor.AnnotationProcessor;
 import io.bloomish.api.engine.metadata.processor.ConfigAnnotationProcessor;
@@ -15,21 +15,21 @@ public class ConfigLayer implements EngineLayer {
     private List<ConfigShowcaser> configShowcasers;
 
     @Override
-    public void processAllTasks() {
+    public void process() {
         ApiMod.LOGGER.debug("Processing ConfigAnnotationProcessor");
         CONFIG_PROCESSOR.process();
         this.configShowcasers.forEach(configShowcaser -> {
             ApiMod.LOGGER.debug("Running defaulted ConfigShowcaser - {}", configShowcaser.getClass().getName());
             configShowcaser.showcase();
         });
-        ObjectRegistry objectRegistry = DefaultObjectRegistry.getInstance();
+        ObjectRegistry objectRegistry = EngineContext.getRegistry();
         objectRegistry.getAll(ConfigShowcaser.class).forEach(configShowcaser -> {
             ApiMod.LOGGER.debug("Running dynamic ConfigShowcaser - {}", configShowcaser.getClass().getName());
             configShowcaser.showcase();
         });
     }
 
-    public void setConfigShowcasers(List<ConfigShowcaser> configShowcasers) {
+    void setConfigShowcasers(List<ConfigShowcaser> configShowcasers) {
         this.configShowcasers = configShowcasers;
     }
 }

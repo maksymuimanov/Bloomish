@@ -4,7 +4,7 @@ import io.bloomish.api.engine.event.data.biome.GenerationDescriptionContainer;
 import io.bloomish.api.engine.event.data.biome.configuration.ConfiguredFeatureDefinition;
 import io.bloomish.api.engine.event.data.biome.modifier.BiomeModifierDefinition;
 import io.bloomish.api.engine.event.data.biome.placement.PlacedFeatureDefinition;
-import io.bloomish.api.engine.initialization.initializer.StrategyPoolInitializer;
+import io.bloomish.api.engine.initialization.initializer.StrategyInitializer;
 import io.bloomish.api.engine.metadata.annotation.data.biome.GenerateWorldFeature;
 import io.bloomish.api.engine.metadata.annotation.injection.Strategy;
 import io.bloomish.api.engine.metadata.pool.ProcessorScope;
@@ -14,7 +14,7 @@ import io.bloomish.api.util.ReflectionUtils;
 
 import java.lang.reflect.Field;
 
-@Strategy(StrategyPoolInitializer.DEFAULT_FIELD_DATA)
+@Strategy(StrategyInitializer.DEFAULT_FIELD_DATA)
 public class GenerateWorldFeatureStrategy implements FieldAnnotationStrategy<GenerateWorldFeature> {
     @Override
     public void execute(Field field, Object object, GenerateWorldFeature annotation) throws Exception {

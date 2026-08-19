@@ -1,7 +1,7 @@
 package io.bloomish.api.engine.metadata.strategy.field.event.fml;
 
 import io.bloomish.api.engine.event.handler.FMLClientSetupEventHandler;
-import io.bloomish.api.engine.initialization.initializer.StrategyPoolInitializer;
+import io.bloomish.api.engine.initialization.initializer.StrategyInitializer;
 import io.bloomish.api.engine.metadata.annotation.event.fml.SetupInstrument;
 import io.bloomish.api.engine.metadata.annotation.injection.Strategy;
 import io.bloomish.api.engine.metadata.pool.ProcessorScope;
@@ -13,7 +13,7 @@ import net.minecraft.world.item.Item;
 
 import java.lang.reflect.Field;
 
-@Strategy(StrategyPoolInitializer.DEFAULT_FIELD_EVENT_FML)
+@Strategy(StrategyInitializer.DEFAULT_FIELD_EVENT_FML)
 public class SetupInstrumentStrategy implements FieldAnnotationStrategy<SetupInstrument> {
     @Override
     public void execute(Field field, Object object, SetupInstrument annotation) throws Exception {

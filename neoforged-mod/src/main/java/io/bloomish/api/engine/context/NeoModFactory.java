@@ -38,7 +38,8 @@ public final class NeoModFactory {
         for (ModClassScanner scanner : classScanners) {
             try {
                 ApiMod.LOGGER.debug("Running scanner {} for modId: {}", scanner.getClass().getName(), modId);
-                scanner.getClasses(modId, modClass, classes);
+                Set<Class<?>> scannedClasses = scanner.scanClasses(modId, modClass);
+                classes.addAll(scannedClasses);
             } catch (Exception e) {
                 throw new NeoModException("Scanner %s failed to discover classes for modId: %s".formatted(scanner.getClass().getName(), modId), e);
             }

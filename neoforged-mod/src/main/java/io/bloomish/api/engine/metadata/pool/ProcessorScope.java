@@ -1,4 +1,6 @@
 package io.bloomish.api.engine.metadata.pool;
 
-public record ProcessorScope(String name) {
+public record ProcessorScope(
+        String name
+) {
 }

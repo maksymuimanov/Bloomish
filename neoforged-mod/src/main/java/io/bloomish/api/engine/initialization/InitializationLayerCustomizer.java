@@ -9,10 +9,10 @@ import java.util.List;
 
 public class InitializationLayerCustomizer implements LayerCustomizer<InitializationLayer> {
     private static final List<ModClassScanner> DEFAULT_CLASS_SCANNERS = List.of(new ClasspathModClassScanner());
-    private static final List<ObjectPoolInitializer> DEFAULT_INITIALIZERS = List.of(new TemporalRegisterPoolInitializer(), new FactoryPoolInitializer(), new EventBusPoolInitializer(), new ModContainerPoolInitializer(), new InjectedObjectPoolInitializer(), new StrategyPoolInitializer(), new HandlerPoolInitializer(), new ProcessorPoolInitializer());
+    private static final List<ObjectRegistryInitializer> DEFAULT_INITIALIZERS = List.of(new TemporalRegisterInitializer(), new FactoryInitializer(), new EventBusInitializer(), new ModContainerInitializer(), new InjectedInitializer(), new StrategyInitializer(), new HandlerInitializer(), new ProcessorInitializer());
     private Class<?> modClass;
     private List<ModClassScanner> classScanners;
-    private List<ObjectPoolInitializer> initializers;
+    private List<ObjectRegistryInitializer> initializers;
     private List<?> externalSource;
 
     public InitializationLayerCustomizer() {
@@ -30,7 +30,7 @@ public class InitializationLayerCustomizer implements LayerCustomizer<Initializa
         return this;
     }
 
-    public InitializationLayerCustomizer initializers(List<ObjectPoolInitializer> initializers) {
+    public InitializationLayerCustomizer initializers(List<ObjectRegistryInitializer> initializers) {
         this.initializers = initializers;
         return this;
     }
@@ -44,7 +44,7 @@ public class InitializationLayerCustomizer implements LayerCustomizer<Initializa
     public void customize(InitializationLayer layer) {
         layer.setModClass(this.modClass);
         layer.setClassScanners(this.classScanners);
-        layer.setContextInitializers(this.initializers);
+        layer.setInitializers(this.initializers);
         layer.setExternalSource(this.externalSource);
     }
 }

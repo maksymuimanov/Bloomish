@@ -6,6 +6,6 @@ import java.util.Collection;
 import java.util.List;
 
 @FunctionalInterface
-public interface ObjectPoolInitializer {
+public interface ObjectRegistryInitializer {
     void initialize(Collection<Class<?>> classes, List<?> externalObjects, ObjectRegistry objectRegistry);
 }

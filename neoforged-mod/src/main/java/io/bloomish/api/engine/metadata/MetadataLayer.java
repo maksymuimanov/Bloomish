@@ -2,7 +2,6 @@ package io.bloomish.api.engine.metadata;
 
 import io.bloomish.api.ApiMod;
 import io.bloomish.api.engine.EngineLayer;
-import io.bloomish.api.engine.context.DefaultObjectRegistry;
 import io.bloomish.api.engine.context.EngineContext;
 import io.bloomish.api.engine.metadata.consumer.AnnotationStrategyConsumer;
 import io.bloomish.api.engine.metadata.consumer.AsyncStrategyConsumer;
@@ -11,6 +10,7 @@ import io.bloomish.api.engine.metadata.director.AnnotationDirector;
 import io.bloomish.api.engine.metadata.pool.ProcessorPool;
 import io.bloomish.api.engine.metadata.pool.SimpleProcessorPool;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
@@ -20,22 +20,20 @@ public class MetadataLayer implements EngineLayer {
     private List<AnnotationDirector> annotationDirectors;
 
     @Override
-    public void processAllTasks() {
+    public void process() {
         ApiMod.LOGGER.debug("Processing defaulted {} annotation directors", annotationDirectors.size());
-        Set<Class<?>> classes = EngineContext.currentMod.getClasses();
-        annotationDirectors.forEach(annotationDirector -> {
-            annotationDirector.directAll(classes);
-        });
-        List<? extends AnnotationDirector> dynamicAnnotationDirectors = DefaultObjectRegistry.getInstance().getAll(AnnotationDirector.class);
+        Set<Class<?>> classes = EngineContext.getModClasses();
+        annotationDirectors.forEach(annotationDirector ->
+                annotationDirector.directAll(classes));
+        Collection<? extends AnnotationDirector> dynamicAnnotationDirectors = EngineContext.getObjects(AnnotationDirector.class);
         ApiMod.LOGGER.debug("Processing dynamic {} annotation directors", dynamicAnnotationDirectors.size());
-        dynamicAnnotationDirectors.forEach(annotationDirector -> {
-            annotationDirector.directAll(classes);
-        });
+        dynamicAnnotationDirectors.forEach(annotationDirector ->
+                annotationDirector.directAll(classes));
         ProcessorPool processorPool = SimpleProcessorPool.getInstance();
         processorPool.processAll();
     }
 
-    public void setAnnotationDirectors(List<AnnotationDirector> annotationDirectors) {
+    void setAnnotationDirectors(List<AnnotationDirector> annotationDirectors) {
         this.annotationDirectors = annotationDirectors;
     }
 }

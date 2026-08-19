@@ -2,7 +2,7 @@ package io.bloomish.api.engine.metadata.strategy.field.data;
 
 import io.bloomish.api.engine.event.data.jukebox.ApiJukeboxSongProvider;
 import io.bloomish.api.engine.event.data.jukebox.JukeboxSongDescription;
-import io.bloomish.api.engine.initialization.initializer.StrategyPoolInitializer;
+import io.bloomish.api.engine.initialization.initializer.StrategyInitializer;
 import io.bloomish.api.engine.metadata.annotation.data.GenerateJukeboxSong;
 import io.bloomish.api.engine.metadata.annotation.injection.Strategy;
 import io.bloomish.api.engine.metadata.pool.ProcessorScope;
@@ -14,7 +14,7 @@ import net.minecraft.world.item.JukeboxSong;
 
 import java.lang.reflect.Field;
 
-@Strategy(StrategyPoolInitializer.DEFAULT_FIELD_DATA)
+@Strategy(StrategyInitializer.DEFAULT_FIELD_DATA)
 public class GenerateJukeboxSongStrategy implements FieldAnnotationStrategy<GenerateJukeboxSong> {
     @Override
     public void execute(Field field, Object object, GenerateJukeboxSong annotation) throws Exception {

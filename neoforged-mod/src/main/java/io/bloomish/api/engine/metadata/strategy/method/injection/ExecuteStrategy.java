@@ -1,6 +1,6 @@
 package io.bloomish.api.engine.metadata.strategy.method.injection;
 
-import io.bloomish.api.engine.initialization.initializer.StrategyPoolInitializer;
+import io.bloomish.api.engine.initialization.initializer.StrategyInitializer;
 import io.bloomish.api.engine.metadata.annotation.injection.Execute;
 import io.bloomish.api.engine.metadata.annotation.injection.Strategy;
 import io.bloomish.api.engine.metadata.pool.ProcessorScope;
@@ -10,7 +10,7 @@ import net.neoforged.fml.ModList;
 
 import java.lang.reflect.Method;
 
-@Strategy(StrategyPoolInitializer.DEFAULT_METHOD_INJECTION)
+@Strategy(StrategyInitializer.DEFAULT_METHOD_INJECTION)
 public class ExecuteStrategy implements MethodAnnotationStrategy<Execute> {
     @Override
     public void execute(Method method, Object object, Execute annotation) throws Exception {

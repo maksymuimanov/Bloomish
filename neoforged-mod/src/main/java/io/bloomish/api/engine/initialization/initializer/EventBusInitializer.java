@@ -1,20 +1,20 @@
 package io.bloomish.api.engine.initialization.initializer;
 
 import io.bloomish.api.engine.context.ObjectRegistry;
-import net.neoforged.bus.EventBus;
+import io.bloomish.api.util.CollectionUtils;
 import net.neoforged.bus.api.IEventBus;
 
 import java.util.Collection;
 import java.util.List;
 
-public class EventBusPoolInitializer implements ObjectPoolInitializer {
+public class EventBusInitializer implements ObjectRegistryInitializer {
     @Override
-    @SuppressWarnings("UnstableApiUsage")
     public void initialize(Collection<Class<?>> classes, List<?> externalObjects, ObjectRegistry objectRegistry) {
-        if (externalObjects == null || externalObjects.isEmpty()) return;
+        if (CollectionUtils.isEmpty(externalObjects)) return;
         externalObjects.stream()
-                .filter(o -> o instanceof IEventBus)
-                .map(o -> (EventBus) o)
-                .forEach(objectRegistry::register);
+                .filter(IEventBus.class::isInstance)
+                .map(IEventBus.class::cast)
+                .findAny()
+                .ifPresent(objectRegistry::registerValue);
     }
 }

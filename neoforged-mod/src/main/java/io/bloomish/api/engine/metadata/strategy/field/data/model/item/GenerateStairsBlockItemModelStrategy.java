@@ -2,7 +2,7 @@ package io.bloomish.api.engine.metadata.strategy.field.data.model.item;
 
 import io.bloomish.api.engine.event.data.model.item.ItemModelContainer;
 import io.bloomish.api.engine.event.data.model.item.spec.DependantBlockItemModelSpec;
-import io.bloomish.api.engine.initialization.initializer.StrategyPoolInitializer;
+import io.bloomish.api.engine.initialization.initializer.StrategyInitializer;
 import io.bloomish.api.engine.metadata.annotation.data.model.item.GenerateStairsBlockItemModel;
 import io.bloomish.api.engine.metadata.annotation.injection.Strategy;
 import io.bloomish.api.engine.metadata.pool.ProcessorScope;
@@ -14,7 +14,7 @@ import net.minecraft.world.item.Item;
 
 import java.lang.reflect.Field;
 
-@Strategy(StrategyPoolInitializer.DEFAULT_FIELD_DATA)
+@Strategy(StrategyInitializer.DEFAULT_FIELD_DATA)
 public class GenerateStairsBlockItemModelStrategy implements FieldAnnotationStrategy<GenerateStairsBlockItemModel> {
     @Override
     public void execute(Field field, Object object, GenerateStairsBlockItemModel annotation) throws Exception {

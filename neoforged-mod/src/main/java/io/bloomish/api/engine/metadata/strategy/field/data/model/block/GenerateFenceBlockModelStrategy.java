@@ -2,7 +2,7 @@ package io.bloomish.api.engine.metadata.strategy.field.data.model.block;
 
 import io.bloomish.api.engine.event.data.model.block.BlockModelContainer;
 import io.bloomish.api.engine.event.data.model.block.spec.DependantBlockModelSpec;
-import io.bloomish.api.engine.initialization.initializer.StrategyPoolInitializer;
+import io.bloomish.api.engine.initialization.initializer.StrategyInitializer;
 import io.bloomish.api.engine.metadata.annotation.data.model.block.GenerateFenceBlockModel;
 import io.bloomish.api.engine.metadata.annotation.injection.Strategy;
 import io.bloomish.api.engine.metadata.pool.ProcessorScope;
@@ -14,7 +14,7 @@ import net.minecraft.world.level.block.Block;
 
 import java.lang.reflect.Field;
 
-@Strategy(StrategyPoolInitializer.DEFAULT_FIELD_DATA)
+@Strategy(StrategyInitializer.DEFAULT_FIELD_DATA)
 public class GenerateFenceBlockModelStrategy implements FieldAnnotationStrategy<GenerateFenceBlockModel> {
     @Override
     public void execute(Field field, Object object, GenerateFenceBlockModel annotation) throws Exception {

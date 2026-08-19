@@ -14,12 +14,24 @@ public final class EngineContext implements ModContext, ObjectRegistryContext<St
         this.observedClasses = new LinkedHashSet<>();
     }
 
-    public static String getCurrentModId() {
+    public static String getModId() {
         return getInstance().getCurrentMod().modId();
     }
 
+    public static Set<Class<?>> getModClasses() {
+        return getInstance().getCurrentMod().classes();
+    }
+
+    public static <T> Collection<? extends T> getObjects(Class<T> commonInterface) {
+        return getInstance().getCurrentRegistry().getAll(commonInterface);
+    }
+
     public static <T> T getObject(Class<? extends T> clazz) {
-        return getInstance().getCurrentRegistry().get(clazz);
+        return getInstance().getCurrentRegistry().getByClass(clazz);
+    }
+
+    public static ObjectRegistry getRegistry() {
+        return getInstance().getCurrentRegistry();
     }
 
     @Override

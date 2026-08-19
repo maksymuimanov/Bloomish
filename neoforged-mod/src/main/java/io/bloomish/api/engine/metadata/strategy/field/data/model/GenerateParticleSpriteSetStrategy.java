@@ -2,7 +2,7 @@ package io.bloomish.api.engine.metadata.strategy.field.data.model;
 
 import io.bloomish.api.engine.event.data.particle.ApiParticleProvider;
 import io.bloomish.api.engine.event.data.particle.ParticleDescription;
-import io.bloomish.api.engine.initialization.initializer.StrategyPoolInitializer;
+import io.bloomish.api.engine.initialization.initializer.StrategyInitializer;
 import io.bloomish.api.engine.metadata.annotation.data.model.GenerateParticleSpriteSet;
 import io.bloomish.api.engine.metadata.annotation.injection.Strategy;
 import io.bloomish.api.engine.metadata.pool.ProcessorScope;
@@ -14,7 +14,7 @@ import net.minecraft.core.particles.ParticleType;
 
 import java.lang.reflect.Field;
 
-@Strategy(StrategyPoolInitializer.DEFAULT_FIELD_DATA)
+@Strategy(StrategyInitializer.DEFAULT_FIELD_DATA)
 public class GenerateParticleSpriteSetStrategy implements FieldAnnotationStrategy<GenerateParticleSpriteSet> {
     @Override
     public void execute(Field field, Object object, GenerateParticleSpriteSet annotation) throws Exception {

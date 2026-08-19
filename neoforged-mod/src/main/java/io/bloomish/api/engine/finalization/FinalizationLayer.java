@@ -2,7 +2,7 @@ package io.bloomish.api.engine.finalization;
 
 import io.bloomish.api.ApiMod;
 import io.bloomish.api.engine.EngineLayer;
-import io.bloomish.api.engine.context.DefaultObjectRegistry;
+import io.bloomish.api.engine.context.EngineContext;
 import io.bloomish.api.engine.context.ObjectRegistry;
 import io.bloomish.api.engine.finalization.cleaner.ObjectPoolCleaner;
 
@@ -12,16 +12,16 @@ public class FinalizationLayer implements EngineLayer {
     private List<ObjectPoolCleaner> cleaners;
 
     @Override
-    public void processAllTasks() {
+    public void process() {
         ApiMod.LOGGER.debug("Running {} ObjectPoolCleaners", cleaners.size());
         cleaners.forEach(ObjectPoolCleaner::clear);
         ApiMod.LOGGER.debug("Running dynamic ObjectPoolCleaners from pool");
-        ObjectRegistry objectRegistry = DefaultObjectRegistry.getInstance();
+        ObjectRegistry objectRegistry = EngineContext.getRegistry();
         objectRegistry.getAll(ObjectPoolCleaner.class)
                 .forEach(ObjectPoolCleaner::clear);
     }
 
-    public void setCleaners(List<ObjectPoolCleaner> cleaners) {
+    void setCleaners(List<ObjectPoolCleaner> cleaners) {
         this.cleaners = cleaners;
     }
 }

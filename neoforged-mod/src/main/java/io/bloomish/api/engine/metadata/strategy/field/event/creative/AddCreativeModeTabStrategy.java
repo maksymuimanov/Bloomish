@@ -1,7 +1,7 @@
 package io.bloomish.api.engine.metadata.strategy.field.event.creative;
 
 import io.bloomish.api.engine.event.handler.CreativeModeTabEventHandler;
-import io.bloomish.api.engine.initialization.initializer.StrategyPoolInitializer;
+import io.bloomish.api.engine.initialization.initializer.StrategyInitializer;
 import io.bloomish.api.engine.metadata.annotation.event.creative.AddCreativeModeTab;
 import io.bloomish.api.engine.metadata.annotation.injection.Strategy;
 import io.bloomish.api.engine.metadata.constant.CreativeModeTabType;
@@ -17,7 +17,7 @@ import net.minecraft.world.item.Item;
 
 import java.lang.reflect.Field;
 
-@Strategy(StrategyPoolInitializer.DEFAULT_FIELD_EVENT_CREATIVE)
+@Strategy(StrategyInitializer.DEFAULT_FIELD_EVENT_CREATIVE)
 public class AddCreativeModeTabStrategy implements FieldAnnotationStrategy<AddCreativeModeTab> {
     @Override
     public void execute(Field field, Object object, AddCreativeModeTab annotation) throws Exception {

@@ -1,7 +1,7 @@
 package io.bloomish.api.engine.metadata.strategy.method.event.attributes;
 
 import io.bloomish.api.engine.event.handler.EntityAttributeEventHandler;
-import io.bloomish.api.engine.initialization.initializer.StrategyPoolInitializer;
+import io.bloomish.api.engine.initialization.initializer.StrategyInitializer;
 import io.bloomish.api.engine.metadata.annotation.event.attributes.CreateEntityAttributes;
 import io.bloomish.api.engine.metadata.annotation.injection.Strategy;
 import io.bloomish.api.engine.metadata.pool.ProcessorScope;
@@ -15,7 +15,7 @@ import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 
 import java.lang.reflect.Method;
 
-@Strategy(StrategyPoolInitializer.DEFAULT_METHOD_EVENT_ATTRIBUTES)
+@Strategy(StrategyInitializer.DEFAULT_METHOD_EVENT_ATTRIBUTES)
 public class CreateEntityAttributesStrategy implements MethodAnnotationStrategy<CreateEntityAttributes> {
     @Override
     @SuppressWarnings("deprecation")

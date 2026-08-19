@@ -7,7 +7,7 @@ import io.bloomish.api.engine.event.pool.SimpleHandlerPool;
 
 public class EventLayer implements EngineLayer {
     @Override
-    public void processAllTasks() {
+    public void process() {
         HandlerPool handlerPool = SimpleHandlerPool.getInstance();
         ApiMod.LOGGER.debug("Processing dynamic {} eventClass handlers", handlerPool);
         handlerPool.forEach(eventHandler -> {

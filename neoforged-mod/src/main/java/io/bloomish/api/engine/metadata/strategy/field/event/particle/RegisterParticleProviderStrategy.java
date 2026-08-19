@@ -1,7 +1,7 @@
 package io.bloomish.api.engine.metadata.strategy.field.event.particle;
 
 import io.bloomish.api.engine.event.handler.RegisterParticleProvidersEventHandler;
-import io.bloomish.api.engine.initialization.initializer.StrategyPoolInitializer;
+import io.bloomish.api.engine.initialization.initializer.StrategyInitializer;
 import io.bloomish.api.engine.metadata.annotation.event.particle.RegisterParticleProvider;
 import io.bloomish.api.engine.metadata.annotation.injection.Strategy;
 import io.bloomish.api.engine.metadata.pool.ProcessorScope;
@@ -18,7 +18,7 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 
-@Strategy(StrategyPoolInitializer.DEFAULT_FIELD_EVENT_PARTICLE)
+@Strategy(StrategyInitializer.DEFAULT_FIELD_EVENT_PARTICLE)
 public class RegisterParticleProviderStrategy implements FieldAnnotationStrategy<RegisterParticleProvider> {
     @Override
     @SuppressWarnings("unchecked")

@@ -2,7 +2,7 @@ package io.bloomish.api.engine.metadata.strategy.field.data;
 
 import io.bloomish.api.engine.event.data.damage.ApiDamageTypeProvider;
 import io.bloomish.api.engine.event.data.damage.DamageTypeDescription;
-import io.bloomish.api.engine.initialization.initializer.StrategyPoolInitializer;
+import io.bloomish.api.engine.initialization.initializer.StrategyInitializer;
 import io.bloomish.api.engine.metadata.annotation.data.GenerateDamageType;
 import io.bloomish.api.engine.metadata.annotation.injection.Strategy;
 import io.bloomish.api.engine.metadata.pool.ProcessorScope;
@@ -14,7 +14,7 @@ import net.minecraft.world.damagesource.DamageType;
 
 import java.lang.reflect.Field;
 
-@Strategy(StrategyPoolInitializer.DEFAULT_FIELD_DATA)
+@Strategy(StrategyInitializer.DEFAULT_FIELD_DATA)
 public class GenerateDamageTypeStrategy implements FieldAnnotationStrategy<GenerateDamageType> {
     @Override
     public void execute(Field field, Object object, GenerateDamageType annotation) throws Exception {

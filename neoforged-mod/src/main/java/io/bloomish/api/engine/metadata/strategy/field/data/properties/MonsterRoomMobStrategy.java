@@ -2,7 +2,7 @@ package io.bloomish.api.engine.metadata.strategy.field.data.properties;
 
 import io.bloomish.api.engine.event.data.map.ApiDataMapProvider;
 import io.bloomish.api.engine.event.data.map.MonsterRoomMobDto;
-import io.bloomish.api.engine.initialization.initializer.StrategyPoolInitializer;
+import io.bloomish.api.engine.initialization.initializer.StrategyInitializer;
 import io.bloomish.api.engine.metadata.annotation.data.properties.MonsterRoomMob;
 import io.bloomish.api.engine.metadata.annotation.injection.Strategy;
 import io.bloomish.api.engine.metadata.pool.ProcessorScope;
@@ -14,7 +14,7 @@ import net.minecraft.world.entity.EntityType;
 
 import java.lang.reflect.Field;
 
-@Strategy(StrategyPoolInitializer.DEFAULT_FIELD_DATA)
+@Strategy(StrategyInitializer.DEFAULT_FIELD_DATA)
 public class MonsterRoomMobStrategy implements FieldAnnotationStrategy<MonsterRoomMob> {
     @Override
     public void execute(Field field, Object object, MonsterRoomMob annotation) throws Exception {

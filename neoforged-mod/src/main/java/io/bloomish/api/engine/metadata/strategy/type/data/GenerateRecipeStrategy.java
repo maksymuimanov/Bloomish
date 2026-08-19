@@ -2,7 +2,7 @@ package io.bloomish.api.engine.metadata.strategy.type.data;
 
 import io.bloomish.api.engine.event.data.recipe.ApiRecipeProvider;
 import io.bloomish.api.engine.event.data.recipe.description.RecipeDescription;
-import io.bloomish.api.engine.initialization.initializer.StrategyPoolInitializer;
+import io.bloomish.api.engine.initialization.initializer.StrategyInitializer;
 import io.bloomish.api.engine.metadata.annotation.data.GenerateRecipe;
 import io.bloomish.api.engine.metadata.annotation.injection.Strategy;
 import io.bloomish.api.engine.metadata.pool.ProcessorScope;
@@ -11,7 +11,7 @@ import io.bloomish.api.engine.metadata.strategy.type.ClassAnnotationStrategy;
 
 import java.lang.reflect.Constructor;
 
-@Strategy(StrategyPoolInitializer.DEFAULT_CLASS_DATA)
+@Strategy(StrategyInitializer.DEFAULT_CLASS_DATA)
 public class GenerateRecipeStrategy implements ClassAnnotationStrategy<GenerateRecipe> {
     @Override
     public void execute(Class<?> clazz, Object object, GenerateRecipe annotation) throws Exception {

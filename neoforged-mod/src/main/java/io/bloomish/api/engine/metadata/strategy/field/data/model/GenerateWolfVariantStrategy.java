@@ -3,7 +3,7 @@ package io.bloomish.api.engine.metadata.strategy.field.data.model;
 import io.bloomish.api.engine.event.data.preparer.tag.BiomeTagDynamicPreparer;
 import io.bloomish.api.engine.event.data.wolf.ApiWolfVariantProvider;
 import io.bloomish.api.engine.event.data.wolf.WolfVariantDescription;
-import io.bloomish.api.engine.initialization.initializer.StrategyPoolInitializer;
+import io.bloomish.api.engine.initialization.initializer.StrategyInitializer;
 import io.bloomish.api.engine.metadata.annotation.data.model.GenerateWolfVariant;
 import io.bloomish.api.engine.metadata.annotation.injection.Strategy;
 import io.bloomish.api.engine.metadata.pool.ProcessorScope;
@@ -16,7 +16,7 @@ import net.minecraft.world.entity.animal.WolfVariant;
 
 import java.lang.reflect.Field;
 
-@Strategy(StrategyPoolInitializer.DEFAULT_FIELD_DATA)
+@Strategy(StrategyInitializer.DEFAULT_FIELD_DATA)
 public class GenerateWolfVariantStrategy implements FieldAnnotationStrategy<GenerateWolfVariant> {
     @Override
     public void execute(Field field, Object object, GenerateWolfVariant annotation) throws Exception {
