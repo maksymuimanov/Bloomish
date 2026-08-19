@@ -1,9 +1,9 @@
 package io.bloomish.example.particle;
 
-import io.bloomish.api.core.engine.context.InjectionPool;
-import io.bloomish.api.core.engine.metadata.annotation.data.model.GenerateParticleSpriteSet;
-import io.bloomish.api.core.engine.metadata.annotation.event.particle.RegisterParticleProvider;
-import io.bloomish.api.core.engine.registry.factory.ParticleTypeFactory;
+import io.bloomish.api.engine.context.InjectionPool;
+import io.bloomish.api.engine.metadata.annotation.data.model.GenerateParticleSpriteSet;
+import io.bloomish.api.engine.metadata.annotation.event.particle.RegisterParticleProvider;
+import io.bloomish.api.engine.registry.factory.ParticleTypeFactory;
 import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.neoforged.neoforge.registries.DeferredHolder;

@@ -2,7 +2,7 @@ package io.bloomish.api.engine.event.data.biome.placement;
 
 import io.bloomish.api.engine.event.data.biome.GenerationDescriptionContainer;
 import io.bloomish.api.engine.event.data.biome.dto.Grass;
-import io.bloomish.api.core.util.MapUtils;
+import io.bloomish.api.util.MapUtils;
 import net.minecraft.data.worldgen.placement.VegetationPlacements;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;

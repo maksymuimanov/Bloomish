@@ -1,6 +1,6 @@
 package io.bloomish.api.engine.event.data.advancement;
 
-import io.bloomish.api.core.util.ResourceUtils;
+import io.bloomish.api.util.ResourceUtils;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.advancements.AdvancementSubProvider;

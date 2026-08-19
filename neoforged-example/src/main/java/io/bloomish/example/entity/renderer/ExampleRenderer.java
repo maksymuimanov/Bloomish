@@ -1,7 +1,7 @@
 package io.bloomish.example.entity.renderer;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import io.bloomish.api.core.util.ResourceUtils;
+import io.bloomish.api.util.ResourceUtils;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;

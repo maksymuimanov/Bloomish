@@ -2,7 +2,7 @@ package io.bloomish.api.engine.event.data.recipe.strategy;
 
 import io.bloomish.api.engine.event.data.recipe.ApiRecipeProvider;
 import io.bloomish.api.engine.event.data.recipe.description.SmithingTrimRecipeDescription;
-import io.bloomish.api.core.util.ResourceUtils;
+import io.bloomish.api.util.ResourceUtils;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.SmithingTrimRecipeBuilder;

@@ -2,7 +2,7 @@ package io.bloomish.api.engine.registry.factory;
 
 import io.bloomish.api.engine.context.InjectionPool;
 import io.bloomish.api.engine.registry.TemporalRegister;
-import io.bloomish.api.core.util.ResourceUtils;
+import io.bloomish.api.util.ResourceUtils;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.entity.Entity;

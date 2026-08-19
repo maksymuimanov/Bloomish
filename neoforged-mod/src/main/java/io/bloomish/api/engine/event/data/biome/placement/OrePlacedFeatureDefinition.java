@@ -2,8 +2,8 @@ package io.bloomish.api.engine.event.data.biome.placement;
 
 import io.bloomish.api.engine.event.data.biome.GenerationDescriptionContainer;
 import io.bloomish.api.engine.event.data.biome.dto.Ore;
-import io.bloomish.api.core.util.MapUtils;
-import io.bloomish.api.core.util.WorldGenerationUtils;
+import io.bloomish.api.util.MapUtils;
+import io.bloomish.api.util.WorldGenerationUtils;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.levelgen.VerticalAnchor;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;

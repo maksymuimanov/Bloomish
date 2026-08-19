@@ -1,6 +1,6 @@
 package io.bloomish.example.tag;
 
-import io.bloomish.api.core.util.TagUtils;
+import io.bloomish.api.util.TagUtils;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.block.entity.BannerPattern;
 

@@ -2,7 +2,7 @@ package io.bloomish.api.engine.event.data.recipe.strategy;
 
 import io.bloomish.api.engine.event.data.recipe.ApiRecipeProvider;
 import io.bloomish.api.engine.event.data.recipe.description.SmithingTransformRecipeDescription;
-import io.bloomish.api.core.util.RegistryUtils;
+import io.bloomish.api.util.RegistryUtils;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.SmithingTransformRecipeBuilder;

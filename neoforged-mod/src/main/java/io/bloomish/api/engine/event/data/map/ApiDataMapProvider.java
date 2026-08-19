@@ -1,8 +1,8 @@
 package io.bloomish.api.engine.event.data.map;
 
 import io.bloomish.api.core.collection.TemporalQueue;
-import io.bloomish.api.core.util.RegistryUtils;
-import io.bloomish.api.core.util.ResourceUtils;
+import io.bloomish.api.util.RegistryUtils;
+import io.bloomish.api.util.ResourceUtils;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;

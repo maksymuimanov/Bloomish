@@ -2,9 +2,9 @@ package io.bloomish.api.engine.event.data.tag;
 
 import io.bloomish.api.engine.event.data.file.FileSource;
 import io.bloomish.api.engine.event.data.file.MultiFileProvider;
-import io.bloomish.api.core.json.JsonRepresentation;
-import io.bloomish.api.core.json.ResourceLocationListRepresentation;
-import io.bloomish.api.core.util.ResourceUtils;
+import io.bloomish.api.json.JsonSerializable;
+import io.bloomish.api.json.ResourceLocationsJson;
+import io.bloomish.api.util.ResourceUtils;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -29,7 +29,7 @@ public abstract class AbstractTagsProvider<T> extends MultiFileProvider {
             List<ResourceLocation> locations = keys.stream()
                     .map(ResourceKey::location)
                     .toList();
-            JsonRepresentation representation = new ResourceLocationListRepresentation(locations);
+            JsonSerializable representation = new ResourceLocationsJson(locations);
             this.define(fileSource, representation);
         });
         tagContents.clear();

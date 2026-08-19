@@ -4,6 +4,6 @@ import com.google.gson.JsonElement;
 
 import java.io.Serializable;
 
-public interface JsonModel extends Serializable {
+public interface JsonSerializable extends Serializable {
     JsonElement toJson();
 }

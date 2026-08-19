@@ -1,8 +1,8 @@
 package io.bloomish.example.cat;
 
-import io.bloomish.api.core.engine.context.InjectionPool;
-import io.bloomish.api.core.engine.metadata.annotation.data.tag.AddCatVariantTag;
-import io.bloomish.api.core.engine.registry.factory.CatVariantFactory;
+import io.bloomish.api.engine.context.InjectionPool;
+import io.bloomish.api.engine.metadata.annotation.data.tag.AddCatVariantTag;
+import io.bloomish.api.engine.registry.factory.CatVariantFactory;
 import net.minecraft.world.entity.animal.CatVariant;
 import net.neoforged.neoforge.registries.DeferredHolder;
 

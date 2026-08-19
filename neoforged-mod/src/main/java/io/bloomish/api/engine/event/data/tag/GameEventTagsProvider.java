@@ -1,6 +1,6 @@
 package io.bloomish.api.engine.event.data.tag;
 
-import io.bloomish.api.core.util.TagUtils;
+import io.bloomish.api.util.TagUtils;
 import net.minecraft.core.Holder;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceKey;

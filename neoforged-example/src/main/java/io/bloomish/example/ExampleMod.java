@@ -1,10 +1,10 @@
 package io.bloomish.example;
 
 import io.bloomish.api.ApiMod;
-import io.bloomish.api.core.compat.AsyncDependencyProcessBuilder;
-import io.bloomish.api.core.compat.DependencyFunction;
-import io.bloomish.api.core.compat.SimpleDependencyProcessBuilder;
-import io.bloomish.api.core.engine.TemporalEngine;
+import io.bloomish.api.compat.AsyncDependencyFlowBuilder;
+import io.bloomish.api.compat.DependencyFunction;
+import io.bloomish.api.compat.SimpleDependencyFlowBuilder;
+import io.bloomish.api.engine.TemporalEngine;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
@@ -16,22 +16,22 @@ public class ExampleMod {
     public ExampleMod(IEventBus modEventBus, ModContainer modContainer) {
         TemporalEngine.run(ExampleMod.class, modEventBus, modContainer);
         //If there is a mod with "temporalapi" mod id, it will log "hello", "world :D"
-        SimpleDependencyProcessBuilder.create("temporalapi")
-                .addProcess((DependencyFunction) () -> ApiMod.LOGGER.info("hello"))
-                .addProcess((DependencyFunction) () -> ApiMod.LOGGER.info("world :D"))
+        SimpleDependencyFlowBuilder.ofDependencies("temporalapi")
+                .onDependency(() -> ApiMod.LOGGER.info("hello"))
+                .onDependency(() -> ApiMod.LOGGER.info("world :D"))
                 .build();
         //If there is a mod with "temporalapi" mod id, it will log "1", "2", ... in different threads
-        AsyncDependencyProcessBuilder.create("temporalapi")
-                .addProcess((DependencyFunction) () -> ApiMod.LOGGER.info("I am async: 1"))
-                .addProcess((DependencyFunction) () -> ApiMod.LOGGER.info("I am async: 2"))
-                .addProcess((DependencyFunction) () -> ApiMod.LOGGER.info("I am async: 3"))
-                .addProcess((DependencyFunction) () -> ApiMod.LOGGER.info("I am async: 4"))
-                .addProcess((DependencyFunction) () -> ApiMod.LOGGER.info("I am async: 5"))
-                .addProcess((DependencyFunction) () -> ApiMod.LOGGER.info("I am async: 6"))
-                .addProcess((DependencyFunction) () -> ApiMod.LOGGER.info("I am async: 7"))
-                .addProcess((DependencyFunction) () -> ApiMod.LOGGER.info("I am async: 8"))
-                .addProcess((DependencyFunction) () -> ApiMod.LOGGER.info("I am async: 9"))
-                .addProcess((DependencyFunction) () -> ApiMod.LOGGER.info("I am async: 10"))
+        AsyncDependencyFlowBuilder.ofDependencies("temporalapi")
+                .onDependency(() -> ApiMod.LOGGER.info("I am async: 1"))
+                .onDependency(() -> ApiMod.LOGGER.info("I am async: 2"))
+                .onDependency(() -> ApiMod.LOGGER.info("I am async: 3"))
+                .onDependency(() -> ApiMod.LOGGER.info("I am async: 4"))
+                .onDependency(() -> ApiMod.LOGGER.info("I am async: 5"))
+                .onDependency(() -> ApiMod.LOGGER.info("I am async: 6"))
+                .onDependency(() -> ApiMod.LOGGER.info("I am async: 7"))
+                .onDependency(() -> ApiMod.LOGGER.info("I am async: 8"))
+                .onDependency(() -> ApiMod.LOGGER.info("I am async: 9"))
+                .onDependency(() -> ApiMod.LOGGER.info("I am async: 10"))
                 .build();
     }
 }

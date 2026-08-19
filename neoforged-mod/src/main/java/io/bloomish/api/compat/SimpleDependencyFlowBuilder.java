@@ -1,4 +1,4 @@
-package io.bloomish.api.core.compat;
+package io.bloomish.api.compat;
 
 import java.util.ArrayList;
 import java.util.List;

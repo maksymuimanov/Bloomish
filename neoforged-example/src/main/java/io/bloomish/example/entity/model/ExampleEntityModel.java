@@ -2,8 +2,8 @@ package io.bloomish.example.entity.model;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import io.bloomish.api.core.engine.metadata.annotation.event.layer.RegisterLayerDefinition;
-import io.bloomish.api.core.util.ResourceUtils;
+import io.bloomish.api.engine.metadata.annotation.event.layer.RegisterLayerDefinition;
+import io.bloomish.api.util.ResourceUtils;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelPart;

@@ -2,8 +2,8 @@ package io.bloomish.api.engine.metadata.pool;
 
 import io.bloomish.api.engine.context.InjectionPool;
 import io.bloomish.api.engine.metadata.strategy.AnnotationStrategy;
-import io.bloomish.api.core.util.MapUtils;
-import io.bloomish.api.core.util.ReflectionUtils;
+import io.bloomish.api.util.MapUtils;
+import io.bloomish.api.util.ReflectionUtils;
 import org.jetbrains.annotations.NotNull;
 
 import java.lang.annotation.Annotation;

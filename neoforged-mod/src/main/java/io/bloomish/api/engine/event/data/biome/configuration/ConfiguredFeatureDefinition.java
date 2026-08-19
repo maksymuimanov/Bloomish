@@ -1,7 +1,7 @@
 package io.bloomish.api.engine.event.data.biome.configuration;
 
 import io.bloomish.api.engine.event.data.biome.GenerationDefinition;
-import io.bloomish.api.core.util.WorldGenerationUtils;
+import io.bloomish.api.util.WorldGenerationUtils;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;

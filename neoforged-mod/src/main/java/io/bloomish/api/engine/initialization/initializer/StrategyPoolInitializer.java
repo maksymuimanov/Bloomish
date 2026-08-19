@@ -6,7 +6,7 @@ import io.bloomish.api.engine.metadata.pool.SimpleStrategyPool;
 import io.bloomish.api.engine.metadata.pool.StrategyPool;
 import io.bloomish.api.engine.metadata.pool.StrategyScope;
 import io.bloomish.api.engine.metadata.strategy.AnnotationStrategy;
-import io.bloomish.api.core.util.ReflectionUtils;
+import io.bloomish.api.util.ReflectionUtils;
 
 import java.util.Collection;
 import java.util.List;

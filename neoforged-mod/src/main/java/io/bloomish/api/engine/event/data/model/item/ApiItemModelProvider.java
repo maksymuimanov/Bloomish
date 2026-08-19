@@ -3,7 +3,7 @@ package io.bloomish.api.engine.event.data.model.item;
 import io.bloomish.api.engine.context.ModContext;
 import io.bloomish.api.engine.event.data.model.ModelConstants;
 import io.bloomish.api.engine.event.data.model.item.spec.ItemModelSpec;
-import io.bloomish.api.core.util.ResourceUtils;
+import io.bloomish.api.util.ResourceUtils;
 import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.client.model.generators.ItemModelBuilder;
 import net.neoforged.neoforge.client.model.generators.ItemModelProvider;

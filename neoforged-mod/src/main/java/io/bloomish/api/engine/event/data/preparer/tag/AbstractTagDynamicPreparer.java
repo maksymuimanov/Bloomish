@@ -1,7 +1,7 @@
 package io.bloomish.api.engine.event.data.preparer.tag;
 
 import io.bloomish.api.engine.event.data.preparer.DynamicPreparer;
-import io.bloomish.api.core.util.TagUtils;
+import io.bloomish.api.util.TagUtils;
 import net.minecraft.tags.TagKey;
 
 import java.util.Map;

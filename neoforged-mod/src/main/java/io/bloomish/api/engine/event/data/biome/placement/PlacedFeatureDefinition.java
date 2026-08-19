@@ -2,8 +2,8 @@ package io.bloomish.api.engine.event.data.biome.placement;
 
 import io.bloomish.api.engine.event.data.biome.GenerationDefinition;
 import io.bloomish.api.engine.event.data.biome.PlacedFeaturesContainer;
-import io.bloomish.api.core.util.ResourceUtils;
-import io.bloomish.api.core.util.WorldGenerationUtils;
+import io.bloomish.api.util.ResourceUtils;
+import io.bloomish.api.util.WorldGenerationUtils;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;

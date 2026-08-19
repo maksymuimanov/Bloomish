@@ -3,7 +3,7 @@ package io.bloomish.api.engine.event.data.biome.modifier;
 import io.bloomish.api.engine.event.data.biome.GenerationDescriptionContainer;
 import io.bloomish.api.engine.event.data.biome.dto.Flower;
 import io.bloomish.api.engine.event.data.preparer.tag.BiomeTagDynamicPreparer;
-import io.bloomish.api.core.util.MapUtils;
+import io.bloomish.api.util.MapUtils;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.HolderSet;
 import net.minecraft.resources.ResourceKey;

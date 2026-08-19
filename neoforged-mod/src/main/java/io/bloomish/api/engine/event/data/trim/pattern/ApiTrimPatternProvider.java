@@ -3,7 +3,7 @@ package io.bloomish.api.engine.event.data.trim.pattern;
 import io.bloomish.api.core.collection.TemporalMap;
 import io.bloomish.api.engine.event.data.file.AtlasArmorTrimProvider;
 import io.bloomish.api.engine.event.data.language.transformer.TrimPatternTransformer;
-import io.bloomish.api.core.util.RegistryUtils;
+import io.bloomish.api.util.RegistryUtils;
 import net.minecraft.Util;
 import net.minecraft.core.Holder;
 import net.minecraft.data.worldgen.BootstrapContext;

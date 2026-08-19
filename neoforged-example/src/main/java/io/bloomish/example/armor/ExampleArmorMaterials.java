@@ -1,7 +1,7 @@
 package io.bloomish.example.armor;
 
-import io.bloomish.api.core.engine.context.InjectionPool;
-import io.bloomish.api.core.engine.registry.factory.ArmorMaterialFactory;
+import io.bloomish.api.engine.context.InjectionPool;
+import io.bloomish.api.engine.registry.factory.ArmorMaterialFactory;
 import net.minecraft.Util;
 import net.minecraft.core.Holder;
 import net.minecraft.world.item.ArmorItem;

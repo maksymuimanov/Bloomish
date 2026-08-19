@@ -3,7 +3,7 @@ package io.bloomish.api.engine.event.data.model.item.strategy;
 import io.bloomish.api.engine.event.data.model.item.ApiItemModelProvider;
 import io.bloomish.api.engine.event.data.model.item.ItemModelProviderStrategy;
 import io.bloomish.api.engine.event.data.model.item.spec.BlockItemModelSpec;
-import io.bloomish.api.core.util.ResourceUtils;
+import io.bloomish.api.util.ResourceUtils;
 import net.minecraft.resources.ResourceLocation;
 
 public class WoodBlockItemModelProviderStrategy implements ItemModelProviderStrategy<BlockItemModelSpec> {

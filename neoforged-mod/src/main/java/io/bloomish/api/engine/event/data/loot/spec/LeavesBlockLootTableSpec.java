@@ -1,6 +1,6 @@
 package io.bloomish.api.engine.event.data.loot.spec;
 
-import io.bloomish.api.core.util.RegistryUtils;
+import io.bloomish.api.util.RegistryUtils;
 import net.minecraft.core.Holder;
 import net.minecraft.world.level.block.Block;
 

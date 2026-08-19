@@ -1,9 +1,9 @@
 package io.bloomish.example.sound;
 
-import io.bloomish.api.core.engine.context.InjectionPool;
-import io.bloomish.api.core.engine.metadata.annotation.data.GenerateSound;
-import io.bloomish.api.core.engine.metadata.annotation.data.language.TranslateAmericanEnglish;
-import io.bloomish.api.core.engine.registry.factory.SoundEventFactory;
+import io.bloomish.api.engine.context.InjectionPool;
+import io.bloomish.api.engine.metadata.annotation.data.GenerateSound;
+import io.bloomish.api.engine.metadata.annotation.data.language.TranslateAmericanEnglish;
+import io.bloomish.api.engine.registry.factory.SoundEventFactory;
 import net.minecraft.core.Holder;
 import net.minecraft.sounds.SoundEvent;
 

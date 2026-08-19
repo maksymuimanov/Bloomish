@@ -2,7 +2,7 @@ package io.bloomish.api.engine.event.data.advancement;
 
 import io.bloomish.api.core.collection.TemporalMap;
 import io.bloomish.api.core.collection.TemporalQueue;
-import io.bloomish.api.core.util.ResourceUtils;
+import io.bloomish.api.util.ResourceUtils;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementHolder;
 import net.minecraft.advancements.AdvancementRewards;

@@ -1,8 +1,8 @@
 package io.bloomish.example.advancement;
 
-import io.bloomish.api.core.engine.event.data.advancement.AdvancementDescription;
-import io.bloomish.api.core.engine.metadata.annotation.data.GenerateAdvancement;
-import io.bloomish.api.core.engine.metadata.annotation.data.language.TranslateAmericanEnglish;
+import io.bloomish.api.engine.event.data.advancement.AdvancementDescription;
+import io.bloomish.api.engine.metadata.annotation.data.GenerateAdvancement;
+import io.bloomish.api.engine.metadata.annotation.data.language.TranslateAmericanEnglish;
 import net.minecraft.advancements.AdvancementRequirements;
 import net.minecraft.advancements.AdvancementType;
 import net.minecraft.advancements.Criterion;

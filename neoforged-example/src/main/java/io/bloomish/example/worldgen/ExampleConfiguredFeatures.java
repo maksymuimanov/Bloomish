@@ -1,11 +1,11 @@
 package io.bloomish.example.worldgen;
 
-import io.bloomish.api.core.engine.metadata.annotation.data.biome.GenerateFlower;
-import io.bloomish.api.core.engine.metadata.annotation.data.biome.GenerateGrass;
-import io.bloomish.api.core.engine.metadata.annotation.data.biome.GenerateOre;
-import io.bloomish.api.core.engine.metadata.annotation.data.biome.GenerateTree;
-import io.bloomish.api.core.engine.metadata.constant.OrePlacementShape;
-import io.bloomish.api.core.util.ResourceUtils;
+import io.bloomish.api.engine.metadata.annotation.data.biome.GenerateFlower;
+import io.bloomish.api.engine.metadata.annotation.data.biome.GenerateGrass;
+import io.bloomish.api.engine.metadata.annotation.data.biome.GenerateOre;
+import io.bloomish.api.engine.metadata.annotation.data.biome.GenerateTree;
+import io.bloomish.api.engine.metadata.constant.OrePlacementShape;
+import io.bloomish.api.util.ResourceUtils;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;

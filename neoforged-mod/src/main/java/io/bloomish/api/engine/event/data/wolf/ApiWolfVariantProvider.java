@@ -2,7 +2,7 @@ package io.bloomish.api.engine.event.data.wolf;
 
 import io.bloomish.api.core.collection.TemporalQueue;
 import io.bloomish.api.engine.event.data.preparer.tag.BiomeTagDynamicPreparer;
-import io.bloomish.api.core.util.ResourceUtils;
+import io.bloomish.api.util.ResourceUtils;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;

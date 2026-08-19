@@ -1,7 +1,7 @@
 package io.bloomish.example.recipe;
 
-import io.bloomish.api.core.engine.event.data.recipe.description.TemplateSmithingTrimRecipeDescription;
-import io.bloomish.api.core.engine.metadata.annotation.data.GenerateRecipe;
+import io.bloomish.api.engine.event.data.recipe.description.TemplateSmithingTrimRecipeDescription;
+import io.bloomish.api.engine.metadata.annotation.data.GenerateRecipe;
 import net.minecraft.world.level.ItemLike;
 import io.bloomish.example.item.ExampleItems;
 

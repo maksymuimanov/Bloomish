@@ -1,9 +1,9 @@
 package io.bloomish.example.metadata;
 
-import io.bloomish.api.core.engine.context.ModContext;
-import io.bloomish.api.core.engine.metadata.MetadataLayer;
-import io.bloomish.api.core.engine.metadata.annotation.injection.Processor;
-import io.bloomish.api.core.engine.metadata.processor.AbstractAnnotationProcessor;
+import io.bloomish.api.engine.context.ModContext;
+import io.bloomish.api.engine.metadata.MetadataLayer;
+import io.bloomish.api.engine.metadata.annotation.injection.Processor;
+import io.bloomish.api.engine.metadata.processor.AbstractAnnotationProcessor;
 
 @Processor(ExampleAnnotationProcessor.NAME)
 public class ExampleAnnotationProcessor extends AbstractAnnotationProcessor {

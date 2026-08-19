@@ -1,7 +1,7 @@
 package io.bloomish.api.engine.event.data.particle;
 
 import io.bloomish.api.core.collection.TemporalMap;
-import io.bloomish.api.core.util.ResourceUtils;
+import io.bloomish.api.util.ResourceUtils;
 import net.minecraft.core.Holder;
 import net.minecraft.core.particles.ParticleType;
 import net.minecraft.data.PackOutput;

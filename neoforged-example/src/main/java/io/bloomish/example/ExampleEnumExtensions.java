@@ -1,6 +1,6 @@
 package io.bloomish.example;
 
-import io.bloomish.api.core.util.EnumExtensionUtils;
+import io.bloomish.api.util.EnumExtensionUtils;
 
 public class ExampleEnumExtensions {
     public static Object EXAMPLE_BOAT(int id, Class<?> type) {

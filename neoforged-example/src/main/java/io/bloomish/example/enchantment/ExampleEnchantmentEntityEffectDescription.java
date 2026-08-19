@@ -1,6 +1,6 @@
 package io.bloomish.example.enchantment;
 
-import io.bloomish.api.core.engine.event.data.enchantment.EnchantmentDescription;
+import io.bloomish.api.engine.event.data.enchantment.EnchantmentDescription;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.entity.EquipmentSlotGroup;

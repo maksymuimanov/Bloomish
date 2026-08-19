@@ -1,7 +1,7 @@
 package io.bloomish.example.enchantment;
 
-import io.bloomish.api.core.engine.context.InjectionPool;
-import io.bloomish.api.core.engine.registry.factory.EnchantmentEntityEffectTypeFactory;
+import io.bloomish.api.engine.context.InjectionPool;
+import io.bloomish.api.engine.registry.factory.EnchantmentEntityEffectTypeFactory;
 import net.neoforged.neoforge.registries.DeferredHolder;
 
 public final class ExampleEnchantmentEntityEffectTypes {

@@ -1,8 +1,8 @@
 package io.bloomish.example.trim;
 
-import io.bloomish.api.core.engine.metadata.annotation.data.GenerateTrimMaterial;
-import io.bloomish.api.core.engine.metadata.annotation.data.language.TranslateAmericanEnglish;
-import io.bloomish.api.core.util.ResourceUtils;
+import io.bloomish.api.engine.metadata.annotation.data.GenerateTrimMaterial;
+import io.bloomish.api.engine.metadata.annotation.data.language.TranslateAmericanEnglish;
+import io.bloomish.api.util.ResourceUtils;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.armortrim.TrimMaterial;

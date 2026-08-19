@@ -1,8 +1,8 @@
 package io.bloomish.example.entity;
 
-import io.bloomish.api.core.engine.context.InjectionPool;
-import io.bloomish.api.core.engine.metadata.annotation.event.renderer.RegisterEntityRenderer;
-import io.bloomish.api.core.engine.registry.factory.EntityTypeFactory;
+import io.bloomish.api.engine.context.InjectionPool;
+import io.bloomish.api.engine.metadata.annotation.event.renderer.RegisterEntityRenderer;
+import io.bloomish.api.engine.registry.factory.EntityTypeFactory;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.neoforged.neoforge.registries.DeferredHolder;

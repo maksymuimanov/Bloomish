@@ -1,7 +1,7 @@
 package io.bloomish.api.engine.event.data.file;
 
 import com.google.gson.JsonElement;
-import io.bloomish.api.core.json.JsonRepresentation;
+import io.bloomish.api.json.JsonSerializable;
 import net.minecraft.data.CachedOutput;
 import net.minecraft.data.DataProvider;
 import net.minecraft.data.PackOutput;
@@ -40,7 +40,7 @@ public abstract class SingleFileProvider implements FileProvider {
 
     public abstract void registerFile();
 
-    protected final void define(JsonRepresentation representation) {
+    protected final void define(JsonSerializable representation) {
         this.content = representation.toJson();
     }
 

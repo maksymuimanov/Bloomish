@@ -1,8 +1,6 @@
-package io.bloomish.api.core.compat;
+package io.bloomish.api.compat;
 
 import io.bloomish.api.ApiMod;
-import io.bloomish.api.engine.event.handler.EventHandler;
-import net.neoforged.fml.ModList;
 
 import java.util.ArrayList;
 import java.util.List;

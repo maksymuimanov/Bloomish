@@ -1,7 +1,7 @@
 package io.bloomish.example.config;
 
-import io.bloomish.api.core.engine.metadata.annotation.data.language.TranslateAmericanEnglish;
-import io.bloomish.api.core.engine.metadata.annotation.injection.RegisterConfig;
+import io.bloomish.api.engine.metadata.annotation.data.language.TranslateAmericanEnglish;
+import io.bloomish.api.engine.metadata.annotation.injection.RegisterConfig;
 import net.neoforged.fml.config.ModConfig;
 import net.neoforged.neoforge.common.ModConfigSpec;
 

@@ -1,6 +1,6 @@
 package io.bloomish.api.engine.event.data.file;
 
-import io.bloomish.api.core.json.JsonRepresentation;
+import io.bloomish.api.json.JsonSerializable;
 import net.minecraft.data.CachedOutput;
 import net.minecraft.data.DataProvider;
 import net.minecraft.data.PackOutput;
@@ -15,7 +15,7 @@ import java.util.concurrent.CompletableFuture;
 
 public abstract class MultiFileProvider implements FileProvider {
     private final PackOutput output;
-    private Map<FileSource, JsonRepresentation> contents;
+    private Map<FileSource, JsonSerializable> contents;
 
     protected MultiFileProvider(final PackOutput output) {
         this.output = output;
@@ -37,11 +37,11 @@ public abstract class MultiFileProvider implements FileProvider {
 
     public abstract void registerFiles();
 
-    protected final void define(FileSource fileSource, JsonRepresentation representation) {
+    protected final void define(FileSource fileSource, JsonSerializable representation) {
         this.contents.put(fileSource, representation);
     }
 
-    protected CompletableFuture<?> save(final CachedOutput cache, JsonRepresentation representation, final Path targetFile) {
+    protected CompletableFuture<?> save(final CachedOutput cache, JsonSerializable representation, final Path targetFile) {
         return DataProvider.saveStable(cache, representation.toJson(), targetFile);
     }
 }

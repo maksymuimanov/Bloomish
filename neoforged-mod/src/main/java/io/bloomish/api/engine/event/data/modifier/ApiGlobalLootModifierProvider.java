@@ -3,7 +3,7 @@ package io.bloomish.api.engine.event.data.modifier;
 import io.bloomish.api.common.loot.AddItemModifier;
 import io.bloomish.api.core.collection.TemporalQueue;
 import io.bloomish.api.engine.context.ModContext;
-import io.bloomish.api.core.util.ResourceUtils;
+import io.bloomish.api.util.ResourceUtils;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;

@@ -4,7 +4,7 @@ import io.bloomish.api.engine.event.data.model.ModelConstants;
 import io.bloomish.api.engine.event.data.model.item.ApiItemModelProvider;
 import io.bloomish.api.engine.event.data.model.item.ItemModelProviderStrategy;
 import io.bloomish.api.engine.event.data.model.item.spec.ItemModelSpec;
-import io.bloomish.api.core.util.ResourceUtils;
+import io.bloomish.api.util.ResourceUtils;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.PackType;

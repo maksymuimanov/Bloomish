@@ -2,8 +2,8 @@ package io.bloomish.api.engine.event.data.biome.configuration;
 
 import io.bloomish.api.engine.event.data.biome.GenerationDescriptionContainer;
 import io.bloomish.api.engine.event.data.biome.dto.Grass;
-import io.bloomish.api.core.util.MapUtils;
-import io.bloomish.api.core.util.RegistryUtils;
+import io.bloomish.api.util.MapUtils;
+import io.bloomish.api.util.RegistryUtils;
 import net.minecraft.data.worldgen.features.FeatureUtils;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.ResourceKey;

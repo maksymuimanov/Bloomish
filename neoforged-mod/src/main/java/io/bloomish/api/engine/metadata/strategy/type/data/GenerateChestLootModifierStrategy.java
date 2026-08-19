@@ -8,7 +8,7 @@ import io.bloomish.api.engine.metadata.annotation.injection.Strategy;
 import io.bloomish.api.engine.metadata.pool.ProcessorScope;
 import io.bloomish.api.engine.metadata.processor.DataEventHandlerAnnotationProcessorAdapter;
 import io.bloomish.api.engine.metadata.strategy.type.ClassAnnotationStrategy;
-import io.bloomish.api.core.util.ReflectionUtils;
+import io.bloomish.api.util.ReflectionUtils;
 
 @Strategy(StrategyPoolInitializer.DEFAULT_CLASS_DATA)
 public class GenerateChestLootModifierStrategy implements ClassAnnotationStrategy<GenerateChestLootModifier> {

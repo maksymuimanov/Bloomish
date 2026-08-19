@@ -1,4 +1,4 @@
-package io.bloomish.api.core.compat;
+package io.bloomish.api.compat;
 
 @FunctionalInterface
 public interface DependencyFunction {

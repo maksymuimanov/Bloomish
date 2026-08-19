@@ -1,9 +1,9 @@
 package io.bloomish.example.item;
 
-import io.bloomish.api.core.engine.metadata.annotation.injection.Injected;
+import io.bloomish.api.engine.metadata.annotation.injection.Injected;
 import com.bloomish.api.core.engine.registry.extension.item.*;
-import io.bloomish.api.core.engine.registry.extension.item.*;
-import io.bloomish.api.core.engine.registry.factory.ItemFactory;
+import io.bloomish.api.engine.registry.extension.item.*;
+import io.bloomish.api.engine.registry.factory.ItemFactory;
 
 @Injected
 public final class ExampleItemFactory extends ItemFactory implements SwordSubFactory,

@@ -2,9 +2,9 @@ package io.bloomish.api.engine.event.data.file;
 
 import io.bloomish.api.core.collection.TemporalMap;
 import io.bloomish.api.core.collection.TemporalQueue;
-import io.bloomish.api.core.json.AtlasArmorTrimRepresentation;
-import io.bloomish.api.core.json.JsonRepresentation;
-import io.bloomish.api.core.util.ResourceUtils;
+import io.bloomish.api.json.AtlasArmorTrimJson;
+import io.bloomish.api.json.JsonSerializable;
+import io.bloomish.api.util.ResourceUtils;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -59,20 +59,20 @@ public class AtlasArmorTrimProvider extends SingleFileProvider {
     @Override
     public void registerFile() {
         List<String> textures = this.createTextures();
-        AtlasArmorTrimRepresentation.Permutations permutations = this.createPermutations();
-        AtlasArmorTrimRepresentation.Source[] sources = this.createSources(textures, permutations);
-        JsonRepresentation representation = new AtlasArmorTrimRepresentation(false, sources);
+        AtlasArmorTrimJson.Permutations permutations = this.createPermutations();
+        AtlasArmorTrimJson.Source[] sources = this.createSources(textures, permutations);
+        JsonSerializable representation = new AtlasArmorTrimJson(false, sources);
         this.define(representation);
     }
 
-    protected AtlasArmorTrimRepresentation.Source[] createSources(List<String> textures, AtlasArmorTrimRepresentation.Permutations permutations) {
-        AtlasArmorTrimRepresentation.Source source = new AtlasArmorTrimRepresentation.Source(
+    protected AtlasArmorTrimJson.Source[] createSources(List<String> textures, AtlasArmorTrimJson.Permutations permutations) {
+        AtlasArmorTrimJson.Source source = new AtlasArmorTrimJson.Source(
                 PALETTED_PERMUTATIONS_TYPE,
                 textures,
                 PALETTE_KEY_PATH,
                 permutations
         );
-        return new AtlasArmorTrimRepresentation.Source[]{source};
+        return new AtlasArmorTrimJson.Source[]{source};
     }
 
     protected List<String> createTextures() {
@@ -87,11 +87,11 @@ public class AtlasArmorTrimProvider extends SingleFileProvider {
         return trimPatterns;
     }
 
-    protected AtlasArmorTrimRepresentation.Permutations createPermutations() {
+    protected AtlasArmorTrimJson.Permutations createPermutations() {
         Map<String, String> trimMaterials = new HashMap<>(DEFAULT_TRIM_MATERIALS);
         TRIM_MATERIALS_LOCATIONS.forEach((key, value) -> {
             trimMaterials.put(key, value.getNamespace() + ":" + TRIMS_COLOR_PALETTES_PATH + value.getPath());
         });
-        return new AtlasArmorTrimRepresentation.Permutations(trimMaterials);
+        return new AtlasArmorTrimJson.Permutations(trimMaterials);
     }
 }

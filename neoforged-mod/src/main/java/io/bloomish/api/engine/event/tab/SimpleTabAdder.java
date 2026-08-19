@@ -1,6 +1,5 @@
 package io.bloomish.api.engine.event.tab;
 
-import io.bloomish.api.core.exception.AddingToTabException;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.level.ItemLike;

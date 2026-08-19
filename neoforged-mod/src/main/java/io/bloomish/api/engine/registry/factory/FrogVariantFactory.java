@@ -2,7 +2,7 @@ package io.bloomish.api.engine.registry.factory;
 
 import io.bloomish.api.engine.context.InjectionPool;
 import io.bloomish.api.engine.registry.TemporalRegister;
-import io.bloomish.api.core.util.ResourceUtils;
+import io.bloomish.api.util.ResourceUtils;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.animal.FrogVariant;
 import net.neoforged.neoforge.registries.DeferredHolder;

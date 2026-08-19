@@ -6,7 +6,7 @@ import io.bloomish.api.engine.metadata.pool.ProcessorPool;
 import io.bloomish.api.engine.metadata.pool.ProcessorScope;
 import io.bloomish.api.engine.metadata.pool.SimpleProcessorPool;
 import io.bloomish.api.engine.metadata.processor.AnnotationProcessor;
-import io.bloomish.api.core.util.ReflectionUtils;
+import io.bloomish.api.util.ReflectionUtils;
 
 import java.util.Collection;
 import java.util.List;

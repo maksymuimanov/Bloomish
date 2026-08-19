@@ -3,7 +3,7 @@ package io.bloomish.api.engine.initialization.scanner;
 import io.bloomish.api.engine.metadata.annotation.injection.Handler;
 import io.bloomish.api.engine.metadata.annotation.injection.Injected;
 import io.bloomish.api.engine.metadata.annotation.injection.Strategy;
-import io.bloomish.api.core.util.ReflectionUtils;
+import io.bloomish.api.util.ReflectionUtils;
 import net.neoforged.fml.ModList;
 import net.neoforged.neoforgespi.language.ModFileScanData;
 import org.objectweb.asm.Type;

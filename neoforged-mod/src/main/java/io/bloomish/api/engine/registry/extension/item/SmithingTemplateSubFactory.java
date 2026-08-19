@@ -2,7 +2,7 @@ package io.bloomish.api.engine.registry.extension.item;
 
 import io.bloomish.api.engine.context.InjectionPool;
 import io.bloomish.api.engine.registry.factory.ItemFactory;
-import io.bloomish.api.core.util.ResourceUtils;
+import io.bloomish.api.util.ResourceUtils;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.SmithingTemplateItem;
 import net.neoforged.neoforge.registries.DeferredItem;

@@ -5,7 +5,7 @@ import io.bloomish.api.engine.event.handler.EventHandler;
 import io.bloomish.api.engine.event.pool.HandlerPool;
 import io.bloomish.api.engine.event.pool.SimpleHandlerPool;
 import io.bloomish.api.engine.metadata.annotation.injection.Handler;
-import io.bloomish.api.core.util.ReflectionUtils;
+import io.bloomish.api.util.ReflectionUtils;
 
 import java.util.Collection;
 import java.util.List;

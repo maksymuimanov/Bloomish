@@ -10,29 +10,24 @@ import java.util.Map;
 public record AtlasArmorTrimJson(
         boolean replace,
         List<Source> sources
-) implements JsonModel {
+) implements JsonSerializable {
     private static final String REPLACE_PROPERTY = "replace";
     private static final String SOURCES_PROPERTY = "sources";
 
     @Override
     public JsonElement toJson() {
-        JsonObject jsonObject = new JsonObject();
-        jsonObject.addProperty(REPLACE_PROPERTY, replace);
-        JsonArray jsonArray = new JsonArray();
-        for (Source source : sources) {
-            JsonElement sourceJson = source.toJson();
-            jsonArray.add(sourceJson);
-        }
-        jsonObject.add(SOURCES_PROPERTY, jsonArray);
-        return jsonObject;
+        return JsonUtils.buildJson(json -> {
+            json.addProperty(REPLACE_PROPERTY, replace);
+            json.add(SOURCES_PROPERTY, JsonUtils.convertJsonSerializableList(sources));
+        });
     }
 
     public record Source(
             String type,
             List<String> textures,
             String paletteKey,
-            StringMapJson permutations
-    ) implements JsonModel {
+            Permutations permutations
+    ) implements JsonSerializable {
         private static final String TYPE_PROPERTY = "type";
         private static final String TEXTURES_PROPERTY = "textures";
         private static final String PALETTE_KEY_PROPERTY = "palette_key";
@@ -40,16 +35,21 @@ public record AtlasArmorTrimJson(
 
         @Override
         public JsonElement toJson() {
-            JsonObject jsonObject = new JsonObject();
-            jsonObject.addProperty(TYPE_PROPERTY, type);
-            JsonArray textureJsonArray = new JsonArray();
-            for (String texture : textures) {
-                textureJsonArray.add(texture);
-            }
-            jsonObject.add(TEXTURES_PROPERTY, textureJsonArray);
-            jsonObject.addProperty(PALETTE_KEY_PROPERTY, paletteKey);
-            jsonObject.add(PERMUTATIONS_PROPERTY, permutations.toJson());
-            return jsonObject;
+            return JsonUtils.buildJson(json -> {
+                json.addProperty(TYPE_PROPERTY, type);
+                json.add(TEXTURES_PROPERTY, JsonUtils.convertStringList(textures));
+                json.addProperty(PALETTE_KEY_PROPERTY, paletteKey);
+                json.add(PERMUTATIONS_PROPERTY, permutations.toJson());
+            });
+        }
+    }
+
+    public record Permutations(
+            Map<String, String> trimMaterials
+    ) implements JsonSerializable {
+        @Override
+        public JsonElement toJson() {
+            return JsonUtils.convertMap(trimMaterials);
         }
     }
 }

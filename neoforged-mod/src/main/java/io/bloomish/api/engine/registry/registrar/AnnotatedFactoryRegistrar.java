@@ -4,7 +4,7 @@ import io.bloomish.api.engine.context.InjectionPool;
 import io.bloomish.api.engine.context.ModContext;
 import io.bloomish.api.engine.metadata.annotation.injection.RegisterFactory;
 import io.bloomish.api.engine.registry.factory.ObjectFactory;
-import io.bloomish.api.core.util.ReflectionUtils;
+import io.bloomish.api.util.ReflectionUtils;
 import net.neoforged.bus.api.IEventBus;
 
 public class AnnotatedFactoryRegistrar implements FactoryRegistrar {

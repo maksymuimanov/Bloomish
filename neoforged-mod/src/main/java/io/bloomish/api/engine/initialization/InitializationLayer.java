@@ -7,7 +7,7 @@ import io.bloomish.api.engine.context.NeoMod;
 import io.bloomish.api.engine.context.ObjectPool;
 import io.bloomish.api.engine.initialization.initializer.ObjectPoolInitializer;
 import io.bloomish.api.engine.initialization.scanner.ModClassScanner;
-import io.bloomish.api.core.util.ReflectionUtils;
+import io.bloomish.api.util.ReflectionUtils;
 
 import java.util.List;
 import java.util.Set;

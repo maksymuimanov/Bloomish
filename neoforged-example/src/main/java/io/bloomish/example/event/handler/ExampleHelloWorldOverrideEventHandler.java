@@ -1,7 +1,7 @@
 package io.bloomish.example.event.handler;
 
-import io.bloomish.api.core.engine.event.handler.EventHandler;
-import io.bloomish.api.core.engine.metadata.annotation.injection.Handler;
+import io.bloomish.api.engine.event.handler.EventHandler;
+import io.bloomish.api.engine.metadata.annotation.injection.Handler;
 import net.neoforged.bus.api.EventPriority;
 import net.neoforged.fml.event.lifecycle.FMLLoadCompleteEvent;
 

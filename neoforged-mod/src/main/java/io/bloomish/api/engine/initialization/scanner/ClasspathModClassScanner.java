@@ -1,6 +1,6 @@
 package io.bloomish.api.engine.initialization.scanner;
 
-import io.bloomish.api.core.util.ReflectionUtils;
+import io.bloomish.api.util.ReflectionUtils;
 import net.neoforged.fml.ModList;
 import net.neoforged.neoforgespi.language.ModFileScanData;
 

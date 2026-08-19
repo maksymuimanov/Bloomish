@@ -1,15 +1,15 @@
 package io.bloomish.api.engine.context;
 
-import io.bloomish.api.core.exception.PoolCreationException;
-import io.bloomish.api.core.exception.PoolDeletionException;
-import io.bloomish.api.core.exception.PoolGettingException;
+import io.bloomish.api.exception.PoolCreationException;
+import io.bloomish.api.exception.PoolDeletionException;
+import io.bloomish.api.exception.PoolGettingException;
 
 import java.util.HashMap;
 import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
 
-public class ModContext implements Context<String, InjectionPool> {
+public final class ModContext implements Context<String, InjectionPool> {
     public static volatile NeoMod NEO_MOD;
     public static final Set<Class<?>> ALL_CLASSES = new LinkedHashSet<>();
     private static volatile ModContext instance;
@@ -30,12 +30,11 @@ public class ModContext implements Context<String, InjectionPool> {
 
     @Override
     public InjectionPool createPool(String modId) {
-        if (injectionPools.keySet()
+        boolean isModRegistered = injectionPools.keySet()
                 .stream()
-                .map(m -> m.getModId().equals(modId))
-                .filter(b -> b)
-                .findAny()
-                .orElse(false)) throw new PoolCreationException("Pool already exists!");
+                .anyMatch(mod -> mod.getModId().equals(modId));
+        if (isModRegistered)
+            throw new PoolCreationException("Pool already exists!");
         injectionPools.put(NEO_MOD, new InjectionPool());
         return this.getPool(modId);
     }
@@ -44,7 +43,7 @@ public class ModContext implements Context<String, InjectionPool> {
     public void removePool(String modId) {
         injectionPools.keySet()
                 .stream()
-                .filter(m -> m.getModId().equals(modId))
+                .filter(mod -> mod.getModId().equals(modId))
                 .findAny()
                 .ifPresentOrElse(injectionPools::remove, () -> {
                     throw new PoolDeletionException("Pool does not exist!");
@@ -59,7 +58,6 @@ public class ModContext implements Context<String, InjectionPool> {
                 }
             }
         }
-
         return instance;
     }
 }

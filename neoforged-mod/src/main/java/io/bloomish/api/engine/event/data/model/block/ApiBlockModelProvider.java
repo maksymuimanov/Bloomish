@@ -5,7 +5,7 @@ import io.bloomish.api.engine.context.ModContext;
 import io.bloomish.api.engine.event.data.model.RenderTypes;
 import io.bloomish.api.engine.event.data.model.block.spec.BlockModelSpec;
 import io.bloomish.api.engine.event.data.model.block.spec.DependantBlockModelSpec;
-import io.bloomish.api.core.util.ResourceUtils;
+import io.bloomish.api.util.ResourceUtils;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;

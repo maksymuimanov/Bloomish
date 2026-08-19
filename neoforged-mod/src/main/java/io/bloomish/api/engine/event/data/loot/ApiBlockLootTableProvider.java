@@ -3,7 +3,7 @@ package io.bloomish.api.engine.event.data.loot;
 import io.bloomish.api.engine.context.InjectionPool;
 import io.bloomish.api.engine.event.data.loot.spec.BlockLootTableSpec;
 import io.bloomish.api.engine.registry.factory.BlockFactory;
-import io.bloomish.api.core.util.RegistryUtils;
+import io.bloomish.api.util.RegistryUtils;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.loot.BlockLootSubProvider;

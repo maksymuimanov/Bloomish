@@ -1,8 +1,8 @@
 package io.bloomish.example.metadata;
 
-import io.bloomish.api.core.engine.metadata.annotation.injection.Strategy;
-import io.bloomish.api.core.engine.metadata.pool.ProcessorScope;
-import io.bloomish.api.core.engine.metadata.strategy.field.FieldAnnotationStrategy;
+import io.bloomish.api.engine.metadata.annotation.injection.Strategy;
+import io.bloomish.api.engine.metadata.pool.ProcessorScope;
+import io.bloomish.api.engine.metadata.strategy.field.FieldAnnotationStrategy;
 
 import java.lang.reflect.Field;
 

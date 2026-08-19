@@ -2,7 +2,7 @@ package io.bloomish.api.engine.event.data.jukebox;
 
 import io.bloomish.api.core.collection.TemporalQueue;
 import io.bloomish.api.engine.event.data.language.transformer.JukeboxSongTransformer;
-import io.bloomish.api.core.util.RegistryUtils;
+import io.bloomish.api.util.RegistryUtils;
 import net.minecraft.Util;
 import net.minecraft.core.Holder;
 import net.minecraft.data.worldgen.BootstrapContext;

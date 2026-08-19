@@ -2,7 +2,7 @@ package io.bloomish.api.engine.event.data.model.block.strategy;
 
 import io.bloomish.api.engine.event.data.model.block.ApiBlockModelProvider;
 import io.bloomish.api.engine.event.data.model.block.spec.BlockModelSpec;
-import io.bloomish.api.core.util.ResourceUtils;
+import io.bloomish.api.util.ResourceUtils;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.RotatedPillarBlock;
 

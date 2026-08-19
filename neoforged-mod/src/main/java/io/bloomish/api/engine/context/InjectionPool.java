@@ -1,6 +1,6 @@
 package io.bloomish.api.engine.context;
 
-import io.bloomish.api.core.util.ReflectionUtils;
+import io.bloomish.api.util.ReflectionUtils;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.HashMap;

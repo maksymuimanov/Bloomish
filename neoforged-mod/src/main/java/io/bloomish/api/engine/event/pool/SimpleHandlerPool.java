@@ -2,8 +2,8 @@ package io.bloomish.api.engine.event.pool;
 
 import io.bloomish.api.engine.context.InjectionPool;
 import io.bloomish.api.engine.event.handler.EventHandler;
-import io.bloomish.api.core.util.MapUtils;
-import io.bloomish.api.core.util.ReflectionUtils;
+import io.bloomish.api.util.MapUtils;
+import io.bloomish.api.util.ReflectionUtils;
 import net.neoforged.bus.api.Event;
 import org.jetbrains.annotations.NotNull;
 
