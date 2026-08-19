@@ -1,0 +1,40 @@
+package io.bloomish.api.engine.event.handler;
+
+import com.bloomish.api.core.engine.event.client.*;
+import io.bloomish.api.core.engine.event.client.*;
+import io.bloomish.api.engine.event.client.*;
+import io.bloomish.api.engine.metadata.annotation.injection.Handler;
+import net.minecraft.core.Holder;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.state.properties.WoodType;
+import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
+
+import java.util.ArrayList;
+import java.util.List;
+
+@Handler(FMLClientSetupEvent.class)
+public class FMLClientSetupEventHandler implements EventHandler {
+    public static final List<Holder<? extends Item>> BOWS = new ArrayList<>();
+    public static final List<Holder<? extends Item>> CROSSBOWS = new ArrayList<>();
+    public static final List<Holder<? extends Item>> SHIELDS = new ArrayList<>();
+    public static final List<Holder<? extends Item>> INSTRUMENTS = new ArrayList<>();
+    public static final List<WoodType> WOOD_TYPES = new ArrayList<>();
+    private static final ClientSetupStrategy<Holder<? extends Item>> BOW_STRATEGY = new BowClientSetupStrategy();
+    private static final ClientSetupStrategy<Holder<? extends Item>> CROSSBOW_STRATEGY = new CrossbowClientSetupStrategy();
+    private static final ClientSetupStrategy<Holder<? extends Item>> SHIELD_STRATEGY = new ShieldClientSetupStrategy();
+    private static final ClientSetupStrategy<Holder<? extends Item>> INSTRUMENT_STRATEGY = new InstrumentClientSetupStrategy();
+    private static final ClientSetupStrategy<WoodType> WOOD_TYPE_STRATEGY = new WoodTypeClientSetupStrategy();
+
+    @Override
+    public void handle() {
+        this.subscribeModEvent(FMLClientSetupEvent.class, event -> {
+            WOOD_TYPE_STRATEGY.execute(WOOD_TYPES);
+            event.enqueueWork(() -> {
+                BOW_STRATEGY.execute(BOWS);
+                CROSSBOW_STRATEGY.execute(CROSSBOWS);
+                SHIELD_STRATEGY.execute(SHIELDS);
+                INSTRUMENT_STRATEGY.execute(INSTRUMENTS);
+            });
+        });
+    }
+}

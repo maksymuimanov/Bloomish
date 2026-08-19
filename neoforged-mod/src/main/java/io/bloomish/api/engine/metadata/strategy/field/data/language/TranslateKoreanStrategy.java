@@ -1,0 +1,18 @@
+package io.bloomish.api.engine.metadata.strategy.field.data.language;
+
+import io.bloomish.api.engine.event.data.language.provider.KoreanProvider;
+import io.bloomish.api.engine.initialization.initializer.StrategyPoolInitializer;
+import io.bloomish.api.engine.metadata.annotation.data.language.TranslateKorean;
+import io.bloomish.api.engine.metadata.annotation.injection.Strategy;
+
+@Strategy(StrategyPoolInitializer.DEFAULT_FIELD_DATA)
+public class TranslateKoreanStrategy extends TranslationStrategy<TranslateKorean> {
+    public TranslateKoreanStrategy() {
+        super(KoreanProvider.class);
+    }
+
+    @Override
+    public Class<TranslateKorean> getAnnotationClass() {
+        return TranslateKorean.class;
+    }
+}
