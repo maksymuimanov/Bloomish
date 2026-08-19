@@ -9,19 +9,19 @@ import io.bloomish.api.engine.finalization.cleaner.ObjectPoolCleaner;
 import java.util.List;
 
 public class FinalizationLayer implements EngineLayer {
-    private List<ObjectPoolCleaner> objectPoolCleaners;
+    private List<ObjectPoolCleaner> cleaners;
 
     @Override
     public void processAllTasks() {
-        ApiMod.LOGGER.debug("Running {} ObjectPoolCleaners", objectPoolCleaners.size());
-        objectPoolCleaners.forEach(ObjectPoolCleaner::clear);
+        ApiMod.LOGGER.debug("Running {} ObjectPoolCleaners", cleaners.size());
+        cleaners.forEach(ObjectPoolCleaner::clear);
         ApiMod.LOGGER.debug("Running dynamic ObjectPoolCleaners from pool");
         ObjectPool objectPool = InjectionPool.getInstance();
         objectPool.getAll(ObjectPoolCleaner.class)
                 .forEach(ObjectPoolCleaner::clear);
     }
 
-    public void setContextCleaners(List<ObjectPoolCleaner> objectPoolCleaners) {
-        this.objectPoolCleaners = objectPoolCleaners;
+    public void setCleaners(List<ObjectPoolCleaner> cleaners) {
+        this.cleaners = cleaners;
     }
 }
