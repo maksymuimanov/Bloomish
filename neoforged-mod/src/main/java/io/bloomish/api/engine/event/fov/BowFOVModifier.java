@@ -1,26 +1,34 @@
 package io.bloomish.api.engine.event.fov;
 
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.neoforged.neoforge.client.event.ComputeFovModifierEvent;
 
 import java.util.Arrays;
 
 public class BowFOVModifier implements FOVModifier {
+    private static final float TICKS_PER_SECOND = 20.0F;
+    private static final float MAX_DRAW_PROGRESS = 1.0F;
+    private static final float FOV_REDUCTION = 0.15F;
+
     @Override
     public void modify(ComputeFovModifierEvent event, Item... items) {
-        if (checkItems(event, items)) {
-            float fov = event.getPlayer().getTicksUsingItem() / 20.0F;
-            if (fov > 1.0F) fov = 1.0F;
-            else fov *= fov;
-            event.setNewFovModifier(event.getFovModifier() * (1.0F - (fov * 0.15F)));
+        if (this.checkItems(event, items)) {
+            float fov = event.getPlayer().getTicksUsingItem() / TICKS_PER_SECOND;
+            fov = fov > MAX_DRAW_PROGRESS
+                    ? MAX_DRAW_PROGRESS
+                    : fov * fov;
+            event.setNewFovModifier(event.getFovModifier() * (MAX_DRAW_PROGRESS - fov * FOV_REDUCTION));
         }
     }
 
     private boolean checkItems(ComputeFovModifierEvent event, Item... items) {
-        return Arrays.stream(items).map(item -> checkUsingItem(event, item)).filter(condition -> condition.equals(Boolean.TRUE)).findAny().orElse(false);
+        return Arrays.stream(items)
+                .anyMatch(item -> this.checkUsingItem(event, item));
     }
 
     private boolean checkUsingItem(ComputeFovModifierEvent event, Item item) {
-        return event.getPlayer().getUseItem().is(item) && event.getPlayer().isUsingItem();
+        Player player = event.getPlayer();
+        return player.getUseItem().is(item) && player.isUsingItem();
     }
 }
