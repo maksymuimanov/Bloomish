@@ -19,10 +19,19 @@ public class SimpleCreativeModeTabAdder implements CreativeModeTabAdder {
             ItemLike... items
     ) {
         List<ItemLike> itemsToAdd = CollectionUtils.listOf(item, items);
-        itemsToAdd.forEach(itemToAdd -> this.addToTab(event, creativeModeTab, itemToAdd));
+        this.addAllToTab(event, creativeModeTab, itemsToAdd);
     }
 
-    private void addToTab(
+    @Override
+    public void addAllToTab(
+            BuildCreativeModeTabContentsEvent event,
+            ResourceKey<CreativeModeTab> creativeModeTab,
+            Iterable<ItemLike> items
+    ) {
+        items.forEach(itemToAdd -> this.addItemToTab(event, creativeModeTab, itemToAdd));
+    }
+
+    private void addItemToTab(
             BuildCreativeModeTabContentsEvent event,
             ResourceKey<CreativeModeTab> creativeModeTab,
             ItemLike item

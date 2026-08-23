@@ -12,4 +12,10 @@ public interface CreativeModeTabAdder {
             ItemLike item,
             ItemLike... items
     );
+
+    void addAllToTab(
+            BuildCreativeModeTabContentsEvent event,
+            ResourceKey<CreativeModeTab> creativeModeTab,
+            Iterable<ItemLike> items
+    );
 }
