@@ -1,7 +1,9 @@
 package io.bloomish.api.fml;
 
+import io.bloomish.api.engine.metadata.annotation.injection.Injected;
 import net.minecraft.world.item.Item;
 
+@Injected
 public class InstrumentClientSetup extends AbstractItemClientSetup {
     private static final String TOOTING = "tooting";
     private static final float FULL_TOOT = 1.0F;

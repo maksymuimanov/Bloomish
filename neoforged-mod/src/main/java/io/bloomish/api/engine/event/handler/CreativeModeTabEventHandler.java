@@ -1,7 +1,5 @@
 package io.bloomish.api.engine.event.handler;
 
-import io.bloomish.api.engine.event.tab.SimpleTabDirector;
-import io.bloomish.api.engine.event.tab.TabDirector;
 import io.bloomish.api.engine.metadata.annotation.injection.Handler;
 import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceKey;
@@ -21,7 +19,7 @@ public class CreativeModeTabEventHandler implements EventHandler {
     @Override
     public void handle() {
         this.subscribeModEvent(BuildCreativeModeTabContentsEvent.class, event -> {
-            TabDirector tabDirector = SimpleTabDirector.create(event);
+            CreativeModeTabDirector tabDirector = SimpleCreativeModeTabDirector.create(event);
             CREATIVE_MODE_TABS_CONTENT.forEach((tab, items) -> {
                 tabDirector.direct(tab, items.stream()
                         .map(Holder::value)

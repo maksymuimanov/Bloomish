@@ -1,7 +1,9 @@
 package io.bloomish.api.fml;
 
+import io.bloomish.api.engine.metadata.annotation.injection.Injected;
 import net.minecraft.world.item.Item;
 
+@Injected
 public class BowClientSetup extends AbstractItemClientSetup {
     private static final String PULL = "pull";
     private static final String PULLING = "pulling";

@@ -1,11 +1,13 @@
 package io.bloomish.api.fml;
 
+import io.bloomish.api.engine.metadata.annotation.injection.Injected;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.item.CrossbowItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.component.ChargedProjectiles;
 
+@Injected
 public class CrossbowClientSetup extends AbstractItemClientSetup {
     private static final String PULL = "pull";
     private static final String PULLING = "pulling";
