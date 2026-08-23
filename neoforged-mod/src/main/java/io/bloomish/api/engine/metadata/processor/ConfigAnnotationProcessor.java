@@ -1,6 +1,6 @@
 package io.bloomish.api.engine.metadata.processor;
 
-import io.bloomish.api.engine.context.EngineContext;
+import io.bloomish.api.engine.context.ModContext;
 import io.bloomish.api.engine.metadata.MetadataLayer;
 import io.bloomish.api.engine.metadata.annotation.injection.Processor;
 
@@ -10,6 +10,6 @@ public class ConfigAnnotationProcessor extends AbstractAnnotationProcessor {
 
     @Override
     public void process() {
-        this.processAll(MetadataLayer.ASYNC_STRATEGY_CONSUMER, EngineContext.currentMod.getClasses());
+        this.processAll(MetadataLayer.ASYNC_STRATEGY_CONSUMER, ModContext.currentMod.getClasses());
     }
 }

@@ -1,10 +1,11 @@
-package io.bloomish.api.engine.event.fov;
+package io.bloomish.api.fov;
 
+import io.bloomish.api.util.CollectionUtils;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.neoforged.neoforge.client.event.ComputeFovModifierEvent;
 
-import java.util.Arrays;
+import java.util.List;
 
 public class BowFOVModifier implements FOVModifier {
     private static final float TICKS_PER_SECOND = 20.0F;
@@ -12,8 +13,9 @@ public class BowFOVModifier implements FOVModifier {
     private static final float FOV_REDUCTION = 0.15F;
 
     @Override
-    public void modify(ComputeFovModifierEvent event, Item... items) {
-        if (this.checkItems(event, items)) {
+    public void modify(ComputeFovModifierEvent event, Item item, Item... items) {
+        List<Item> combinedItems = CollectionUtils.listOf(item, items);
+        if (this.checkItems(event, combinedItems)) {
             float fov = event.getPlayer().getTicksUsingItem() / TICKS_PER_SECOND;
             fov = fov > MAX_DRAW_PROGRESS
                     ? MAX_DRAW_PROGRESS
@@ -22,8 +24,8 @@ public class BowFOVModifier implements FOVModifier {
         }
     }
 
-    private boolean checkItems(ComputeFovModifierEvent event, Item... items) {
-        return Arrays.stream(items)
+    private boolean checkItems(ComputeFovModifierEvent event, List<Item> items) {
+        return items.stream()
                 .anyMatch(item -> this.checkUsingItem(event, item));
     }
 

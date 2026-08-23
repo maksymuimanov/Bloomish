@@ -1,6 +1,6 @@
 package io.bloomish.api.engine.event.data.pack;
 
-import io.bloomish.api.engine.context.EngineContext;
+import io.bloomish.api.engine.context.ModContext;
 import io.bloomish.api.engine.event.data.banner.ApiBannerPatternProvider;
 import io.bloomish.api.engine.event.data.biome.CompoundGenerationDefinitionFacade;
 import io.bloomish.api.engine.event.data.damage.ApiDamageTypeProvider;
@@ -35,6 +35,6 @@ public class ApiDatapackProvider extends DatapackBuiltinEntriesProvider {
             .add(NeoForgeRegistries.Keys.BIOME_MODIFIERS, CompoundGenerationDefinitionFacade::executeBiomeModifiers);
 
     public ApiDatapackProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
-        super(output, registries, BUILDER, Set.of(EngineContext.currentMod.getModId()));
+        super(output, registries, BUILDER, Set.of(ModContext.currentMod.getModId()));
     }
 }

@@ -1,7 +1,7 @@
 package io.bloomish.api.engine.registry.registrar;
 
 import io.bloomish.api.engine.context.DefaultObjectRegistry;
-import io.bloomish.api.engine.context.EngineContext;
+import io.bloomish.api.engine.context.ModContext;
 import io.bloomish.api.engine.registry.factory.ObjectFactory;
 import io.bloomish.api.util.ReflectionUtils;
 import net.neoforged.bus.api.IEventBus;
@@ -9,7 +9,7 @@ import net.neoforged.bus.api.IEventBus;
 public class FieldTypeFactoryRegistrar implements FactoryRegistrar {
     @Override
     public void registerFactories(IEventBus eventBus) {
-        EngineContext.currentMod.getClasses()
+        ModContext.currentMod.getClasses()
                 .stream()
                 .filter(ReflectionUtils::isFactoryPresent)
                 .forEach(clazz -> {

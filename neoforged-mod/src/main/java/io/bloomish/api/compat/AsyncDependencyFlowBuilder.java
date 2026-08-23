@@ -1,33 +1,37 @@
 package io.bloomish.api.compat;
 
 import io.bloomish.api.ApiMod;
+import io.bloomish.api.util.CollectionUtils;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.*;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.ForkJoinPool;
 
 public class AsyncDependencyFlowBuilder extends AbstractDependencyFlowBuilder<AsyncDependencyFlowBuilder> {
     private final ExecutorService threadPool;
 
-    public static AsyncDependencyFlowBuilder ofDependencies(String dependencyId, String... additionalDependencyIds) {
-        List<String> ids = new ArrayList<>(additionalDependencyIds.length + 1);
-        ids.add(dependencyId);
-        ids.addAll(List.of(additionalDependencyIds));
+    public static AsyncDependencyFlowBuilder ofDependencies(String dependencyId, String... dependencyIds) {
+        List<String> ids = CollectionUtils.listOf(dependencyId, dependencyIds);
         return new AsyncDependencyFlowBuilder(ForkJoinPool.commonPool(), ids);
     }
 
-    public AsyncDependencyFlowBuilder(
-            ExecutorService threadPool,
-            List<String> dependencyIds
-    ) {
+    public AsyncDependencyFlowBuilder(ExecutorService threadPool, List<String> dependencyIds) {
         super(dependencyIds);
         this.threadPool = threadPool;
     }
 
+    public CompletableFuture<AsyncDependencyFlowBuilder> nextAsync(String dependencyId, String... dependencyIds) {
+        return this.buildAsync()
+                .thenApply(ignored -> {
+                    List<String> ids = CollectionUtils.listOf(dependencyId, dependencyIds);
+                    return new AsyncDependencyFlowBuilder(this.threadPool, ids);
+                });
+    }
 
     @Override
-    public AsyncDependencyFlowBuilder next(String dependencyId, String... additionalDependencyIds) {
-        return this.next(ofDependencies(dependencyId, additionalDependencyIds));
+    public AsyncDependencyFlowBuilder next(String dependencyId, String... dependencyIds) {
+        return this.next(ofDependencies(dependencyId, dependencyIds));
     }
 
     @Override

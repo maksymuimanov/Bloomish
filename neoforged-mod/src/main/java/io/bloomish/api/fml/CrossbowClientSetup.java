@@ -1,4 +1,4 @@
-package io.bloomish.api.engine.event.client;
+package io.bloomish.api.fml;
 
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.item.CrossbowItem;
@@ -15,11 +15,11 @@ public class CrossbowClientSetup extends AbstractItemClientSetup {
     private static final float NO_PULL = 0.0F;
 
     @Override
-    protected void setupItem(Item item) {
-        registerPull(item);
-        registerPulling(item);
-        registerCharged(item);
-        registerChargedFirework(item);
+    public void setup(Item data) {
+        this.registerPull(data);
+        this.registerPulling(data);
+        this.registerCharged(data);
+        this.registerChargedFirework(data);
     }
 
     private void registerPull(Item item) {

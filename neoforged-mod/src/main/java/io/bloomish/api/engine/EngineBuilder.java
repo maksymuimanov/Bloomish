@@ -3,7 +3,7 @@ package io.bloomish.api.engine;
 import io.bloomish.api.ApiMod;
 import io.bloomish.api.engine.config.ConfigLayer;
 import io.bloomish.api.engine.config.ConfigLayerCustomizer;
-import io.bloomish.api.engine.context.EngineContext;
+import io.bloomish.api.engine.context.ModContext;
 import io.bloomish.api.engine.event.EventLayer;
 import io.bloomish.api.engine.finalization.FinalizationLayer;
 import io.bloomish.api.engine.finalization.FinalizationLayerCustomizer;
@@ -98,7 +98,7 @@ public class EngineBuilder {
 
     public LayerContainer build() {
         this.layerContainer.getLayers().forEach(this::processLayer);
-        ApiMod.LOGGER.info("Mod: {} has been registered as a Bloomish component!", EngineContext.currentMod.getModId());
+        ApiMod.LOGGER.info("Mod: {} has been registered as a Bloomish component!", ModContext.currentMod.getModId());
         return this.layerContainer;
     }
 

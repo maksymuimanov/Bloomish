@@ -3,7 +3,7 @@ package io.bloomish.api.engine.config;
 import io.bloomish.api.ApiMod;
 import io.bloomish.api.engine.EngineLayer;
 import io.bloomish.api.engine.config.screen.ConfigShowcaser;
-import io.bloomish.api.engine.context.EngineContext;
+import io.bloomish.api.engine.context.ModContext;
 import io.bloomish.api.engine.metadata.processor.AnnotationProcessor;
 import io.bloomish.api.engine.metadata.processor.ConfigAnnotationProcessor;
 
@@ -25,7 +25,7 @@ public class ConfigLayer implements EngineLayer {
             ApiMod.LOGGER.debug("Running defaulted ConfigShowcaser - {}", configShowcaser.getClass().getName());
             configShowcaser.showcase();
         });
-        EngineContext.getObjects(ConfigShowcaser.class).forEach(configShowcaser -> {
+        ModContext.forEachObject(ConfigShowcaser.class, configShowcaser -> {
             ApiMod.LOGGER.debug("Running dynamic ConfigShowcaser - {}", configShowcaser.getClass().getName());
             configShowcaser.showcase();
         });

@@ -1,25 +1,13 @@
-package io.bloomish.api.engine.event.client;
+package io.bloomish.api.fml;
 
 import net.minecraft.client.renderer.item.ClampedItemPropertyFunction;
 import net.minecraft.client.renderer.item.ItemProperties;
-import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 
-import java.util.List;
-
-public abstract class AbstractItemClientSetup implements ClientSetup<Holder<? extends Item>>{
-    @Override
-    public void setup(List<Holder<? extends Item>> source) {
-        source.stream()
-                .map(Holder::value)
-                .forEach(this::setupItem);
-    }
-
-    protected abstract void setupItem(Item item);
-
+public abstract class AbstractItemClientSetup implements FmlClientSetup<Item> {
     protected void registerProperty(Item item, String property, ClampedItemPropertyFunction propertyFunction) {
         ItemProperties.register(item, ResourceLocation.withDefaultNamespace(property), propertyFunction);
     }

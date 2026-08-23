@@ -1,6 +1,6 @@
 package io.bloomish.api.engine.registry.factory;
 
-import io.bloomish.api.engine.context.EngineContext;
+import io.bloomish.api.engine.context.ModContext;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.block.grower.TreeGrower;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
@@ -16,7 +16,7 @@ public final class TreeGrowerFactory {
     }
 
     public static TreeGrower create(String name, ResourceKey<ConfiguredFeature<?, ?>> megaTree, ResourceKey<ConfiguredFeature<?, ?>> tree, ResourceKey<ConfiguredFeature<?, ?>> flowers) {
-        return new TreeGrower(EngineContext.currentMod.getModId() + ":" + name,
+        return new TreeGrower(ModContext.currentMod.getModId() + ":" + name,
                 Optional.ofNullable(megaTree),
                 Optional.of(tree),
                 Optional.ofNullable(flowers));

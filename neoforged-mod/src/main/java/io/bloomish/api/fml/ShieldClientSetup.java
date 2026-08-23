@@ -1,4 +1,4 @@
-package io.bloomish.api.engine.event.client;
+package io.bloomish.api.fml;
 
 import net.minecraft.world.item.Item;
 
@@ -8,7 +8,12 @@ public class ShieldClientSetup extends AbstractItemClientSetup {
     private static final float NO_BLOCK = 0.0F;
 
     @Override
-    protected void setupItem(Item item) {
+    public void setup(Item data) {
+        this.registerBlocking(data);
+    }
+
+    @Override
+    private void registerBlocking(Item item) {
         this.registerProperty(item, BLOCKING, (stack, level, entity, seed) ->
                 this.isEntityUsing(stack, entity) ? FULL_BLOCK : NO_BLOCK
         );

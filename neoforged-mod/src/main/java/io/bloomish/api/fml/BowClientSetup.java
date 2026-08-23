@@ -1,4 +1,4 @@
-package io.bloomish.api.engine.event.client;
+package io.bloomish.api.fml;
 
 import net.minecraft.world.item.Item;
 
@@ -10,9 +10,9 @@ public class BowClientSetup extends AbstractItemClientSetup {
     private static final float TICKS_PER_SECOND = 20.0F;
 
     @Override
-    protected void setupItem(Item item) {
-        registerPull(item);
-        registerPulling(item);
+    public void setup(Item data) {
+        this.registerPull(data);
+        this.registerPulling(data);
     }
 
     private void registerPull(Item item) {

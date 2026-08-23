@@ -5,6 +5,7 @@ import io.bloomish.api.engine.EngineLayer;
 import io.bloomish.api.engine.event.pool.HandlerPool;
 import io.bloomish.api.engine.event.pool.SimpleHandlerPool;
 
+//TODO: Overall event handler needs to be reworked
 public class EventLayer implements EngineLayer {
     @Override
     public void process() {

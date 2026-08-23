@@ -1,6 +1,6 @@
 package io.bloomish.api.util;
 
-import io.bloomish.api.engine.context.EngineContext;
+import io.bloomish.api.engine.context.ModContext;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -41,7 +41,7 @@ public final class ResourceUtils {
     }
 
     public static ResourceLocation createLocation(String id) {
-        return ResourceLocation.fromNamespaceAndPath(EngineContext.currentMod.getModId(), id);
+        return ResourceLocation.fromNamespaceAndPath(ModContext.currentMod.getModId(), id);
     }
 
     public static String getResourceId(ResourceKey<?> resourceKey) {

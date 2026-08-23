@@ -7,7 +7,7 @@ public interface DependencyFlowBuilder<B extends DependencyFlowBuilder<B>> {
 
     B onDependency(DependencyFunction callback);
 
-    B next(String dependencyId, String... additionalDependencyIds);
+    B next(String dependencyId, String... dependencyIds);
 
     B next(B nextBuilder);
 

@@ -1,9 +1,9 @@
 package io.bloomish.api.engine.context;
 
 public interface ObjectRegistryContext<K> {
-    ObjectRegistry getCurrentRegistry();
+    ObjectRegistry getRegistry();
 
-    void setCurrentRegistry(ObjectRegistry registry);
+    void setRegistry(ObjectRegistry registry);
 
     ObjectRegistry getRegistry(K key);
 

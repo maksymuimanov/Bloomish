@@ -1,6 +1,6 @@
 package io.bloomish.api.engine.event.data.recipe.strategy;
 
-import io.bloomish.api.engine.context.EngineContext;
+import io.bloomish.api.engine.context.ModContext;
 import io.bloomish.api.engine.event.data.recipe.ApiRecipeProvider;
 import io.bloomish.api.engine.event.data.recipe.description.BlastingRecipeDescription;
 import net.minecraft.data.recipes.RecipeOutput;
@@ -15,7 +15,7 @@ public class BlastingRecipeStrategy implements RecipeStrategy<BlastingRecipeDesc
                         description.getExperience(), description.getCookingTime())
                 .group(description.getGroup())
                 .unlockedBy(ApiRecipeProvider.getHasName(description.getIngredient()), ApiRecipeProvider.has(description.getIngredient()))
-                .save(recipeOutput, EngineContext.currentMod.getModId() + ":" + ApiRecipeProvider.getItemName(description.getResult()) + description.getName() + "_" + ApiRecipeProvider.getItemName(description.getIngredient()));
+                .save(recipeOutput, ModContext.currentMod.getModId() + ":" + ApiRecipeProvider.getItemName(description.getResult()) + description.getName() + "_" + ApiRecipeProvider.getItemName(description.getIngredient()));
 
     }
 }

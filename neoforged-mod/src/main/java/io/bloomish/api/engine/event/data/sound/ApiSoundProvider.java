@@ -1,7 +1,7 @@
 package io.bloomish.api.engine.event.data.sound;
 
 import io.bloomish.api.core.collection.TemporalMap;
-import io.bloomish.api.engine.context.EngineContext;
+import io.bloomish.api.engine.context.ModContext;
 import io.bloomish.api.engine.event.data.language.transformer.SoundEventTransformer;
 import net.minecraft.Util;
 import net.minecraft.data.PackOutput;
@@ -17,12 +17,12 @@ public class ApiSoundProvider extends SoundDefinitionsProvider {
     public static final Map<SoundHolder, List<SoundDescription>> SOUNDS = new TemporalMap<>();
 
     public ApiSoundProvider(PackOutput output, ExistingFileHelper existingFileHelper) {
-        super(output, EngineContext.currentMod.getModId(), existingFileHelper);
+        super(output, ModContext.currentMod.getModId(), existingFileHelper);
     }
 
     @Override
     public void registerSounds() {
-        final String modId = EngineContext.currentMod.getModId();
+        final String modId = ModContext.currentMod.getModId();
         SOUNDS.forEach((holder, descriptions) -> {
             SoundDefinition soundDefinition = definition();
             descriptions.forEach(soundDescription -> soundDefinition.with(

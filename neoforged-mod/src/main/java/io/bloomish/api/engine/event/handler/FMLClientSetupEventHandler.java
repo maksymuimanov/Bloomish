@@ -1,7 +1,7 @@
 package io.bloomish.api.engine.event.handler;
 
-import io.bloomish.api.engine.event.client.*;
 import io.bloomish.api.engine.metadata.annotation.injection.Handler;
+import io.bloomish.api.fml.*;
 import net.minecraft.core.Holder;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.state.properties.WoodType;
@@ -17,11 +17,11 @@ public class FMLClientSetupEventHandler implements EventHandler {
     public static final List<Holder<? extends Item>> SHIELDS = new ArrayList<>();
     public static final List<Holder<? extends Item>> INSTRUMENTS = new ArrayList<>();
     public static final List<WoodType> WOOD_TYPES = new ArrayList<>();
-    private static final ClientSetup<Holder<? extends Item>> BOW_STRATEGY = new BowClientSetup();
-    private static final ClientSetup<Holder<? extends Item>> CROSSBOW_STRATEGY = new CrossbowClientSetup();
-    private static final ClientSetup<Holder<? extends Item>> SHIELD_STRATEGY = new ShieldClientSetup();
-    private static final ClientSetup<Holder<? extends Item>> INSTRUMENT_STRATEGY = new InstrumentClientSetup();
-    private static final ClientSetup<WoodType> WOOD_TYPE_STRATEGY = new WoodTypeClientSetup();
+    private static final FmlClientSetup<Holder<? extends Item>> BOW_STRATEGY = new BowClientSetup();
+    private static final FmlClientSetup<Holder<? extends Item>> CROSSBOW_STRATEGY = new CrossbowClientSetup();
+    private static final FmlClientSetup<Holder<? extends Item>> SHIELD_STRATEGY = new ShieldClientSetup();
+    private static final FmlClientSetup<Holder<? extends Item>> INSTRUMENT_STRATEGY = new InstrumentClientSetup();
+    private static final FmlClientSetup<WoodType> WOOD_TYPE_STRATEGY = new WoodTypeClientSetup();
 
     @Override
     public void handle() {

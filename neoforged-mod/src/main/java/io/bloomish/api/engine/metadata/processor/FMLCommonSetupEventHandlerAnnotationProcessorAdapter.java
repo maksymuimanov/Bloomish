@@ -1,7 +1,7 @@
 package io.bloomish.api.engine.metadata.processor;
 
 import io.bloomish.api.ApiMod;
-import io.bloomish.api.engine.context.EngineContext;
+import io.bloomish.api.engine.context.ModContext;
 import io.bloomish.api.engine.metadata.MetadataLayer;
 import io.bloomish.api.engine.metadata.annotation.injection.Processor;
 import net.neoforged.bus.api.EventPriority;
@@ -14,8 +14,8 @@ public class FMLCommonSetupEventHandlerAnnotationProcessorAdapter extends Abstra
     @Override
     public void handle() {
         this.subscribeModEvent(FMLCommonSetupEvent.class, event -> {
-            ApiMod.LOGGER.info("FMLCommonSetupEvent received for modId: {}", EngineContext.currentMod.getModId());
-            event.enqueueWork(() -> this.processAll(MetadataLayer.ASYNC_STRATEGY_CONSUMER, EngineContext.ALL_CLASSES));
+            ApiMod.LOGGER.info("FMLCommonSetupEvent received for modId: {}", ModContext.currentMod.getModId());
+            event.enqueueWork(() -> this.processAll(MetadataLayer.ASYNC_STRATEGY_CONSUMER, ModContext.ALL_CLASSES));
         }, EventPriority.HIGHEST);
     }
 }

@@ -1,6 +1,6 @@
 package io.bloomish.api.engine.event.data.model.item;
 
-import io.bloomish.api.engine.context.EngineContext;
+import io.bloomish.api.engine.context.ModContext;
 import io.bloomish.api.engine.event.data.model.ModelConstants;
 import io.bloomish.api.engine.event.data.model.item.spec.ItemModelSpec;
 import io.bloomish.api.util.ResourceUtils;
@@ -15,7 +15,7 @@ public class ApiItemModelProvider extends ItemModelProvider {
     private static final ItemModelProviderStrategyConsumer CONSUMER = new ItemModelProviderStrategyConsumerImpl();
 
     public ApiItemModelProvider(PackOutput output, ExistingFileHelper existingFileHelper) {
-        super(output, EngineContext.currentMod.getModId(), existingFileHelper);
+        super(output, ModContext.currentMod.getModId(), existingFileHelper);
     }
 
     @Override

@@ -17,11 +17,10 @@ public class BlockEntityTypeEventHandler implements EventHandler {
     @Override
     public void handle() {
         this.subscribeModEvent(BlockEntityTypeAddBlocksEvent.class, event -> {
-            BLOCKS.forEach((type, holders) -> {
-                event.modify(type, holders.stream()
-                        .map(Holder::value)
-                        .toArray(Block[]::new));
-            });
+            BLOCKS.forEach((type, holders) ->
+                    event.modify(type, holders.stream()
+                            .map(Holder::value)
+                            .toArray(Block[]::new)));
             BLOCKS.clear();
         });
     }

@@ -1,7 +1,7 @@
 package io.bloomish.api.engine.event.data.model.block;
 
 import io.bloomish.api.common.block.ApiCropBlock;
-import io.bloomish.api.engine.context.EngineContext;
+import io.bloomish.api.engine.context.ModContext;
 import io.bloomish.api.engine.event.data.model.RenderTypes;
 import io.bloomish.api.engine.event.data.model.block.spec.BlockModelSpec;
 import io.bloomish.api.engine.event.data.model.block.spec.DependantBlockModelSpec;
@@ -22,7 +22,7 @@ public class ApiBlockModelProvider extends BlockStateProvider {
     private static final BlockModelProviderStrategyConsumer CONSUMER = new BlockModelProviderStrategyConsumerImpl();
 
     public ApiBlockModelProvider(PackOutput output, ExistingFileHelper existingFileHelper) {
-        super(output, EngineContext.currentMod.getModId(), existingFileHelper);
+        super(output, ModContext.currentMod.getModId(), existingFileHelper);
     }
 
     @Override

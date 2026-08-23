@@ -20,16 +20,16 @@ public class InitializationLayer implements EngineLayer {
 
     @Override
     public void process() {
-        EngineContext engineContext = EngineContext.getInstance();
-        NeoMod mod = this.initializeMod(engineContext);
-        Set<Class<?>> initializationClasses = this.aggregateClassesForInitialization(mod);
-        ObjectRegistry objectRegistry = this.initializeObjectRegistry(engineContext, mod.modId());
+        ModContext modContext = ModContext.getInstance();
+        NeoMod neoMod = this.initializeMod(modContext);
+        Set<Class<?>> initializationClasses = this.aggregateClassesForInitialization(neoMod);
+        ObjectRegistry objectRegistry = this.initializeObjectRegistry(modContext, neoMod.modId());
         this.executeInitialization(initializationClasses, objectRegistry);
     }
 
-    private NeoMod initializeMod(ModContext modContext) {
+    private NeoMod initializeMod(NeoModContext neoModContext) {
         NeoMod mod = NeoModFactory.discover(this.modClass, this.classScanners);
-        modContext.setCurrentMod(mod);
+        neoModContext.setNeoMod(mod);
         ApiMod.LOGGER.info("NeoMod dependency discovered: modId={}", mod.modId());
         return mod;
     }
@@ -46,7 +46,7 @@ public class InitializationLayer implements EngineLayer {
 
     private ObjectRegistry initializeObjectRegistry(ObjectRegistryContext<String> registryContext, String modId) {
         ObjectRegistry objectRegistry = registryContext.createRegistry(modId);
-        registryContext.setCurrentRegistry(objectRegistry);
+        registryContext.setRegistry(objectRegistry);
         ApiMod.LOGGER.debug("ObjectRegistry is initialized for modId: {}", modId);
         return objectRegistry;
     }
@@ -56,7 +56,7 @@ public class InitializationLayer implements EngineLayer {
             ApiMod.LOGGER.debug("Running defaulted ObjectPoolInitializer - {}", initializer.getClass().getName());
             initializer.initialize(initializationClasses, this.externalSource, objectRegistry);
         });
-        objectRegistry.getAll(ObjectRegistryInitializer.class).forEach(initializer -> {
+        ModContext.forEachObject(ObjectRegistryInitializer.class, initializer -> {
             ApiMod.LOGGER.debug("Running dynamic ObjectPoolInitializer - {}", initializer.getClass().getName());
             initializer.initialize(initializationClasses, this.externalSource, objectRegistry);
         });

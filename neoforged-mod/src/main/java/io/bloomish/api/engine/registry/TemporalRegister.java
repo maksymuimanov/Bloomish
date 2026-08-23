@@ -1,7 +1,7 @@
 package io.bloomish.api.engine.registry;
 
 import io.bloomish.api.ApiMod;
-import io.bloomish.api.engine.context.EngineContext;
+import io.bloomish.api.engine.context.ModContext;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
@@ -43,15 +43,15 @@ public class TemporalRegister<T> extends DeferredRegister<T> {
     }
 
     public static TemporalItems createItems() {
-        return new TemporalItems(EngineContext.currentMod.getModId());
+        return new TemporalItems(ModContext.currentMod.getModId());
     }
 
     public static TemporalBlocks createBlocks() {
-        return new TemporalBlocks(EngineContext.currentMod.getModId());
+        return new TemporalBlocks(ModContext.currentMod.getModId());
     }
 
     public static <T> TemporalRegister<T> create(Registry<T> registry) {
-        return create(registry, EngineContext.currentMod.getModId());
+        return create(registry, ModContext.currentMod.getModId());
     }
 
     public static <T> TemporalRegister<T> create(Registry<T> registry, String namespace) {
@@ -59,7 +59,7 @@ public class TemporalRegister<T> extends DeferredRegister<T> {
     }
 
     public static <T> TemporalRegister<T> create(ResourceKey<? extends Registry<T>> key) {
-        return create(key, EngineContext.currentMod.getModId());
+        return create(key, ModContext.currentMod.getModId());
     }
 
     public static <T> TemporalRegister<T> create(ResourceKey<? extends Registry<T>> key, String namespace) {
@@ -67,7 +67,7 @@ public class TemporalRegister<T> extends DeferredRegister<T> {
     }
 
     public static <T> TemporalRegister<T> create(@NotNull ResourceLocation registryName) {
-        return create(registryName, EngineContext.currentMod.getModId());
+        return create(registryName, ModContext.currentMod.getModId());
     }
 
     public static <T> TemporalRegister<T> create(@NotNull ResourceLocation registryName, String namespace) {

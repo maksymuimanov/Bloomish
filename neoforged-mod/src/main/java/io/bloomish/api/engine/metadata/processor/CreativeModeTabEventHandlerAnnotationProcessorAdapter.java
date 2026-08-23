@@ -1,6 +1,6 @@
 package io.bloomish.api.engine.metadata.processor;
 
-import io.bloomish.api.engine.context.EngineContext;
+import io.bloomish.api.engine.context.ModContext;
 import io.bloomish.api.engine.event.handler.CreativeModeTabEventHandler;
 import io.bloomish.api.engine.metadata.MetadataLayer;
 import io.bloomish.api.engine.metadata.annotation.injection.Processor;
@@ -15,7 +15,7 @@ public class CreativeModeTabEventHandlerAnnotationProcessorAdapter extends Abstr
     public void handle() {
         this.subscribeModEvent(BuildCreativeModeTabContentsEvent.class, event -> {
             if (!CreativeModeTabEventHandler.CREATIVE_MODE_TABS_CONTENT.isEmpty()) return;
-            this.processAll(MetadataLayer.ASYNC_STRATEGY_CONSUMER, EngineContext.ALL_CLASSES);
+            this.processAll(MetadataLayer.ASYNC_STRATEGY_CONSUMER, ModContext.ALL_CLASSES);
         }, EventPriority.HIGHEST);
     }
 }

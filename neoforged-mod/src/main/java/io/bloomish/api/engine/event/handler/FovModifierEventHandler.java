@@ -1,8 +1,8 @@
 package io.bloomish.api.engine.event.handler;
 
-import io.bloomish.api.engine.event.fov.BowFOVModifier;
-import io.bloomish.api.engine.event.fov.FOVModifier;
 import io.bloomish.api.engine.metadata.annotation.injection.Handler;
+import io.bloomish.api.fov.BowFOVModifier;
+import io.bloomish.api.fov.FOVModifier;
 import net.minecraft.core.Holder;
 import net.minecraft.world.item.Item;
 import net.neoforged.neoforge.client.event.ComputeFovModifierEvent;
