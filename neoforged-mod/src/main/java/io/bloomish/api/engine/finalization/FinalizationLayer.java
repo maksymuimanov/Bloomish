@@ -3,7 +3,6 @@ package io.bloomish.api.engine.finalization;
 import io.bloomish.api.ApiMod;
 import io.bloomish.api.engine.EngineLayer;
 import io.bloomish.api.engine.context.ModContext;
-import io.bloomish.api.engine.finalization.cleaner.ObjectPoolCleaner;
 
 import java.util.List;
 

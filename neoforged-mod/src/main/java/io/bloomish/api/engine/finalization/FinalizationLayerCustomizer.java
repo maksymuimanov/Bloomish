@@ -1,7 +1,6 @@
 package io.bloomish.api.engine.finalization;
 
 import io.bloomish.api.engine.LayerCustomizer;
-import io.bloomish.api.engine.finalization.cleaner.ObjectPoolCleaner;
 
 import java.util.List;
 

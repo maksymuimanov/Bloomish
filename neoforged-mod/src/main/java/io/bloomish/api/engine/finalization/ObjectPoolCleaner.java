@@ -1,4 +1,4 @@
-package io.bloomish.api.engine.finalization.cleaner;
+package io.bloomish.api.engine.finalization;
 
 @FunctionalInterface
 public interface ObjectPoolCleaner {
