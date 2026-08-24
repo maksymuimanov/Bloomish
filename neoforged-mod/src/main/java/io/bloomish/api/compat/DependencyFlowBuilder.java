@@ -1,6 +1,6 @@
 package io.bloomish.api.compat;
 
-import io.bloomish.api.engine.event.handler.EventHandler;
+import io.bloomish.api.engine.event.EventHandler;
 
 public interface DependencyFlowBuilder<B extends DependencyFlowBuilder<B>> {
     B onEvent(EventHandler eventHandler);

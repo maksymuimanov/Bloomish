@@ -4,7 +4,6 @@ import io.bloomish.api.channel.DataChannel;
 import io.bloomish.api.channel.DataChannels;
 import io.bloomish.api.channel.ValueChannelBus;
 import io.bloomish.api.engine.event.subscriber.ModEventBusSubscriber;
-import io.bloomish.api.engine.metadata.annotation.injection.Handler;
 import io.bloomish.api.engine.metadata.annotation.injection.Injected;
 import io.bloomish.api.fml.*;
 import net.minecraft.core.Holder;
@@ -13,7 +12,6 @@ import net.minecraft.world.level.block.state.properties.WoodType;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 
 @Injected
-@Handler(FMLClientSetupEvent.class)
 public class FMLClientSetupEventHandler extends AbstractEventHandler<FMLClientSetupEvent> {
     private final ValueChannelBus channelBus;
     private final FmlClientSetup<Holder<? extends Item>> bowClientSetup;

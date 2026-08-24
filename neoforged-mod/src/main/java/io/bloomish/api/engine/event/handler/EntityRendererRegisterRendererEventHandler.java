@@ -3,14 +3,12 @@ package io.bloomish.api.engine.event.handler;
 import io.bloomish.api.channel.DataChannels;
 import io.bloomish.api.channel.ValueChannelBus;
 import io.bloomish.api.engine.event.subscriber.ModEventBusSubscriber;
-import io.bloomish.api.engine.metadata.annotation.injection.Handler;
 import io.bloomish.api.engine.metadata.annotation.injection.Injected;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 
 import java.util.function.Consumer;
 
 @Injected
-@Handler(EntityRenderersEvent.RegisterRenderers.class)
 public class EntityRendererRegisterRendererEventHandler extends AbstractEventHandler<EntityRenderersEvent.RegisterRenderers> {
     private final ValueChannelBus channelBus;
 

@@ -1,6 +1,7 @@
 package io.bloomish.api.engine.event.handler;
 
-import io.bloomish.api.engine.event.subscriber.EventBusSubscriber;
+import io.bloomish.api.engine.event.EventBusSubscriber;
+import io.bloomish.api.engine.event.EventHandler;
 import net.neoforged.bus.api.Event;
 
 public abstract class AbstractEventHandler<E extends Event> implements EventHandler {

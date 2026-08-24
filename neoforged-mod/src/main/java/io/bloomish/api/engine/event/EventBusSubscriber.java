@@ -1,4 +1,4 @@
-package io.bloomish.api.engine.event.subscriber;
+package io.bloomish.api.engine.event;
 
 import net.neoforged.bus.api.Event;
 import net.neoforged.bus.api.EventPriority;

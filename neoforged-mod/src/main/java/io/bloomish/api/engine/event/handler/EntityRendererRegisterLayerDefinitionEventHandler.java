@@ -3,14 +3,12 @@ package io.bloomish.api.engine.event.handler;
 import io.bloomish.api.channel.DataChannels;
 import io.bloomish.api.channel.KeyedChannelBus;
 import io.bloomish.api.engine.event.subscriber.ModEventBusSubscriber;
-import io.bloomish.api.engine.metadata.annotation.injection.Handler;
 import io.bloomish.api.engine.metadata.annotation.injection.Injected;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 
 @Injected
-@Handler(EntityRenderersEvent.RegisterLayerDefinitions.class)
 public class EntityRendererRegisterLayerDefinitionEventHandler extends AbstractEventHandler<EntityRenderersEvent.RegisterLayerDefinitions> {
     private final KeyedChannelBus channelBus;
 

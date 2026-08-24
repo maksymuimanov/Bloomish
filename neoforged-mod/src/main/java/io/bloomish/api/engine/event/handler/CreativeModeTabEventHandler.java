@@ -4,7 +4,6 @@ import io.bloomish.api.channel.DataChannels;
 import io.bloomish.api.channel.KeyedQueueChannelBus;
 import io.bloomish.api.creative.CreativeModeTabAdder;
 import io.bloomish.api.engine.event.subscriber.ModEventBusSubscriber;
-import io.bloomish.api.engine.metadata.annotation.injection.Handler;
 import io.bloomish.api.engine.metadata.annotation.injection.Injected;
 import io.bloomish.api.util.HolderUtils;
 import net.minecraft.core.Holder;
@@ -16,7 +15,6 @@ import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import java.util.Queue;
 
 @Injected
-@Handler(BuildCreativeModeTabContentsEvent.class)
 public class CreativeModeTabEventHandler extends AbstractEventHandler<BuildCreativeModeTabContentsEvent> {
     private final KeyedQueueChannelBus channelBus;
     private final CreativeModeTabAdder tabAdder;

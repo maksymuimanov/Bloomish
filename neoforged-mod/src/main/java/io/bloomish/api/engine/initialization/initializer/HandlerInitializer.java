@@ -1,7 +1,7 @@
 package io.bloomish.api.engine.initialization.initializer;
 
 import io.bloomish.api.engine.context.ObjectRegistry;
-import io.bloomish.api.engine.event.handler.EventHandler;
+import io.bloomish.api.engine.event.EventHandler;
 import io.bloomish.api.engine.event.pool.HandlerPool;
 import io.bloomish.api.engine.event.pool.SimpleHandlerPool;
 import io.bloomish.api.engine.metadata.annotation.injection.Handler;
