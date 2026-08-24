@@ -18,7 +18,7 @@ public class SimpleCreativeModeTabAdder implements CreativeModeTabAdder {
             ItemLike item,
             ItemLike... items
     ) {
-        List<ItemLike> itemsToAdd = CollectionUtils.listOf(item, items);
+        List<? extends ItemLike> itemsToAdd = CollectionUtils.listOf(item, items);
         this.addAllToTab(event, creativeModeTab, itemsToAdd);
     }
 
@@ -26,7 +26,7 @@ public class SimpleCreativeModeTabAdder implements CreativeModeTabAdder {
     public void addAllToTab(
             BuildCreativeModeTabContentsEvent event,
             ResourceKey<CreativeModeTab> creativeModeTab,
-            Iterable<ItemLike> items
+            Iterable<? extends ItemLike> items
     ) {
         items.forEach(itemToAdd -> this.addItemToTab(event, creativeModeTab, itemToAdd));
     }

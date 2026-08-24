@@ -9,6 +9,8 @@ import java.lang.annotation.Target;
 @Target(ElementType.TYPE)
 public @interface Injected {
     String value() default "";
+
     boolean isContextObject() default true;
+
     String mandatoryMod() default "";
 }

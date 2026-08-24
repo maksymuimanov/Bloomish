@@ -1,7 +1,8 @@
 package io.bloomish.api.engine.event.handler;
 
-import io.bloomish.api.channel.BiChannelBus;
-import io.bloomish.api.channel.Channels;
+import io.bloomish.api.channel.DataChannels;
+import io.bloomish.api.channel.KeyedChannelBus;
+import io.bloomish.api.engine.event.subscriber.ModEventBusSubscriber;
 import io.bloomish.api.engine.metadata.annotation.injection.Handler;
 import io.bloomish.api.engine.metadata.annotation.injection.Injected;
 import net.minecraft.core.Holder;
@@ -12,23 +13,24 @@ import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
 
 @Injected
 @Handler(EntityAttributeCreationEvent.class)
-public class EntityAttributeEventHandler implements EventHandler {
-    private final BiChannelBus biChannelBus;
+public class EntityAttributeEventHandler extends AbstractEventHandler<EntityAttributeCreationEvent> {
+    private final KeyedChannelBus channelBus;
 
-    public EntityAttributeEventHandler(BiChannelBus biChannelBus) {
-        this.biChannelBus = biChannelBus;
+    public EntityAttributeEventHandler(ModEventBusSubscriber eventBusSubscriber, KeyedChannelBus channelBus) {
+        super(eventBusSubscriber);
+        this.channelBus = channelBus;
+    }
+
+    @Override
+    protected void handle(EntityAttributeCreationEvent event) {
+        this.channelBus.<Holder<? extends EntityType<?>>, AttributeSupplier.Builder>forEachDrain(DataChannels.ENTITY_ATTRIBUTE_EVENT_HANDLER,
+                (entityType, attributes) ->
+                        this.addAttributesToEntity(event, entityType, attributes));
     }
 
     @SuppressWarnings("unchecked")
-    @Override
-    public void handle() {
-        this.subscribeModEvent(EntityAttributeCreationEvent.class, event -> {
-            this.biChannelBus.<Holder<? extends EntityType<?>>, AttributeSupplier.Builder>drain(Channels.ENTITY_ATTRIBUTE_EVENT_HANDLER_BI_CHANNEL)
-                    .forEach(entry -> {
-                        Holder<? extends EntityType<?>> holder = entry.key();
-                        AttributeSupplier.Builder attributes = entry.value();
-                        event.put((EntityType<? extends LivingEntity>) holder.value(), attributes.build());
-                    });
-        });
+    private void addAttributesToEntity(EntityAttributeCreationEvent event, Holder<? extends EntityType<?>> entityType, AttributeSupplier.Builder attributes) {
+        EntityType<? extends LivingEntity> livingEntityType = (EntityType<? extends LivingEntity>) entityType.value();
+        event.put(livingEntityType, attributes.build());
     }
 }

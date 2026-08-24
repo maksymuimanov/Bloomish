@@ -1,20 +1,27 @@
 package io.bloomish.api.engine.event.handler;
 
-import io.bloomish.api.core.collection.TemporalQueue;
+import io.bloomish.api.channel.DataChannels;
+import io.bloomish.api.channel.ValueChannelBus;
+import io.bloomish.api.engine.event.subscriber.ModEventBusSubscriber;
 import io.bloomish.api.engine.metadata.annotation.injection.Handler;
+import io.bloomish.api.engine.metadata.annotation.injection.Injected;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 
-import java.util.Queue;
 import java.util.function.Consumer;
 
+@Injected
 @Handler(EntityRenderersEvent.RegisterRenderers.class)
-public class EntityRendererRegisterRendererEventHandler implements EventHandler {
-    public static final Queue<Consumer<EntityRenderersEvent.RegisterRenderers>> RENDERING_REGISTRIES = new TemporalQueue<>();
+public class EntityRendererRegisterRendererEventHandler extends AbstractEventHandler<EntityRenderersEvent.RegisterRenderers> {
+    private final ValueChannelBus channelBus;
+
+    public EntityRendererRegisterRendererEventHandler(ModEventBusSubscriber eventBusSubscriber, ValueChannelBus channelBus) {
+        super(eventBusSubscriber);
+        this.channelBus = channelBus;
+    }
 
     @Override
-    public void handle() {
-        this.subscribeModEvent(EntityRenderersEvent.RegisterRenderers.class, event -> {
-            RENDERING_REGISTRIES.forEach(consumer -> consumer.accept(event));
-        });
+    protected void handle(EntityRenderersEvent.RegisterRenderers event) {
+        this.channelBus.<Consumer<EntityRenderersEvent.RegisterRenderers>>forEachDrain(DataChannels.ENTITY_RENDERER_REGISTER_RENDERER_EVENT_HANDLER,
+                consumer -> consumer.accept(event));
     }
 }

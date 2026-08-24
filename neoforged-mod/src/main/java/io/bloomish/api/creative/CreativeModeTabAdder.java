@@ -16,6 +16,6 @@ public interface CreativeModeTabAdder {
     void addAllToTab(
             BuildCreativeModeTabContentsEvent event,
             ResourceKey<CreativeModeTab> creativeModeTab,
-            Iterable<ItemLike> items
+            Iterable<? extends ItemLike> items
     );
 }

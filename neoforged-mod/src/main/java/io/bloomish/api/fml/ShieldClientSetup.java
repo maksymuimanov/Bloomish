@@ -10,8 +10,8 @@ public class ShieldClientSetup extends AbstractItemClientSetup {
     private static final float NO_BLOCK = 0.0F;
 
     @Override
-    public void setup(Item data) {
-        this.registerBlocking(data);
+    protected void setupItem(Item item) {
+        this.registerBlocking(item);
     }
 
     private void registerBlocking(Item item) {

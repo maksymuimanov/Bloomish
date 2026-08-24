@@ -12,9 +12,9 @@ public class BowClientSetup extends AbstractItemClientSetup {
     private static final float TICKS_PER_SECOND = 20.0F;
 
     @Override
-    public void setup(Item data) {
-        this.registerPull(data);
-        this.registerPulling(data);
+    protected void setupItem(Item item) {
+        this.registerPull(item);
+        this.registerPulling(item);
     }
 
     private void registerPull(Item item) {

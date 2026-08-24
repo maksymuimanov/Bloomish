@@ -9,7 +9,7 @@ import net.neoforged.neoforge.client.event.ComputeFovModifierEvent;
 import java.util.List;
 
 @Injected
-public class BowFOVModifier implements FOVModifier {
+public class BowFovModifier implements FovModifier {
     private static final float TICKS_PER_SECOND = 20.0F;
     private static final float MAX_DRAW_PROGRESS = 1.0F;
     private static final float FOV_REDUCTION = 0.15F;

@@ -17,11 +17,11 @@ public class CrossbowClientSetup extends AbstractItemClientSetup {
     private static final float NO_PULL = 0.0F;
 
     @Override
-    public void setup(Item data) {
-        this.registerPull(data);
-        this.registerPulling(data);
-        this.registerCharged(data);
-        this.registerChargedFirework(data);
+    protected void setupItem(Item item) {
+        this.registerPull(item);
+        this.registerPulling(item);
+        this.registerCharged(item);
+        this.registerChargedFirework(item);
     }
 
     private void registerPull(Item item) {

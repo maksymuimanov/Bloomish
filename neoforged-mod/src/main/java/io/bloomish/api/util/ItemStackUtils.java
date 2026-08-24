@@ -2,7 +2,7 @@ package io.bloomish.api.util;
 
 import net.minecraft.world.item.ItemStack;
 
-public class ItemStackUtils {
+public final class ItemStackUtils {
     private ItemStackUtils() {
     }
 

@@ -8,19 +8,20 @@ import java.util.Optional;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.function.Consumer;
 import java.util.stream.Stream;
 
 @Injected
-public class SimpleChannelBus implements ChannelBus {
-    private final Map<Channel, Queue<?>> channels;
+public class SimpleValueChannelBus implements ValueChannelBus {
+    private final Map<DataChannel, Queue<?>> channels;
 
-    public SimpleChannelBus() {
+    public SimpleValueChannelBus() {
         this.channels = new ConcurrentHashMap<>();
     }
 
     @SuppressWarnings("unchecked")
     @Override
-    public <T> void send(Channel channel, T data) {
+    public <T> void send(DataChannel channel, T data) {
         this.channels.compute(channel, (ignored, queue)  -> {
             if (queue == null) {
                 return CollectionUtils.concurrentLinkedQueueOf(data);
@@ -30,16 +31,26 @@ public class SimpleChannelBus implements ChannelBus {
         });
     }
 
+    @Override
+    public <T> void forEach(DataChannel channel, Consumer<? super T> consumer) {
+        this.<T>stream(channel).forEach(consumer);
+    }
+
     @SuppressWarnings("unchecked")
     @Override
-    public <T> Stream<T> receive(Channel channel) {
+    public <T> Stream<T> stream(DataChannel channel) {
         return this.channels.getOrDefault(channel, new ConcurrentLinkedQueue<>())
                 .stream()
                 .map(data -> (T) data);
     }
 
     @Override
-    public <T> Stream<T> drain(Channel channel) {
+    public <T> void forEachDrain(DataChannel channel, Consumer<? super T> consumer) {
+        this.<T>drain(channel).forEach(consumer);
+    }
+
+    @Override
+    public <T> Stream<T> drain(DataChannel channel) {
         return Optional.ofNullable(this.channels.remove(channel))
                 .orElse(new ConcurrentLinkedQueue<>())
                 .stream()

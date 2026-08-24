@@ -10,8 +10,8 @@ public class InstrumentClientSetup extends AbstractItemClientSetup {
     private static final float NO_TOOT = 0.0F;
 
     @Override
-    public void setup(Item data) {
-        this.registerTooting(data);
+    protected void setupItem(Item item) {
+        this.registerTooting(item);
     }
 
     private void registerTooting(Item item) {
