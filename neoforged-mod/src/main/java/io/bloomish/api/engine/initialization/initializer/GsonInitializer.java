@@ -2,6 +2,7 @@ package io.bloomish.api.engine.initialization.initializer;
 
 import com.google.gson.Gson;
 import io.bloomish.api.engine.context.ObjectRegistry;
+import io.bloomish.api.engine.initialization.ObjectRegistryInitializer;
 
 import java.util.Collection;
 import java.util.List;

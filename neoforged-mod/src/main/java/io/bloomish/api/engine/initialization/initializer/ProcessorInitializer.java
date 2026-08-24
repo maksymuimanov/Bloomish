@@ -1,6 +1,7 @@
 package io.bloomish.api.engine.initialization.initializer;
 
 import io.bloomish.api.engine.context.ObjectRegistry;
+import io.bloomish.api.engine.initialization.ObjectRegistryInitializer;
 import io.bloomish.api.engine.metadata.annotation.injection.Processor;
 import io.bloomish.api.engine.metadata.pool.ProcessorPool;
 import io.bloomish.api.engine.metadata.pool.ProcessorScope;

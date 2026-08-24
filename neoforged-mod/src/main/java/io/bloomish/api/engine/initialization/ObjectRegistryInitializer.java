@@ -1,4 +1,4 @@
-package io.bloomish.api.engine.initialization.initializer;
+package io.bloomish.api.engine.initialization;
 
 import io.bloomish.api.engine.context.ObjectRegistry;
 

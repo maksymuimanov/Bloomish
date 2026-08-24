@@ -4,6 +4,7 @@ import io.bloomish.api.engine.context.ObjectRegistry;
 import io.bloomish.api.engine.event.EventHandler;
 import io.bloomish.api.engine.event.pool.HandlerPool;
 import io.bloomish.api.engine.event.pool.SimpleHandlerPool;
+import io.bloomish.api.engine.initialization.ObjectRegistryInitializer;
 import io.bloomish.api.engine.metadata.annotation.injection.Handler;
 import io.bloomish.api.util.ReflectionUtils;
 

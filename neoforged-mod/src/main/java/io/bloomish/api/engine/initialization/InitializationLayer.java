@@ -3,7 +3,6 @@ package io.bloomish.api.engine.initialization;
 import io.bloomish.api.ApiMod;
 import io.bloomish.api.engine.EngineLayer;
 import io.bloomish.api.engine.context.*;
-import io.bloomish.api.engine.initialization.initializer.ObjectRegistryInitializer;
 import io.bloomish.api.engine.initialization.scanner.ModClassScanner;
 import io.bloomish.api.util.ReflectionUtils;
 

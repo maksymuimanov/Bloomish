@@ -2,8 +2,6 @@ package io.bloomish.api.engine.event.data;
 
 import io.bloomish.api.engine.event.data.advancement.AdvancementProviderFactory;
 import io.bloomish.api.engine.event.data.file.AtlasArmorTrimProvider;
-import com.bloomish.api.core.engine.event.data.language.provider.*;
-import io.bloomish.api.core.engine.event.data.language.provider.*;
 import io.bloomish.api.engine.event.data.language.provider.*;
 import io.bloomish.api.engine.event.data.loot.LootTableProviderFactory;
 import io.bloomish.api.engine.event.data.map.ApiDataMapProvider;
@@ -19,9 +17,8 @@ import io.bloomish.api.engine.event.data.preparer.tag.EnchantmentTagDynamicPrepa
 import io.bloomish.api.engine.event.data.preparer.tag.ItemTagDynamicPreparer;
 import io.bloomish.api.engine.event.data.recipe.ApiRecipeProvider;
 import io.bloomish.api.engine.event.data.sound.ApiSoundProvider;
-import com.bloomish.api.core.engine.event.data.tag.*;
-import io.bloomish.api.core.engine.event.data.tag.*;
 import io.bloomish.api.engine.event.data.tag.*;
+import io.bloomish.api.engine.metadata.annotation.injection.Injected;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
@@ -32,6 +29,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
+@Injected
 public class ApiDataGenerator implements DataGatherer {
     @Override
     public void gatherData(GatherDataEvent event) {
