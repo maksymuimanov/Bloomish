@@ -30,6 +30,9 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public final class TagUtils {
+    private TagUtils() {
+    }
+
     public static TagKey<BannerPattern> createBannerPattern(String id) {
         return createTag(Registries.BANNER_PATTERN, id);
     }
