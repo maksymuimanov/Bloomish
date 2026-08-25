@@ -1,7 +1,7 @@
 package io.bloomish.api.engine.event.data.client.particle;
 
 import io.bloomish.api.core.collection.TemporalMap;
-import io.bloomish.api.util.ResourceUtils;
+import io.bloomish.api.util.DeprecatedResourceUtils;
 import net.minecraft.core.Holder;
 import net.minecraft.core.particles.ParticleType;
 import net.minecraft.data.PackOutput;
@@ -21,9 +21,9 @@ public class ApiParticleProvider extends ParticleDescriptionProvider {
     protected void addDescriptions() {
         PARTICLE_SPRITES.forEach((particleType, description) -> {
             if (description.count() <= 1) {
-                sprite(particleType.value(), ResourceUtils.parse(description.id()));
+                sprite(particleType.value(), DeprecatedResourceUtils.parse(description.id()));
             } else {
-                spriteSet(particleType.value(), ResourceUtils.parse(description.id()),
+                spriteSet(particleType.value(), DeprecatedResourceUtils.parse(description.id()),
                         description.count(),
                         description.reverse());
             }

@@ -2,7 +2,7 @@ package io.bloomish.api.engine.registry.factory;
 
 import com.mojang.serialization.MapCodec;
 import io.bloomish.api.engine.context.DefaultObjectRegistry;
-import io.bloomish.api.engine.registry.TemporalRegister;
+import io.bloomish.api.engine.registry.BloomishRegister;
 import net.minecraft.world.level.levelgen.placement.PlacementModifier;
 import net.minecraft.world.level.levelgen.placement.PlacementModifierType;
 import net.neoforged.neoforge.registries.DeferredHolder;
@@ -12,7 +12,7 @@ public class PlacementModifierTypeFactory extends AbstractObjectFactory<Placemen
         this(DefaultObjectRegistry.getFromInstance("$PlacementModifierTypes"));
     }
 
-    public PlacementModifierTypeFactory(TemporalRegister<PlacementModifierType<?>> register) {
+    public PlacementModifierTypeFactory(BloomishRegister<PlacementModifierType<?>> register) {
         super(register);
     }
 

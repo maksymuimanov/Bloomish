@@ -3,7 +3,7 @@ package io.bloomish.api.engine.event.data.client.model.item;
 import io.bloomish.api.engine.context.ModContext;
 import io.bloomish.api.engine.event.data.client.model.ModelConstants;
 import io.bloomish.api.engine.event.data.client.model.item.spec.ItemModelSpec;
-import io.bloomish.api.util.ResourceUtils;
+import io.bloomish.api.util.DeprecatedResourceUtils;
 import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.client.model.generators.ItemModelBuilder;
 import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
@@ -34,6 +34,6 @@ public class ApiItemModelProvider extends ItemModelProvider {
 
     public ItemModelBuilder simpleItem(String itemPath, String parent) {
         return this.withExistingParent(itemPath, ItemModelSpec.ITEM_PREFIX + "/" + parent)
-                .texture(ModelConstants.LAYER_0, ResourceUtils.parse(itemPath));
+                .texture(ModelConstants.LAYER_0, DeprecatedResourceUtils.parse(itemPath));
     }
 }

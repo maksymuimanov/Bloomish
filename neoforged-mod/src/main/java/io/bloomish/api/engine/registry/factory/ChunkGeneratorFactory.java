@@ -2,7 +2,7 @@ package io.bloomish.api.engine.registry.factory;
 
 import com.mojang.serialization.MapCodec;
 import io.bloomish.api.engine.context.DefaultObjectRegistry;
-import io.bloomish.api.engine.registry.TemporalRegister;
+import io.bloomish.api.engine.registry.BloomishRegister;
 import net.minecraft.world.level.chunk.ChunkGenerator;
 
 public class ChunkGeneratorFactory extends AbstractObjectFactory<MapCodec<? extends ChunkGenerator>> {
@@ -10,7 +10,7 @@ public class ChunkGeneratorFactory extends AbstractObjectFactory<MapCodec<? exte
         this(DefaultObjectRegistry.getFromInstance("$ChunkGenerators"));
     }
 
-    public ChunkGeneratorFactory(TemporalRegister<MapCodec<? extends ChunkGenerator>> register) {
+    public ChunkGeneratorFactory(BloomishRegister<MapCodec<? extends ChunkGenerator>> register) {
         super(register);
     }
 }

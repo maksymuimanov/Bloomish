@@ -2,7 +2,7 @@ package io.bloomish.api.engine.event.data.server.recipe.strategy;
 
 import io.bloomish.api.engine.event.data.server.recipe.ApiRecipeProvider;
 import io.bloomish.api.engine.event.data.server.recipe.description.SmithingTrimRecipeDescription;
-import io.bloomish.api.util.ResourceUtils;
+import io.bloomish.api.util.DeprecatedResourceUtils;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.SmithingTrimRecipeBuilder;
@@ -34,7 +34,7 @@ public class SmithingTrimRecipeStrategy implements RecipeStrategy<SmithingTrimRe
             path = UUID.randomUUID() + "_trim_recipe";
         }
 
-        ResourceKey<Recipe<?>> resourceKey = ResourceUtils.createKey(Registries.RECIPE, path);
+        ResourceKey<Recipe<?>> resourceKey = DeprecatedResourceUtils.createKey(Registries.RECIPE, path);
         builder.save(recipeOutput, resourceKey.location());
     }
 }

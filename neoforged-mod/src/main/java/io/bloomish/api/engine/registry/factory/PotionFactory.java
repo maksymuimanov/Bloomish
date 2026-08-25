@@ -1,7 +1,7 @@
 package io.bloomish.api.engine.registry.factory;
 
 import io.bloomish.api.engine.context.DefaultObjectRegistry;
-import io.bloomish.api.engine.registry.TemporalRegister;
+import io.bloomish.api.engine.registry.BloomishRegister;
 import net.minecraft.core.Holder;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -13,7 +13,7 @@ public class PotionFactory extends AbstractObjectFactory<Potion> {
         this(DefaultObjectRegistry.getFromInstance("$Potions"));
     }
 
-    public PotionFactory(TemporalRegister<Potion> register) {
+    public PotionFactory(BloomishRegister<Potion> register) {
         super(register);
     }
 

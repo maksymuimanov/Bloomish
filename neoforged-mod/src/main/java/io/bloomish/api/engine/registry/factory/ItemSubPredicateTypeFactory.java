@@ -2,7 +2,7 @@ package io.bloomish.api.engine.registry.factory;
 
 import com.mojang.serialization.Codec;
 import io.bloomish.api.engine.context.DefaultObjectRegistry;
-import io.bloomish.api.engine.registry.TemporalRegister;
+import io.bloomish.api.engine.registry.BloomishRegister;
 import net.minecraft.advancements.critereon.ItemSubPredicate;
 import net.neoforged.neoforge.registries.DeferredHolder;
 
@@ -11,7 +11,7 @@ public class ItemSubPredicateTypeFactory extends AbstractObjectFactory<ItemSubPr
         this(DefaultObjectRegistry.getFromInstance("$ItemSubPredicateTypes"));
     }
 
-    public ItemSubPredicateTypeFactory(TemporalRegister<ItemSubPredicate.Type<?>> register) {
+    public ItemSubPredicateTypeFactory(BloomishRegister<ItemSubPredicate.Type<?>> register) {
         super(register);
     }
 

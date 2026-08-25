@@ -3,7 +3,7 @@ package io.bloomish.api.engine.event.data.client.model.item.strategy;
 import io.bloomish.api.engine.event.data.client.model.item.ApiItemModelProvider;
 import io.bloomish.api.engine.event.data.client.model.item.ItemModelProviderStrategy;
 import io.bloomish.api.engine.event.data.client.model.item.spec.BlockItemModelSpec;
-import io.bloomish.api.util.ResourceUtils;
+import io.bloomish.api.util.DeprecatedResourceUtils;
 import net.minecraft.resources.ResourceLocation;
 
 public class WoodBlockItemModelProviderStrategy implements ItemModelProviderStrategy<BlockItemModelSpec> {
@@ -14,7 +14,7 @@ public class WoodBlockItemModelProviderStrategy implements ItemModelProviderStra
     public void registerItemModel(BlockItemModelSpec spec, ApiItemModelProvider provider) {
         String itemPath = spec.getPath();
         String blockPath = spec.getBlockPath().replace(WOOD, LOG);
-        ResourceLocation texture = ResourceUtils.parse(blockPath);
+        ResourceLocation texture = DeprecatedResourceUtils.parse(blockPath);
         provider.cubeColumn(itemPath, texture, texture);
     }
 }

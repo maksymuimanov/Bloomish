@@ -1,7 +1,6 @@
 package io.bloomish.api.engine.event.data.server.trim.pattern;
 
 import io.bloomish.api.core.collection.TemporalMap;
-import io.bloomish.api.engine.event.data.client.atlas.AtlasArmorTrimProvider;
 import io.bloomish.api.engine.event.data.client.language.transformer.TrimPatternTransformer;
 import io.bloomish.api.util.RegistryUtils;
 import net.minecraft.Util;
@@ -27,7 +26,7 @@ public class ApiTrimPatternProvider implements TrimPatternProvider {
             String descriptionId = Util.makeDescriptionId(TrimPatternTransformer.PREFIX, location);
             MutableComponent component = Component.translatable(descriptionId);
             context.register(trimPattern, new TrimPattern(location, itemHolder, component, description.decal()));
-            AtlasArmorTrimProvider.TRIM_PATTERNS_LOCATIONS.offer(location);
+            AtlasArmorTrimProvider1.TRIM_PATTERNS_LOCATIONS.offer(location);
         });
     }
 

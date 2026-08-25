@@ -2,7 +2,7 @@ package io.bloomish.api.engine.registry.factory;
 
 import com.mojang.serialization.MapCodec;
 import io.bloomish.api.engine.context.DefaultObjectRegistry;
-import io.bloomish.api.engine.registry.TemporalRegister;
+import io.bloomish.api.engine.registry.BloomishRegister;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacer;
 import net.minecraft.world.level.levelgen.feature.foliageplacers.FoliagePlacerType;
 import net.neoforged.neoforge.registries.DeferredHolder;
@@ -12,7 +12,7 @@ public class FoliagePlacerTypeFactory extends AbstractObjectFactory<FoliagePlace
         this(DefaultObjectRegistry.getFromInstance("$FoliagePlacerTypes"));
     }
 
-    public FoliagePlacerTypeFactory(TemporalRegister<FoliagePlacerType<?>> register) {
+    public FoliagePlacerTypeFactory(BloomishRegister<FoliagePlacerType<?>> register) {
         super(register);
     }
 

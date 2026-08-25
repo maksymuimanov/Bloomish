@@ -1,7 +1,7 @@
 package io.bloomish.api.engine.registry.factory;
 
 import io.bloomish.api.engine.context.DefaultObjectRegistry;
-import io.bloomish.api.engine.registry.TemporalRegister;
+import io.bloomish.api.engine.registry.BloomishRegister;
 import net.minecraft.world.level.gameevent.PositionSourceType;
 
 public class PositionSourceTypeFactory extends AbstractObjectFactory<PositionSourceType<?>> {
@@ -9,7 +9,7 @@ public class PositionSourceTypeFactory extends AbstractObjectFactory<PositionSou
         this(DefaultObjectRegistry.getFromInstance("$PositionSourceTypes"));
     }
 
-    public PositionSourceTypeFactory(TemporalRegister<PositionSourceType<?>> register) {
+    public PositionSourceTypeFactory(BloomishRegister<PositionSourceType<?>> register) {
         super(register);
     }
 }

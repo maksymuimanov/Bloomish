@@ -2,7 +2,7 @@ package io.bloomish.api.engine.initialization.initializer;
 
 import io.bloomish.api.engine.context.ObjectRegistry;
 import io.bloomish.api.engine.initialization.ObjectRegistryInitializer;
-import io.bloomish.api.engine.registry.TemporalRegister;
+import io.bloomish.api.engine.registry.BloomishRegister;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
@@ -11,7 +11,7 @@ import net.neoforged.neoforge.registries.NeoForgeRegistries;
 import java.util.Collection;
 import java.util.List;
 
-public class TemporalRegisterInitializer implements ObjectRegistryInitializer {
+public class BloomishRegisterInitializer implements ObjectRegistryInitializer {
     @Override
     public void initialize(Collection<Class<?>> classes, List<?> externalObjects, ObjectRegistry objectRegistry) {
         this.putRegister(objectRegistry, Registries.ACTIVITY, "$Activities");
@@ -23,7 +23,7 @@ public class TemporalRegisterInitializer implements ObjectRegistryInitializer {
         this.putRegister(objectRegistry, Registries.BLOCK_ENTITY_TYPE, "$BlockEntityTypes");
         this.putRegister(objectRegistry, Registries.BLOCK_PREDICATE_TYPE, "$BlockPredicateTypes");
         this.putRegister(objectRegistry, Registries.BLOCK_STATE_PROVIDER_TYPE, "$BlockStateProviderTypes");
-        objectRegistry.registerValueByName(TemporalRegister.createBlocks(), "$Blocks");
+        objectRegistry.registerValueByName(BloomishRegister.createBlocks(), "$Blocks");
         this.putRegister(objectRegistry, Registries.BLOCK_TYPE, "$BlockTypes");
         this.putRegister(objectRegistry, Registries.CARVER, "$Carvers");
         this.putRegister(objectRegistry, Registries.CHUNK_GENERATOR, "$ChunkGenerators");
@@ -56,7 +56,7 @@ public class TemporalRegisterInitializer implements ObjectRegistryInitializer {
         this.putRegister(objectRegistry, NeoForgeRegistries.Keys.INGREDIENT_TYPES, "$IngredientTypes");
         this.putRegister(objectRegistry, Registries.INT_PROVIDER_TYPE, "$IntProviderTypes");
         this.putRegister(objectRegistry, Registries.ITEM_SUB_PREDICATE_TYPE, "$ItemSubPredicateTypes");
-        objectRegistry.registerValueByName(TemporalRegister.createItems(), "$Items");
+        objectRegistry.registerValueByName(BloomishRegister.createItems(), "$Items");
         this.putRegister(objectRegistry, Registries.LOOT_CONDITION_TYPE, "$LootConditionTypes");
         this.putRegister(objectRegistry, Registries.LOOT_FUNCTION_TYPE, "$LootFunctionTypes");
         this.putRegister(objectRegistry, Registries.LOOT_NBT_PROVIDER_TYPE, "$LootNbtProviderTypes");
@@ -103,6 +103,6 @@ public class TemporalRegisterInitializer implements ObjectRegistryInitializer {
     }
 
     private <T> void putRegister(ObjectRegistry objectRegistry, ResourceKey<Registry<T>> registry, String name) {
-        objectRegistry.registerValueByName(TemporalRegister.create(registry), name);
+        objectRegistry.registerValueByName(BloomishRegister.create(registry), name);
     }
 }

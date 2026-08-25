@@ -2,7 +2,7 @@ package io.bloomish.api.engine.registry.factory;
 
 import com.mojang.serialization.MapCodec;
 import io.bloomish.api.engine.context.DefaultObjectRegistry;
-import io.bloomish.api.engine.registry.TemporalRegister;
+import io.bloomish.api.engine.registry.BloomishRegister;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;
 import net.minecraft.network.codec.StreamCodec;
@@ -15,7 +15,7 @@ public class IngredientTypeFactory extends AbstractObjectFactory<IngredientType<
         this(DefaultObjectRegistry.getFromInstance("$IngredientTypes"));
     }
 
-    public IngredientTypeFactory(TemporalRegister<IngredientType<?>> register) {
+    public IngredientTypeFactory(BloomishRegister<IngredientType<?>> register) {
         super(register);
     }
 

@@ -4,7 +4,7 @@ import io.bloomish.api.engine.metadata.annotation.data.language.TranslateAmerica
 import io.bloomish.api.engine.metadata.annotation.data.language.TranslateMultiple;
 import io.bloomish.api.engine.metadata.annotation.data.model.GenerateBannerPattern;
 import io.bloomish.api.engine.metadata.annotation.data.tag.AddBannerPatternTag;
-import io.bloomish.api.util.ResourceUtils;
+import io.bloomish.api.util.DeprecatedResourceUtils;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.block.entity.BannerPattern;
@@ -31,5 +31,5 @@ public final class ExampleBannerPatterns {
     })
     @GenerateBannerPattern
     @AddBannerPatternTag("example:pattern_item/example")
-    public static final ResourceKey<BannerPattern> EXAMPLE = ResourceUtils.createKey(Registries.BANNER_PATTERN, "example");
+    public static final ResourceKey<BannerPattern> EXAMPLE = DeprecatedResourceUtils.createKey(Registries.BANNER_PATTERN, "example");
 }

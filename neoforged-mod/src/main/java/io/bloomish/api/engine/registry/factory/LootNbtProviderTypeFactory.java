@@ -2,7 +2,7 @@ package io.bloomish.api.engine.registry.factory;
 
 import com.mojang.serialization.MapCodec;
 import io.bloomish.api.engine.context.DefaultObjectRegistry;
-import io.bloomish.api.engine.registry.TemporalRegister;
+import io.bloomish.api.engine.registry.BloomishRegister;
 import net.minecraft.world.level.storage.loot.providers.nbt.LootNbtProviderType;
 import net.minecraft.world.level.storage.loot.providers.nbt.NbtProvider;
 import net.neoforged.neoforge.registries.DeferredHolder;
@@ -12,7 +12,7 @@ public class LootNbtProviderTypeFactory extends AbstractObjectFactory<LootNbtPro
         this(DefaultObjectRegistry.getFromInstance("$LootNbtProviderTypes"));
     }
 
-    public LootNbtProviderTypeFactory(TemporalRegister<LootNbtProviderType> register) {
+    public LootNbtProviderTypeFactory(BloomishRegister<LootNbtProviderType> register) {
         super(register);
     }
 

@@ -2,7 +2,7 @@ package io.bloomish.api.engine.registry.factory;
 
 import com.mojang.serialization.Codec;
 import io.bloomish.api.engine.context.DefaultObjectRegistry;
-import io.bloomish.api.engine.registry.TemporalRegister;
+import io.bloomish.api.engine.registry.BloomishRegister;
 import net.neoforged.neoforge.attachment.AttachmentType;
 import net.neoforged.neoforge.registries.DeferredHolder;
 
@@ -13,7 +13,7 @@ public class AttachmentTypeFactory extends AbstractObjectFactory<AttachmentType<
         this(DefaultObjectRegistry.getFromInstance("$AttachmentTypes"));
     }
 
-    public AttachmentTypeFactory(TemporalRegister<AttachmentType<?>> register) {
+    public AttachmentTypeFactory(BloomishRegister<AttachmentType<?>> register) {
         super(register);
     }
 

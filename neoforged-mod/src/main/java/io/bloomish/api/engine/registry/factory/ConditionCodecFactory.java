@@ -2,7 +2,7 @@ package io.bloomish.api.engine.registry.factory;
 
 import com.mojang.serialization.MapCodec;
 import io.bloomish.api.engine.context.DefaultObjectRegistry;
-import io.bloomish.api.engine.registry.TemporalRegister;
+import io.bloomish.api.engine.registry.BloomishRegister;
 import net.neoforged.neoforge.common.conditions.ICondition;
 
 public class ConditionCodecFactory extends AbstractObjectFactory<MapCodec<? extends ICondition>> {
@@ -10,7 +10,7 @@ public class ConditionCodecFactory extends AbstractObjectFactory<MapCodec<? exte
         this(DefaultObjectRegistry.getFromInstance("$ConditionCodecs"));
     }
 
-    public ConditionCodecFactory(TemporalRegister<MapCodec<? extends ICondition>> register) {
+    public ConditionCodecFactory(BloomishRegister<MapCodec<? extends ICondition>> register) {
         super(register);
     }
 }

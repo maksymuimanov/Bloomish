@@ -9,7 +9,7 @@ import java.util.List;
 
 public class InitializationLayerCustomizer implements LayerCustomizer<InitializationLayer> {
     private static final List<ModClassScanner> DEFAULT_CLASS_SCANNERS = List.of(new ClasspathModClassScanner());
-    private static final List<ObjectRegistryInitializer> DEFAULT_INITIALIZERS = List.of(new PackOutputInitializer(), new GsonInitializer(), new TemporalRegisterInitializer(), new FactoryInitializer(), new EventBusInitializer(), new ModContainerInitializer(), new InjectedInitializer(), new StrategyInitializer(), new ProcessorInitializer());
+    private static final List<ObjectRegistryInitializer> DEFAULT_INITIALIZERS = List.of(new PackOutputInitializer(), new GsonInitializer(), new BloomishRegisterInitializer(), new FactoryInitializer(), new EventBusInitializer(), new ModContainerInitializer(), new InjectedInitializer(), new StrategyInitializer(), new ProcessorInitializer());
     private Class<?> modClass;
     private List<ModClassScanner> classScanners;
     private List<ObjectRegistryInitializer> initializers;

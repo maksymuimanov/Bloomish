@@ -2,7 +2,7 @@ package io.bloomish.api.engine.registry.factory;
 
 import com.mojang.serialization.MapCodec;
 import io.bloomish.api.engine.context.DefaultObjectRegistry;
-import io.bloomish.api.engine.registry.TemporalRegister;
+import io.bloomish.api.engine.registry.BloomishRegister;
 import net.minecraft.world.item.enchantment.effects.EnchantmentEntityEffect;
 
 public class EnchantmentEntityEffectTypeFactory extends AbstractObjectFactory<MapCodec<? extends EnchantmentEntityEffect>> {
@@ -10,7 +10,7 @@ public class EnchantmentEntityEffectTypeFactory extends AbstractObjectFactory<Ma
         this(DefaultObjectRegistry.getFromInstance("$EnchantmentEntityEffectTypes"));
     }
 
-    public EnchantmentEntityEffectTypeFactory(TemporalRegister<MapCodec<? extends EnchantmentEntityEffect>> register) {
+    public EnchantmentEntityEffectTypeFactory(BloomishRegister<MapCodec<? extends EnchantmentEntityEffect>> register) {
         super(register);
     }
 }

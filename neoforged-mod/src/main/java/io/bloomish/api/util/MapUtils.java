@@ -3,6 +3,7 @@ package io.bloomish.api.util;
 import java.util.*;
 import java.util.function.Function;
 
+@Deprecated
 public final class MapUtils {
     private MapUtils() {
     }

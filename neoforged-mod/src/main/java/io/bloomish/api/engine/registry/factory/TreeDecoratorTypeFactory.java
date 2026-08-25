@@ -2,7 +2,7 @@ package io.bloomish.api.engine.registry.factory;
 
 import com.mojang.serialization.MapCodec;
 import io.bloomish.api.engine.context.DefaultObjectRegistry;
-import io.bloomish.api.engine.registry.TemporalRegister;
+import io.bloomish.api.engine.registry.BloomishRegister;
 import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecorator;
 import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecoratorType;
 import net.neoforged.neoforge.registries.DeferredHolder;
@@ -12,7 +12,7 @@ public class TreeDecoratorTypeFactory extends AbstractObjectFactory<TreeDecorato
         this(DefaultObjectRegistry.getFromInstance("$TreeDecoratorTypes"));
     }
 
-    public TreeDecoratorTypeFactory(TemporalRegister<TreeDecoratorType<?>> register) {
+    public TreeDecoratorTypeFactory(BloomishRegister<TreeDecoratorType<?>> register) {
         super(register);
     }
 

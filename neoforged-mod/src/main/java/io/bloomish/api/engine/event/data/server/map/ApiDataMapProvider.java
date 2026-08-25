@@ -1,8 +1,8 @@
 package io.bloomish.api.engine.event.data.server.map;
 
 import io.bloomish.api.core.collection.TemporalQueue;
+import io.bloomish.api.util.DeprecatedResourceUtils;
 import io.bloomish.api.util.RegistryUtils;
-import io.bloomish.api.util.ResourceUtils;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
@@ -49,7 +49,7 @@ public class ApiDataMapProvider extends DataMapProvider {
                 waxableBlockBuilder.add((Holder<Block>) waxable.block(), new Waxable(RegistryUtils.getBlock(waxable.waxedBlock())), waxable.replace()));
         Builder<RaidHeroGift, VillagerProfession> raidHeroGiftVillagerProfessionBuilder = this.builder(NeoForgeDataMaps.RAID_HERO_GIFTS);
         RAID_HERO_GIFTS.forEach(raidHeroGift ->
-                raidHeroGiftVillagerProfessionBuilder.add(raidHeroGift.villagerProfession(), new RaidHeroGift(ResourceUtils.createKey(Registries.LOOT_TABLE, raidHeroGift.lootTablePath())), raidHeroGift.replace()));
+                raidHeroGiftVillagerProfessionBuilder.add(raidHeroGift.villagerProfession(), new RaidHeroGift(DeprecatedResourceUtils.createKey(Registries.LOOT_TABLE, raidHeroGift.lootTablePath())), raidHeroGift.replace()));
         Builder<MonsterRoomMob, EntityType<?>> monsterRoomMobEntityTypeBuilder = this.builder(NeoForgeDataMaps.MONSTER_ROOM_MOBS);
         MONSTER_ROOM_MOBS.forEach(monsterRoomMob ->
                 monsterRoomMobEntityTypeBuilder.add(monsterRoomMob.entity(), new MonsterRoomMob(Weight.of(monsterRoomMob.weight())), monsterRoomMob.replace()));

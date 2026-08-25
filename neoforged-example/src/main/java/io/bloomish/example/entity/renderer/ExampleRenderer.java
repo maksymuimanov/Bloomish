@@ -1,13 +1,13 @@
 package io.bloomish.example.entity.renderer;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import io.bloomish.api.util.ResourceUtils;
+import io.bloomish.api.util.DeprecatedResourceUtils;
+import io.bloomish.example.entity.ExampleEntity;
+import io.bloomish.example.entity.model.ExampleEntityModel;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
-import io.bloomish.example.entity.ExampleEntity;
-import io.bloomish.example.entity.model.ExampleEntityModel;
 
 public class ExampleRenderer extends MobRenderer<ExampleEntity, ExampleEntityModel<ExampleEntity>> {
     public ExampleRenderer(EntityRendererProvider.Context context) {
@@ -16,7 +16,7 @@ public class ExampleRenderer extends MobRenderer<ExampleEntity, ExampleEntityMod
 
     @Override
     public ResourceLocation getTextureLocation(ExampleEntity exampleEntity) {
-        return ResourceUtils.parse("textures/entity/example_entity.png");
+        return DeprecatedResourceUtils.parse("textures/entity/example_entity.png");
     }
 
     @Override

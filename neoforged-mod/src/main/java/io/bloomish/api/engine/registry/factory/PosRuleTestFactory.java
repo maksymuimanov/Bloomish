@@ -2,7 +2,7 @@ package io.bloomish.api.engine.registry.factory;
 
 import com.mojang.serialization.MapCodec;
 import io.bloomish.api.engine.context.DefaultObjectRegistry;
-import io.bloomish.api.engine.registry.TemporalRegister;
+import io.bloomish.api.engine.registry.BloomishRegister;
 import net.minecraft.world.level.levelgen.structure.templatesystem.PosRuleTest;
 import net.minecraft.world.level.levelgen.structure.templatesystem.PosRuleTestType;
 import net.neoforged.neoforge.registries.DeferredHolder;
@@ -12,7 +12,7 @@ public class PosRuleTestFactory extends AbstractObjectFactory<PosRuleTestType<?>
         this(DefaultObjectRegistry.getFromInstance("$PosRuleTests"));
     }
 
-    public PosRuleTestFactory(TemporalRegister<PosRuleTestType<?>> register) {
+    public PosRuleTestFactory(BloomishRegister<PosRuleTestType<?>> register) {
         super(register);
     }
 

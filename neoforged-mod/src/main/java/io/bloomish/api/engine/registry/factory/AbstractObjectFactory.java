@@ -1,15 +1,15 @@
 package io.bloomish.api.engine.registry.factory;
 
-import io.bloomish.api.engine.registry.TemporalRegister;
+import io.bloomish.api.engine.registry.BloomishRegister;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredHolder;
 
 import java.util.function.Supplier;
 
 public abstract class AbstractObjectFactory<R> implements ObjectFactory<R> {
-    private final TemporalRegister<R> registry;
+    private final BloomishRegister<R> registry;
 
-    public AbstractObjectFactory(TemporalRegister<R> register) {
+    public AbstractObjectFactory(BloomishRegister<R> register) {
         this.registry = register;
     }
 
@@ -24,7 +24,7 @@ public abstract class AbstractObjectFactory<R> implements ObjectFactory<R> {
     }
 
     @Override
-    public TemporalRegister<R> getRegistry() {
+    public BloomishRegister<R> getRegistry() {
         return registry;
     }
 }

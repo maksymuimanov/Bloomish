@@ -2,7 +2,7 @@ package io.bloomish.api.engine.registry.factory;
 
 import com.google.common.collect.ImmutableSet;
 import io.bloomish.api.engine.context.DefaultObjectRegistry;
-import io.bloomish.api.engine.registry.TemporalRegister;
+import io.bloomish.api.engine.registry.BloomishRegister;
 import net.minecraft.world.entity.ai.village.poi.PoiType;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
@@ -15,7 +15,7 @@ public class PointOfInterestTypeFactory extends AbstractObjectFactory<PoiType> {
         this(DefaultObjectRegistry.getFromInstance("$PointOfInterestTypes"));
     }
 
-    public PointOfInterestTypeFactory(TemporalRegister<PoiType> register) {
+    public PointOfInterestTypeFactory(BloomishRegister<PoiType> register) {
         super(register);
     }
 

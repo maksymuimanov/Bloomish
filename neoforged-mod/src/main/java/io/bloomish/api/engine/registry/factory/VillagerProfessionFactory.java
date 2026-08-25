@@ -2,7 +2,7 @@ package io.bloomish.api.engine.registry.factory;
 
 import com.google.common.collect.ImmutableSet;
 import io.bloomish.api.engine.context.DefaultObjectRegistry;
-import io.bloomish.api.engine.registry.TemporalRegister;
+import io.bloomish.api.engine.registry.BloomishRegister;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.entity.ai.village.poi.PoiType;
 import net.minecraft.world.entity.npc.VillagerProfession;
@@ -15,7 +15,7 @@ public class VillagerProfessionFactory extends AbstractObjectFactory<VillagerPro
         this(DefaultObjectRegistry.getFromInstance("$VillagerProfessions"));
     }
 
-    public VillagerProfessionFactory(TemporalRegister<VillagerProfession> register) {
+    public VillagerProfessionFactory(BloomishRegister<VillagerProfession> register) {
         super(register);
     }
 

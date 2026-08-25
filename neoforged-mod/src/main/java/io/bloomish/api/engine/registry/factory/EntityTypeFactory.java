@@ -1,8 +1,8 @@
 package io.bloomish.api.engine.registry.factory;
 
 import io.bloomish.api.engine.context.DefaultObjectRegistry;
-import io.bloomish.api.engine.registry.TemporalRegister;
-import io.bloomish.api.util.ResourceUtils;
+import io.bloomish.api.engine.registry.BloomishRegister;
+import io.bloomish.api.util.DeprecatedResourceUtils;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.entity.Entity;
@@ -15,7 +15,7 @@ public class EntityTypeFactory extends AbstractObjectFactory<EntityType<?>> {
         this(DefaultObjectRegistry.getFromInstance("$EntityTypes"));
     }
 
-    public EntityTypeFactory(TemporalRegister<EntityType<?>> register) {
+    public EntityTypeFactory(BloomishRegister<EntityType<?>> register) {
         super(register);
     }
 
@@ -25,7 +25,7 @@ public class EntityTypeFactory extends AbstractObjectFactory<EntityType<?>> {
     }
 
     public <T extends Entity> DeferredHolder<EntityType<?>, EntityType<T>> create(String name, EntityType.Builder<T> builder) {
-        return this.create(name, builder, ResourceUtils.createKey(Registries.ENTITY_TYPE, name));
+        return this.create(name, builder, DeprecatedResourceUtils.createKey(Registries.ENTITY_TYPE, name));
     }
 
     public <T extends Entity> DeferredHolder<EntityType<?>, EntityType<T>> create(String name, EntityType.Builder<T> builder, ResourceKey<EntityType<?>> entityType) {

@@ -5,7 +5,7 @@ import io.bloomish.api.engine.context.ModContext;
 import io.bloomish.api.engine.event.data.client.model.RenderTypes;
 import io.bloomish.api.engine.event.data.client.model.block.spec.BlockModelSpec;
 import io.bloomish.api.engine.event.data.client.model.block.spec.DependantBlockModelSpec;
-import io.bloomish.api.util.ResourceUtils;
+import io.bloomish.api.util.DeprecatedResourceUtils;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
@@ -45,7 +45,7 @@ public class ApiBlockModelProvider extends BlockStateProvider {
     public <T extends ApiCropBlock> ConfiguredModel[] states(BlockState state, CropBlock block, String modelName, String textureName) {
         ConfiguredModel[] models = new ConfiguredModel[1];
         Integer age = state.getValue(((T) block).getAgeProperty());
-        models[0] = new ConfiguredModel(models().crop(modelName + age, ResourceUtils.parse(BlockModelSpec.BLOCK_PREFIX + "/" + textureName + age)).renderType(RenderTypes.CUTOUT));
+        models[0] = new ConfiguredModel(models().crop(modelName + age, DeprecatedResourceUtils.parse(BlockModelSpec.BLOCK_PREFIX + "/" + textureName + age)).renderType(RenderTypes.CUTOUT));
         return models;
     }
 }

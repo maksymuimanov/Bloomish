@@ -1,7 +1,7 @@
 package io.bloomish.api.engine.registry.factory;
 
 import io.bloomish.api.engine.context.DefaultObjectRegistry;
-import io.bloomish.api.engine.registry.TemporalRegister;
+import io.bloomish.api.engine.registry.BloomishRegister;
 import net.minecraft.core.Holder;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.item.Instrument;
@@ -12,7 +12,7 @@ public class InstrumentFactory extends AbstractObjectFactory<Instrument> {
         this(DefaultObjectRegistry.getFromInstance("$Instruments"));
     }
 
-    public InstrumentFactory(TemporalRegister<Instrument> register) {
+    public InstrumentFactory(BloomishRegister<Instrument> register) {
         super(register);
     }
 

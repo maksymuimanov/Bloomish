@@ -1,7 +1,7 @@
 package io.bloomish.api.engine.registry.factory;
 
 import io.bloomish.api.engine.context.DefaultObjectRegistry;
-import io.bloomish.api.engine.registry.TemporalRegister;
+import io.bloomish.api.engine.registry.BloomishRegister;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.RangedAttribute;
 import net.neoforged.neoforge.common.BooleanAttribute;
@@ -13,7 +13,7 @@ public class AttributeFactory extends AbstractObjectFactory<Attribute> {
         this(DefaultObjectRegistry.getFromInstance("$Attributes"));
     }
 
-    public AttributeFactory(TemporalRegister<Attribute> register) {
+    public AttributeFactory(BloomishRegister<Attribute> register) {
         super(register);
     }
 

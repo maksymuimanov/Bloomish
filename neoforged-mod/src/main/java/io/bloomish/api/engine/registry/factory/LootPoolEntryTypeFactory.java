@@ -2,7 +2,7 @@ package io.bloomish.api.engine.registry.factory;
 
 import com.mojang.serialization.MapCodec;
 import io.bloomish.api.engine.context.DefaultObjectRegistry;
-import io.bloomish.api.engine.registry.TemporalRegister;
+import io.bloomish.api.engine.registry.BloomishRegister;
 import net.minecraft.world.level.storage.loot.entries.LootPoolEntryContainer;
 import net.minecraft.world.level.storage.loot.entries.LootPoolEntryType;
 import net.neoforged.neoforge.registries.DeferredHolder;
@@ -12,7 +12,7 @@ public class LootPoolEntryTypeFactory extends AbstractObjectFactory<LootPoolEntr
         this(DefaultObjectRegistry.getFromInstance("$LootPoolEntryTypes"));
     }
 
-    public LootPoolEntryTypeFactory(TemporalRegister<LootPoolEntryType> register) {
+    public LootPoolEntryTypeFactory(BloomishRegister<LootPoolEntryType> register) {
         super(register);
     }
 

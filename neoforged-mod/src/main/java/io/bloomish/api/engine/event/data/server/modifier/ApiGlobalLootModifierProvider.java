@@ -4,7 +4,7 @@ import io.bloomish.api.channel.DataChannels;
 import io.bloomish.api.channel.ValueChannelBus;
 import io.bloomish.api.common.loot.AddItemModifier;
 import io.bloomish.api.engine.context.ModContext;
-import io.bloomish.api.util.ResourceUtils;
+import io.bloomish.api.util.DeprecatedResourceUtils;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
@@ -27,7 +27,7 @@ public class ApiGlobalLootModifierProvider extends GlobalLootModifierProvider {
         this.channelBus.<ChestModifierDescription>forEachDrain(DataChannels.API_GLOBAL_LOOT_MODIFIER_PROVIDER,
                 description -> {
                     add(description.getModifierName(), new AddItemModifier(new LootItemCondition[]{
-                            LootTableIdCondition.builder(ResourceUtils.parse(description.getChestId())).build(),
+                            LootTableIdCondition.builder(DeprecatedResourceUtils.parse(description.getChestId())).build(),
                             LootItemRandomChanceCondition.randomChance(description.getChance()).build()
                     }, description.getItem()));
                 });

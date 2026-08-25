@@ -5,7 +5,7 @@ import io.bloomish.api.engine.metadata.annotation.data.biome.GenerateGrass;
 import io.bloomish.api.engine.metadata.annotation.data.biome.GenerateOre;
 import io.bloomish.api.engine.metadata.annotation.data.biome.GenerateTree;
 import io.bloomish.api.engine.metadata.constant.OrePlacementShape;
-import io.bloomish.api.util.ResourceUtils;
+import io.bloomish.api.util.DeprecatedResourceUtils;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
@@ -25,7 +25,7 @@ public final class ExampleConfiguredFeatures {
                     to = 112
             )
     )
-    public static final ResourceKey<ConfiguredFeature<?, ?>> EXAMPLE_ORE_FEATURE = ResourceUtils.createKey(Registries.CONFIGURED_FEATURE, "example_ore_feature");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> EXAMPLE_ORE_FEATURE = DeprecatedResourceUtils.createKey(Registries.CONFIGURED_FEATURE, "example_ore_feature");
 
     @GenerateGrass(
             configuration = @GenerateGrass.Configuration(
@@ -35,7 +35,7 @@ public final class ExampleConfiguredFeatures {
                     biomeTag = "minecraft:is_taiga"
             )
     )
-    public static final ResourceKey<ConfiguredFeature<?, ?>> EXAMPLE_GRASS_FEATURE = ResourceUtils.createKey(Registries.CONFIGURED_FEATURE, "example_grass_feature");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> EXAMPLE_GRASS_FEATURE = DeprecatedResourceUtils.createKey(Registries.CONFIGURED_FEATURE, "example_grass_feature");
 
     @GenerateFlower(
             configuration = @GenerateFlower.Configuration(
@@ -47,7 +47,7 @@ public final class ExampleConfiguredFeatures {
                     biomeTag = "minecraft:is_forest"
             )
     )
-    public static final ResourceKey<ConfiguredFeature<?, ?>> EXAMPLE_FLOWER_FEATURE = ResourceUtils.createKey(Registries.CONFIGURED_FEATURE, "example_flower_feature");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> EXAMPLE_FLOWER_FEATURE = DeprecatedResourceUtils.createKey(Registries.CONFIGURED_FEATURE, "example_flower_feature");
 
     @GenerateTree(
             configuration = @GenerateTree.Configuration(
@@ -64,5 +64,5 @@ public final class ExampleConfiguredFeatures {
                     addedAmount = 1
             )
     )
-    public static final ResourceKey<ConfiguredFeature<?, ?>> EXAMPLE_TREE_FEATURE = ResourceUtils.createKey(Registries.CONFIGURED_FEATURE, "example_tree_feature");
+    public static final ResourceKey<ConfiguredFeature<?, ?>> EXAMPLE_TREE_FEATURE = DeprecatedResourceUtils.createKey(Registries.CONFIGURED_FEATURE, "example_tree_feature");
 }

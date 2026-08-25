@@ -1,7 +1,7 @@
 package io.bloomish.api.engine.event.data.client.model.block.spec;
 
+import io.bloomish.api.util.DeprecatedResourceUtils;
 import io.bloomish.api.util.RegistryUtils;
-import io.bloomish.api.util.ResourceUtils;
 import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
@@ -31,7 +31,7 @@ public class DependantBlockModelSpec extends BlockModelSpec {
     }
 
     public ResourceLocation getDependencyLocation(String suffix) {
-        return ResourceUtils.parse(this.getDependencyPath() + suffix);
+        return DeprecatedResourceUtils.parse(this.getDependencyPath() + suffix);
     }
 
     public String getDependencyPath() {

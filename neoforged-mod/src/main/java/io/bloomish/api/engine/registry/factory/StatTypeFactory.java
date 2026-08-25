@@ -2,7 +2,7 @@ package io.bloomish.api.engine.registry.factory;
 
 import io.bloomish.api.engine.context.DefaultObjectRegistry;
 import io.bloomish.api.engine.context.ModContext;
-import io.bloomish.api.engine.registry.TemporalRegister;
+import io.bloomish.api.engine.registry.BloomishRegister;
 import net.minecraft.core.Registry;
 import net.minecraft.network.chat.Component;
 import net.minecraft.stats.StatType;
@@ -13,7 +13,7 @@ public class StatTypeFactory extends AbstractObjectFactory<StatType<?>> {
         this(DefaultObjectRegistry.getFromInstance("$StatTypes"));
     }
 
-    public StatTypeFactory(TemporalRegister<StatType<?>> register) {
+    public StatTypeFactory(BloomishRegister<StatType<?>> register) {
         super(register);
     }
 

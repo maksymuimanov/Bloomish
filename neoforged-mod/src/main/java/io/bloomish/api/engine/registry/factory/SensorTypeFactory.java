@@ -1,7 +1,7 @@
 package io.bloomish.api.engine.registry.factory;
 
 import io.bloomish.api.engine.context.DefaultObjectRegistry;
-import io.bloomish.api.engine.registry.TemporalRegister;
+import io.bloomish.api.engine.registry.BloomishRegister;
 import net.minecraft.world.entity.ai.sensing.SensorType;
 
 public class SensorTypeFactory extends AbstractObjectFactory<SensorType<?>> {
@@ -9,7 +9,7 @@ public class SensorTypeFactory extends AbstractObjectFactory<SensorType<?>> {
         this(DefaultObjectRegistry.getFromInstance("$SensorTypes"));
     }
 
-    public SensorTypeFactory(TemporalRegister<SensorType<?>> register) {
+    public SensorTypeFactory(BloomishRegister<SensorType<?>> register) {
         super(register);
     }
 }

@@ -4,7 +4,7 @@ import io.bloomish.api.engine.event.data.client.model.ModelConstants;
 import io.bloomish.api.engine.event.data.client.model.item.ApiItemModelProvider;
 import io.bloomish.api.engine.event.data.client.model.item.ItemModelProviderStrategy;
 import io.bloomish.api.engine.event.data.client.model.item.spec.ItemModelSpec;
-import io.bloomish.api.util.ResourceUtils;
+import io.bloomish.api.util.DeprecatedResourceUtils;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.packs.PackType;
@@ -33,7 +33,7 @@ public class TrimmedItemModelProviderStrategy implements ItemModelProviderStrate
             ResourceLocation texture = ResourceLocation.withDefaultNamespace("trims/items/" + armorTypeName + "_trim_" + trim);
             provider.existingFileHelper.trackGenerated(texture, PackType.CLIENT_RESOURCES, ".png", "textures");
             provider.withExistingParent(name.getPath(), ModelConstants.ITEM_GENERATED)
-                    .texture(ModelConstants.LAYER_0, ResourceUtils.parse(ItemModelSpec.ITEM_PREFIX + "/" + location.getPath()))
+                    .texture(ModelConstants.LAYER_0, DeprecatedResourceUtils.parse(ItemModelSpec.ITEM_PREFIX + "/" + location.getPath()))
                     .texture(ModelConstants.LAYER_1, texture);
             trimType++;
         }

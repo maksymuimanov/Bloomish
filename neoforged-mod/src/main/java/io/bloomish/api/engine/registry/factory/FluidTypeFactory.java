@@ -1,7 +1,7 @@
 package io.bloomish.api.engine.registry.factory;
 
 import io.bloomish.api.engine.context.DefaultObjectRegistry;
-import io.bloomish.api.engine.registry.TemporalRegister;
+import io.bloomish.api.engine.registry.BloomishRegister;
 import net.neoforged.neoforge.fluids.FluidType;
 import net.neoforged.neoforge.registries.DeferredHolder;
 
@@ -10,7 +10,7 @@ public class FluidTypeFactory extends AbstractObjectFactory<FluidType> {
         this(DefaultObjectRegistry.getFromInstance("$FluidTypes"));
     }
 
-    public FluidTypeFactory(TemporalRegister<FluidType> register) {
+    public FluidTypeFactory(BloomishRegister<FluidType> register) {
         super(register);
     }
 

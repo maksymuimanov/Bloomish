@@ -2,7 +2,7 @@ package io.bloomish.api.engine.event.data.server.wolf;
 
 import io.bloomish.api.core.collection.TemporalQueue;
 import io.bloomish.api.engine.event.data.preparer.tag.BiomeTagDynamicPreparer;
-import io.bloomish.api.util.ResourceUtils;
+import io.bloomish.api.util.DeprecatedResourceUtils;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
@@ -25,10 +25,10 @@ public class ApiWolfVariantProvider implements WolfVariantProvider {
         HolderGetter<Biome> biomes = context.lookup(Registries.BIOME);
         VARIANTS.forEach(description -> {
             ResourceKey<WolfVariant> variant = description.variant();
-            String id = ResourceUtils.mapId(ResourceUtils.getResourceId(variant), ENTITY_WOLF_PATH::concat);
-            ResourceLocation defaultTexture = ResourceUtils.parse(id);
-            ResourceLocation tamedTexture = ResourceUtils.parse(id + TAME_SUFFIX);
-            ResourceLocation angryTexture = ResourceUtils.parse(id + ANGRY_SUFFIX);
+            String id = DeprecatedResourceUtils.mapId(DeprecatedResourceUtils.getResourceId(variant), ENTITY_WOLF_PATH::concat);
+            ResourceLocation defaultTexture = DeprecatedResourceUtils.parse(id);
+            ResourceLocation tamedTexture = DeprecatedResourceUtils.parse(id + TAME_SUFFIX);
+            ResourceLocation angryTexture = DeprecatedResourceUtils.parse(id + ANGRY_SUFFIX);
             TagKey<Biome> spawnBiome = BiomeTagDynamicPreparer.BIOME_TAGS.get(description.biomeTag());
             context.register(variant, new WolfVariant(defaultTexture, tamedTexture, angryTexture, biomes.getOrThrow(spawnBiome)));
         });

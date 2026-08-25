@@ -2,7 +2,7 @@ package io.bloomish.api.engine.registry.factory;
 
 import com.mojang.serialization.MapCodec;
 import io.bloomish.api.engine.context.DefaultObjectRegistry;
-import io.bloomish.api.engine.registry.TemporalRegister;
+import io.bloomish.api.engine.registry.BloomishRegister;
 import net.neoforged.neoforge.common.world.BiomeModifier;
 
 public class BiomeModifierSerializerFactory extends AbstractObjectFactory<MapCodec<? extends BiomeModifier>> {
@@ -10,7 +10,7 @@ public class BiomeModifierSerializerFactory extends AbstractObjectFactory<MapCod
         this(DefaultObjectRegistry.getFromInstance("$BiomeModifierSerializers"));
     }
 
-    public BiomeModifierSerializerFactory(TemporalRegister<MapCodec<? extends BiomeModifier>> register) {
+    public BiomeModifierSerializerFactory(BloomishRegister<MapCodec<? extends BiomeModifier>> register) {
         super(register);
     }
 }

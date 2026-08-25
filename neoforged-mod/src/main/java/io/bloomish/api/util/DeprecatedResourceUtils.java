@@ -9,8 +9,9 @@ import net.minecraft.tags.TagKey;
 import java.util.function.Function;
 import java.util.stream.Stream;
 
-public final class ResourceUtils {
-    private ResourceUtils() {
+@Deprecated(forRemoval = true)
+public final class DeprecatedResourceUtils {
+    private DeprecatedResourceUtils() {
     }
 
     public static String mapId(String id, Function<String, String> pathMapper) {

@@ -1,7 +1,7 @@
 package io.bloomish.api.engine.registry.factory;
 
 import io.bloomish.api.engine.context.DefaultObjectRegistry;
-import io.bloomish.api.engine.registry.TemporalRegister;
+import io.bloomish.api.engine.registry.BloomishRegister;
 import net.minecraft.world.effect.MobEffect;
 
 public class MobEffectFactory extends AbstractObjectFactory<MobEffect> {
@@ -9,7 +9,7 @@ public class MobEffectFactory extends AbstractObjectFactory<MobEffect> {
         this(DefaultObjectRegistry.getFromInstance("$MobEffects"));
     }
 
-    public MobEffectFactory(final TemporalRegister<MobEffect> register) {
+    public MobEffectFactory(final BloomishRegister<MobEffect> register) {
         super(register);
     }
 }

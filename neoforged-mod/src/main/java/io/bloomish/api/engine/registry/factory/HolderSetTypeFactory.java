@@ -1,7 +1,7 @@
 package io.bloomish.api.engine.registry.factory;
 
 import io.bloomish.api.engine.context.DefaultObjectRegistry;
-import io.bloomish.api.engine.registry.TemporalRegister;
+import io.bloomish.api.engine.registry.BloomishRegister;
 import net.neoforged.neoforge.registries.holdersets.HolderSetType;
 
 public class HolderSetTypeFactory extends AbstractObjectFactory<HolderSetType> {
@@ -9,7 +9,7 @@ public class HolderSetTypeFactory extends AbstractObjectFactory<HolderSetType> {
         this(DefaultObjectRegistry.getFromInstance("$HolderSetTypes"));
     }
 
-    public HolderSetTypeFactory(TemporalRegister<HolderSetType> register) {
+    public HolderSetTypeFactory(BloomishRegister<HolderSetType> register) {
         super(register);
     }
 }

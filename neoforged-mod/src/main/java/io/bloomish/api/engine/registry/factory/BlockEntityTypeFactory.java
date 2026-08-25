@@ -2,7 +2,7 @@ package io.bloomish.api.engine.registry.factory;
 
 import com.mojang.datafixers.types.Type;
 import io.bloomish.api.engine.context.DefaultObjectRegistry;
-import io.bloomish.api.engine.registry.TemporalRegister;
+import io.bloomish.api.engine.registry.BloomishRegister;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -13,7 +13,7 @@ public class BlockEntityTypeFactory extends AbstractObjectFactory<BlockEntityTyp
         this(DefaultObjectRegistry.getFromInstance("$BlockEntityTypes"));
     }
 
-    public BlockEntityTypeFactory(TemporalRegister<BlockEntityType<?>> register) {
+    public BlockEntityTypeFactory(BloomishRegister<BlockEntityType<?>> register) {
         super(register);
     }
 

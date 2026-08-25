@@ -2,7 +2,7 @@ package io.bloomish.api.engine.registry.factory;
 
 import com.mojang.serialization.MapCodec;
 import io.bloomish.api.engine.context.DefaultObjectRegistry;
-import io.bloomish.api.engine.registry.TemporalRegister;
+import io.bloomish.api.engine.registry.BloomishRegister;
 import net.minecraft.world.level.storage.loot.functions.LootItemFunction;
 import net.minecraft.world.level.storage.loot.functions.LootItemFunctionType;
 import net.neoforged.neoforge.registries.DeferredHolder;
@@ -12,7 +12,7 @@ public class LootFunctionTypeFactory extends AbstractObjectFactory<LootItemFunct
         this(DefaultObjectRegistry.getFromInstance("$LootFunctionTypes"));
     }
 
-    public LootFunctionTypeFactory(TemporalRegister<LootItemFunctionType<?>> register) {
+    public LootFunctionTypeFactory(BloomishRegister<LootItemFunctionType<?>> register) {
         super(register);
     }
 

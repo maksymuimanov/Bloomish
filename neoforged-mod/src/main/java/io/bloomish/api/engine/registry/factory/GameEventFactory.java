@@ -1,7 +1,7 @@
 package io.bloomish.api.engine.registry.factory;
 
 import io.bloomish.api.engine.context.DefaultObjectRegistry;
-import io.bloomish.api.engine.registry.TemporalRegister;
+import io.bloomish.api.engine.registry.BloomishRegister;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.neoforged.neoforge.registries.DeferredHolder;
 
@@ -10,7 +10,7 @@ public class GameEventFactory extends AbstractObjectFactory<GameEvent> {
         this(DefaultObjectRegistry.getFromInstance("$GameEvents"));
     }
 
-    public GameEventFactory(TemporalRegister<GameEvent> register) {
+    public GameEventFactory(BloomishRegister<GameEvent> register) {
         super(register);
     }
 

@@ -1,6 +1,6 @@
 package io.bloomish.api.engine.event.data.server.advancement;
 
-import io.bloomish.api.util.ResourceUtils;
+import io.bloomish.api.util.DeprecatedResourceUtils;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.advancements.AdvancementSubProvider;
@@ -20,6 +20,6 @@ public interface AdvancementStrategy {
     }
 
     default void saveAdvancement(@NotNull Advancement.Builder builder, @NotNull Consumer<net.minecraft.advancements.AdvancementHolder> consumer, String id) {
-        builder.save(consumer, ResourceUtils.parse(id).toString());
+        builder.save(consumer, DeprecatedResourceUtils.parse(id).toString());
     }
 }

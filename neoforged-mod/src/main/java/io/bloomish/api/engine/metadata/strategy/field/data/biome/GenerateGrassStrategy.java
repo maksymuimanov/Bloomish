@@ -9,8 +9,8 @@ import io.bloomish.api.engine.metadata.annotation.injection.Strategy;
 import io.bloomish.api.engine.metadata.pool.ProcessorScope;
 import io.bloomish.api.engine.metadata.processor.DataEventHandlerAnnotationProcessorAdapter;
 import io.bloomish.api.engine.metadata.strategy.field.FieldAnnotationStrategy;
+import io.bloomish.api.util.DeprecatedResourceUtils;
 import io.bloomish.api.util.ReflectionUtils;
-import io.bloomish.api.util.ResourceUtils;
 import io.bloomish.api.util.TagUtils;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
@@ -29,7 +29,7 @@ public class GenerateGrassStrategy implements FieldAnnotationStrategy<GenerateGr
         var configuration = new Grass.Configuration(annotationConfiguration.grass(), annotationConfiguration.tries());
         var placement = new Grass.Placement(annotationPlacement.count());
         var biomeModifier = new Grass.BiomeModifier(annotationBiomeModifier.biomeTag());
-        Grass grass = new Grass(ResourceUtils.getResourceId(configuredFeatureKey), configuration, placement, biomeModifier);
+        Grass grass = new Grass(DeprecatedResourceUtils.getResourceId(configuredFeatureKey), configuration, placement, biomeModifier);
         GenerationDescriptionContainer.GRASSES.put(configuredFeatureKey, grass);
     }
 

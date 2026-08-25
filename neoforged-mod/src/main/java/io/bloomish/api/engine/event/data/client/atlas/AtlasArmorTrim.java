@@ -1,22 +1,22 @@
-package io.bloomish.api.json;
+package io.bloomish.api.engine.event.data.client.atlas;
 
 import java.util.List;
 import java.util.Map;
 
-public record AtlasArmorTrimJson(
+public record AtlasArmorTrim(
         boolean replace,
         List<Source> sources
-) implements JsonSerializable {
+) {
     public record Source(
             String type,
             List<String> textures,
             String paletteKey,
             Permutations permutations
-    ) implements JsonSerializable {
+    ) {
     }
 
     public record Permutations(
             Map<String, String> trimMaterials
-    ) implements JsonSerializable {
+    ) {
     }
 }

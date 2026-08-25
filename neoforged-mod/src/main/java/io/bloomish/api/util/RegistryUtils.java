@@ -13,6 +13,7 @@ import java.util.Objects;
 import java.util.function.Predicate;
 import java.util.stream.Stream;
 
+@Deprecated
 public final class RegistryUtils {
     private RegistryUtils() {
     }
@@ -38,7 +39,7 @@ public final class RegistryUtils {
     }
 
     public static <T> T getObject(Registry<T> registry, String id) {
-        return registry.get(ResourceUtils.parse(id));
+        return registry.get(DeprecatedResourceUtils.parse(id));
     }
 
     public static <T> Stream<T> getObjectsByCondition(Registry<T> registry, Predicate<T> condition) {

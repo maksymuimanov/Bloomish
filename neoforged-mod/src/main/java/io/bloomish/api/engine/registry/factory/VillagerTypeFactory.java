@@ -1,7 +1,7 @@
 package io.bloomish.api.engine.registry.factory;
 
 import io.bloomish.api.engine.context.DefaultObjectRegistry;
-import io.bloomish.api.engine.registry.TemporalRegister;
+import io.bloomish.api.engine.registry.BloomishRegister;
 import net.minecraft.world.entity.npc.VillagerType;
 import net.neoforged.neoforge.registries.DeferredHolder;
 
@@ -10,7 +10,7 @@ public class VillagerTypeFactory extends AbstractObjectFactory<VillagerType> {
         this(DefaultObjectRegistry.getFromInstance("$VillagerTypes"));
     }
 
-    public VillagerTypeFactory(TemporalRegister<VillagerType> register) {
+    public VillagerTypeFactory(BloomishRegister<VillagerType> register) {
         super(register);
     }
 

@@ -1,7 +1,7 @@
 package io.bloomish.api.engine.registry.factory;
 
 import io.bloomish.api.engine.context.DefaultObjectRegistry;
-import io.bloomish.api.engine.registry.TemporalRegister;
+import io.bloomish.api.engine.registry.BloomishRegister;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -18,11 +18,11 @@ public class BlockFactory extends AbstractObjectFactory<Block> {
         this(DefaultObjectRegistry.getFromInstance("$Blocks"));
     }
 
-    public BlockFactory(TemporalRegister<Block> register) {
+    public BlockFactory(BloomishRegister<Block> register) {
         this(register, DefaultObjectRegistry.getFromInstance(ItemFactory.class));
     }
 
-    public BlockFactory(TemporalRegister<Block> register, ItemFactory itemFactory) {
+    public BlockFactory(BloomishRegister<Block> register, ItemFactory itemFactory) {
         super(register);
         this.itemFactory = itemFactory;
     }

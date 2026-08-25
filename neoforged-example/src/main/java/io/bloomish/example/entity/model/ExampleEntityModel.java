@@ -3,18 +3,18 @@ package io.bloomish.example.entity.model;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import io.bloomish.api.engine.metadata.annotation.event.layer.RegisterLayerDefinition;
-import io.bloomish.api.util.ResourceUtils;
+import io.bloomish.api.util.DeprecatedResourceUtils;
+import io.bloomish.example.entity.ExampleEntity;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
 import net.minecraft.client.model.geom.builders.*;
-import io.bloomish.example.entity.ExampleEntity;
 import org.jetbrains.annotations.NotNull;
 
 @RegisterLayerDefinition
 public class ExampleEntityModel<T extends ExampleEntity> extends EntityModel<T> {
-	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(ResourceUtils.createLocation("example_entity"), "main");
+	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(DeprecatedResourceUtils.createLocation("example_entity"), "main");
 	private final ModelPart head;
 	private final ModelPart body;
 	private final ModelPart tail;

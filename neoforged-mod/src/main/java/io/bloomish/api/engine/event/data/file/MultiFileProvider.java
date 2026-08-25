@@ -1,6 +1,5 @@
 package io.bloomish.api.engine.event.data.file;
 
-import io.bloomish.api.json.JsonSerializable;
 import net.minecraft.data.CachedOutput;
 import net.minecraft.data.DataProvider;
 import net.minecraft.data.PackOutput;

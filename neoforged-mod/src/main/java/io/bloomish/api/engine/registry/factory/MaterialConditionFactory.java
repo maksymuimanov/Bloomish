@@ -2,7 +2,7 @@ package io.bloomish.api.engine.registry.factory;
 
 import com.mojang.serialization.MapCodec;
 import io.bloomish.api.engine.context.DefaultObjectRegistry;
-import io.bloomish.api.engine.registry.TemporalRegister;
+import io.bloomish.api.engine.registry.BloomishRegister;
 import net.minecraft.util.KeyDispatchDataCodec;
 import net.minecraft.world.level.levelgen.SurfaceRules;
 import net.neoforged.neoforge.registries.DeferredHolder;
@@ -12,7 +12,7 @@ public class MaterialConditionFactory extends AbstractObjectFactory<MapCodec<? e
         this(DefaultObjectRegistry.getFromInstance("$MaterialConditions"));
     }
 
-    public MaterialConditionFactory(TemporalRegister<MapCodec<? extends SurfaceRules.ConditionSource>> register) {
+    public MaterialConditionFactory(BloomishRegister<MapCodec<? extends SurfaceRules.ConditionSource>> register) {
         super(register);
     }
 

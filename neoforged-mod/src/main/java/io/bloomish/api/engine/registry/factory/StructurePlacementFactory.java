@@ -2,7 +2,7 @@ package io.bloomish.api.engine.registry.factory;
 
 import com.mojang.serialization.MapCodec;
 import io.bloomish.api.engine.context.DefaultObjectRegistry;
-import io.bloomish.api.engine.registry.TemporalRegister;
+import io.bloomish.api.engine.registry.BloomishRegister;
 import net.minecraft.world.level.levelgen.structure.placement.StructurePlacement;
 import net.minecraft.world.level.levelgen.structure.placement.StructurePlacementType;
 import net.neoforged.neoforge.registries.DeferredHolder;
@@ -12,7 +12,7 @@ public class StructurePlacementFactory extends AbstractObjectFactory<StructurePl
         this(DefaultObjectRegistry.getFromInstance("$StructurePlacements"));
     }
 
-    public StructurePlacementFactory(TemporalRegister<StructurePlacementType<?>> register) {
+    public StructurePlacementFactory(BloomishRegister<StructurePlacementType<?>> register) {
         super(register);
     }
 

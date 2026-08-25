@@ -14,7 +14,8 @@ public final class DataChannels {
     public static final DataChannel FOV_MODIFIER_EVENT_HANDLER = DataChannel.create();
     public static final DataChannel REGISTER_PARTICLE_PROVIDERS_EVENT_HANDLER = DataChannel.create();
 
-    public static final DataChannel API_GLOBAL_LOOT_MODIFIER_PROVIDER = DataChannel.create();
+    public static final DataChannel ATLAS_ARMOR_TRIM_PROVIDER_TRIM_PATTERNS = DataChannel.create();
+    public static final DataChannel ATLAS_ARMOR_TRIM_PROVIDER_TRIM_MATERIALS = DataChannel.create();
 
     private DataChannels() {
     }

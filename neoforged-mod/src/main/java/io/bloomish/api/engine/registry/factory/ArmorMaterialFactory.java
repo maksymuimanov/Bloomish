@@ -1,8 +1,8 @@
 package io.bloomish.api.engine.registry.factory;
 
 import io.bloomish.api.engine.context.DefaultObjectRegistry;
-import io.bloomish.api.engine.registry.TemporalRegister;
-import io.bloomish.api.util.ResourceUtils;
+import io.bloomish.api.engine.registry.BloomishRegister;
+import io.bloomish.api.util.DeprecatedResourceUtils;
 import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
@@ -24,14 +24,14 @@ public class ArmorMaterialFactory extends AbstractObjectFactory<ArmorMaterial> {
         this(DefaultObjectRegistry.getFromInstance("$ArmorMaterials"));
     }
 
-    public ArmorMaterialFactory(TemporalRegister<ArmorMaterial> register) {
+    public ArmorMaterialFactory(BloomishRegister<ArmorMaterial> register) {
         super(register);
     }
 
     public DeferredHolder<ArmorMaterial, ArmorMaterial> create(String name, EnumMap<ArmorItem.Type, Integer> defenses,
                                                int enchantmentValue, float toughness, float knockbackResistance,
                                                TagKey<Item> repairIngredient, Holder<SoundEvent> equipSound) {
-        ResourceLocation location = ResourceUtils.parse(name);
+        ResourceLocation location = DeprecatedResourceUtils.parse(name);
         Supplier<Ingredient> ingredient = () -> Ingredient.of(repairIngredient);
         List<ArmorMaterial.Layer> layers = List.of(new ArmorMaterial.Layer(location));
         EnumMap<ArmorItem.Type, Integer> map = Arrays.stream(ArmorItem.Type.values())

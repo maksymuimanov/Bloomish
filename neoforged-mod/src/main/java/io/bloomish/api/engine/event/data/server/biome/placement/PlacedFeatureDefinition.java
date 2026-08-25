@@ -2,7 +2,7 @@ package io.bloomish.api.engine.event.data.server.biome.placement;
 
 import io.bloomish.api.engine.event.data.server.biome.GenerationDefinition;
 import io.bloomish.api.engine.event.data.server.biome.PlacedFeaturesContainer;
-import io.bloomish.api.util.ResourceUtils;
+import io.bloomish.api.util.DeprecatedResourceUtils;
 import io.bloomish.api.util.WorldGenerationUtils;
 import net.minecraft.core.HolderGetter;
 import net.minecraft.core.registries.Registries;
@@ -18,9 +18,9 @@ public interface PlacedFeatureDefinition<D> extends GenerationDefinition<PlacedF
     @Override
     default void generate(BootstrapContext<PlacedFeature> context) {
         this.getDataSource().forEach((configuredFeatureKey, data) -> {
-            String id = ResourceUtils.getResourceId(configuredFeatureKey);
+            String id = DeprecatedResourceUtils.getResourceId(configuredFeatureKey);
             String placedFeatureName = this.getName(configuredFeatureKey, data);
-            ResourceKey<PlacedFeature> placedFeature = ResourceUtils.createKey(Registries.PLACED_FEATURE, placedFeatureName);
+            ResourceKey<PlacedFeature> placedFeature = DeprecatedResourceUtils.createKey(Registries.PLACED_FEATURE, placedFeatureName);
             PlacedFeaturesContainer.PLACED_FEATURES.put(id, placedFeature);
             HolderGetter<ConfiguredFeature<?, ?>> featureHolderGetter = context.lookup(Registries.CONFIGURED_FEATURE);
             WorldGenerationUtils.registerFeature(context, placedFeature, featureHolderGetter.getOrThrow(configuredFeatureKey), getPlacementModifiers(configuredFeatureKey, data));
@@ -28,7 +28,7 @@ public interface PlacedFeatureDefinition<D> extends GenerationDefinition<PlacedF
     }
 
     default String getName(ResourceKey<ConfiguredFeature<?, ?>> configuredFeatureKey, D data) {
-        return ResourceUtils.getResourceId(configuredFeatureKey) + "_placed";
+        return DeprecatedResourceUtils.getResourceId(configuredFeatureKey) + "_placed";
     }
 
     List<PlacementModifier> getPlacementModifiers(ResourceKey<ConfiguredFeature<?, ?>> configuredFeatureKey, D data);

@@ -1,10 +1,9 @@
 package io.bloomish.api.engine.event.data.server.trim.material;
 
 import io.bloomish.api.core.collection.TemporalMap;
-import io.bloomish.api.engine.event.data.client.atlas.AtlasArmorTrimProvider;
 import io.bloomish.api.engine.event.data.client.language.transformer.TrimMaterialTransformer;
+import io.bloomish.api.util.DeprecatedResourceUtils;
 import io.bloomish.api.util.RegistryUtils;
-import io.bloomish.api.util.ResourceUtils;
 import net.minecraft.Util;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.network.chat.Component;
@@ -24,7 +23,7 @@ public class ApiTrimMaterialProvider implements TrimMaterialProvider {
     @Override
     public void registerTrimMaterials(BootstrapContext<TrimMaterial> context) {
         TRIM_MATERIALS.forEach((trimMaterial, description) -> {
-            String assetName = ResourceUtils.getResourceName(trimMaterial);
+            String assetName = DeprecatedResourceUtils.getResourceName(trimMaterial);
             Item ingredient = RegistryUtils.getItem(description.itemId());
             ResourceLocation location = trimMaterial.location();
             String descriptionId = Util.makeDescriptionId(TrimMaterialTransformer.PREFIX, location);
@@ -32,7 +31,7 @@ public class ApiTrimMaterialProvider implements TrimMaterialProvider {
             Style style = Style.EMPTY.withColor(textColor);
             MutableComponent component = Component.translatable(descriptionId).withStyle(style);
             context.register(trimMaterial, TrimMaterial.create(assetName, ingredient, description.itemModelIndex(), component, Map.of()));
-            AtlasArmorTrimProvider.TRIM_MATERIALS_LOCATIONS.put(assetName, location);
+            AtlasArmorTrimProvider1.TRIM_MATERIALS_LOCATIONS.put(assetName, location);
         });
     }
 

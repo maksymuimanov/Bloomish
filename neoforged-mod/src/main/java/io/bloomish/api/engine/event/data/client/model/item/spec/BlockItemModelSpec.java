@@ -1,8 +1,8 @@
 package io.bloomish.api.engine.event.data.client.model.item.spec;
 
 import io.bloomish.api.engine.event.data.client.model.block.spec.BlockModelSpec;
+import io.bloomish.api.util.DeprecatedResourceUtils;
 import io.bloomish.api.util.RegistryUtils;
-import io.bloomish.api.util.ResourceUtils;
 import net.minecraft.core.Holder;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
@@ -30,7 +30,7 @@ public class BlockItemModelSpec extends ItemModelSpec {
     }
 
     public ResourceLocation getBlockLocation(String suffix) {
-        return ResourceUtils.parse(this.getBlockPath() + suffix);
+        return DeprecatedResourceUtils.parse(this.getBlockPath() + suffix);
     }
 
     public String getBlockPath() {

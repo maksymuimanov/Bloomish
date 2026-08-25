@@ -42,7 +42,7 @@ public final class TagUtils {
     }
 
     public static TagKey<Block> createBlock(String id) {
-        return BlockTags.create(ResourceUtils.parse(id));
+        return BlockTags.create(DeprecatedResourceUtils.parse(id));
     }
 
     public static TagKey<CatVariant> createCatVariant(String id) {
@@ -74,7 +74,7 @@ public final class TagUtils {
     }
 
     public static TagKey<Item> createItem(String id) {
-        return ItemTags.create(ResourceUtils.parse(id));
+        return ItemTags.create(DeprecatedResourceUtils.parse(id));
     }
 
     public static TagKey<PaintingVariant> createPaintingVariant(String id) {
@@ -90,20 +90,23 @@ public final class TagUtils {
     }
 
     public static <T> TagKey<T> createTag(ResourceKey<? extends Registry<T>> registry, String id) {
-        return TagKey.create(registry, ResourceUtils.parse(id));
+        return TagKey.create(registry, DeprecatedResourceUtils.parse(id));
     }
 
+    @Deprecated
     public static <T> void putTag(TagKey<T> tag, Map<String, TagKey<T>> data) {
         String path = tag.location().toString();
         data.put(path, tag);
     }
 
+    @Deprecated
     public static void putTagContainer(Set<Class<?>> tagContainers, Class<?> tagContainer) {
         if (!tagContainer.equals(Object.class)) {
             tagContainers.add(tagContainer);
         }
     }
 
+    @Deprecated
     @SuppressWarnings("unchecked")
     public static <T> Stream<TagKey<T>> getTagKeyStream(Class<?> tagClassHolder) {
         return ReflectionUtils.getStaticFieldStream(tagClassHolder,
@@ -111,6 +114,7 @@ public final class TagUtils {
                 o -> (TagKey<T>) o);
     }
 
+    @Deprecated
     @SuppressWarnings("unchecked")
     public static <T> Map<String, List<ResourceKey<T>>> mapTagHolderMap(Map<String, List<Holder<? extends T>>> tagHolderMap) {
         return tagHolderMap.entrySet()

@@ -2,7 +2,7 @@ package io.bloomish.api.engine.registry.factory;
 
 import com.mojang.serialization.MapCodec;
 import io.bloomish.api.engine.context.DefaultObjectRegistry;
-import io.bloomish.api.engine.registry.TemporalRegister;
+import io.bloomish.api.engine.registry.BloomishRegister;
 import net.minecraft.world.level.storage.loot.providers.score.LootScoreProviderType;
 import net.minecraft.world.level.storage.loot.providers.score.ScoreboardNameProvider;
 import net.neoforged.neoforge.registries.DeferredHolder;
@@ -12,7 +12,7 @@ public class LootScoreProviderTypeFactory extends AbstractObjectFactory<LootScor
         this(DefaultObjectRegistry.getFromInstance("$LootScoreProviderTypes"));
     }
 
-    public LootScoreProviderTypeFactory(TemporalRegister<LootScoreProviderType> register) {
+    public LootScoreProviderTypeFactory(BloomishRegister<LootScoreProviderType> register) {
         super(register);
     }
 

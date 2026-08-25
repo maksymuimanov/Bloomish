@@ -1,6 +1,6 @@
 package io.bloomish.api.engine.registry.factory;
 
-import io.bloomish.api.engine.registry.TemporalRegister;
+import io.bloomish.api.engine.registry.BloomishRegister;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredHolder;
 
@@ -11,5 +11,5 @@ public interface ObjectFactory<R> {
 
     void register(IEventBus eventBus, Class<?>... containers);
 
-    TemporalRegister<R> getRegistry();
+    BloomishRegister<R> getRegistry();
 }

@@ -1,7 +1,7 @@
 package io.bloomish.api.engine.registry.factory;
 
 import io.bloomish.api.engine.context.DefaultObjectRegistry;
-import io.bloomish.api.engine.registry.TemporalRegister;
+import io.bloomish.api.engine.registry.BloomishRegister;
 import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.neoforged.neoforge.registries.DeferredHolder;
@@ -11,7 +11,7 @@ public class ParticleTypeFactory extends AbstractObjectFactory<ParticleType<?>> 
         this(DefaultObjectRegistry.getFromInstance("$ParticleTypes"));
     }
 
-    public ParticleTypeFactory(TemporalRegister<ParticleType<?>> register) {
+    public ParticleTypeFactory(BloomishRegister<ParticleType<?>> register) {
         super(register);
     }
 

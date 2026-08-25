@@ -1,6 +1,6 @@
 package io.bloomish.api.engine.event.data;
 
-import io.bloomish.api.engine.event.data.client.atlas.AtlasArmorTrimProvider;
+import io.bloomish.api.engine.event.data.client.ClientDataProvider;
 import io.bloomish.api.engine.event.data.client.language.provider.*;
 import io.bloomish.api.engine.event.data.client.model.block.ApiBlockModelProvider;
 import io.bloomish.api.engine.event.data.client.model.item.ApiItemModelProvider;
@@ -11,6 +11,7 @@ import io.bloomish.api.engine.event.data.preparer.tag.BiomeTagDynamicPreparer;
 import io.bloomish.api.engine.event.data.preparer.tag.BlockTagDynamicPreparer;
 import io.bloomish.api.engine.event.data.preparer.tag.EnchantmentTagDynamicPreparer;
 import io.bloomish.api.engine.event.data.preparer.tag.ItemTagDynamicPreparer;
+import io.bloomish.api.engine.event.data.server.ServerDataProvider;
 import io.bloomish.api.engine.event.data.server.advancement.AdvancementProviderFactory;
 import io.bloomish.api.engine.event.data.server.loot.LootTableProviderFactory;
 import io.bloomish.api.engine.event.data.server.map.ApiDataMapProvider;
@@ -276,11 +277,11 @@ public class ApiDataGenerator implements DataGatherer {
     }
 
     private void addFileProvider(GatherDataEvent event) {
-        this.addClientProviders(event, new AtlasArmorTrimProvider(this.packOutput));
+        this.addClientProviders(event, new AtlasArmorTrimProvider1(this.packOutput));
 
         final DataGenerator generator = this.getDataGenerator(event);
         final PackOutput packOutput = this.getPackOutput(event);
-        generator.addProvider(event.includeClient(), new AtlasArmorTrimProvider(packOutput));
+        generator.addProvider(event.includeClient(), new AtlasArmorTrimProvider1(packOutput));
     }
 
     private <P extends ClientDataProvider> void addClientProviders(GatherDataEvent event, Iterable<P> providers) {

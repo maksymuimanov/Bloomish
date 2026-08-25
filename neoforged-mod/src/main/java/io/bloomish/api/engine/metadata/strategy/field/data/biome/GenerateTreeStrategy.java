@@ -9,8 +9,8 @@ import io.bloomish.api.engine.metadata.annotation.injection.Strategy;
 import io.bloomish.api.engine.metadata.pool.ProcessorScope;
 import io.bloomish.api.engine.metadata.processor.DataEventHandlerAnnotationProcessorAdapter;
 import io.bloomish.api.engine.metadata.strategy.field.FieldAnnotationStrategy;
+import io.bloomish.api.util.DeprecatedResourceUtils;
 import io.bloomish.api.util.ReflectionUtils;
-import io.bloomish.api.util.ResourceUtils;
 import io.bloomish.api.util.TagUtils;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.levelgen.feature.ConfiguredFeature;
@@ -29,7 +29,7 @@ public class GenerateTreeStrategy implements FieldAnnotationStrategy<GenerateTre
         var configuration = this.getTreeConfiguration(annotationConfiguration);
         var placement = new Tree.Placement(annotationPlacement.sapling(), annotationPlacement.baseValue(), annotationPlacement.chance(), annotationPlacement.addedAmount());
         var biomeModifier = new Tree.BiomeModifier(annotationBiomeModifier.biomeTag());
-        Tree tree = new Tree(ResourceUtils.getResourceId(configuredFeatureKey), configuration, placement, biomeModifier);
+        Tree tree = new Tree(DeprecatedResourceUtils.getResourceId(configuredFeatureKey), configuration, placement, biomeModifier);
         GenerationDescriptionContainer.TREES.put(configuredFeatureKey, tree);
     }
 

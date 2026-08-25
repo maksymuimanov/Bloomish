@@ -1,6 +1,6 @@
 package io.bloomish.api.engine.event.data.client.model.block.spec;
 
-import io.bloomish.api.util.ResourceUtils;
+import io.bloomish.api.util.DeprecatedResourceUtils;
 import net.minecraft.core.Holder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
@@ -13,7 +13,7 @@ public class SignBlockModelSpec extends DependantBlockModelSpec {
     }
 
     public SignBlockModelSpec(Holder<? extends Block> holder, String renderType, String dependencyBlockId, String particleTexture) {
-        this(holder, renderType, dependencyBlockId, ResourceUtils.parse(particleTexture));
+        this(holder, renderType, dependencyBlockId, DeprecatedResourceUtils.parse(particleTexture));
     }
 
     public SignBlockModelSpec(Holder<? extends Block> holder, Block dependencyBlock, String particleTexture) {
@@ -21,7 +21,7 @@ public class SignBlockModelSpec extends DependantBlockModelSpec {
     }
 
     public SignBlockModelSpec(Holder<? extends Block> holder, String renderType, Block dependencyBlock, String particleTexture) {
-        this(holder, renderType, dependencyBlock, ResourceUtils.parse(particleTexture));
+        this(holder, renderType, dependencyBlock, DeprecatedResourceUtils.parse(particleTexture));
     }
 
     public SignBlockModelSpec(Holder<? extends Block> holder, String dependencyBlockId, ResourceLocation particleTexture) {

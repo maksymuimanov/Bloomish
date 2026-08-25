@@ -1,7 +1,7 @@
 package io.bloomish.api.engine.registry.factory;
 
 import io.bloomish.api.engine.context.DefaultObjectRegistry;
-import io.bloomish.api.engine.registry.TemporalRegister;
+import io.bloomish.api.engine.registry.BloomishRegister;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.neoforged.neoforge.registries.DeferredHolder;
@@ -11,7 +11,7 @@ public class RecipeSerializerFactory extends AbstractObjectFactory<RecipeSeriali
         this(DefaultObjectRegistry.getFromInstance("$RecipeSerializers"));
     }
 
-    public RecipeSerializerFactory(TemporalRegister<RecipeSerializer<?>> register) {
+    public RecipeSerializerFactory(BloomishRegister<RecipeSerializer<?>> register) {
         super(register);
     }
 

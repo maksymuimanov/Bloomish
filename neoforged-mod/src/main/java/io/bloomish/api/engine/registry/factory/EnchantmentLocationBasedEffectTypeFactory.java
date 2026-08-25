@@ -2,7 +2,7 @@ package io.bloomish.api.engine.registry.factory;
 
 import com.mojang.serialization.MapCodec;
 import io.bloomish.api.engine.context.DefaultObjectRegistry;
-import io.bloomish.api.engine.registry.TemporalRegister;
+import io.bloomish.api.engine.registry.BloomishRegister;
 import net.minecraft.world.item.enchantment.effects.EnchantmentLocationBasedEffect;
 
 public class EnchantmentLocationBasedEffectTypeFactory extends AbstractObjectFactory<MapCodec<? extends EnchantmentLocationBasedEffect>> {
@@ -10,7 +10,7 @@ public class EnchantmentLocationBasedEffectTypeFactory extends AbstractObjectFac
         this(DefaultObjectRegistry.getFromInstance("$EnchantmentLocationBasedEffectTypes"));
     }
 
-    public EnchantmentLocationBasedEffectTypeFactory(TemporalRegister<MapCodec<? extends EnchantmentLocationBasedEffect>> register) {
+    public EnchantmentLocationBasedEffectTypeFactory(BloomishRegister<MapCodec<? extends EnchantmentLocationBasedEffect>> register) {
         super(register);
     }
 }

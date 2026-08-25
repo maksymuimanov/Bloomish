@@ -20,7 +20,7 @@ import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Supplier;
 
-public class TemporalRegister<T> extends DeferredRegister<T> {
+public class BloomishRegister<T> extends DeferredRegister<T> {
     private final Map<DeferredHolder<T, ? extends T>, Supplier<? extends T>> entries;
     private final Set<DeferredHolder<T, ? extends T>> entriesView;
     private Map<ResourceLocation, ResourceLocation> aliases;
@@ -32,7 +32,7 @@ public class TemporalRegister<T> extends DeferredRegister<T> {
     @Nullable
     private RegistryHolder<T> registryHolder;
 
-    protected TemporalRegister(ResourceKey<? extends Registry<T>> registryKey, String namespace) {
+    protected BloomishRegister(ResourceKey<? extends Registry<T>> registryKey, String namespace) {
         super(registryKey, namespace);
         this.entries = new LinkedHashMap<>();
         this.entriesView = Collections.unmodifiableSet(this.entries.keySet());
@@ -42,36 +42,36 @@ public class TemporalRegister<T> extends DeferredRegister<T> {
         this.registeredEventBus = false;
     }
 
-    public static TemporalItems createItems() {
-        return new TemporalItems(ModContext.currentMod.getModId());
+    public static BloomishItems createItems() {
+        return new BloomishItems(ModContext.currentMod.getModId());
     }
 
-    public static TemporalBlocks createBlocks() {
-        return new TemporalBlocks(ModContext.currentMod.getModId());
+    public static BloomishBlocks createBlocks() {
+        return new BloomishBlocks(ModContext.currentMod.getModId());
     }
 
-    public static <T> TemporalRegister<T> create(Registry<T> registry) {
+    public static <T> BloomishRegister<T> create(Registry<T> registry) {
         return create(registry, ModContext.currentMod.getModId());
     }
 
-    public static <T> TemporalRegister<T> create(Registry<T> registry, String namespace) {
-        return new TemporalRegister<>(registry.key(), namespace);
+    public static <T> BloomishRegister<T> create(Registry<T> registry, String namespace) {
+        return new BloomishRegister<>(registry.key(), namespace);
     }
 
-    public static <T> TemporalRegister<T> create(ResourceKey<? extends Registry<T>> key) {
+    public static <T> BloomishRegister<T> create(ResourceKey<? extends Registry<T>> key) {
         return create(key, ModContext.currentMod.getModId());
     }
 
-    public static <T> TemporalRegister<T> create(ResourceKey<? extends Registry<T>> key, String namespace) {
-        return new TemporalRegister<>(key, namespace);
+    public static <T> BloomishRegister<T> create(ResourceKey<? extends Registry<T>> key, String namespace) {
+        return new BloomishRegister<>(key, namespace);
     }
 
-    public static <T> TemporalRegister<T> create(@NotNull ResourceLocation registryName) {
+    public static <T> BloomishRegister<T> create(@NotNull ResourceLocation registryName) {
         return create(registryName, ModContext.currentMod.getModId());
     }
 
-    public static <T> TemporalRegister<T> create(@NotNull ResourceLocation registryName, String namespace) {
-        return new TemporalRegister<>(ResourceKey.createRegistryKey(registryName), namespace);
+    public static <T> BloomishRegister<T> create(@NotNull ResourceLocation registryName, String namespace) {
+        return new BloomishRegister<>(ResourceKey.createRegistryKey(registryName), namespace);
     }
 
     public void register(@NotNull IEventBus eventBus, @NotNull Class<?>... containers) {
@@ -310,8 +310,8 @@ public class TemporalRegister<T> extends DeferredRegister<T> {
         }
     }
 
-    public static class TemporalItems extends TemporalRegister<Item> {
-        public TemporalItems(String namespace) {
+    public static class BloomishItems extends BloomishRegister<Item> {
+        public BloomishItems(String namespace) {
             super(Registries.ITEM, namespace);
         }
 
@@ -321,8 +321,8 @@ public class TemporalRegister<T> extends DeferredRegister<T> {
         }
     }
 
-    public static class TemporalBlocks extends TemporalRegister<Block> {
-        public TemporalBlocks(String namespace) {
+    public static class BloomishBlocks extends BloomishRegister<Block> {
+        public BloomishBlocks(String namespace) {
             super(Registries.BLOCK, namespace);
         }
 

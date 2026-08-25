@@ -2,7 +2,7 @@ package io.bloomish.api.engine.registry.factory;
 
 import com.mojang.serialization.MapCodec;
 import io.bloomish.api.engine.context.DefaultObjectRegistry;
-import io.bloomish.api.engine.registry.TemporalRegister;
+import io.bloomish.api.engine.registry.BloomishRegister;
 import net.minecraft.world.item.enchantment.providers.EnchantmentProvider;
 
 public class EnchantmentProviderTypeFactory extends AbstractObjectFactory<MapCodec<? extends EnchantmentProvider>> {
@@ -10,7 +10,7 @@ public class EnchantmentProviderTypeFactory extends AbstractObjectFactory<MapCod
         this(DefaultObjectRegistry.getFromInstance("$EnchantmentProviderTypes"));
     }
 
-    public EnchantmentProviderTypeFactory(TemporalRegister<MapCodec<? extends EnchantmentProvider>> register) {
+    public EnchantmentProviderTypeFactory(BloomishRegister<MapCodec<? extends EnchantmentProvider>> register) {
         super(register);
     }
 }

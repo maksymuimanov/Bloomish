@@ -1,7 +1,7 @@
 package io.bloomish.api.engine.registry.factory;
 
 import io.bloomish.api.engine.context.DefaultObjectRegistry;
-import io.bloomish.api.engine.registry.TemporalRegister;
+import io.bloomish.api.engine.registry.BloomishRegister;
 import net.minecraft.world.entity.schedule.Schedule;
 import net.minecraft.world.entity.schedule.ScheduleBuilder;
 import net.neoforged.neoforge.registries.DeferredHolder;
@@ -13,7 +13,7 @@ public class ScheduleFactory extends AbstractObjectFactory<Schedule> {
         this(DefaultObjectRegistry.getFromInstance("$Schedules"));
     }
 
-    public ScheduleFactory(TemporalRegister<Schedule> register) {
+    public ScheduleFactory(BloomishRegister<Schedule> register) {
         super(register);
     }
 

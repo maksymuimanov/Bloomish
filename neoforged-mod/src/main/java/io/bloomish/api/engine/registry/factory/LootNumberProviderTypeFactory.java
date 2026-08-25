@@ -2,7 +2,7 @@ package io.bloomish.api.engine.registry.factory;
 
 import com.mojang.serialization.MapCodec;
 import io.bloomish.api.engine.context.DefaultObjectRegistry;
-import io.bloomish.api.engine.registry.TemporalRegister;
+import io.bloomish.api.engine.registry.BloomishRegister;
 import net.minecraft.world.level.storage.loot.providers.number.LootNumberProviderType;
 import net.minecraft.world.level.storage.loot.providers.number.NumberProvider;
 import net.neoforged.neoforge.registries.DeferredHolder;
@@ -12,7 +12,7 @@ public class LootNumberProviderTypeFactory extends AbstractObjectFactory<LootNum
         this(DefaultObjectRegistry.getFromInstance("$LootNumberProviderTypes"));
     }
 
-    public LootNumberProviderTypeFactory(TemporalRegister<LootNumberProviderType> register) {
+    public LootNumberProviderTypeFactory(BloomishRegister<LootNumberProviderType> register) {
         super(register);
     }
 

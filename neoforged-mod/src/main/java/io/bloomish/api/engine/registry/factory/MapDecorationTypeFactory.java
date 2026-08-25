@@ -1,8 +1,8 @@
 package io.bloomish.api.engine.registry.factory;
 
 import io.bloomish.api.engine.context.DefaultObjectRegistry;
-import io.bloomish.api.engine.registry.TemporalRegister;
-import io.bloomish.api.util.ResourceUtils;
+import io.bloomish.api.engine.registry.BloomishRegister;
+import io.bloomish.api.util.DeprecatedResourceUtils;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.saveddata.maps.MapDecorationType;
 import net.neoforged.neoforge.registries.DeferredHolder;
@@ -12,16 +12,16 @@ public class MapDecorationTypeFactory extends AbstractObjectFactory<MapDecoratio
         this(DefaultObjectRegistry.getFromInstance("$MapDecorationTypes"));
     }
 
-    public MapDecorationTypeFactory(TemporalRegister<MapDecorationType> register) {
+    public MapDecorationTypeFactory(BloomishRegister<MapDecorationType> register) {
         super(register);
     }
 
     public DeferredHolder<MapDecorationType, MapDecorationType> create(String name, boolean showOnItemFrame, int mapColor, boolean explorationMapElement, boolean trackCount) {
-        return this.create(name, ResourceUtils.createLocation(name), showOnItemFrame, mapColor, explorationMapElement, trackCount);
+        return this.create(name, DeprecatedResourceUtils.createLocation(name), showOnItemFrame, mapColor, explorationMapElement, trackCount);
     }
 
     public DeferredHolder<MapDecorationType, MapDecorationType> create(String name, String assetId, boolean showOnItemFrame, int mapColor, boolean explorationMapElement, boolean trackCount) {
-        return this.create(name, ResourceUtils.parse(assetId), showOnItemFrame, mapColor, explorationMapElement, trackCount);
+        return this.create(name, DeprecatedResourceUtils.parse(assetId), showOnItemFrame, mapColor, explorationMapElement, trackCount);
     }
 
     public DeferredHolder<MapDecorationType, MapDecorationType> create(String name, ResourceLocation assetId, boolean showOnItemFrame, int mapColor, boolean explorationMapElement, boolean trackCount) {

@@ -1,7 +1,7 @@
 package io.bloomish.api.engine.registry.factory;
 
 import io.bloomish.api.engine.context.DefaultObjectRegistry;
-import io.bloomish.api.engine.registry.TemporalRegister;
+import io.bloomish.api.engine.registry.BloomishRegister;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
@@ -15,7 +15,7 @@ public class CreativeModeTabFactory extends AbstractObjectFactory<CreativeModeTa
         this(DefaultObjectRegistry.getFromInstance("$CreativeModeTabs"));
     }
 
-    public CreativeModeTabFactory(TemporalRegister<CreativeModeTab> register) {
+    public CreativeModeTabFactory(BloomishRegister<CreativeModeTab> register) {
         super(register);
     }
 

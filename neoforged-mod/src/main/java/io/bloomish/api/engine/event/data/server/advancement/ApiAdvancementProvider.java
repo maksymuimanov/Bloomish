@@ -2,7 +2,7 @@ package io.bloomish.api.engine.event.data.server.advancement;
 
 import io.bloomish.api.core.collection.TemporalMap;
 import io.bloomish.api.core.collection.TemporalQueue;
-import io.bloomish.api.util.ResourceUtils;
+import io.bloomish.api.util.DeprecatedResourceUtils;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementHolder;
 import net.minecraft.advancements.AdvancementRewards;
@@ -34,7 +34,7 @@ public class ApiAdvancementProvider implements AdvancementSubProvider {
             Map<String, Criterion<?>> criterions = advancement.getCriterions();
             criterions.forEach(builder::addCriterion);
             builder.requirements(advancement.getRequirements(criterions.keySet()));
-            builder.save(consumer, ResourceUtils.parse(advancement.getId()).toString());
+            builder.save(consumer, DeprecatedResourceUtils.parse(advancement.getId()).toString());
         });
 
         CUSTOM_ADVANCEMENTS.forEach((advancement, strategy) -> strategy.generateAdvancement(advancement, provider, consumer));

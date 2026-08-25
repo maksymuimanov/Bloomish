@@ -1,7 +1,7 @@
 package io.bloomish.api.engine.registry.factory;
 
 import io.bloomish.api.engine.context.DefaultObjectRegistry;
-import io.bloomish.api.engine.registry.TemporalRegister;
+import io.bloomish.api.engine.registry.BloomishRegister;
 import net.minecraft.world.level.levelgen.structure.pieces.StructurePieceType;
 
 public class StructurePieceFactory extends AbstractObjectFactory<StructurePieceType> {
@@ -9,7 +9,7 @@ public class StructurePieceFactory extends AbstractObjectFactory<StructurePieceT
         this(DefaultObjectRegistry.getFromInstance("$StructurePieces"));
     }
 
-    public StructurePieceFactory(TemporalRegister<StructurePieceType> register) {
+    public StructurePieceFactory(BloomishRegister<StructurePieceType> register) {
         super(register);
     }
 }

@@ -2,7 +2,7 @@ package io.bloomish.api.engine.registry.factory;
 
 import com.mojang.serialization.MapCodec;
 import io.bloomish.api.engine.context.DefaultObjectRegistry;
-import io.bloomish.api.engine.registry.TemporalRegister;
+import io.bloomish.api.engine.registry.BloomishRegister;
 import net.minecraft.world.level.storage.loot.predicates.LootItemCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemConditionType;
 import net.neoforged.neoforge.registries.DeferredHolder;
@@ -12,7 +12,7 @@ public class LootConditionTypeFactory extends AbstractObjectFactory<LootItemCond
         this(DefaultObjectRegistry.getFromInstance("$LootConditionTypes"));
     }
 
-    public LootConditionTypeFactory(TemporalRegister<LootItemConditionType> register) {
+    public LootConditionTypeFactory(BloomishRegister<LootItemConditionType> register) {
         super(register);
     }
 

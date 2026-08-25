@@ -2,7 +2,7 @@ package io.bloomish.api.engine.registry.factory;
 
 import com.mojang.serialization.Codec;
 import io.bloomish.api.engine.context.DefaultObjectRegistry;
-import io.bloomish.api.engine.registry.TemporalRegister;
+import io.bloomish.api.engine.registry.BloomishRegister;
 import net.minecraft.core.component.DataComponentType;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
@@ -13,7 +13,7 @@ public class DataComponentTypeFactory extends AbstractObjectFactory<DataComponen
         this(DefaultObjectRegistry.getFromInstance("$DataComponentTypes"));
     }
 
-    public DataComponentTypeFactory(TemporalRegister<DataComponentType<?>> register) {
+    public DataComponentTypeFactory(BloomishRegister<DataComponentType<?>> register) {
         super(register);
     }
 

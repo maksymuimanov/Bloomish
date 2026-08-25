@@ -1,7 +1,7 @@
 package io.bloomish.api.engine.registry.factory;
 
 import io.bloomish.api.engine.context.DefaultObjectRegistry;
-import io.bloomish.api.engine.registry.TemporalRegister;
+import io.bloomish.api.engine.registry.BloomishRegister;
 import net.minecraft.world.item.Item;
 import net.neoforged.neoforge.registries.DeferredItem;
 
@@ -12,7 +12,7 @@ public class ItemFactory extends AbstractObjectFactory<Item> {
         this(DefaultObjectRegistry.getFromInstance("$Items"));
     }
 
-    public ItemFactory(TemporalRegister<Item> register) {
+    public ItemFactory(BloomishRegister<Item> register) {
         super(register);
     }
 
