@@ -1,7 +1,7 @@
 package io.bloomish.api.engine.metadata.strategy.field.data.model.item;
 
-import io.bloomish.api.engine.event.data.model.item.ItemModelContainer;
-import io.bloomish.api.engine.event.data.model.item.spec.DependantBlockItemModelSpec;
+import io.bloomish.api.engine.event.data.client.model.item.ItemModelContainer;
+import io.bloomish.api.engine.event.data.client.model.item.spec.DependantBlockItemModelSpec;
 import io.bloomish.api.engine.initialization.initializer.StrategyInitializer;
 import io.bloomish.api.engine.metadata.annotation.data.model.item.GenerateSlabBlockItemModel;
 import io.bloomish.api.engine.metadata.annotation.injection.Strategy;

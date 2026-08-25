@@ -1,26 +1,27 @@
 package io.bloomish.api.engine.event.data;
 
-import io.bloomish.api.engine.event.data.advancement.AdvancementProviderFactory;
-import io.bloomish.api.engine.event.data.file.AtlasArmorTrimProvider;
-import io.bloomish.api.engine.event.data.language.provider.*;
-import io.bloomish.api.engine.event.data.loot.LootTableProviderFactory;
-import io.bloomish.api.engine.event.data.map.ApiDataMapProvider;
-import io.bloomish.api.engine.event.data.model.block.ApiBlockModelProvider;
-import io.bloomish.api.engine.event.data.model.item.ApiItemModelProvider;
-import io.bloomish.api.engine.event.data.modifier.ApiGlobalLootModifierProvider;
-import io.bloomish.api.engine.event.data.pack.ApiDatapackProvider;
-import io.bloomish.api.engine.event.data.particle.ApiParticleProvider;
+import io.bloomish.api.engine.event.data.client.atlas.AtlasArmorTrimProvider;
+import io.bloomish.api.engine.event.data.client.language.provider.*;
+import io.bloomish.api.engine.event.data.client.model.block.ApiBlockModelProvider;
+import io.bloomish.api.engine.event.data.client.model.item.ApiItemModelProvider;
+import io.bloomish.api.engine.event.data.client.particle.ApiParticleProvider;
+import io.bloomish.api.engine.event.data.client.sound.ApiSoundProvider;
 import io.bloomish.api.engine.event.data.preparer.DynamicPreparer;
 import io.bloomish.api.engine.event.data.preparer.tag.BiomeTagDynamicPreparer;
 import io.bloomish.api.engine.event.data.preparer.tag.BlockTagDynamicPreparer;
 import io.bloomish.api.engine.event.data.preparer.tag.EnchantmentTagDynamicPreparer;
 import io.bloomish.api.engine.event.data.preparer.tag.ItemTagDynamicPreparer;
-import io.bloomish.api.engine.event.data.recipe.ApiRecipeProvider;
-import io.bloomish.api.engine.event.data.sound.ApiSoundProvider;
-import io.bloomish.api.engine.event.data.tag.*;
+import io.bloomish.api.engine.event.data.server.advancement.AdvancementProviderFactory;
+import io.bloomish.api.engine.event.data.server.loot.LootTableProviderFactory;
+import io.bloomish.api.engine.event.data.server.map.ApiDataMapProvider;
+import io.bloomish.api.engine.event.data.server.modifier.ApiGlobalLootModifierProvider;
+import io.bloomish.api.engine.event.data.server.pack.ApiDatapackProvider;
+import io.bloomish.api.engine.event.data.server.recipe.ApiRecipeProvider;
+import io.bloomish.api.engine.event.data.server.tag.*;
 import io.bloomish.api.engine.metadata.annotation.injection.Injected;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.DataGenerator;
+import net.minecraft.data.DataProvider;
 import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
@@ -31,21 +32,18 @@ import java.util.concurrent.CompletableFuture;
 // TODO: whole rework to support type based json serialization
 @Injected
 public class ApiDataGenerator implements DataGatherer {
+    private final Iterable<ServerDataProvider> serverProviders;
+    private final Iterable<ClientDataProvider> clientProviders;
+
+    public ApiDataGenerator(Iterable<ServerDataProvider> serverProviders, Iterable<ClientDataProvider> clientProviders) {
+        this.serverProviders = serverProviders;
+        this.clientProviders = clientProviders;
+    }
+
     @Override
     public void gatherData(GatherDataEvent event) {
-        this.init(); // TODO
-        this.addGlobalLootModifierProvider(event); // TODO
-        this.addLootTableProvider(event); // TODO
-        this.addRecipeProvider(event); // TODO
-        this.addModelProvider(event); // TODO
-        this.addLanguageProvider(event); // TODO
-        this.addTagProvider(event); // TODO
-        this.addDatapackProvider(event); // TODO
-        this.addDataMapProvider(event); // TODO
-        this.addAdvancementProvider(event); // TODO
-        this.addSoundProvider(event); // TODO
-        this.addParticleProvider(event); // TODO
-        this.addFileProvider(event); // TODO
+        this.addServerProviders(event, this.serverProviders);
+        this.addClientProviders(event, this.clientProviders);
     }
 
     private void init() {
@@ -278,28 +276,27 @@ public class ApiDataGenerator implements DataGatherer {
     }
 
     private void addFileProvider(GatherDataEvent event) {
+        this.addClientProviders(event, new AtlasArmorTrimProvider(this.packOutput));
+
         final DataGenerator generator = this.getDataGenerator(event);
         final PackOutput packOutput = this.getPackOutput(event);
         generator.addProvider(event.includeClient(), new AtlasArmorTrimProvider(packOutput));
     }
 
-    @Override
-    public PackOutput getPackOutput(GatherDataEvent event) {
-        return getDataGenerator(event).getPackOutput();
+    private <P extends ClientDataProvider> void addClientProviders(GatherDataEvent event, Iterable<P> providers) {
+        this.addProviders(event, event.includeClient(), providers);
     }
 
-    @Override
-    public DataGenerator getDataGenerator(GatherDataEvent event) {
-        return event.getGenerator();
+    private <P extends ServerDataProvider> void addServerProviders(GatherDataEvent event, Iterable<P> providers) {
+        this.addProviders(event, event.includeServer(), providers);
     }
 
-    @Override
-    public ExistingFileHelper getExistingFileHelper(GatherDataEvent event) {
-        return event.getExistingFileHelper();
+    private <P extends DataProvider> void addProviders(GatherDataEvent event, boolean runCondition, Iterable<P> providers) {
+        providers.forEach(dataProvider -> this.addProvider(event, runCondition, dataProvider));
     }
 
-    @Override
-    public CompletableFuture<HolderLookup.Provider> getLookupProvider(GatherDataEvent event) {
-        return event.getLookupProvider();
+    private void addProvider(GatherDataEvent event, boolean runCondition, DataProvider provider) {
+        DataGenerator generator = event.getGenerator();
+        generator.addProvider(runCondition, provider);
     }
 }

@@ -1,6 +1,6 @@
 package io.bloomish.api.engine.metadata.strategy.field.data.language;
 
-import io.bloomish.api.engine.event.data.language.provider.AzerbaijaniProvider;
+import io.bloomish.api.engine.event.data.client.language.provider.AzerbaijaniProvider;
 import io.bloomish.api.engine.initialization.initializer.StrategyInitializer;
 import io.bloomish.api.engine.metadata.annotation.data.language.TranslateAzerbaijani;
 import io.bloomish.api.engine.metadata.annotation.injection.Strategy;

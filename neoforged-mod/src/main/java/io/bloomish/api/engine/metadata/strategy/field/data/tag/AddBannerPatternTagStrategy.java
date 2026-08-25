@@ -1,6 +1,6 @@
 package io.bloomish.api.engine.metadata.strategy.field.data.tag;
 
-import io.bloomish.api.engine.event.data.tag.BannerPatternTagsProvider;
+import io.bloomish.api.engine.event.data.server.tag.BannerPatternTagsProvider;
 import io.bloomish.api.engine.initialization.initializer.StrategyInitializer;
 import io.bloomish.api.engine.metadata.annotation.data.tag.AddBannerPatternTag;
 import io.bloomish.api.engine.metadata.annotation.injection.Strategy;

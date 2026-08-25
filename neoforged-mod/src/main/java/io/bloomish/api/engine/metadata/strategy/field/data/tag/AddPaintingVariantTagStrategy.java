@@ -1,6 +1,6 @@
 package io.bloomish.api.engine.metadata.strategy.field.data.tag;
 
-import io.bloomish.api.engine.event.data.tag.PaintingVariantTagsProvider;
+import io.bloomish.api.engine.event.data.server.tag.PaintingVariantTagsProvider;
 import io.bloomish.api.engine.initialization.initializer.StrategyInitializer;
 import io.bloomish.api.engine.metadata.annotation.data.tag.AddPaintingVariantTag;
 import io.bloomish.api.engine.metadata.annotation.injection.Strategy;

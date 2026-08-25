@@ -1,7 +1,7 @@
 package io.bloomish.api.engine.metadata.strategy.field.data.properties;
 
-import io.bloomish.api.engine.event.data.map.ApiDataMapProvider;
-import io.bloomish.api.engine.event.data.map.CompostableDto;
+import io.bloomish.api.engine.event.data.server.map.ApiDataMapProvider;
+import io.bloomish.api.engine.event.data.server.map.CompostableDto;
 import io.bloomish.api.engine.initialization.initializer.StrategyInitializer;
 import io.bloomish.api.engine.metadata.annotation.data.properties.Compostable;
 import io.bloomish.api.engine.metadata.annotation.injection.Strategy;

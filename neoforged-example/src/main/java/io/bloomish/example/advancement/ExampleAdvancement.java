@@ -1,14 +1,14 @@
 package io.bloomish.example.advancement;
 
-import io.bloomish.api.engine.event.data.advancement.AdvancementDescription;
+import io.bloomish.api.engine.event.data.server.advancement.AdvancementDescription;
 import io.bloomish.api.engine.metadata.annotation.data.GenerateAdvancement;
 import io.bloomish.api.engine.metadata.annotation.data.language.TranslateAmericanEnglish;
+import io.bloomish.example.item.ExampleItems;
 import net.minecraft.advancements.AdvancementRequirements;
 import net.minecraft.advancements.AdvancementType;
 import net.minecraft.advancements.Criterion;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.world.level.ItemLike;
-import io.bloomish.example.item.ExampleItems;
 
 import java.util.Map;
 import java.util.Set;

@@ -1,11 +1,11 @@
 package io.bloomish.example.recipe;
 
-import io.bloomish.api.engine.event.data.recipe.description.ShapelessRecipeDescription;
+import io.bloomish.api.engine.event.data.server.recipe.description.ShapelessRecipeDescription;
 import io.bloomish.api.engine.metadata.annotation.data.GenerateRecipe;
+import io.bloomish.example.item.ExampleItems;
 import net.minecraft.data.recipes.RecipeCategory;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.ItemLike;
-import io.bloomish.example.item.ExampleItems;
 
 import java.util.Map;
 

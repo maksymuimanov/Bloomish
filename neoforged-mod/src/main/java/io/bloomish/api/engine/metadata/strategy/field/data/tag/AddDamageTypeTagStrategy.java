@@ -1,6 +1,6 @@
 package io.bloomish.api.engine.metadata.strategy.field.data.tag;
 
-import io.bloomish.api.engine.event.data.tag.DamageTypeTagsProvider;
+import io.bloomish.api.engine.event.data.server.tag.DamageTypeTagsProvider;
 import io.bloomish.api.engine.initialization.initializer.StrategyInitializer;
 import io.bloomish.api.engine.metadata.annotation.data.tag.AddDamageTypeTag;
 import io.bloomish.api.engine.metadata.annotation.injection.Strategy;

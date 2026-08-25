@@ -1,9 +1,9 @@
 package io.bloomish.example.recipe;
 
-import io.bloomish.api.engine.event.data.recipe.description.TemplateSmithingTrimRecipeDescription;
+import io.bloomish.api.engine.event.data.server.recipe.description.TemplateSmithingTrimRecipeDescription;
 import io.bloomish.api.engine.metadata.annotation.data.GenerateRecipe;
-import net.minecraft.world.level.ItemLike;
 import io.bloomish.example.item.ExampleItems;
+import net.minecraft.world.level.ItemLike;
 
 @GenerateRecipe
 public class ExampleArmorTrimTemplateRecipe implements TemplateSmithingTrimRecipeDescription {

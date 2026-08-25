@@ -22,7 +22,7 @@ public class InjectStrategy implements FieldAnnotationStrategy<Inject> {
         field.set(object, poolObject);
         Class<?> objectClass = object.getClass();
         Injected injected = objectClass.getDeclaredAnnotation(Injected.class);
-        if (!injected.isContextObject()) throw new IllegalStateException("@Inject annotation can be applied if class is annotated with @Injected(isContextObject=true)");
+        if (!injected.shouldInject()) throw new IllegalStateException("@Inject annotation can be applied if class is annotated with @Injected(isContextObject=true)");
         String rootBeanName = injected.value();
         if (rootBeanName.isBlank()) {
             objectRegistry.registerValueByClass(objectClass);

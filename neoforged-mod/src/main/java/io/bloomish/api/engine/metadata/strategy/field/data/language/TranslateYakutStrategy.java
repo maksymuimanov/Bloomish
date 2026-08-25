@@ -1,6 +1,6 @@
 package io.bloomish.api.engine.metadata.strategy.field.data.language;
 
-import io.bloomish.api.engine.event.data.language.provider.YakutProvider;
+import io.bloomish.api.engine.event.data.client.language.provider.YakutProvider;
 import io.bloomish.api.engine.initialization.initializer.StrategyInitializer;
 import io.bloomish.api.engine.metadata.annotation.data.language.TranslateYakut;
 import io.bloomish.api.engine.metadata.annotation.injection.Strategy;

@@ -1,6 +1,6 @@
 package io.bloomish.api.engine.metadata.strategy.field.data.tag;
 
-import io.bloomish.api.engine.event.data.tag.GameEventTagsProvider;
+import io.bloomish.api.engine.event.data.server.tag.GameEventTagsProvider;
 import io.bloomish.api.engine.initialization.initializer.StrategyInitializer;
 import io.bloomish.api.engine.metadata.annotation.data.tag.AddGameEventTag;
 import io.bloomish.api.engine.metadata.annotation.injection.Strategy;

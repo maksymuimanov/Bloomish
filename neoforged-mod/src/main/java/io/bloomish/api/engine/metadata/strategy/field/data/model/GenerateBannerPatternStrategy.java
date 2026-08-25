@@ -1,7 +1,7 @@
 package io.bloomish.api.engine.metadata.strategy.field.data.model;
 
-import io.bloomish.api.engine.event.data.banner.ApiBannerPatternProvider;
-import io.bloomish.api.engine.event.data.banner.BannerPatternDescription;
+import io.bloomish.api.engine.event.data.server.banner.ApiBannerPatternProvider;
+import io.bloomish.api.engine.event.data.server.banner.BannerPatternDescription;
 import io.bloomish.api.engine.initialization.initializer.StrategyInitializer;
 import io.bloomish.api.engine.metadata.annotation.data.model.GenerateBannerPattern;
 import io.bloomish.api.engine.metadata.annotation.injection.Strategy;

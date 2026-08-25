@@ -1,7 +1,7 @@
 package io.bloomish.api.engine.metadata.strategy.field.data.loot;
 
-import io.bloomish.api.engine.event.data.loot.BlockLootTableContainer;
-import io.bloomish.api.engine.event.data.loot.spec.BlockLootTableSpec;
+import io.bloomish.api.engine.event.data.server.loot.BlockLootTableContainer;
+import io.bloomish.api.engine.event.data.server.loot.spec.BlockLootTableSpec;
 import io.bloomish.api.engine.initialization.initializer.StrategyInitializer;
 import io.bloomish.api.engine.metadata.annotation.data.loot.GenerateDoorBlockLootTable;
 import io.bloomish.api.engine.metadata.annotation.injection.Strategy;

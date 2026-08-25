@@ -10,7 +10,5 @@ import java.lang.annotation.Target;
 public @interface Injected {
     String value() default "";
 
-    boolean isContextObject() default true;
-
-    String mandatoryMod() default "";
+    boolean shouldInject() default true;
 }

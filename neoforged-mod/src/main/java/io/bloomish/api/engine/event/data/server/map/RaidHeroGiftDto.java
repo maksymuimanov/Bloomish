@@ -1,0 +1,7 @@
+package io.bloomish.api.engine.event.data.server.map;
+
+import net.minecraft.core.Holder;
+import net.minecraft.world.entity.npc.VillagerProfession;
+
+public record RaidHeroGiftDto(Holder<VillagerProfession> villagerProfession, String lootTablePath, boolean replace) {
+}

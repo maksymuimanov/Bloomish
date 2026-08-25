@@ -1,7 +1,7 @@
 package io.bloomish.api.engine.metadata.strategy.field.data.model;
 
-import io.bloomish.api.engine.event.data.trim.pattern.ApiTrimPatternProvider;
-import io.bloomish.api.engine.event.data.trim.pattern.TrimPatternDescription;
+import io.bloomish.api.engine.event.data.server.trim.pattern.ApiTrimPatternProvider;
+import io.bloomish.api.engine.event.data.server.trim.pattern.TrimPatternDescription;
 import io.bloomish.api.engine.initialization.initializer.StrategyInitializer;
 import io.bloomish.api.engine.metadata.annotation.data.model.GenerateTrimPattern;
 import io.bloomish.api.engine.metadata.annotation.injection.Strategy;

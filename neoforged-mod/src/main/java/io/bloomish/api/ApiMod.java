@@ -14,6 +14,6 @@ public class ApiMod {
     public static final Logger LOGGER = LogUtils.getLogger();
 
     public ApiMod(IEventBus modEventBus, ModContainer modContainer) {
-        ModContext.ALL_CLASSES.addAll(ReflectionUtils.getApiDependentsClasses());
+        ModContext.getInstance().addAllClasses(ReflectionUtils.getApiDependentsClasses());
     }
 }

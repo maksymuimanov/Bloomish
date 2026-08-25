@@ -1,7 +1,7 @@
 package io.bloomish.api.engine.metadata.strategy.field.data.language;
 
-import io.bloomish.api.engine.event.data.language.provider.ApiLanguageProvider;
-import io.bloomish.api.engine.event.data.language.transformer.KeyTransformer;
+import io.bloomish.api.engine.event.data.client.language.provider.ApiLanguageProvider;
+import io.bloomish.api.engine.event.data.client.language.transformer.KeyTransformer;
 import io.bloomish.api.engine.metadata.pool.ProcessorScope;
 import io.bloomish.api.engine.metadata.processor.DataEventHandlerAnnotationProcessorAdapter;
 import io.bloomish.api.engine.metadata.strategy.field.FieldAnnotationStrategy;
