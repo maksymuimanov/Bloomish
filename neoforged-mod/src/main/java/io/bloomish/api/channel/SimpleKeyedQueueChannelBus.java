@@ -24,9 +24,7 @@ public class SimpleKeyedQueueChannelBus implements KeyedQueueChannelBus {
     public <K, V> void send(DataChannel channel, K key, V data) {
         this.channels.compute(channel, (keyedQueueChannel, queueMap)  -> {
             if (queueMap == null) {
-                Map<Object, Queue<?>> map = new HashMap<>();
-                map.put(key, CollectionUtils.concurrentLinkedQueueOf(data));
-                return map;
+                return CollectionUtils.hashMapOf(key, CollectionUtils.concurrentLinkedQueueOf(data));
             }
             ((Queue<V>) queueMap.get(key)).add(data);
             return queueMap;

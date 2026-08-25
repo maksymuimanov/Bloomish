@@ -10,7 +10,7 @@ public class SimpleDependencyFlowBuilder extends AbstractDependencyFlowBuilder<S
     }
 
     public static SimpleDependencyFlowBuilder ofDependencies(String dependencyId, String... dependencyIds) {
-        List<String> ids = CollectionUtils.listOf(dependencyId, dependencyIds);
+        List<String> ids = CollectionUtils.arrayListOf(dependencyId, dependencyIds);
         return new SimpleDependencyFlowBuilder(ids);
     }
 

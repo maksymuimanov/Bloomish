@@ -16,6 +16,7 @@ public final class DataChannels {
 
     public static final DataChannel ATLAS_ARMOR_TRIM_PROVIDER_TRIM_PATTERNS = DataChannel.create();
     public static final DataChannel ATLAS_ARMOR_TRIM_PROVIDER_TRIM_MATERIALS = DataChannel.create();
+    public static final DataChannel LANGUAGE_PROVIDER = DataChannel.create();
 
     private DataChannels() {
     }

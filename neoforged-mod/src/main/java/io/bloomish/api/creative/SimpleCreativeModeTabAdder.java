@@ -18,7 +18,7 @@ public class SimpleCreativeModeTabAdder implements CreativeModeTabAdder {
             ItemLike item,
             ItemLike... items
     ) {
-        List<? extends ItemLike> itemsToAdd = CollectionUtils.listOf(item, items);
+        List<? extends ItemLike> itemsToAdd = CollectionUtils.arrayListOf(item, items);
         this.addAllToTab(event, creativeModeTab, itemsToAdd);
     }
 

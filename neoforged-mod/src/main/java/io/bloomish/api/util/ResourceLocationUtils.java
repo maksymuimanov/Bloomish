@@ -41,7 +41,7 @@ public final class ResourceLocationUtils {
     }
 
     public static String joinPath(String namespace, String pathPart, String... pathParts) {
-        return CollectionUtils.listOf(pathPart, pathParts)
+        return CollectionUtils.arrayListOf(pathPart, pathParts)
                 .stream()
                 .collect(Collectors.joining("/", namespace + ":", ""));
     }

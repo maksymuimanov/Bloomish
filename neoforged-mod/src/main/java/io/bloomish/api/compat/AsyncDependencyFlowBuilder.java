@@ -12,7 +12,7 @@ public class AsyncDependencyFlowBuilder extends AbstractDependencyFlowBuilder<As
     private final ExecutorService threadPool;
 
     public static AsyncDependencyFlowBuilder ofDependencies(String dependencyId, String... dependencyIds) {
-        List<String> ids = CollectionUtils.listOf(dependencyId, dependencyIds);
+        List<String> ids = CollectionUtils.arrayListOf(dependencyId, dependencyIds);
         return new AsyncDependencyFlowBuilder(ForkJoinPool.commonPool(), ids);
     }
 
@@ -24,7 +24,7 @@ public class AsyncDependencyFlowBuilder extends AbstractDependencyFlowBuilder<As
     public CompletableFuture<AsyncDependencyFlowBuilder> nextAsync(String dependencyId, String... dependencyIds) {
         return this.buildAsync()
                 .thenApply(ignored -> {
-                    List<String> ids = CollectionUtils.listOf(dependencyId, dependencyIds);
+                    List<String> ids = CollectionUtils.arrayListOf(dependencyId, dependencyIds);
                     return new AsyncDependencyFlowBuilder(this.threadPool, ids);
                 });
     }

@@ -1,9 +1,6 @@
 package io.bloomish.api.util;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 public final class CollectionUtils {
@@ -19,7 +16,7 @@ public final class CollectionUtils {
     }
 
     @SafeVarargs
-    public static <T> List<T> listOf(T first, T... rest) {
+    public static <T> List<T> arrayListOf(T first, T... rest) {
         List<T> safeVarargList = listFromNullableArray(rest);
         List<T> list = new ArrayList<>(1 + safeVarargList.size());
         list.add(first);
@@ -34,6 +31,15 @@ public final class CollectionUtils {
         queue.add(first);
         queue.addAll(safeVarargList);
         return queue;
+    }
+
+    @SafeVarargs
+    public static <K, V> Map<K, V> hashMapOf(K key, V value, Map.Entry<K, V>... rest) {
+        List<Map.Entry<K, V>> safeVarargList = rest == null ? List.of() : List.of(rest);
+        Map<K, V> map = new HashMap<>();
+        map.put(key, value);
+        safeVarargList.forEach(entry -> map.put(entry.getKey(), entry.getValue()));
+        return map;
     }
 
     private static <T> List<T> listFromNullableArray(T[] rest) {

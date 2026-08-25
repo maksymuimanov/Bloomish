@@ -4,6 +4,8 @@ import io.bloomish.api.engine.context.ModContext;
 import io.bloomish.api.util.MinecraftConstants;
 import net.minecraft.data.PackOutput;
 
+import java.nio.file.Path;
+
 public record DataTarget(
         PackOutput.Target target,
         String namespace,
@@ -27,6 +29,11 @@ public record DataTarget(
 
     public static DataTarget createMinecraftResourcePack(String path) {
         return createResourcePack(MinecraftConstants.MINECRAFT, path);
+    }
+
+    // TODO
+    public static DataTarget createResourcePack(String namespace, Path path) {
+        return createResourcePack(namespace, path.toString());
     }
 
     public static DataTarget createResourcePack(String namespace, String path) {

@@ -16,7 +16,7 @@ public class BowFovModifier implements FovModifier {
 
     @Override
     public void modify(ComputeFovModifierEvent event, Item item, Item... items) {
-        List<Item> combinedItems = CollectionUtils.listOf(item, items);
+        List<Item> combinedItems = CollectionUtils.arrayListOf(item, items);
         if (this.checkItems(event, combinedItems)) {
             float fov = event.getPlayer().getTicksUsingItem() / TICKS_PER_SECOND;
             fov = fov > MAX_DRAW_PROGRESS
