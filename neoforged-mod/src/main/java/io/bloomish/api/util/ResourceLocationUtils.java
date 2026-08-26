@@ -36,11 +36,11 @@ public final class ResourceLocationUtils {
         return ResourceLocation.fromNamespaceAndPath(MinecraftConstants.MINECRAFT, path);
     }
 
-    public static String joinPath(ResourceLocation location, String pathPart, String... pathParts) {
-        return joinPath(location.getNamespace(), pathPart, pathParts);
+    public static String joinNamespacedPath(ResourceLocation location, String pathPart, String... pathParts) {
+        return joinNamespacedPath(location.getNamespace(), pathPart, pathParts);
     }
 
-    public static String joinPath(String namespace, String pathPart, String... pathParts) {
+    public static String joinNamespacedPath(String namespace, String pathPart, String... pathParts) {
         return CollectionUtils.arrayListOf(pathPart, pathParts)
                 .stream()
                 .collect(Collectors.joining("/", namespace + ":", ""));

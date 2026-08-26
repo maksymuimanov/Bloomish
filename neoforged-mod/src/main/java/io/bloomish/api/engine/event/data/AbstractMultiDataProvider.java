@@ -36,13 +36,19 @@ public abstract class AbstractMultiDataProvider implements BloomishDataProvider 
                     Path targetPath = this.getPackOutput()
                             .getOutputFolder(target.target())
                             .resolve(target.namespace())
-                            .resolve(target.path() + JSON_FILE_EXTENSION);
+                            .resolve(this.resolvePathWithJsonExtension(target.path()));
                     return this.saveDataToFile(cachedOutput, content, targetPath);
                 })
                 .toArray(CompletableFuture<?>[]::new));
     }
 
     protected abstract void registerData();
+
+    private String resolvePathWithJsonExtension(Path path) {
+        return path.endsWith(JSON_FILE_EXTENSION)
+                ? path.toString()
+                : path + JSON_FILE_EXTENSION;
+    }
 
     protected Map<DataTarget, Object> getData() {
         return data;

@@ -9,34 +9,37 @@ import java.nio.file.Path;
 public record DataTarget(
         PackOutput.Target target,
         String namespace,
-        String path
+        Path path
 ) {
-    public static DataTarget createModDataPack(String path) {
-        return createDataPack(ModContext.getModId(), path);
+    public static DataTarget createModData(String pathPart, String... pathParts) {
+        return createData(ModContext.getModId(), pathPart, pathParts);
     }
 
-    public static DataTarget createMinecraftDataPack(String path) {
-        return createDataPack(MinecraftConstants.MINECRAFT, path);
+    public static DataTarget createMinecraftData(String pathPart, String... pathParts) {
+        return createData(MinecraftConstants.MINECRAFT, pathPart, pathParts);
     }
 
-    public static DataTarget createDataPack(String namespace, String path) {
+    public static DataTarget createData(String namespace, String pathPart, String... pathParts) {
+        return createData(namespace, Path.of(pathPart, pathParts));
+    }
+
+    public static DataTarget createData(String namespace, Path path) {
         return new DataTarget(PackOutput.Target.DATA_PACK, namespace, path);
     }
 
-    public static DataTarget createModResourcePack(String path) {
-        return createResourcePack(ModContext.getModId(), path);
+    public static DataTarget createModAsset(String pathPart, String... pathParts) {
+        return createAsset(ModContext.getModId(), pathPart, pathParts);
     }
 
-    public static DataTarget createMinecraftResourcePack(String path) {
-        return createResourcePack(MinecraftConstants.MINECRAFT, path);
+    public static DataTarget createMinecraftAsset(String pathPart, String... pathParts) {
+        return createAsset(MinecraftConstants.MINECRAFT, pathPart, pathParts);
     }
 
-    // TODO
-    public static DataTarget createResourcePack(String namespace, Path path) {
-        return createResourcePack(namespace, path.toString());
+    public static DataTarget createAsset(String namespace, String pathPart, String... pathParts) {
+        return createAsset(namespace, Path.of(pathPart, pathParts));
     }
 
-    public static DataTarget createResourcePack(String namespace, String path) {
+    public static DataTarget createAsset(String namespace, Path path) {
         return new DataTarget(PackOutput.Target.RESOURCE_PACK, namespace, path);
     }
 }
