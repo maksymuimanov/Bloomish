@@ -1,7 +1,7 @@
 package io.bloomish.api.engine.event.data.server.damage;
 
 import io.bloomish.api.core.collection.TemporalMap;
-import io.bloomish.api.engine.event.data.client.language.transformer.DamageTypeTransformer;
+import io.bloomish.api.engine.event.data.client.language.key.DamageTypeTranslationKeyResolver;
 import net.minecraft.Util;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
@@ -17,7 +17,7 @@ public class ApiDamageTypeProvider implements DamageTypeProvider {
     public void registerDamageTypes(BootstrapContext<DamageType> context) {
         DAMAGE_TYPES.forEach((damageType, description) -> {
             ResourceLocation location = damageType.location();
-            String messageId = Util.makeDescriptionId(DamageTypeTransformer.PREFIX, location);
+            String messageId = Util.makeDescriptionId(DamageTypeTranslationKeyResolver.PREFIX, location);
             context.register(damageType, new DamageType(messageId, description.damageScaling(), description.exhaustion(), description.effects(), description.messageType()));
         });
     }

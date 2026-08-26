@@ -1,7 +1,7 @@
 package io.bloomish.api.engine.event.data.server.banner;
 
 import io.bloomish.api.core.collection.TemporalQueue;
-import io.bloomish.api.engine.event.data.client.language.transformer.BannerPatternTransformer;
+import io.bloomish.api.engine.event.data.client.language.key.BannerPatternTranslationKeyResolver;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -17,7 +17,7 @@ public class ApiBannerPatternProvider implements BannerPatternProvider {
         PATTERNS.forEach(description -> {
             ResourceKey<BannerPattern> pattern = description.pattern();
             ResourceLocation location = pattern.location();
-            context.register(pattern, new BannerPattern(location, BannerPatternTransformer.PREFIX + location.toShortLanguageKey()));
+            context.register(pattern, new BannerPattern(location, BannerPatternTranslationKeyResolver.PREFIX + location.toShortLanguageKey()));
         });
     }
 

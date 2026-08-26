@@ -2,7 +2,7 @@ package io.bloomish.api.engine.event.data.client.sound;
 
 import io.bloomish.api.core.collection.TemporalMap;
 import io.bloomish.api.engine.context.ModContext;
-import io.bloomish.api.engine.event.data.client.language.transformer.SoundEventTransformer;
+import io.bloomish.api.engine.event.data.client.language.key.SoundEventTranslationKeyResolver;
 import net.minecraft.Util;
 import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
@@ -33,7 +33,7 @@ public class ApiSoundProvider extends SoundDefinitionsProvider {
                             .attenuationDistance(soundDescription.attenuationDistance())
                             .stream(soundDescription.stream())
                             .preload(soundDescription.preload())));
-            String subtitle = Util.makeDescriptionId(SoundEventTransformer.PREFIX, Objects.requireNonNull(holder.sound().getKey()).location());
+            String subtitle = Util.makeDescriptionId(SoundEventTranslationKeyResolver.PREFIX, Objects.requireNonNull(holder.sound().getKey()).location());
             add(holder.sound().value(), soundDefinition.subtitle(subtitle)
                     .replace(holder.replace()));
         });
