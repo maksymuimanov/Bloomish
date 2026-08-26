@@ -3,12 +3,12 @@ package io.bloomish.api.data.client.model.item;
 import io.bloomish.api.channel.DataChannels;
 import io.bloomish.api.channel.ValueChannelBus;
 import io.bloomish.api.data.client.model.item.model.ItemModel;
+import io.bloomish.api.data.client.model.item.model.LayeredItemModel;
 import io.bloomish.api.data.client.model.item.spec.ItemModelSpec;
 import io.bloomish.api.engine.metadata.annotation.injection.Injected;
 import io.bloomish.api.util.MinecraftConstants;
 import io.bloomish.api.util.RegistryUtils;
 import io.bloomish.api.util.ResourceLocationUtils;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.Item;
 
@@ -27,11 +27,13 @@ public class FlatItemModelProvider extends AbstractItemModelProvider {
 
     @Override
     protected void registerData() {
-        this.channelBus.<ItemModelSpec>forEachDrain(DataChannels.ITEM_MODEL_PROVIDER_FLAT_ITEMS, spec -> {
+        this.channelBus.<ItemModelSpec<? extends Item>>forEachDrain(DataChannels.ITEM_MODEL_PROVIDER_FLAT_ITEMS, spec -> {
             Item item = spec.getItem();
             String parent = ResourceLocationUtils.joinNamespacedPath(MinecraftConstants.MINECRAFT, ITEM_PATH, GENERATED_PATH);
-            ItemModel itemModel = new ItemModel(parent, Map.of(LAYER_0, RegistryUtils.findPath(BuiltInRegistries.ITEM, item)));
-            this.addItemData(item, itemModel);
+            String path = RegistryUtils.findItemNamespacedPath(item, ITEM_PATH);
+            Map<String, String> textures = Map.of(LAYER_0, path);
+            ItemModel itemModel = new LayeredItemModel(parent, textures);
+            this.addItemModel(item, itemModel);
         });
     }
 }

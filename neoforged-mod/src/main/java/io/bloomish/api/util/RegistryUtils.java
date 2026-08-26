@@ -1,7 +1,9 @@
 package io.bloomish.api.util;
 
 import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Item;
 
 import java.util.Objects;
 
@@ -9,9 +11,17 @@ public final class RegistryUtils {
     private RegistryUtils() {
     }
 
+    public static String findItemPath(Item item) {
+        return findPath(BuiltInRegistries.ITEM, item);
+    }
+
     public static <T> String findPath(Registry<T> registry, T value) {
         ResourceLocation location = Objects.requireNonNull(registry.getKey(value));
         return location.getPath();
+    }
+
+    public static String findItemNamespacedPath(Item item, String prefix) {
+        return findNamespacedPath(BuiltInRegistries.ITEM, item, prefix);
     }
 
     public static <T> String findNamespacedPath(Registry<T> registry, T value) {

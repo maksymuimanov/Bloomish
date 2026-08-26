@@ -3,6 +3,7 @@ package io.bloomish.api.data.client.model.item;
 import io.bloomish.api.data.AbstractMultiDataProvider;
 import io.bloomish.api.data.DataTarget;
 import io.bloomish.api.data.client.ClientDataProvider;
+import io.bloomish.api.data.client.model.item.model.ItemModel;
 import io.bloomish.api.util.RegistryUtils;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
@@ -16,12 +17,8 @@ public abstract class AbstractItemModelProvider extends AbstractMultiDataProvide
         super(packOutput);
     }
 
-    protected void addItemData(Item item, Object data) {
-        DataTarget dataTarget = DataTarget.createModAsset(
-                MODELS_PATH,
-                ITEM_PATH,
-                RegistryUtils.findPath(BuiltInRegistries.ITEM, item)
-        );
-        this.addData(dataTarget, data);
+    protected void addItemModel(Item item, ItemModel itemModel) {
+        DataTarget dataTarget = DataTarget.createModAsset(MODELS_PATH, ITEM_PATH, RegistryUtils.findPath(BuiltInRegistries.ITEM, item));
+        this.addData(dataTarget, itemModel);
     }
 }
