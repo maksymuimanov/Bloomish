@@ -2,7 +2,7 @@ package io.bloomish.api.data.server.recipe.strategy;
 
 import io.bloomish.api.data.server.recipe.ApiRecipeProvider;
 import io.bloomish.api.data.server.recipe.description.SmithingTransformRecipeDescription;
-import io.bloomish.api.util.RegistryUtils;
+import io.bloomish.api.util.DeprecatedRegistryUtils;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.SmithingTransformRecipeBuilder;
@@ -26,7 +26,7 @@ public class SmithingTransformRecipeStrategy implements RecipeStrategy<SmithingT
         if (description.getName() != null) {
             path = description.getName();
         } else {
-            path = RegistryUtils.getObjectId(BuiltInRegistries.ITEM, description.getResult().asItem());
+            path = DeprecatedRegistryUtils.getObjectId(BuiltInRegistries.ITEM, description.getResult().asItem());
         }
 
         builder.save(recipeOutput, path);

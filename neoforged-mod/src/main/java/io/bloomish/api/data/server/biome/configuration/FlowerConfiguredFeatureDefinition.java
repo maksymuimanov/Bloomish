@@ -2,8 +2,8 @@ package io.bloomish.api.data.server.biome.configuration;
 
 import io.bloomish.api.data.server.biome.GenerationDescriptionContainer;
 import io.bloomish.api.data.server.biome.dto.Flower;
+import io.bloomish.api.util.DeprecatedRegistryUtils;
 import io.bloomish.api.util.MapUtils;
-import io.bloomish.api.util.RegistryUtils;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.level.block.Block;
@@ -33,13 +33,13 @@ public class FlowerConfiguredFeatureDefinition implements ConfiguredFeatureDefin
                                         data.noiseScale(),
                                         data.noiseThreshold(),
                                         data.noiseHighChance(),
-                                        RegistryUtils.getBlock(data.blockId()).defaultBlockState(),
+                                        DeprecatedRegistryUtils.getBlock(data.blockId()).defaultBlockState(),
                                         Arrays.stream(data.lowStateFlowers())
-                                                .map(RegistryUtils::getBlock)
+                                                .map(DeprecatedRegistryUtils::getBlock)
                                                 .map(Block::defaultBlockState)
                                                 .toList(),
                                         Arrays.stream(data.highStateFlowers())
-                                                .map(RegistryUtils::getBlock)
+                                                .map(DeprecatedRegistryUtils::getBlock)
                                                 .map(Block::defaultBlockState)
                                                 .toList()))));
     }

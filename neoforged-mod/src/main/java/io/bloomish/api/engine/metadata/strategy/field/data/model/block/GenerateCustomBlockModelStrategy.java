@@ -1,8 +1,8 @@
 package io.bloomish.api.engine.metadata.strategy.field.data.model.block;
 
-import io.bloomish.api.data.client.model.block.BlockModelContainer;
-import io.bloomish.api.data.client.model.block.spec.CustomBlockModelSpec;
-import io.bloomish.api.data.client.model.block.strategy.BlockModelProviderStrategy;
+import io.bloomish.api.data.client.model.deprecated.block.BlockModelContainer;
+import io.bloomish.api.data.client.model.deprecated.block.spec.CustomBlockModelSpec;
+import io.bloomish.api.data.client.model.deprecated.block.strategy.BlockModelProviderStrategy;
 import io.bloomish.api.engine.initialization.initializer.StrategyInitializer;
 import io.bloomish.api.engine.metadata.annotation.data.model.block.GenerateCustomBlockModel;
 import io.bloomish.api.engine.metadata.annotation.injection.Strategy;

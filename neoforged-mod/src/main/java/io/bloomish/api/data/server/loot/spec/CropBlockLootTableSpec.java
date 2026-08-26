@@ -1,6 +1,6 @@
 package io.bloomish.api.data.server.loot.spec;
 
-import io.bloomish.api.util.RegistryUtils;
+import io.bloomish.api.util.DeprecatedRegistryUtils;
 import net.minecraft.core.Holder;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -13,7 +13,7 @@ public class CropBlockLootTableSpec extends BlockLootTableSpec {
     private final int maxAge;
 
     public CropBlockLootTableSpec(Holder<? extends Block> holder, String grownItemId, String seedsItemId, int grownAge, int minAge, int maxAge) {
-        this(holder, RegistryUtils.getItem(grownItemId), RegistryUtils.getItem(seedsItemId), grownAge, minAge, maxAge);
+        this(holder, DeprecatedRegistryUtils.getItem(grownItemId), DeprecatedRegistryUtils.getItem(seedsItemId), grownAge, minAge, maxAge);
     }
 
     public CropBlockLootTableSpec(Holder<? extends Block> holder, Item grownItem, Item seedsItem, int grownAge, int minAge, int maxAge) {

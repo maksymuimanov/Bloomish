@@ -7,9 +7,9 @@ import io.bloomish.api.engine.metadata.annotation.injection.Strategy;
 import io.bloomish.api.engine.metadata.pool.ProcessorScope;
 import io.bloomish.api.engine.metadata.processor.BlockEntityTypeEventHandlerAnnotationProcessorAdapter;
 import io.bloomish.api.engine.metadata.strategy.field.FieldAnnotationStrategy;
+import io.bloomish.api.util.DeprecatedRegistryUtils;
 import io.bloomish.api.util.MapUtils;
 import io.bloomish.api.util.ReflectionUtils;
-import io.bloomish.api.util.RegistryUtils;
 import net.minecraft.core.Holder;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntityType;
@@ -21,7 +21,7 @@ public class AddBlockEntityTypeStrategy implements FieldAnnotationStrategy<AddBl
     @Override
     public void execute(Field field, Object object, AddBlockEntityType annotation) throws Exception {
         Holder<Block> block = ReflectionUtils.getFieldValue(field, object);
-        BlockEntityType<?> blockEntityType = RegistryUtils.getBlockEntityType(annotation.value());
+        BlockEntityType<?> blockEntityType = DeprecatedRegistryUtils.getBlockEntityType(annotation.value());
         MapUtils.putToListMap(BlockEntityTypeEventHandler.BLOCKS, blockEntityType, block);
     }
 

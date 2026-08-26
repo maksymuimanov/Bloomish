@@ -3,8 +3,8 @@ package io.bloomish.api.data.server.biome.configuration;
 import io.bloomish.api.ApiMod;
 import io.bloomish.api.data.server.biome.GenerationDescriptionContainer;
 import io.bloomish.api.data.server.biome.dto.Tree;
+import io.bloomish.api.util.DeprecatedRegistryUtils;
 import io.bloomish.api.util.MapUtils;
-import io.bloomish.api.util.RegistryUtils;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.util.valueproviders.ConstantInt;
 import net.minecraft.util.valueproviders.IntProvider;
@@ -37,12 +37,12 @@ public class TreeConfiguredFeatureDefinition implements ConfiguredFeatureDefinit
             FoliagePlacer foliagePlacer = getFoliagePlacer(data);
             FeatureSize featureSize = getFeatureSize(data);
             TreeConfiguration.TreeConfigurationBuilder builder = new TreeConfiguration.TreeConfigurationBuilder(
-                    BlockStateProvider.simple(RegistryUtils.getBlock(data.logBlock())),
+                    BlockStateProvider.simple(DeprecatedRegistryUtils.getBlock(data.logBlock())),
                     trunkPlacer,
-                    BlockStateProvider.simple(RegistryUtils.getBlock(data.leavesBlock())),
+                    BlockStateProvider.simple(DeprecatedRegistryUtils.getBlock(data.leavesBlock())),
                     foliagePlacer,
                     featureSize
-            ).dirt(BlockStateProvider.simple(RegistryUtils.getBlock(data.rootBlock())));
+            ).dirt(BlockStateProvider.simple(DeprecatedRegistryUtils.getBlock(data.rootBlock())));
             builder = data.ignoreVines() ? builder.ignoreVines() : builder;
             return builder.build();
         } catch (NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e) {

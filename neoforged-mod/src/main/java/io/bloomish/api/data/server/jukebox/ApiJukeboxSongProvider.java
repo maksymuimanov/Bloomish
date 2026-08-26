@@ -2,7 +2,7 @@ package io.bloomish.api.data.server.jukebox;
 
 import io.bloomish.api.core.collection.TemporalQueue;
 import io.bloomish.api.data.client.language.key.JukeboxSongTranslationKeyResolver;
-import io.bloomish.api.util.RegistryUtils;
+import io.bloomish.api.util.DeprecatedRegistryUtils;
 import net.minecraft.Util;
 import net.minecraft.core.Holder;
 import net.minecraft.data.worldgen.BootstrapContext;
@@ -22,7 +22,7 @@ public class ApiJukeboxSongProvider implements JukeboxSongProvider {
         SONGS.forEach(description -> {
             ResourceKey<JukeboxSong> song = description.song();
             MutableComponent translationId = Component.translatable(Util.makeDescriptionId(JukeboxSongTranslationKeyResolver.PREFIX, song.location()));
-            SoundEvent soundEvent = RegistryUtils.getSoundEvent(description.soundEvent());
+            SoundEvent soundEvent = DeprecatedRegistryUtils.getSoundEvent(description.soundEvent());
             context.register(song, new JukeboxSong(Holder.direct(soundEvent), translationId, description.lengthInSeconds(), description.comparatorOutput()));
         });
     }

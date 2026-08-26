@@ -7,8 +7,8 @@ import io.bloomish.api.engine.metadata.annotation.injection.Strategy;
 import io.bloomish.api.engine.metadata.pool.ProcessorScope;
 import io.bloomish.api.engine.metadata.processor.EntityAttributeEventHandlerAnnotationProcessorAdapter;
 import io.bloomish.api.engine.metadata.strategy.method.MethodAnnotationStrategy;
+import io.bloomish.api.util.DeprecatedRegistryUtils;
 import io.bloomish.api.util.ReflectionUtils;
-import io.bloomish.api.util.RegistryUtils;
 import net.minecraft.core.Holder;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
@@ -23,7 +23,7 @@ public class CreateEntityAttributesStrategy implements MethodAnnotationStrategy<
         AttributeSupplier.Builder attributes = ReflectionUtils.invokeMethod(method, object);
         String[] entityTypeIds = annotation.value();
         for (String id : entityTypeIds) {
-            Holder<? extends EntityType<?>> entityType = RegistryUtils.getEntityType(id).builtInRegistryHolder();
+            Holder<? extends EntityType<?>> entityType = DeprecatedRegistryUtils.getEntityType(id).builtInRegistryHolder();
             EntityAttributeEventHandler.ENTITY_ATTRIBUTES.put(entityType, attributes);
         }
     }

@@ -2,8 +2,8 @@ package io.bloomish.api.data.server.trim.material;
 
 import io.bloomish.api.core.collection.TemporalMap;
 import io.bloomish.api.data.client.language.key.TrimMaterialTranslationKeyResolver;
+import io.bloomish.api.util.DeprecatedRegistryUtils;
 import io.bloomish.api.util.DeprecatedResourceUtils;
-import io.bloomish.api.util.RegistryUtils;
 import net.minecraft.Util;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.network.chat.Component;
@@ -24,7 +24,7 @@ public class ApiTrimMaterialProvider implements TrimMaterialProvider {
     public void registerTrimMaterials(BootstrapContext<TrimMaterial> context) {
         TRIM_MATERIALS.forEach((trimMaterial, description) -> {
             String assetName = DeprecatedResourceUtils.getResourceName(trimMaterial);
-            Item ingredient = RegistryUtils.getItem(description.itemId());
+            Item ingredient = DeprecatedRegistryUtils.getItem(description.itemId());
             ResourceLocation location = trimMaterial.location();
             String descriptionId = Util.makeDescriptionId(TrimMaterialTranslationKeyResolver.PREFIX, location);
             TextColor textColor = TextColor.parseColor(description.color()).getOrThrow();

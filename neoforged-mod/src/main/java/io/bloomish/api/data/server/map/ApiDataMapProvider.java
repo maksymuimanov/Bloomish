@@ -1,8 +1,8 @@
 package io.bloomish.api.data.server.map;
 
 import io.bloomish.api.core.collection.TemporalQueue;
+import io.bloomish.api.util.DeprecatedRegistryUtils;
 import io.bloomish.api.util.DeprecatedResourceUtils;
-import io.bloomish.api.util.RegistryUtils;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
@@ -43,10 +43,10 @@ public class ApiDataMapProvider extends DataMapProvider {
                 compostableItemBuilder.add((Holder<Item>) compostable.item(), new Compostable(compostable.chance()), compostable.replace()));
         Builder<Oxidizable, Block> oxidizableBlockBuilder = this.builder(NeoForgeDataMaps.OXIDIZABLES);
         OXIDIZABLES.forEach(oxidizable ->
-                oxidizableBlockBuilder.add((Holder<Block>) oxidizable.block(), new Oxidizable(RegistryUtils.getBlock(oxidizable.nextStageBlockId())), oxidizable.replace()));
+                oxidizableBlockBuilder.add((Holder<Block>) oxidizable.block(), new Oxidizable(DeprecatedRegistryUtils.getBlock(oxidizable.nextStageBlockId())), oxidizable.replace()));
         Builder<Waxable, Block> waxableBlockBuilder = this.builder(NeoForgeDataMaps.WAXABLES);
         WAXABLES.forEach(waxable ->
-                waxableBlockBuilder.add((Holder<Block>) waxable.block(), new Waxable(RegistryUtils.getBlock(waxable.waxedBlock())), waxable.replace()));
+                waxableBlockBuilder.add((Holder<Block>) waxable.block(), new Waxable(DeprecatedRegistryUtils.getBlock(waxable.waxedBlock())), waxable.replace()));
         Builder<RaidHeroGift, VillagerProfession> raidHeroGiftVillagerProfessionBuilder = this.builder(NeoForgeDataMaps.RAID_HERO_GIFTS);
         RAID_HERO_GIFTS.forEach(raidHeroGift ->
                 raidHeroGiftVillagerProfessionBuilder.add(raidHeroGift.villagerProfession(), new RaidHeroGift(DeprecatedResourceUtils.createKey(Registries.LOOT_TABLE, raidHeroGift.lootTablePath())), raidHeroGift.replace()));
@@ -55,6 +55,6 @@ public class ApiDataMapProvider extends DataMapProvider {
                 monsterRoomMobEntityTypeBuilder.add(monsterRoomMob.entity(), new MonsterRoomMob(Weight.of(monsterRoomMob.weight())), monsterRoomMob.replace()));
         Builder<ParrotImitation, EntityType<?>> parrotImitationEntityTypeBuilder = this.builder(NeoForgeDataMaps.PARROT_IMITATIONS);
         PARROT_IMITATIONS.forEach(parrotImitation ->
-                parrotImitationEntityTypeBuilder.add(parrotImitation.entity(), new ParrotImitation(RegistryUtils.getSoundEvent(parrotImitation.soundEventId())), parrotImitation.replace()));
+                parrotImitationEntityTypeBuilder.add(parrotImitation.entity(), new ParrotImitation(DeprecatedRegistryUtils.getSoundEvent(parrotImitation.soundEventId())), parrotImitation.replace()));
     }
 }

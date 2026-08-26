@@ -1,8 +1,8 @@
 package io.bloomish.api.data;
 
 import io.bloomish.api.data.client.ClientDataProvider;
-import io.bloomish.api.data.client.model.block.ApiBlockModelProvider;
-import io.bloomish.api.data.client.model.item.ApiItemModelProvider;
+import io.bloomish.api.data.client.model.deprecated.block.ApiBlockModelProvider;
+import io.bloomish.api.data.client.model.deprecated.item.ApiItemModelProvider;
 import io.bloomish.api.data.client.particle.ApiParticleProvider;
 import io.bloomish.api.data.client.sound.ApiSoundProvider;
 import io.bloomish.api.data.preparer.DynamicPreparer;

@@ -3,7 +3,7 @@ package io.bloomish.api.data.server.loot;
 import io.bloomish.api.data.server.loot.spec.BlockLootTableSpec;
 import io.bloomish.api.engine.context.DefaultObjectRegistry;
 import io.bloomish.api.engine.registry.factory.BlockFactory;
-import io.bloomish.api.util.RegistryUtils;
+import io.bloomish.api.util.DeprecatedRegistryUtils;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.loot.BlockLootSubProvider;
@@ -39,9 +39,9 @@ public abstract class ApiBlockLootTableProvider extends BlockLootSubProvider {
 
     public void dropSharedSelf(DeferredBlock<?> block, Function<String, String> mapper) {
         Block mainBlock = block.value();
-        String id = RegistryUtils.getObjectId(BuiltInRegistries.BLOCK, mainBlock);
-        Item item = RegistryUtils.getItem(id);
-        Block sharedBlock = RegistryUtils.getBlock(mapper.apply(id));
+        String id = DeprecatedRegistryUtils.getObjectId(BuiltInRegistries.BLOCK, mainBlock);
+        Item item = DeprecatedRegistryUtils.getItem(id);
+        Block sharedBlock = DeprecatedRegistryUtils.getBlock(mapper.apply(id));
         this.dropOther(mainBlock, item);
         this.dropOther(sharedBlock, item);
     }

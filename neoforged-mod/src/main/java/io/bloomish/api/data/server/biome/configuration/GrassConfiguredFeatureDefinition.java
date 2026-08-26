@@ -2,8 +2,8 @@ package io.bloomish.api.data.server.biome.configuration;
 
 import io.bloomish.api.data.server.biome.GenerationDescriptionContainer;
 import io.bloomish.api.data.server.biome.dto.Grass;
+import io.bloomish.api.util.DeprecatedRegistryUtils;
 import io.bloomish.api.util.MapUtils;
-import io.bloomish.api.util.RegistryUtils;
 import net.minecraft.data.worldgen.features.FeatureUtils;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.resources.ResourceKey;
@@ -26,7 +26,7 @@ public class GrassConfiguredFeatureDefinition implements ConfiguredFeatureDefini
         return FeatureUtils.simpleRandomPatchConfiguration(
                 data.tries(), PlacementUtils.onlyWhenEmpty(
                         Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(
-                                BlockStateProvider.simple(RegistryUtils.getBlock(data.blockId()))
+                                BlockStateProvider.simple(DeprecatedRegistryUtils.getBlock(data.blockId()))
                         )
                 )
         );

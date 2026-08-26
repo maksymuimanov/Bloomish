@@ -1,6 +1,6 @@
 package io.bloomish.api.data.server.loot.spec;
 
-import io.bloomish.api.util.RegistryUtils;
+import io.bloomish.api.util.DeprecatedRegistryUtils;
 import net.minecraft.core.Holder;
 import net.minecraft.world.level.block.Block;
 
@@ -16,7 +16,7 @@ public class LeavesBlockLootTableSpec extends BlockLootTableSpec {
     }
 
     public LeavesBlockLootTableSpec(Holder<? extends Block> holder, String saplingBlockId, List<Float> chances) {
-        this(holder, RegistryUtils.getBlock(saplingBlockId), chances);
+        this(holder, DeprecatedRegistryUtils.getBlock(saplingBlockId), chances);
     }
 
     public LeavesBlockLootTableSpec(Holder<? extends Block> holder, Block saplingBlock) {

@@ -2,8 +2,8 @@ package io.bloomish.api.data.server.biome.placement;
 
 import io.bloomish.api.data.server.biome.GenerationDescriptionContainer;
 import io.bloomish.api.data.server.biome.dto.Tree;
+import io.bloomish.api.util.DeprecatedRegistryUtils;
 import io.bloomish.api.util.MapUtils;
-import io.bloomish.api.util.RegistryUtils;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.data.worldgen.placement.VegetationPlacements;
 import net.minecraft.resources.ResourceKey;
@@ -18,7 +18,7 @@ public class TreePlacedFeatureDefinition implements PlacedFeatureDefinition<Tree
     public List<PlacementModifier> getPlacementModifiers(ResourceKey<ConfiguredFeature<?, ?>> configuredFeatureKey, Tree.Placement data) {
         return VegetationPlacements.treePlacement(
                 PlacementUtils.countExtra(data.baseValue(), data.chance(), data.addedAmount()),
-                RegistryUtils.getBlock(data.saplingBlock())
+                DeprecatedRegistryUtils.getBlock(data.saplingBlock())
         );
     }
 

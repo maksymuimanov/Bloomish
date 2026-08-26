@@ -3,8 +3,8 @@ package io.bloomish.api.data.server.biome.configuration;
 import io.bloomish.api.data.preparer.tag.BlockTagDynamicPreparer;
 import io.bloomish.api.data.server.biome.GenerationDescriptionContainer;
 import io.bloomish.api.data.server.biome.dto.Ore;
+import io.bloomish.api.util.DeprecatedRegistryUtils;
 import io.bloomish.api.util.MapUtils;
-import io.bloomish.api.util.RegistryUtils;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.block.Block;
@@ -32,7 +32,7 @@ public class OreConfiguredFeatureDefinition implements ConfiguredFeatureDefiniti
         List<String> replaceableBlocksIds = List.of(data.replaceableBlocksIds());
         if (!replaceableBlocksIds.isEmpty()) {
             for (String id : replaceableBlocksIds) {
-                Block block = RegistryUtils.getBlock(id);
+                Block block = DeprecatedRegistryUtils.getBlock(id);
                 BlockMatchTest blockMatchTest = new BlockMatchTest(block);
                 OreConfiguration.TargetBlockState target = OreConfiguration.target(blockMatchTest, this.getBlockState(data));
                 rules.add(target);
@@ -51,7 +51,7 @@ public class OreConfiguredFeatureDefinition implements ConfiguredFeatureDefiniti
 
     @NotNull
     private BlockState getBlockState(Ore.Configuration data) {
-        return RegistryUtils.getBlock(data.blockId()).defaultBlockState();
+        return DeprecatedRegistryUtils.getBlock(data.blockId()).defaultBlockState();
     }
 
     @Override

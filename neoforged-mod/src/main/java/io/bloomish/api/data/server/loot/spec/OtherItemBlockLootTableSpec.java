@@ -1,6 +1,6 @@
 package io.bloomish.api.data.server.loot.spec;
 
-import io.bloomish.api.util.RegistryUtils;
+import io.bloomish.api.util.DeprecatedRegistryUtils;
 import net.minecraft.core.Holder;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -9,7 +9,7 @@ public class OtherItemBlockLootTableSpec extends BlockLootTableSpec {
     private final Item otherItem;
 
     public OtherItemBlockLootTableSpec(Holder<? extends Block> holder, String otherItemId) {
-        this(holder, RegistryUtils.getItem(otherItemId));
+        this(holder, DeprecatedRegistryUtils.getItem(otherItemId));
     }
 
     public OtherItemBlockLootTableSpec(Holder<? extends Block> holder, Item otherItem) {

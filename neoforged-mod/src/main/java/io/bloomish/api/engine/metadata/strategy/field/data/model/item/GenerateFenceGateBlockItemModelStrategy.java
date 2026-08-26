@@ -1,7 +1,7 @@
 package io.bloomish.api.engine.metadata.strategy.field.data.model.item;
 
-import io.bloomish.api.data.client.model.item.ItemModelContainer;
-import io.bloomish.api.data.client.model.item.spec.DependantBlockItemModelSpec;
+import io.bloomish.api.data.client.model.deprecated.item.ItemModelContainer;
+import io.bloomish.api.data.client.model.deprecated.item.spec.DependantBlockItemModelSpec;
 import io.bloomish.api.engine.initialization.initializer.StrategyInitializer;
 import io.bloomish.api.engine.metadata.annotation.data.model.item.GenerateFenceGateBlockItemModel;
 import io.bloomish.api.engine.metadata.annotation.injection.Strategy;

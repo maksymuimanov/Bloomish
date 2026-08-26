@@ -1,7 +1,7 @@
 package io.bloomish.api.engine.metadata.annotation.data.model.item;
 
-import io.bloomish.api.data.client.model.item.ItemModelProviderStrategy;
-import io.bloomish.api.data.client.model.item.spec.CustomBlockItemModelSpec;
+import io.bloomish.api.data.client.model.deprecated.item.ItemModelProviderStrategy;
+import io.bloomish.api.data.client.model.deprecated.item.spec.CustomBlockItemModelSpec;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
