@@ -1,0 +1,42 @@
+package io.bloomish.api.data.server.trim.material;
+
+import io.bloomish.api.core.collection.TemporalMap;
+import io.bloomish.api.data.client.language.key.TrimMaterialTranslationKeyResolver;
+import io.bloomish.api.util.DeprecatedResourceUtils;
+import io.bloomish.api.util.RegistryUtils;
+import net.minecraft.Util;
+import net.minecraft.data.worldgen.BootstrapContext;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.network.chat.Style;
+import net.minecraft.network.chat.TextColor;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.armortrim.TrimMaterial;
+
+import java.util.Map;
+
+public class ApiTrimMaterialProvider implements TrimMaterialProvider {
+    public static final Map<ResourceKey<TrimMaterial>, TrimMaterialDescription> TRIM_MATERIALS = new TemporalMap<>();
+
+    @Override
+    public void registerTrimMaterials(BootstrapContext<TrimMaterial> context) {
+        TRIM_MATERIALS.forEach((trimMaterial, description) -> {
+            String assetName = DeprecatedResourceUtils.getResourceName(trimMaterial);
+            Item ingredient = RegistryUtils.getItem(description.itemId());
+            ResourceLocation location = trimMaterial.location();
+            String descriptionId = Util.makeDescriptionId(TrimMaterialTranslationKeyResolver.PREFIX, location);
+            TextColor textColor = TextColor.parseColor(description.color()).getOrThrow();
+            Style style = Style.EMPTY.withColor(textColor);
+            MutableComponent component = Component.translatable(descriptionId).withStyle(style);
+            context.register(trimMaterial, TrimMaterial.create(assetName, ingredient, description.itemModelIndex(), component, Map.of()));
+            AtlasArmorTrimProvider1.TRIM_MATERIALS_LOCATIONS.put(assetName, location);
+        });
+    }
+
+    public static void bootstrap(BootstrapContext<TrimMaterial> context) {
+        TrimMaterialProvider provider = new ApiTrimMaterialProvider();
+        provider.registerTrimMaterials(context);
+    }
+}

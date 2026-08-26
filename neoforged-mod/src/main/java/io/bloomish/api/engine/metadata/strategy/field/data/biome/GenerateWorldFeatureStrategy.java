@@ -1,9 +1,9 @@
 package io.bloomish.api.engine.metadata.strategy.field.data.biome;
 
-import io.bloomish.api.engine.event.data.server.biome.GenerationDescriptionContainer;
-import io.bloomish.api.engine.event.data.server.biome.configuration.ConfiguredFeatureDefinition;
-import io.bloomish.api.engine.event.data.server.biome.modifier.BiomeModifierDefinition;
-import io.bloomish.api.engine.event.data.server.biome.placement.PlacedFeatureDefinition;
+import io.bloomish.api.data.server.biome.GenerationDescriptionContainer;
+import io.bloomish.api.data.server.biome.configuration.ConfiguredFeatureDefinition;
+import io.bloomish.api.data.server.biome.modifier.BiomeModifierDefinition;
+import io.bloomish.api.data.server.biome.placement.PlacedFeatureDefinition;
 import io.bloomish.api.engine.initialization.initializer.StrategyInitializer;
 import io.bloomish.api.engine.metadata.annotation.data.biome.GenerateWorldFeature;
 import io.bloomish.api.engine.metadata.annotation.injection.Strategy;

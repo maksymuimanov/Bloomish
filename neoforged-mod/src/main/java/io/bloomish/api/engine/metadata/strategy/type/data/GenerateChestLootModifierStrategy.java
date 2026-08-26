@@ -1,7 +1,7 @@
 package io.bloomish.api.engine.metadata.strategy.type.data;
 
-import io.bloomish.api.engine.event.data.server.modifier.ApiGlobalLootModifierProvider;
-import io.bloomish.api.engine.event.data.server.modifier.ChestModifierDescription;
+import io.bloomish.api.data.server.modifier.ApiGlobalLootModifierProvider;
+import io.bloomish.api.data.server.modifier.ChestModifierDescription;
 import io.bloomish.api.engine.initialization.initializer.StrategyInitializer;
 import io.bloomish.api.engine.metadata.annotation.data.GenerateChestLootModifier;
 import io.bloomish.api.engine.metadata.annotation.injection.Strategy;

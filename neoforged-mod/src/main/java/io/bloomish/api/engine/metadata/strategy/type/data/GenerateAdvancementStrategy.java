@@ -1,8 +1,8 @@
 package io.bloomish.api.engine.metadata.strategy.type.data;
 
-import io.bloomish.api.engine.event.data.server.advancement.AdvancementDescription;
-import io.bloomish.api.engine.event.data.server.advancement.AdvancementStrategy;
-import io.bloomish.api.engine.event.data.server.advancement.ApiAdvancementProvider;
+import io.bloomish.api.data.server.advancement.AdvancementDescription;
+import io.bloomish.api.data.server.advancement.AdvancementStrategy;
+import io.bloomish.api.data.server.advancement.ApiAdvancementProvider;
 import io.bloomish.api.engine.initialization.initializer.StrategyInitializer;
 import io.bloomish.api.engine.metadata.annotation.data.GenerateAdvancement;
 import io.bloomish.api.engine.metadata.annotation.injection.Strategy;

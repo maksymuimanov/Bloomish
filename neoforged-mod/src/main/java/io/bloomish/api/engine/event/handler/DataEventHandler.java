@@ -1,6 +1,6 @@
 package io.bloomish.api.engine.event.handler;
 
-import io.bloomish.api.engine.event.data.DataGatherer;
+import io.bloomish.api.data.DataGatherer;
 import io.bloomish.api.engine.event.subscriber.ModEventBusSubscriber;
 import io.bloomish.api.engine.metadata.annotation.injection.Injected;
 import net.neoforged.neoforge.data.event.GatherDataEvent;

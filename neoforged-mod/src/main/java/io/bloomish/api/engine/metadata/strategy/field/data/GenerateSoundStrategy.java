@@ -1,8 +1,8 @@
 package io.bloomish.api.engine.metadata.strategy.field.data;
 
-import io.bloomish.api.engine.event.data.client.sound.ApiSoundProvider;
-import io.bloomish.api.engine.event.data.client.sound.SoundDescription;
-import io.bloomish.api.engine.event.data.client.sound.SoundHolder;
+import io.bloomish.api.data.client.sound.ApiSoundProvider;
+import io.bloomish.api.data.client.sound.SoundDescription;
+import io.bloomish.api.data.client.sound.SoundHolder;
 import io.bloomish.api.engine.initialization.initializer.StrategyInitializer;
 import io.bloomish.api.engine.metadata.annotation.data.GenerateSound;
 import io.bloomish.api.engine.metadata.annotation.injection.Strategy;

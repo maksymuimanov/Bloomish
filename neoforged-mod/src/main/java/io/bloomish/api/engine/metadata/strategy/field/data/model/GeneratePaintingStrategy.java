@@ -1,8 +1,8 @@
 package io.bloomish.api.engine.metadata.strategy.field.data.model;
 
-import io.bloomish.api.engine.event.data.server.painting.ApiPaintingVariantProvider;
-import io.bloomish.api.engine.event.data.server.painting.PaintingVariantDescription;
-import io.bloomish.api.engine.event.data.server.tag.PaintingVariantTagsProvider;
+import io.bloomish.api.data.server.painting.ApiPaintingVariantProvider;
+import io.bloomish.api.data.server.painting.PaintingVariantDescription;
+import io.bloomish.api.data.server.tag.PaintingVariantTagsProvider;
 import io.bloomish.api.engine.initialization.initializer.StrategyInitializer;
 import io.bloomish.api.engine.metadata.annotation.data.model.GeneratePainting;
 import io.bloomish.api.engine.metadata.annotation.injection.Strategy;

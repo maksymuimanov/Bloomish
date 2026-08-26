@@ -1,7 +1,0 @@
-package io.bloomish.api.engine.event.data.server.recipe.description;
-
-import net.minecraft.world.level.ItemLike;
-
-public interface StoneCuttingRecipeDescription extends RecipeDescription {
-    ItemLike getIngredient();
-}

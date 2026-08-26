@@ -1,6 +1,6 @@
 package io.bloomish.example.recipe;
 
-import io.bloomish.api.engine.event.data.server.recipe.description.ShapelessRecipeDescription;
+import io.bloomish.api.data.server.recipe.description.ShapelessRecipeDescription;
 import io.bloomish.api.engine.metadata.annotation.data.GenerateRecipe;
 import io.bloomish.example.item.ExampleItems;
 import net.minecraft.data.recipes.RecipeCategory;

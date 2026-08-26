@@ -1,6 +1,6 @@
 package io.bloomish.api.engine.metadata.annotation.data.model.block;
 
-import io.bloomish.api.engine.event.data.client.model.RenderTypes;
+import io.bloomish.api.data.client.model.RenderTypes;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

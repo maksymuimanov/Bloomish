@@ -1,8 +1,8 @@
 package io.bloomish.api.engine.metadata.strategy.field.data.biome;
 
-import io.bloomish.api.engine.event.data.preparer.tag.BiomeTagDynamicPreparer;
-import io.bloomish.api.engine.event.data.server.biome.GenerationDescriptionContainer;
-import io.bloomish.api.engine.event.data.server.biome.dto.Flower;
+import io.bloomish.api.data.preparer.tag.BiomeTagDynamicPreparer;
+import io.bloomish.api.data.server.biome.GenerationDescriptionContainer;
+import io.bloomish.api.data.server.biome.dto.Flower;
 import io.bloomish.api.engine.initialization.initializer.StrategyInitializer;
 import io.bloomish.api.engine.metadata.annotation.data.biome.GenerateFlower;
 import io.bloomish.api.engine.metadata.annotation.injection.Strategy;

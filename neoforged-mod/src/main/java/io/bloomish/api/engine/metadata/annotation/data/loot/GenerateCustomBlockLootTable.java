@@ -1,7 +1,7 @@
 package io.bloomish.api.engine.metadata.annotation.data.loot;
 
-import io.bloomish.api.engine.event.data.server.loot.LootProviderStrategy;
-import io.bloomish.api.engine.event.data.server.loot.spec.CustomBlockLootTableSpec;
+import io.bloomish.api.data.server.loot.LootProviderStrategy;
+import io.bloomish.api.data.server.loot.spec.CustomBlockLootTableSpec;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

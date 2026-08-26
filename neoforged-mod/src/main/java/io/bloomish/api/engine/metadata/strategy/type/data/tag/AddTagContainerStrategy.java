@@ -1,9 +1,9 @@
 package io.bloomish.api.engine.metadata.strategy.type.data.tag;
 
-import io.bloomish.api.engine.event.data.preparer.tag.BiomeTagDynamicPreparer;
-import io.bloomish.api.engine.event.data.preparer.tag.BlockTagDynamicPreparer;
-import io.bloomish.api.engine.event.data.preparer.tag.EnchantmentTagDynamicPreparer;
-import io.bloomish.api.engine.event.data.preparer.tag.ItemTagDynamicPreparer;
+import io.bloomish.api.data.preparer.tag.BiomeTagDynamicPreparer;
+import io.bloomish.api.data.preparer.tag.BlockTagDynamicPreparer;
+import io.bloomish.api.data.preparer.tag.EnchantmentTagDynamicPreparer;
+import io.bloomish.api.data.preparer.tag.ItemTagDynamicPreparer;
 import io.bloomish.api.engine.initialization.initializer.StrategyInitializer;
 import io.bloomish.api.engine.metadata.annotation.data.tag.AddTagContainer;
 import io.bloomish.api.engine.metadata.annotation.injection.Strategy;

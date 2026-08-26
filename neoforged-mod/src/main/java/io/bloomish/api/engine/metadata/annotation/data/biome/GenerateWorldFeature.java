@@ -1,8 +1,8 @@
 package io.bloomish.api.engine.metadata.annotation.data.biome;
 
-import io.bloomish.api.engine.event.data.server.biome.configuration.ConfiguredFeatureDefinition;
-import io.bloomish.api.engine.event.data.server.biome.modifier.BiomeModifierDefinition;
-import io.bloomish.api.engine.event.data.server.biome.placement.PlacedFeatureDefinition;
+import io.bloomish.api.data.server.biome.configuration.ConfiguredFeatureDefinition;
+import io.bloomish.api.data.server.biome.modifier.BiomeModifierDefinition;
+import io.bloomish.api.data.server.biome.placement.PlacedFeatureDefinition;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

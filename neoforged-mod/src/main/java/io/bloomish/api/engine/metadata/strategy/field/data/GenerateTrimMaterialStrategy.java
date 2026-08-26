@@ -1,7 +1,7 @@
 package io.bloomish.api.engine.metadata.strategy.field.data;
 
-import io.bloomish.api.engine.event.data.server.trim.material.ApiTrimMaterialProvider;
-import io.bloomish.api.engine.event.data.server.trim.material.TrimMaterialDescription;
+import io.bloomish.api.data.server.trim.material.ApiTrimMaterialProvider;
+import io.bloomish.api.data.server.trim.material.TrimMaterialDescription;
 import io.bloomish.api.engine.initialization.initializer.StrategyInitializer;
 import io.bloomish.api.engine.metadata.annotation.data.GenerateTrimMaterial;
 import io.bloomish.api.engine.metadata.annotation.injection.Strategy;

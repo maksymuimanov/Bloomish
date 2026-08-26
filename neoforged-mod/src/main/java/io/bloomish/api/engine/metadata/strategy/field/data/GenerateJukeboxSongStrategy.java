@@ -1,7 +1,7 @@
 package io.bloomish.api.engine.metadata.strategy.field.data;
 
-import io.bloomish.api.engine.event.data.server.jukebox.ApiJukeboxSongProvider;
-import io.bloomish.api.engine.event.data.server.jukebox.JukeboxSongDescription;
+import io.bloomish.api.data.server.jukebox.ApiJukeboxSongProvider;
+import io.bloomish.api.data.server.jukebox.JukeboxSongDescription;
 import io.bloomish.api.engine.initialization.initializer.StrategyInitializer;
 import io.bloomish.api.engine.metadata.annotation.data.GenerateJukeboxSong;
 import io.bloomish.api.engine.metadata.annotation.injection.Strategy;

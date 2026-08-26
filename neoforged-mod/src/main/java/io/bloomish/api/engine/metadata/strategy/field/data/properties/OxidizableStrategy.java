@@ -1,7 +1,7 @@
 package io.bloomish.api.engine.metadata.strategy.field.data.properties;
 
-import io.bloomish.api.engine.event.data.server.map.ApiDataMapProvider;
-import io.bloomish.api.engine.event.data.server.map.OxidizableDto;
+import io.bloomish.api.data.server.map.ApiDataMapProvider;
+import io.bloomish.api.data.server.map.OxidizableDto;
 import io.bloomish.api.engine.initialization.initializer.StrategyInitializer;
 import io.bloomish.api.engine.metadata.annotation.data.properties.Oxidizable;
 import io.bloomish.api.engine.metadata.annotation.injection.Strategy;

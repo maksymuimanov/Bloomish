@@ -1,6 +1,6 @@
 package io.bloomish.example.advancement;
 
-import io.bloomish.api.engine.event.data.server.advancement.AdvancementDescription;
+import io.bloomish.api.data.server.advancement.AdvancementDescription;
 import io.bloomish.api.engine.metadata.annotation.data.GenerateAdvancement;
 import io.bloomish.api.engine.metadata.annotation.data.language.TranslateAmericanEnglish;
 import io.bloomish.example.item.ExampleItems;

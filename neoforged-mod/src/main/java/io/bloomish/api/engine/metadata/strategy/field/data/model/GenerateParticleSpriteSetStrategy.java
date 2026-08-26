@@ -1,7 +1,7 @@
 package io.bloomish.api.engine.metadata.strategy.field.data.model;
 
-import io.bloomish.api.engine.event.data.client.particle.ApiParticleProvider;
-import io.bloomish.api.engine.event.data.client.particle.ParticleDescription;
+import io.bloomish.api.data.client.particle.ApiParticleProvider;
+import io.bloomish.api.data.client.particle.ParticleDescription;
 import io.bloomish.api.engine.initialization.initializer.StrategyInitializer;
 import io.bloomish.api.engine.metadata.annotation.data.model.GenerateParticleSpriteSet;
 import io.bloomish.api.engine.metadata.annotation.injection.Strategy;

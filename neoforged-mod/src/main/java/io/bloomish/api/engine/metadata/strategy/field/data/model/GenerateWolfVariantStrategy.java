@@ -1,8 +1,8 @@
 package io.bloomish.api.engine.metadata.strategy.field.data.model;
 
-import io.bloomish.api.engine.event.data.preparer.tag.BiomeTagDynamicPreparer;
-import io.bloomish.api.engine.event.data.server.wolf.ApiWolfVariantProvider;
-import io.bloomish.api.engine.event.data.server.wolf.WolfVariantDescription;
+import io.bloomish.api.data.preparer.tag.BiomeTagDynamicPreparer;
+import io.bloomish.api.data.server.wolf.ApiWolfVariantProvider;
+import io.bloomish.api.data.server.wolf.WolfVariantDescription;
 import io.bloomish.api.engine.initialization.initializer.StrategyInitializer;
 import io.bloomish.api.engine.metadata.annotation.data.model.GenerateWolfVariant;
 import io.bloomish.api.engine.metadata.annotation.injection.Strategy;

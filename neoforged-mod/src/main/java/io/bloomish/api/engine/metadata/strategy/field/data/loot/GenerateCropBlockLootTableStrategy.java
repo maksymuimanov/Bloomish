@@ -1,7 +1,7 @@
 package io.bloomish.api.engine.metadata.strategy.field.data.loot;
 
-import io.bloomish.api.engine.event.data.server.loot.BlockLootTableContainer;
-import io.bloomish.api.engine.event.data.server.loot.spec.CropBlockLootTableSpec;
+import io.bloomish.api.data.server.loot.BlockLootTableContainer;
+import io.bloomish.api.data.server.loot.spec.CropBlockLootTableSpec;
 import io.bloomish.api.engine.initialization.initializer.StrategyInitializer;
 import io.bloomish.api.engine.metadata.annotation.data.loot.GenerateCropBlockLootTable;
 import io.bloomish.api.engine.metadata.annotation.injection.Strategy;
