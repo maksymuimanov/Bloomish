@@ -4,11 +4,16 @@ import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.Block;
 
 import java.util.Objects;
 
 public final class RegistryUtils {
     private RegistryUtils() {
+    }
+
+    public static String findBlockPath(Block block) {
+        return findPath(BuiltInRegistries.BLOCK, block);
     }
 
     public static String findItemPath(Item item) {
@@ -18,6 +23,10 @@ public final class RegistryUtils {
     public static <T> String findPath(Registry<T> registry, T value) {
         ResourceLocation location = Objects.requireNonNull(registry.getKey(value));
         return location.getPath();
+    }
+
+    public static String findBlockNamespacedPath(Block block, String prefix) {
+        return findNamespacedPath(BuiltInRegistries.BLOCK, block, prefix);
     }
 
     public static String findItemNamespacedPath(Item item, String prefix) {
