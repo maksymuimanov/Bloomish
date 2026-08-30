@@ -24,6 +24,9 @@ public class TrimmedArmorItemModelProvider extends AbstractItemModelProvider {
     private static final String LAYER_1 = "layer1";
     private static final float TRIM_TYPE_COEFFICIENT = 10F;
     private static final String MINECRAFT_TRIM_TYPE = "minecraft:trim_type";
+    private static final String TRIM_IDENTIFIER = "_trim_";
+    private static final String TRIM_PATH_PREFIX = "trims";
+    private static final String ITEMS_DIRECTORY = "items";
     private final ValueChannelBus channelBus;
 
     public TrimmedArmorItemModelProvider(PackOutput packOutput, ValueChannelBus channelBus) {
@@ -55,7 +58,7 @@ public class TrimmedArmorItemModelProvider extends AbstractItemModelProvider {
     }
 
     private void addTrimToOverrides(int index, String path, List<TrimmedArmorItemModel.Override> overrides, String trimMaterial) {
-        String trimModelPath = path + "_" + trimMaterial + "_trim";
+        String trimModelPath = path + TRIM_IDENTIFIER + trimMaterial;
         float trimTypePropertyValue = (index + 1) / TRIM_TYPE_COEFFICIENT;
         Map<String, Float> predicate = Map.of(MINECRAFT_TRIM_TYPE, trimTypePropertyValue);
         TrimmedArmorItemModel.Override override = new TrimmedArmorItemModel.Override(trimModelPath, predicate);
@@ -63,11 +66,12 @@ public class TrimmedArmorItemModelProvider extends AbstractItemModelProvider {
     }
 
     private void createTrimmedArmorItemModel(String path, ArmorItem item, String trimMaterial, String parent) {
+        String trimeMaterialSuffix = TRIM_IDENTIFIER + trimMaterial;
         Map<String, String> textures = Map.of(
                 LAYER_0, path,
-                LAYER_1, ResourceLocationUtils.joinMinecraftPath("trims", "items", item.getType().getName() + "_trim_" + trimMaterial)
+                LAYER_1, ResourceLocationUtils.joinMinecraftPath(TRIM_PATH_PREFIX, ITEMS_DIRECTORY, item.getType().getName() + trimeMaterialSuffix)
         );
         ItemModel trimmedArmorItemModel = new LayeredItemModel(parent, textures);
-        this.addItemModel(item, trimmedArmorItemModel);
+        this.addItemModel(item, trimmedArmorItemModel, trimeMaterialSuffix);
     }
 }

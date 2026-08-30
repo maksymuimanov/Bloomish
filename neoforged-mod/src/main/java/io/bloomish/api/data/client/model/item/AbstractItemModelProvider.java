@@ -20,4 +20,9 @@ public abstract class AbstractItemModelProvider extends AbstractMultiDataProvide
         DataTarget dataTarget = DataTarget.createModAsset(MODELS_PATH, ITEM_PATH, RegistryUtils.findItemPath(item));
         this.addData(dataTarget, itemModel);
     }
+
+    protected void addItemModel(Item item, ItemModel itemModel, String suffix) {
+        DataTarget dataTarget = DataTarget.createModAsset(MODELS_PATH, ITEM_PATH, RegistryUtils.findItemPath(item), suffix);
+        this.addData(dataTarget, itemModel);
+    }
 }
