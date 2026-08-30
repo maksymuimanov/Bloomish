@@ -6,7 +6,6 @@ import io.bloomish.api.data.client.model.item.model.ItemModel;
 import io.bloomish.api.data.client.model.item.model.LayeredItemModel;
 import io.bloomish.api.data.client.model.item.spec.ItemModelSpec;
 import io.bloomish.api.engine.metadata.annotation.injection.Injected;
-import io.bloomish.api.util.MinecraftConstants;
 import io.bloomish.api.util.RegistryUtils;
 import io.bloomish.api.util.ResourceLocationUtils;
 import net.minecraft.data.PackOutput;
@@ -29,7 +28,7 @@ public class FlatItemModelProvider extends AbstractItemModelProvider {
     protected void registerData() {
         this.channelBus.<ItemModelSpec<? extends Item>>forEachDrain(DataChannels.ITEM_MODEL_PROVIDER_FLAT_ITEMS, spec -> {
             Item item = spec.getItem();
-            String parent = ResourceLocationUtils.joinNamespacedPath(MinecraftConstants.MINECRAFT, ITEM_PATH, GENERATED_PATH);
+            String parent = ResourceLocationUtils.joinMinecraftPath(ITEM_PATH, GENERATED_PATH);
             String path = RegistryUtils.findItemNamespacedPath(item, ITEM_PATH);
             Map<String, String> textures = Map.of(LAYER_0, path);
             ItemModel itemModel = new LayeredItemModel(parent, textures);

@@ -7,7 +7,6 @@ import io.bloomish.api.data.client.model.item.model.LayeredItemModel;
 import io.bloomish.api.data.client.model.item.model.TrimmedArmorItemModel;
 import io.bloomish.api.data.client.model.item.spec.ItemModelSpec;
 import io.bloomish.api.engine.metadata.annotation.injection.Injected;
-import io.bloomish.api.util.MinecraftConstants;
 import io.bloomish.api.util.RegistryUtils;
 import io.bloomish.api.util.ResourceLocationUtils;
 import net.minecraft.data.PackOutput;
@@ -36,7 +35,7 @@ public class TrimmedArmorItemModelProvider extends AbstractItemModelProvider {
     protected void registerData() {
         this.channelBus.<ItemModelSpec<? extends ArmorItem>>forEachDrain(DataChannels.ITEM_MODEL_PROVIDER_TRIMMED_ARMOR_ITEMS, spec -> {
             ArmorItem item = spec.getItem();
-            String parent = ResourceLocationUtils.joinNamespacedPath(MinecraftConstants.MINECRAFT, ITEM_PATH, GENERATED_PATH);
+            String parent = ResourceLocationUtils.joinMinecraftPath(ITEM_PATH, GENERATED_PATH);
             String path = RegistryUtils.findItemNamespacedPath(item, ITEM_PATH);
             List<TrimmedArmorItemModel.Override> overrides = this.createOverrides(path, item, parent);
             Map<String, String> textures = Map.of(LAYER_0, path);
@@ -66,7 +65,7 @@ public class TrimmedArmorItemModelProvider extends AbstractItemModelProvider {
     private void createTrimmedArmorItemModel(String path, ArmorItem item, String trimMaterial, String parent) {
         Map<String, String> textures = Map.of(
                 LAYER_0, path,
-                LAYER_1, ResourceLocationUtils.joinNamespacedPath(MinecraftConstants.MINECRAFT, "trims", "items", item.getType().getName() + "_trim_" + trimMaterial)
+                LAYER_1, ResourceLocationUtils.joinMinecraftPath("trims", "items", item.getType().getName() + "_trim_" + trimMaterial)
         );
         ItemModel trimmedArmorItemModel = new LayeredItemModel(parent, textures);
         this.addItemModel(item, trimmedArmorItemModel);

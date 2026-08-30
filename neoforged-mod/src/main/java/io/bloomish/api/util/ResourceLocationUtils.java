@@ -36,6 +36,14 @@ public final class ResourceLocationUtils {
         return ResourceLocation.fromNamespaceAndPath(MinecraftConstants.MINECRAFT, path);
     }
 
+    public static String joinModPath(String pathPart, String... pathParts) {
+        return joinNamespacedPath(ModContext.getModId(), pathPart, pathParts);
+    }
+
+    public static String joinMinecraftPath(String pathPart, String... pathParts) {
+        return joinNamespacedPath(MinecraftConstants.MINECRAFT, pathPart, pathParts);
+    }
+
     public static String joinNamespacedPath(ResourceLocation location, String pathPart, String... pathParts) {
         return joinNamespacedPath(location.getNamespace(), pathPart, pathParts);
     }
