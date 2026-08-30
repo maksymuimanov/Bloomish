@@ -6,7 +6,6 @@ import io.bloomish.api.data.client.model.item.model.BasicItemModel;
 import io.bloomish.api.data.client.model.item.model.ItemModel;
 import io.bloomish.api.data.client.model.item.spec.ItemModelSpec;
 import io.bloomish.api.engine.metadata.annotation.injection.Injected;
-import io.bloomish.api.util.ResourceLocationUtils;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.Item;
 
@@ -24,7 +23,7 @@ public class SpawnEggItemModelProvider extends AbstractItemModelProvider {
     protected void registerData() {
         this.channelBus.<ItemModelSpec<? extends Item>>forEachDrain(DataChannels.ITEM_MODEL_PROVIDER_SPAWN_EGG_ITEMS, spec -> {
             Item item = spec.getItem();
-            String parent = ResourceLocationUtils.joinMinecraftPath(ITEM_PATH, TEMPLATE_SPAWN_EGG_PATH);
+            String parent = this.minecraftPath(ITEM_PATH, TEMPLATE_SPAWN_EGG_PATH);
             ItemModel itemModel = BasicItemModel.ofParent(parent);
             this.addItemModel(item, itemModel);
         });

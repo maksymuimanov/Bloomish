@@ -6,8 +6,6 @@ import io.bloomish.api.data.client.model.item.model.BasicItemModel;
 import io.bloomish.api.data.client.model.item.model.ItemModel;
 import io.bloomish.api.data.client.model.item.spec.ItemModelSpec;
 import io.bloomish.api.engine.metadata.annotation.injection.Injected;
-import io.bloomish.api.util.RegistryUtils;
-import io.bloomish.api.util.ResourceLocationUtils;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.Item;
 
@@ -21,8 +19,8 @@ public class BowItemModelProvider extends AbstractItemModelProvider {
     private static final String PULLING_PATH = "pulling";
     private static final String PULL_PATH = "pull";
     private static final int IS_PULLING = 1;
-    private static final float IS_HALF_PULLED = 0.65f;
-    private static final float IS_NEARLY_END_PULLED = 0.9f;
+    private static final float IS_HALF_PULLED = 0.65F;
+    private static final float IS_NEARLY_END_PULLED = 0.9F;
     private static final String PULLING_IDENTIFIER = "_pulling_";
     private final ValueChannelBus channelBus;
 
@@ -35,10 +33,10 @@ public class BowItemModelProvider extends AbstractItemModelProvider {
     protected void registerData() {
         this.channelBus.<ItemModelSpec<? extends Item>>forEachDrain(DataChannels.ITEM_MODEL_PROVIDER_BOW_ITEMS, spec -> {
             Item item = spec.getItem();
-            String parent = ResourceLocationUtils.joinMinecraftPath(ITEM_PATH, BOW_PATH);
-            String path = RegistryUtils.findItemNamespacedPath(item, ITEM_PATH);
+            String parent = this.minecraftPath(ITEM_PATH, BOW_PATH);
+            String path = this.itemPath(item);
             List<BasicItemModel.Override> overrides = this.createOverrides(item, path, parent);
-            ItemModel itemModel = BasicItemModel.ofLayers(parent, List.of(path), overrides);
+            ItemModel itemModel = BasicItemModel.ofLayer(parent, path, overrides);
             this.addItemModel(item, itemModel);
         });
     }
@@ -54,7 +52,7 @@ public class BowItemModelProvider extends AbstractItemModelProvider {
     private void createFirstPulling(Item item, String parent, String path, List<BasicItemModel.Override> overrides) {
         int index = 0;
         Map<String, Number> predicate = Map.of(
-                ResourceLocationUtils.joinMinecraftPath(PULLING_PATH), IS_PULLING
+                this.minecraftPath(PULLING_PATH), IS_PULLING
         );
         this.createPulling(index, item, parent, path, predicate, overrides);
     }
@@ -62,8 +60,8 @@ public class BowItemModelProvider extends AbstractItemModelProvider {
     private void createSecondPulling(Item item, String parent, String path, List<BasicItemModel.Override> overrides) {
         int index = 1;
         Map<String, Number> predicate = Map.of(
-                ResourceLocationUtils.joinMinecraftPath(PULL_PATH), IS_HALF_PULLED,
-                ResourceLocationUtils.joinMinecraftPath(PULLING_PATH), IS_PULLING
+                this.minecraftPath(PULL_PATH), IS_HALF_PULLED,
+                this.minecraftPath(PULLING_PATH), IS_PULLING
         );
         this.createPulling(index, item, parent, path, predicate, overrides);
     }
@@ -71,8 +69,8 @@ public class BowItemModelProvider extends AbstractItemModelProvider {
     private void createThirdPulling(Item item, String parent, String path, List<BasicItemModel.Override> overrides) {
         int index = 2;
         Map<String, Number> predicate = Map.of(
-                ResourceLocationUtils.joinMinecraftPath(PULL_PATH), IS_NEARLY_END_PULLED,
-                ResourceLocationUtils.joinMinecraftPath(PULLING_PATH), IS_PULLING
+                this.minecraftPath(PULL_PATH), IS_NEARLY_END_PULLED,
+                this.minecraftPath(PULLING_PATH), IS_PULLING
         );
         this.createPulling(index, item, parent, path, predicate, overrides);
     }
@@ -86,10 +84,6 @@ public class BowItemModelProvider extends AbstractItemModelProvider {
             List<BasicItemModel.Override> overrides
     ) {
         String pullingModelSuffix = PULLING_IDENTIFIER + index;
-        String pullingModelPath = path + pullingModelSuffix;
-        BasicItemModel.Override override = new BasicItemModel.Override(pullingModelPath, predicate);
-        overrides.add(override);
-        ItemModel pullingItemModel = BasicItemModel.ofLayers(parent, List.of(pullingModelPath));
-        this.addItemModel(item, pullingItemModel, PULLING_IDENTIFIER + index);
+        this.createSingleLayerOverrideModel(pullingModelSuffix, item, parent, path, predicate, overrides);
     }
 }

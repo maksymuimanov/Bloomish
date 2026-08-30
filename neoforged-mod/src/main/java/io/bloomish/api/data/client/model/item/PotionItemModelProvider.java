@@ -6,8 +6,6 @@ import io.bloomish.api.data.client.model.item.model.BasicItemModel;
 import io.bloomish.api.data.client.model.item.model.ItemModel;
 import io.bloomish.api.data.client.model.item.spec.ItemModelSpec;
 import io.bloomish.api.engine.metadata.annotation.injection.Injected;
-import io.bloomish.api.util.RegistryUtils;
-import io.bloomish.api.util.ResourceLocationUtils;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.Item;
 
@@ -27,9 +25,9 @@ public class PotionItemModelProvider extends AbstractItemModelProvider {
     protected void registerData() {
         this.channelBus.<ItemModelSpec<? extends Item>>forEachDrain(DataChannels.ITEM_MODEL_PROVIDER_POTION_ITEMS, spec -> {
             Item item = spec.getItem();
-            String parent = ResourceLocationUtils.joinMinecraftPath(ITEM_PATH, GENERATED_PATH);
-            String layer0 = ResourceLocationUtils.joinMinecraftPath(ITEM_PATH, POTION_OVERLAY_PATH);
-            String layer1 = RegistryUtils.findItemNamespacedPath(item, ITEM_PATH);
+            String parent = this.minecraftPath(ITEM_PATH, GENERATED_PATH);
+            String layer0 = this.minecraftPath(ITEM_PATH, POTION_OVERLAY_PATH);
+            String layer1 = this.itemPath(item);
             ItemModel itemModel = BasicItemModel.ofLayers(parent, List.of(layer0, layer1));
             this.addItemModel(item, itemModel);
         });

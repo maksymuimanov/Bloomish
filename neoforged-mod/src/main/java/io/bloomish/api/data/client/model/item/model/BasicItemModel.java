@@ -11,6 +11,14 @@ public record BasicItemModel(
 ) implements ItemModel {
     private static final String LAYER_PREFIX = "layer";
 
+    public static BasicItemModel ofLayer(String parent, String layer0) {
+        return ofLayers(parent, List.of(layer0));
+    }
+
+    public static BasicItemModel ofLayer(String parent, String layer0, List<Override> overrides) {
+        return ofLayers(parent, List.of(layer0), overrides);
+    }
+
     public static BasicItemModel ofParent(String parent) {
         return ofLayers(parent, null);
     }
