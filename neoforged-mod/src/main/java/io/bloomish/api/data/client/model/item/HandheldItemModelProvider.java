@@ -14,19 +14,20 @@ import net.minecraft.world.item.Item;
 import java.util.List;
 
 @Injected
-public class FlatItemModelProvider extends AbstractItemModelProvider {
+public class HandheldItemModelProvider extends AbstractItemModelProvider {
+    private static final String HANDHELD_PATH = "handheld";
     private final ValueChannelBus channelBus;
 
-    public FlatItemModelProvider(PackOutput packOutput, ValueChannelBus channelBus) {
+    public HandheldItemModelProvider(PackOutput packOutput, ValueChannelBus channelBus) {
         super(packOutput);
         this.channelBus = channelBus;
     }
 
     @Override
     protected void registerData() {
-        this.channelBus.<ItemModelSpec<? extends Item>>forEachDrain(DataChannels.ITEM_MODEL_PROVIDER_FLAT_ITEMS, spec -> {
+        this.channelBus.<ItemModelSpec<? extends Item>>forEachDrain(DataChannels.ITEM_MODEL_PROVIDER_HANDHELD_ITEMS, spec -> {
             Item item = spec.getItem();
-            String parent = ResourceLocationUtils.joinMinecraftPath(ITEM_PATH, GENERATED_PATH);
+            String parent = ResourceLocationUtils.joinMinecraftPath(ITEM_PATH, HANDHELD_PATH);
             String path = RegistryUtils.findItemNamespacedPath(item, ITEM_PATH);
             ItemModel itemModel = BasicItemModel.of(parent, List.of(path));
             this.addItemModel(item, itemModel);
