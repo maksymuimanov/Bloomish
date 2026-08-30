@@ -18,7 +18,6 @@ import java.util.Map;
 
 @Injected
 public class TrimmedArmorItemModelProvider extends AbstractItemModelProvider {
-    private static final String GENERATED_PATH = "generated";
     private static final String[] TRIM_MATERIALS = {"quartz", "iron", "netherite", "redstone", "copper", "gold", "emerald", "diamond", "lapis", "amethyst"};
     private static final String LAYER_0 = "layer0";
     private static final String LAYER_1 = "layer1";

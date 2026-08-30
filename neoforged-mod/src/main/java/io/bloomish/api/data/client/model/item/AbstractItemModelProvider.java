@@ -11,6 +11,7 @@ import net.minecraft.world.item.Item;
 public abstract class AbstractItemModelProvider extends AbstractMultiDataProvider implements ClientDataProvider {
     protected static final String MODELS_PATH = "models";
     protected static final String ITEM_PATH = "item";
+    protected static final String GENERATED_PATH = "generated";
 
     protected AbstractItemModelProvider(PackOutput packOutput) {
         super(packOutput);
