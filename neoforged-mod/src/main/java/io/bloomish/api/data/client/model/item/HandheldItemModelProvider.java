@@ -29,7 +29,7 @@ public class HandheldItemModelProvider extends AbstractItemModelProvider {
             Item item = spec.getItem();
             String parent = ResourceLocationUtils.joinMinecraftPath(ITEM_PATH, HANDHELD_PATH);
             String path = RegistryUtils.findItemNamespacedPath(item, ITEM_PATH);
-            ItemModel itemModel = BasicItemModel.of(parent, List.of(path));
+            ItemModel itemModel = BasicItemModel.ofLayers(parent, List.of(path));
             this.addItemModel(item, itemModel);
         });
     }

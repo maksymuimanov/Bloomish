@@ -36,22 +36,23 @@ public class TrimmedArmorItemModelProvider extends AbstractItemModelProvider {
             ArmorItem item = spec.getItem();
             String parent = ResourceLocationUtils.joinMinecraftPath(ITEM_PATH, GENERATED_PATH);
             String path = RegistryUtils.findItemNamespacedPath(item, ITEM_PATH);
-            ItemModel itemModel = BasicItemModel.of(parent, List.of(path), this.createOverrides(path, item, parent));
+            List<BasicItemModel.Override> overrides = this.createOverrides(item, parent, path);
+            ItemModel itemModel = BasicItemModel.ofLayers(parent, List.of(path), overrides);
             this.addItemModel(item, itemModel);
         });
     }
 
-    private List<BasicItemModel.Override> createOverrides(String path, ArmorItem item, String parent) {
+    private List<BasicItemModel.Override> createOverrides(ArmorItem item, String parent, String path) {
         List<BasicItemModel.Override> overrides = new ArrayList<>();
         for (int i = 0; i < TRIM_MATERIALS.length; i++) {
             String trimMaterial = TRIM_MATERIALS[i];
-            this.addTrimToOverrides(i, path, overrides, trimMaterial);
-            this.createTrimmedArmorItemModel(path, item, trimMaterial, parent);
+            this.addTrimToOverrides(i, path, trimMaterial, overrides);
+            this.createTrimmedArmorItemModel(item, parent, trimMaterial, path);
         }
         return overrides;
     }
 
-    private void addTrimToOverrides(int index, String path, List<BasicItemModel.Override> overrides, String trimMaterial) {
+    private void addTrimToOverrides(int index, String path, String trimMaterial, List<BasicItemModel.Override> overrides) {
         String trimModelPath = path + TRIM_IDENTIFIER + trimMaterial;
         float trimTypePropertyValue = (index + 1) / TRIM_TYPE_COEFFICIENT;
         Map<String, Float> predicate = Map.of(MINECRAFT_TRIM_TYPE, trimTypePropertyValue);
@@ -59,10 +60,10 @@ public class TrimmedArmorItemModelProvider extends AbstractItemModelProvider {
         overrides.add(override);
     }
 
-    private void createTrimmedArmorItemModel(String path, ArmorItem item, String trimMaterial, String parent) {
+    private void createTrimmedArmorItemModel(ArmorItem item, String parent, String trimMaterial, String path) {
         String trimeMaterialSuffix = TRIM_IDENTIFIER + trimMaterial;
         String trimmedArmorModelPath = ResourceLocationUtils.joinMinecraftPath(TRIM_PATH_PREFIX, ITEMS_DIRECTORY, item.getType().getName() + trimeMaterialSuffix);
-        ItemModel trimmedArmorItemModel = BasicItemModel.of(parent, List.of(path, trimmedArmorModelPath));
+        ItemModel trimmedArmorItemModel = BasicItemModel.ofLayers(parent, List.of(path, trimmedArmorModelPath));
         this.addItemModel(item, trimmedArmorItemModel, trimeMaterialSuffix);
     }
 }

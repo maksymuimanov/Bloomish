@@ -11,15 +11,15 @@ public record BasicItemModel(
 ) implements ItemModel {
     private static final String LAYER_PREFIX = "layer";
 
-    public static BasicItemModel of(String parent) {
-        return of(parent, null);
+    public static BasicItemModel ofParent(String parent) {
+        return ofLayers(parent, null);
     }
 
-    public static BasicItemModel of(String parent, List<String> layers) {
-        return of(parent, layers, null);
+    public static BasicItemModel ofLayers(String parent, List<String> layers) {
+        return ofLayers(parent, layers, null);
     }
 
-    public static BasicItemModel of(String parent, List<String> layers, List<Override> overrides) {
+    public static BasicItemModel ofLayers(String parent, List<String> layers, List<Override> overrides) {
         Map<String, String> textures = null;
         if (layers != null) {
             textures = new HashMap<>();
