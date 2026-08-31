@@ -10,7 +10,7 @@ import net.minecraft.world.level.block.Block;
 import java.util.Map;
 
 @Injected
-public class ColumnBlockStateProvider extends AbstractBlockStateProvider {
+public class AxisBlockStateProvider extends AbstractBlockStateProvider {
     private static final String HORIZONTAL_SUFFIX = "_horizontal";
     private static final String AXIS_X = "axis=x";
     private static final String AXIS_Y = "axis=y";
@@ -18,7 +18,7 @@ public class ColumnBlockStateProvider extends AbstractBlockStateProvider {
     private static final int RIGHT_ANGLE = 90;
     private final ValueChannelBus channelBus;
 
-    public ColumnBlockStateProvider(PackOutput packOutput, ValueChannelBus channelBus) {
+    public AxisBlockStateProvider(PackOutput packOutput, ValueChannelBus channelBus) {
         super(packOutput);
         this.channelBus = channelBus;
     }
