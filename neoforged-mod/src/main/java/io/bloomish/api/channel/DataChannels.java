@@ -28,6 +28,13 @@ public final class DataChannels {
 
     public static final DataChannel BLOCK_STATE_PROVIDER_SINGLE_VARIANT_BLOCKS = DataChannel.create();
     public static final DataChannel BLOCK_STATE_PROVIDER_COLUMN_BLOCKS = DataChannel.create();
+    public static final DataChannel BLOCK_STATE_PROVIDER_BUTTON_BLOCKS = DataChannel.create();
+    public static final DataChannel BLOCK_STATE_PROVIDER_DOOR_BLOCKS = DataChannel.create();
+    public static final DataChannel BLOCK_STATE_PROVIDER_FENCE_GATE_BLOCKS = DataChannel.create();
+    public static final DataChannel BLOCK_STATE_PROVIDER_PRESSURE_PLATE_BLOCKS = DataChannel.create();
+    public static final DataChannel BLOCK_STATE_PROVIDER_SLAB_BLOCKS = DataChannel.create();
+    public static final DataChannel BLOCK_STATE_PROVIDER_STAIRS_BLOCKS = DataChannel.create();
+    public static final DataChannel BLOCK_STATE_PROVIDER_TRAPDOOR_BLOCKS = DataChannel.create();
 
     private DataChannels() {
     }

@@ -10,7 +10,8 @@ import net.minecraft.world.level.block.Block;
 import java.util.Map;
 
 @Injected
-public class AxisBlockStateProvider extends AbstractBlockStateProvider {
+public class ColumnBlockStateProvider extends AbstractBlockStateProvider {
+    private static final String HORIZONTAL_SUFFIX = "_horizontal";
     private static final String AXIS = "axis";
     private static final String X = "x";
     private static final String Y = "y";
@@ -18,7 +19,7 @@ public class AxisBlockStateProvider extends AbstractBlockStateProvider {
     private static final int ROTATION_90 = 90;
     private final ValueChannelBus channelBus;
 
-    public AxisBlockStateProvider(PackOutput packOutput, ValueChannelBus channelBus) {
+    public ColumnBlockStateProvider(PackOutput packOutput, ValueChannelBus channelBus) {
         super(packOutput);
         this.channelBus = channelBus;
     }
@@ -35,9 +36,9 @@ public class AxisBlockStateProvider extends AbstractBlockStateProvider {
 
     private VariantBlockState createColumnBlockState(String path) {
         Map<Map<String, String>, VariantBlockState.Variant> variants = Map.of(
-                Map.of(AXIS, X), VariantBlockState.Variant.of(path, ROTATION_90, ROTATION_90),
+                Map.of(AXIS, X), VariantBlockState.Variant.of(path + HORIZONTAL_SUFFIX, ROTATION_90, ROTATION_90),
                 Map.of(AXIS, Y), VariantBlockState.Variant.of(path),
-                Map.of(AXIS, Z), VariantBlockState.Variant.of(path, ROTATION_90)
+                Map.of(AXIS, Z), VariantBlockState.Variant.of(path + HORIZONTAL_SUFFIX, ROTATION_90)
         );
         return VariantBlockState.of(variants);
     }
