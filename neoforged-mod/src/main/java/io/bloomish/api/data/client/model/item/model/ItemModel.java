@@ -1,4 +1,6 @@
 package io.bloomish.api.data.client.model.item.model;
 
-public interface ItemModel {
+import io.bloomish.api.data.client.model.Model;
+
+public interface ItemModel extends Model {
 }

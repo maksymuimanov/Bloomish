@@ -4,30 +4,30 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public record BasicItemModel(
+public record LayeredItemModel(
         String parent,
         List<Override> overrides,
         Map<String, String> textures
 ) implements ItemModel {
     private static final String LAYER_PREFIX = "layer";
 
-    public static BasicItemModel ofLayer(String parent, String layer0) {
-        return ofLayers(parent, List.of(layer0));
-    }
-
-    public static BasicItemModel ofLayer(String parent, String layer0, List<Override> overrides) {
-        return ofLayers(parent, List.of(layer0), overrides);
-    }
-
-    public static BasicItemModel ofParent(String parent) {
+    public static LayeredItemModel ofParent(String parent) {
         return ofLayers(parent, null);
     }
 
-    public static BasicItemModel ofLayers(String parent, List<String> layers) {
+    public static LayeredItemModel ofLayer(String parent, String layer0) {
+        return ofLayers(parent, List.of(layer0));
+    }
+
+    public static LayeredItemModel ofLayer(String parent, String layer0, List<Override> overrides) {
+        return ofLayers(parent, List.of(layer0), overrides);
+    }
+
+    public static LayeredItemModel ofLayers(String parent, List<String> layers) {
         return ofLayers(parent, layers, null);
     }
 
-    public static BasicItemModel ofLayers(String parent, List<String> layers, List<Override> overrides) {
+    public static LayeredItemModel ofLayers(String parent, List<String> layers, List<Override> overrides) {
         Map<String, String> textures = null;
         if (layers != null) {
             textures = new HashMap<>();
@@ -37,7 +37,7 @@ public record BasicItemModel(
                 textures.put(currentLayerKey, currentLayerValue);
             }
         }
-        return new BasicItemModel(parent, overrides, textures);
+        return new LayeredItemModel(parent, overrides, textures);
     }
 
     public record Override(

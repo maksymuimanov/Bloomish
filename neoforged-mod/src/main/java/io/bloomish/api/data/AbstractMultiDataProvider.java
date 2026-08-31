@@ -1,5 +1,6 @@
 package io.bloomish.api.data;
 
+import io.bloomish.api.util.ResourceLocationUtils;
 import net.minecraft.data.CachedOutput;
 import net.minecraft.data.PackOutput;
 
@@ -15,8 +16,7 @@ public abstract class AbstractMultiDataProvider implements BloomishDataProvider 
     private final PackOutput packOutput;
 
     protected AbstractMultiDataProvider(PackOutput packOutput) {
-        this.data = new HashMap<>();
-        this.packOutput = packOutput;
+        this(Map.of(), packOutput);
     }
 
     protected AbstractMultiDataProvider(Map<DataTarget, Serializable> data, PackOutput packOutput) {
@@ -48,6 +48,14 @@ public abstract class AbstractMultiDataProvider implements BloomishDataProvider 
         return path.endsWith(JSON_FILE_EXTENSION)
                 ? path.toString()
                 : path + JSON_FILE_EXTENSION;
+    }
+
+    protected String minecraftPath(String pathPart, String... pathParts) {
+        return ResourceLocationUtils.joinMinecraftPath(pathPart, pathParts);
+    }
+
+    protected String modPath(String pathPart, String... pathParts) {
+        return ResourceLocationUtils.joinModPath(pathPart, pathParts);
     }
 
     protected Map<DataTarget, Object> getData() {

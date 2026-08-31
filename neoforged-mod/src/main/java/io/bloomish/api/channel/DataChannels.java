@@ -26,6 +26,9 @@ public final class DataChannels {
     public static final DataChannel ITEM_MODEL_PROVIDER_SPAWN_EGG_ITEMS = DataChannel.create();
     public static final DataChannel ITEM_MODEL_PROVIDER_PARENT_BLOCK_ITEMS = DataChannel.create();
 
+    public static final DataChannel BLOCK_STATE_PROVIDER_SINGLE_VARIANT_BLOCKS = DataChannel.create();
+    public static final DataChannel BLOCK_STATE_PROVIDER_COLUMN_BLOCKS = DataChannel.create();
+
     private DataChannels() {
     }
 }

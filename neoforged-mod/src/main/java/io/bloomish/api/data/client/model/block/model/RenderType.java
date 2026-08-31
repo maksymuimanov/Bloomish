@@ -1,4 +1,4 @@
-package io.bloomish.api.data.client.model.block;
+package io.bloomish.api.data.client.model.block.model;
 
 public enum RenderType {
     SOLID("minecraft:solid"),

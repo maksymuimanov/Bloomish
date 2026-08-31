@@ -2,10 +2,10 @@ package io.bloomish.api.data.client.model.item;
 
 import io.bloomish.api.channel.DataChannels;
 import io.bloomish.api.channel.ValueChannelBus;
-import io.bloomish.api.data.client.model.item.model.BasicItemModel;
 import io.bloomish.api.data.client.model.item.model.ItemModel;
-import io.bloomish.api.data.client.model.item.spec.ItemModelSpec;
+import io.bloomish.api.data.client.model.item.model.LayeredItemModel;
 import io.bloomish.api.engine.metadata.annotation.injection.Injected;
+import net.minecraft.core.Holder;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.Item;
 
@@ -37,18 +37,18 @@ public class CrossbowItemModelProvider extends AbstractItemModelProvider {
 
     @Override
     protected void registerData() {
-        this.channelBus.<ItemModelSpec<? extends Item>>forEachDrain(DataChannels.ITEM_MODEL_PROVIDER_CROSSBOW_ITEMS, spec -> {
-            Item item = spec.getItem();
+        this.channelBus.<Holder<? extends Item>>forEachDrain(DataChannels.ITEM_MODEL_PROVIDER_CROSSBOW_ITEMS, holder -> {
+            Item item = holder.value();
             String parent = this.minecraftPath(ITEM_PATH, CROSSBOW_PATH);
             String path = this.itemPath(item);
-            List<BasicItemModel.Override> overrides = this.createOverrides(item, path, parent);
-            ItemModel itemModel = BasicItemModel.ofLayer(parent, path, overrides);
+            List<LayeredItemModel.Override> overrides = this.createOverrides(item, path, parent);
+            ItemModel itemModel = LayeredItemModel.ofLayer(parent, path, overrides);
             this.addItemModel(item, itemModel);
         });
     }
 
-    private List<BasicItemModel.Override> createOverrides(Item item, String parent, String path) {
-        List<BasicItemModel.Override> overrides = new ArrayList<>();
+    private List<LayeredItemModel.Override> createOverrides(Item item, String parent, String path) {
+        List<LayeredItemModel.Override> overrides = new ArrayList<>();
         this.createFirstPulling(item, parent, path, overrides);
         this.createSecondPulling(item, parent, path, overrides);
         this.createThirdPulling(item, parent, path, overrides);
@@ -57,7 +57,7 @@ public class CrossbowItemModelProvider extends AbstractItemModelProvider {
         return overrides;
     }
 
-    private void createFirstPulling(Item item, String parent, String path, List<BasicItemModel.Override> overrides) {
+    private void createFirstPulling(Item item, String parent, String path, List<LayeredItemModel.Override> overrides) {
         int index = 0;
         Map<String, Number> predicate = Map.of(
                 this.minecraftPath(PULLING_PATH), IS_PULLING
@@ -65,7 +65,7 @@ public class CrossbowItemModelProvider extends AbstractItemModelProvider {
         this.createPulling(index, item, parent, path, predicate, overrides);
     }
 
-    private void createSecondPulling(Item item, String parent, String path, List<BasicItemModel.Override> overrides) {
+    private void createSecondPulling(Item item, String parent, String path, List<LayeredItemModel.Override> overrides) {
         int index = 1;
         Map<String, Number> predicate = Map.of(
                 this.minecraftPath(PULL_PATH), IS_HALF_PULLED,
@@ -74,7 +74,7 @@ public class CrossbowItemModelProvider extends AbstractItemModelProvider {
         this.createPulling(index, item, parent, path, predicate, overrides);
     }
 
-    private void createThirdPulling(Item item, String parent, String path, List<BasicItemModel.Override> overrides) {
+    private void createThirdPulling(Item item, String parent, String path, List<LayeredItemModel.Override> overrides) {
         int index = 2;
         Map<String, Number> predicate = Map.of(
                 this.minecraftPath(PULL_PATH), IS_FULLY_PULLED,
@@ -89,20 +89,20 @@ public class CrossbowItemModelProvider extends AbstractItemModelProvider {
             String parent,
             String path,
             Map<String, Number> predicate,
-            List<BasicItemModel.Override> overrides
+            List<LayeredItemModel.Override> overrides
     ) {
         String pullingModelSuffix = PULLING_IDENTIFIER + index;
         this.createSingleLayerOverrideModel(pullingModelSuffix, item, parent, path, predicate, overrides);
     }
 
-    private void createCharged(Item item, String parent, String path, List<BasicItemModel.Override> overrides) {
+    private void createCharged(Item item, String parent, String path, List<LayeredItemModel.Override> overrides) {
         Map<String, Number> predicate = Map.of(
                 this.minecraftPath(CHARGED_PATH), IS_CHARGED
         );
         this.createSingleLayerOverrideModel(CHARGED_IDENTIFIER, item, parent, path, predicate, overrides);
     }
 
-    private void createFirework(Item item, String parent, String path, List<BasicItemModel.Override> overrides) {
+    private void createFirework(Item item, String parent, String path, List<LayeredItemModel.Override> overrides) {
         Map<String, Number> predicate = Map.of(
                 this.minecraftPath(CHARGED_PATH), IS_CHARGED,
                 this.minecraftPath(FIREWORK_PATH), IS_FIREWORK

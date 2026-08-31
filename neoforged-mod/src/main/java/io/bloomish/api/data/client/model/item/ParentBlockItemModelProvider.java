@@ -2,12 +2,13 @@ package io.bloomish.api.data.client.model.item;
 
 import io.bloomish.api.channel.DataChannels;
 import io.bloomish.api.channel.ValueChannelBus;
-import io.bloomish.api.data.client.model.item.model.BasicItemModel;
 import io.bloomish.api.data.client.model.item.model.ItemModel;
-import io.bloomish.api.data.client.model.item.spec.ItemModelSpec;
+import io.bloomish.api.data.client.model.item.model.LayeredItemModel;
 import io.bloomish.api.engine.metadata.annotation.injection.Injected;
 import io.bloomish.api.util.RegistryUtils;
+import net.minecraft.core.Holder;
 import net.minecraft.data.PackOutput;
+import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 
 @Injected
@@ -22,10 +23,10 @@ public class ParentBlockItemModelProvider extends AbstractItemModelProvider {
 
     @Override
     protected void registerData() {
-        this.channelBus.<ItemModelSpec<? extends Item>>forEachDrain(DataChannels.ITEM_MODEL_PROVIDER_PARENT_BLOCK_ITEMS, spec -> {
-            Item item = spec.getItem();
+        this.channelBus.<Holder<? extends BlockItem>>forEachDrain(DataChannels.ITEM_MODEL_PROVIDER_PARENT_BLOCK_ITEMS, holder -> {
+            Item item = holder.value();
             String path = this.blockPath(item);
-            ItemModel itemModel = BasicItemModel.ofParent(path);
+            ItemModel itemModel = LayeredItemModel.ofParent(path);
             this.addItemModel(item, itemModel);
         });
     }
