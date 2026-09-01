@@ -34,10 +34,10 @@ public class AxisBlockStateProvider extends AbstractBlockStateProvider {
     }
 
     private VariantBlockState createColumnBlockState(String path) {
-        Map<Map<String, String>, VariantBlockState.Variant> variants = Map.of(
-                Map.of(AXIS, X), VariantBlockState.Variant.of(path, ROTATION_90, ROTATION_90),
-                Map.of(AXIS, Y), VariantBlockState.Variant.of(path),
-                Map.of(AXIS, Z), VariantBlockState.Variant.of(path, ROTATION_90)
+        Map<Map<String, String>, Variant> variants = Map.of(
+                Map.of(AXIS, X), new Variant(path, ROTATION_90, ROTATION_90),
+                Map.of(AXIS, Y), new Variant(path),
+                Map.of(AXIS, Z), Variant.ofX(path, ROTATION_90)
         );
         return VariantBlockState.of(variants);
     }

@@ -52,7 +52,7 @@ public class DoorBlockStateProvider extends AbstractBlockStateProvider {
     }
 
     private VariantBlockState createDoorBlockState(String path) {
-        Map<Map<String, String>, VariantBlockState.Variant> variants = new HashMap<>();
+        Map<Map<String, String>, Variant> variants = new HashMap<>();
         this.createEastVariants(path, variants);
         this.createNorthVariants(path, variants);
         this.createSouthVariants(path, variants);
@@ -60,7 +60,7 @@ public class DoorBlockStateProvider extends AbstractBlockStateProvider {
         return VariantBlockState.of(variants);
     }
 
-    private void createEastVariants(String path, Map<Map<String, String>, VariantBlockState.Variant> variants) {
+    private void createEastVariants(String path, Map<Map<String, String>, Variant> variants) {
         variants.put(Map.of(FACING, EAST, HALF, LOWER, HINGE, LEFT, OPEN, FALSE), this.createEastLowerLeftVariant(path, false));
         variants.put(Map.of(FACING, EAST, HALF, LOWER, HINGE, LEFT, OPEN, TRUE), this.createEastLowerLeftVariant(path, true));
         variants.put(Map.of(FACING, EAST, HALF, LOWER, HINGE, RIGHT, OPEN, FALSE), this.createEastLowerRightVariant(path, false));
@@ -71,23 +71,23 @@ public class DoorBlockStateProvider extends AbstractBlockStateProvider {
         variants.put(Map.of(FACING, EAST, HALF, UPPER, HINGE, RIGHT, OPEN, TRUE), this.createEastUpperRightVariant(path, true));
     }
 
-    private VariantBlockState.Variant createEastLowerLeftVariant(String path, boolean open) {
+    private Variant createEastLowerLeftVariant(String path, boolean open) {
         return this.createVariant(path + BOTTOM_SUFFIX + LEFT_SUFFIX, open, ROTATION_90);
     }
 
-    private VariantBlockState.Variant createEastLowerRightVariant(String path, boolean open) {
+    private Variant createEastLowerRightVariant(String path, boolean open) {
         return this.createVariant(path + BOTTOM_SUFFIX + RIGHT_SUFFIX, open, ROTATION_270);
     }
 
-    private VariantBlockState.Variant createEastUpperLeftVariant(String path, boolean open) {
+    private Variant createEastUpperLeftVariant(String path, boolean open) {
         return this.createVariant(path + TOP_SUFFIX + LEFT_SUFFIX, open, ROTATION_90);
     }
 
-    private VariantBlockState.Variant createEastUpperRightVariant(String path, boolean open) {
+    private Variant createEastUpperRightVariant(String path, boolean open) {
         return this.createVariant(path + TOP_SUFFIX + RIGHT_SUFFIX, open, ROTATION_270);
     }
 
-    private void createNorthVariants(String path, Map<Map<String, String>, VariantBlockState.Variant> variants) {
+    private void createNorthVariants(String path, Map<Map<String, String>, Variant> variants) {
         variants.put(Map.of(FACING, NORTH, HALF, LOWER, HINGE, LEFT, OPEN, FALSE), this.createNorthLowerLeftVariant(path, false));
         variants.put(Map.of(FACING, NORTH, HALF, LOWER, HINGE, LEFT, OPEN, TRUE), this.createNorthLowerLeftVariant(path, true));
         variants.put(Map.of(FACING, NORTH, HALF, LOWER, HINGE, RIGHT, OPEN, FALSE), this.createNorthLowerRightVariant(path, false));
@@ -98,23 +98,23 @@ public class DoorBlockStateProvider extends AbstractBlockStateProvider {
         variants.put(Map.of(FACING, NORTH, HALF, UPPER, HINGE, RIGHT, OPEN, TRUE), this.createNorthUpperRightVariant(path, true));
     }
 
-    private VariantBlockState.Variant createNorthLowerLeftVariant(String path, boolean open) {
+    private Variant createNorthLowerLeftVariant(String path, boolean open) {
         return this.createVariant(path + BOTTOM_SUFFIX + LEFT_SUFFIX, open, ROTATION_270);
     }
 
-    private VariantBlockState.Variant createNorthLowerRightVariant(String path, boolean open) {
+    private Variant createNorthLowerRightVariant(String path, boolean open) {
         return this.createVariant(path + BOTTOM_SUFFIX + RIGHT_SUFFIX, open, ROTATION_270);
     }
 
-    private VariantBlockState.Variant createNorthUpperLeftVariant(String path, boolean open) {
+    private Variant createNorthUpperLeftVariant(String path, boolean open) {
         return this.createVariant(path + TOP_SUFFIX + LEFT_SUFFIX, open, ROTATION_270);
     }
 
-    private VariantBlockState.Variant createNorthUpperRightVariant(String path, boolean open) {
+    private Variant createNorthUpperRightVariant(String path, boolean open) {
         return this.createVariant(path + TOP_SUFFIX + RIGHT_SUFFIX, open, ROTATION_270);
     }
 
-    private void createSouthVariants(String path, Map<Map<String, String>, VariantBlockState.Variant> variants) {
+    private void createSouthVariants(String path, Map<Map<String, String>, Variant> variants) {
         variants.put(Map.of(FACING, SOUTH, HALF, LOWER, HINGE, LEFT, OPEN, FALSE), this.createSouthLowerLeftVariant(path, false));
         variants.put(Map.of(FACING, SOUTH, HALF, LOWER, HINGE, LEFT, OPEN, TRUE), this.createSouthLowerLeftVariant(path, true));
         variants.put(Map.of(FACING, SOUTH, HALF, LOWER, HINGE, RIGHT, OPEN, FALSE), this.createSouthLowerRightVariant(path, false));
@@ -125,23 +125,23 @@ public class DoorBlockStateProvider extends AbstractBlockStateProvider {
         variants.put(Map.of(FACING, SOUTH, HALF, UPPER, HINGE, RIGHT, OPEN, TRUE), this.createSouthUpperRightVariant(path, true));
     }
 
-    private VariantBlockState.Variant createSouthLowerLeftVariant(String path, boolean open) {
+    private Variant createSouthLowerLeftVariant(String path, boolean open) {
         return this.createVariant(path + BOTTOM_SUFFIX + LEFT_SUFFIX, open, ROTATION_90);
     }
 
-    private VariantBlockState.Variant createSouthLowerRightVariant(String path, boolean open) {
+    private Variant createSouthLowerRightVariant(String path, boolean open) {
         return this.createVariant(path + BOTTOM_SUFFIX + RIGHT_SUFFIX, open, ROTATION_90);
     }
 
-    private VariantBlockState.Variant createSouthUpperLeftVariant(String path, boolean open) {
+    private Variant createSouthUpperLeftVariant(String path, boolean open) {
         return this.createVariant(path + TOP_SUFFIX + LEFT_SUFFIX, open, ROTATION_90);
     }
 
-    private VariantBlockState.Variant createSouthUpperRightVariant(String path, boolean open) {
+    private Variant createSouthUpperRightVariant(String path, boolean open) {
         return this.createVariant(path + TOP_SUFFIX + RIGHT_SUFFIX, open, ROTATION_90);
     }
 
-    private void createWestVariants(String path, Map<Map<String, String>, VariantBlockState.Variant> variants) {
+    private void createWestVariants(String path, Map<Map<String, String>, Variant> variants) {
         variants.put(Map.of(FACING, WEST, HALF, LOWER, HINGE, LEFT, OPEN, FALSE), this.createWestLowerLeftVariant(path, false));
         variants.put(Map.of(FACING, WEST, HALF, LOWER, HINGE, LEFT, OPEN, TRUE), this.createWestLowerLeftVariant(path, true));
         variants.put(Map.of(FACING, WEST, HALF, LOWER, HINGE, RIGHT, OPEN, FALSE), this.createWestLowerRightVariant(path, false));
@@ -152,24 +152,28 @@ public class DoorBlockStateProvider extends AbstractBlockStateProvider {
         variants.put(Map.of(FACING, WEST, HALF, UPPER, HINGE, RIGHT, OPEN, TRUE), this.createWestUpperRightVariant(path, true));
     }
 
-    private VariantBlockState.Variant createWestLowerLeftVariant(String path, boolean open) {
+    private Variant createWestLowerLeftVariant(String path, boolean open) {
         return this.createVariant(path + BOTTOM_SUFFIX + LEFT_SUFFIX, open, ROTATION_180);
     }
 
-    private VariantBlockState.Variant createWestLowerRightVariant(String path, boolean open) {
+    private Variant createWestLowerRightVariant(String path, boolean open) {
         return this.createVariant(path + BOTTOM_SUFFIX + RIGHT_SUFFIX, open, ROTATION_180);
     }
 
-    private VariantBlockState.Variant createWestUpperLeftVariant(String path, boolean open) {
+    private Variant createWestUpperLeftVariant(String path, boolean open) {
         return this.createVariant(path + TOP_SUFFIX + LEFT_SUFFIX, open, ROTATION_180);
     }
 
-    private VariantBlockState.Variant createWestUpperRightVariant(String path, boolean open) {
+    private Variant createWestUpperRightVariant(String path, boolean open) {
         return this.createVariant(path + TOP_SUFFIX + RIGHT_SUFFIX, open, ROTATION_180);
     }
 
-    private VariantBlockState.Variant createVariant(String model, boolean open, Integer y) {
-        String resolvedModel = open ? model + OPEN_SUFFIX : model;
-        return VariantBlockState.Variant.of(resolvedModel, null, y);
+    private Variant createVariant(String path, boolean open, Integer y) {
+        String resolvedModel = this.resolveModel(path, open);
+        return Variant.ofY(resolvedModel, y);
+    }
+
+    private String resolveModel(String path, boolean open) {
+        return open ? path + OPEN_SUFFIX : path;
     }
 }

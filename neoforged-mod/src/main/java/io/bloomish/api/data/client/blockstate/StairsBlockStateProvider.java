@@ -49,7 +49,7 @@ public class StairsBlockStateProvider extends AbstractBlockStateProvider {
     }
 
     private VariantBlockState createStairsBlockState(String path) {
-        Map<Map<String, String>, VariantBlockState.Variant> variants = new HashMap<>();
+        Map<Map<String, String>, Variant> variants = new HashMap<>();
         this.createEastVariants(path, variants);
         this.createNorthVariants(path, variants);
         this.createSouthVariants(path, variants);
@@ -57,7 +57,7 @@ public class StairsBlockStateProvider extends AbstractBlockStateProvider {
         return VariantBlockState.of(variants);
     }
 
-    private void createEastVariants(String path, Map<Map<String, String>, VariantBlockState.Variant> variants) {
+    private void createEastVariants(String path, Map<Map<String, String>, Variant> variants) {
         variants.put(Map.of(FACING, EAST, HALF, BOTTOM, SHAPE, INNER_LEFT), this.createEastBottomInnerLeftVariant(path));
         variants.put(Map.of(FACING, EAST, HALF, BOTTOM, SHAPE, INNER_RIGHT), this.createEastBottomInnerRightVariant(path));
         variants.put(Map.of(FACING, EAST, HALF, BOTTOM, SHAPE, OUTER_LEFT), this.createEastBottomOuterLeftVariant(path));
@@ -70,47 +70,47 @@ public class StairsBlockStateProvider extends AbstractBlockStateProvider {
         variants.put(Map.of(FACING, EAST, HALF, TOP, SHAPE, STRAIGHT), this.createEastTopStraightVariant(path));
     }
 
-    private VariantBlockState.Variant createEastBottomInnerLeftVariant(String path) {
+    private Variant createEastBottomInnerLeftVariant(String path) {
         return this.createVariant(path + INNER_SUFFIX, null, ROTATION_270);
     }
 
-    private VariantBlockState.Variant createEastBottomInnerRightVariant(String path) {
-        return this.createVariant(path + INNER_SUFFIX);
+    private Variant createEastBottomInnerRightVariant(String path) {
+        return new Variant(path + INNER_SUFFIX);
     }
 
-    private VariantBlockState.Variant createEastBottomOuterLeftVariant(String path) {
+    private Variant createEastBottomOuterLeftVariant(String path) {
         return this.createVariant(path + OUTER_SUFFIX, null, ROTATION_270);
     }
 
-    private VariantBlockState.Variant createEastBottomOuterRightVariant(String path) {
-        return this.createVariant(path + OUTER_SUFFIX);
+    private Variant createEastBottomOuterRightVariant(String path) {
+        return new Variant(path + OUTER_SUFFIX);
     }
 
-    private VariantBlockState.Variant createEastBottomStraightVariant(String path) {
-        return this.createVariant(path);
+    private Variant createEastBottomStraightVariant(String path) {
+        return new Variant(path);
     }
 
-    private VariantBlockState.Variant createEastTopInnerLeftVariant(String path) {
+    private Variant createEastTopInnerLeftVariant(String path) {
         return this.createVariant(path + INNER_SUFFIX, ROTATION_180, null);
     }
 
-    private VariantBlockState.Variant createEastTopInnerRightVariant(String path) {
+    private Variant createEastTopInnerRightVariant(String path) {
         return this.createVariant(path + INNER_SUFFIX, ROTATION_180, ROTATION_90);
     }
 
-    private VariantBlockState.Variant createEastTopOuterLeftVariant(String path) {
+    private Variant createEastTopOuterLeftVariant(String path) {
         return this.createVariant(path + OUTER_SUFFIX, ROTATION_180, null);
     }
 
-    private VariantBlockState.Variant createEastTopOuterRightVariant(String path) {
+    private Variant createEastTopOuterRightVariant(String path) {
         return this.createVariant(path + OUTER_SUFFIX, ROTATION_180, ROTATION_90);
     }
 
-    private VariantBlockState.Variant createEastTopStraightVariant(String path) {
+    private Variant createEastTopStraightVariant(String path) {
         return this.createVariant(path, ROTATION_180, null);
     }
 
-    private void createNorthVariants(String path, Map<Map<String, String>, VariantBlockState.Variant> variants) {
+    private void createNorthVariants(String path, Map<Map<String, String>, Variant> variants) {
         variants.put(Map.of(FACING, NORTH, HALF, BOTTOM, SHAPE, INNER_LEFT), this.createNorthBottomInnerLeftVariant(path));
         variants.put(Map.of(FACING, NORTH, HALF, BOTTOM, SHAPE, INNER_RIGHT), this.createNorthBottomInnerRightVariant(path));
         variants.put(Map.of(FACING, NORTH, HALF, BOTTOM, SHAPE, OUTER_LEFT), this.createNorthBottomOuterLeftVariant(path));
@@ -123,47 +123,47 @@ public class StairsBlockStateProvider extends AbstractBlockStateProvider {
         variants.put(Map.of(FACING, NORTH, HALF, TOP, SHAPE, STRAIGHT), this.createNorthTopStraightVariant(path));
     }
 
-    private VariantBlockState.Variant createNorthBottomInnerLeftVariant(String path) {
+    private Variant createNorthBottomInnerLeftVariant(String path) {
         return this.createVariant(path + INNER_SUFFIX, null, ROTATION_180);
     }
 
-    private VariantBlockState.Variant createNorthBottomInnerRightVariant(String path) {
+    private Variant createNorthBottomInnerRightVariant(String path) {
         return this.createVariant(path + INNER_SUFFIX, null, ROTATION_270);
     }
 
-    private VariantBlockState.Variant createNorthBottomOuterLeftVariant(String path) {
+    private Variant createNorthBottomOuterLeftVariant(String path) {
         return this.createVariant(path + OUTER_SUFFIX, null, ROTATION_180);
     }
 
-    private VariantBlockState.Variant createNorthBottomOuterRightVariant(String path) {
+    private Variant createNorthBottomOuterRightVariant(String path) {
         return this.createVariant(path + OUTER_SUFFIX, null, ROTATION_270);
     }
 
-    private VariantBlockState.Variant createNorthBottomStraightVariant(String path) {
+    private Variant createNorthBottomStraightVariant(String path) {
         return this.createVariant(path, null, ROTATION_270);
     }
 
-    private VariantBlockState.Variant createNorthTopInnerLeftVariant(String path) {
+    private Variant createNorthTopInnerLeftVariant(String path) {
         return this.createVariant(path + INNER_SUFFIX, ROTATION_180, ROTATION_270);
     }
 
-    private VariantBlockState.Variant createNorthTopInnerRightVariant(String path) {
+    private Variant createNorthTopInnerRightVariant(String path) {
         return this.createVariant(path + INNER_SUFFIX, ROTATION_180, null);
     }
 
-    private VariantBlockState.Variant createNorthTopOuterLeftVariant(String path) {
+    private Variant createNorthTopOuterLeftVariant(String path) {
         return this.createVariant(path + OUTER_SUFFIX, ROTATION_180, ROTATION_270);
     }
 
-    private VariantBlockState.Variant createNorthTopOuterRightVariant(String path) {
+    private Variant createNorthTopOuterRightVariant(String path) {
         return this.createVariant(path + OUTER_SUFFIX, ROTATION_180, null);
     }
 
-    private VariantBlockState.Variant createNorthTopStraightVariant(String path) {
+    private Variant createNorthTopStraightVariant(String path) {
         return this.createVariant(path, ROTATION_180, ROTATION_270);
     }
 
-    private void createSouthVariants(String path, Map<Map<String, String>, VariantBlockState.Variant> variants) {
+    private void createSouthVariants(String path, Map<Map<String, String>, Variant> variants) {
         variants.put(Map.of(FACING, SOUTH, HALF, BOTTOM, SHAPE, INNER_LEFT), this.createSouthBottomInnerLeftVariant(path));
         variants.put(Map.of(FACING, SOUTH, HALF, BOTTOM, SHAPE, INNER_RIGHT), this.createSouthBottomInnerRightVariant(path));
         variants.put(Map.of(FACING, SOUTH, HALF, BOTTOM, SHAPE, OUTER_LEFT), this.createSouthBottomOuterLeftVariant(path));
@@ -176,47 +176,47 @@ public class StairsBlockStateProvider extends AbstractBlockStateProvider {
         variants.put(Map.of(FACING, SOUTH, HALF, TOP, SHAPE, STRAIGHT), this.createSouthTopStraightVariant(path));
     }
 
-    private VariantBlockState.Variant createSouthBottomInnerLeftVariant(String path) {
-        return this.createVariant(path + INNER_SUFFIX);
+    private Variant createSouthBottomInnerLeftVariant(String path) {
+        return new Variant(path + INNER_SUFFIX);
     }
 
-    private VariantBlockState.Variant createSouthBottomInnerRightVariant(String path) {
+    private Variant createSouthBottomInnerRightVariant(String path) {
         return this.createVariant(path + INNER_SUFFIX, null, ROTATION_90);
     }
 
-    private VariantBlockState.Variant createSouthBottomOuterLeftVariant(String path) {
-        return this.createVariant(path + OUTER_SUFFIX);
+    private Variant createSouthBottomOuterLeftVariant(String path) {
+        return new Variant(path + OUTER_SUFFIX);
     }
 
-    private VariantBlockState.Variant createSouthBottomOuterRightVariant(String path) {
+    private Variant createSouthBottomOuterRightVariant(String path) {
         return this.createVariant(path + OUTER_SUFFIX, null, ROTATION_90);
     }
 
-    private VariantBlockState.Variant createSouthBottomStraightVariant(String path) {
+    private Variant createSouthBottomStraightVariant(String path) {
         return this.createVariant(path, null, ROTATION_90);
     }
 
-    private VariantBlockState.Variant createSouthTopInnerLeftVariant(String path) {
+    private Variant createSouthTopInnerLeftVariant(String path) {
         return this.createVariant(path + INNER_SUFFIX, ROTATION_180, ROTATION_90);
     }
 
-    private VariantBlockState.Variant createSouthTopInnerRightVariant(String path) {
+    private Variant createSouthTopInnerRightVariant(String path) {
         return this.createVariant(path + INNER_SUFFIX, ROTATION_180, ROTATION_180);
     }
 
-    private VariantBlockState.Variant createSouthTopOuterLeftVariant(String path) {
+    private Variant createSouthTopOuterLeftVariant(String path) {
         return this.createVariant(path + OUTER_SUFFIX, ROTATION_180, ROTATION_90);
     }
 
-    private VariantBlockState.Variant createSouthTopOuterRightVariant(String path) {
+    private Variant createSouthTopOuterRightVariant(String path) {
         return this.createVariant(path + OUTER_SUFFIX, ROTATION_180, ROTATION_180);
     }
 
-    private VariantBlockState.Variant createSouthTopStraightVariant(String path) {
+    private Variant createSouthTopStraightVariant(String path) {
         return this.createVariant(path, ROTATION_180, ROTATION_90);
     }
 
-    private void createWestVariants(String path, Map<Map<String, String>, VariantBlockState.Variant> variants) {
+    private void createWestVariants(String path, Map<Map<String, String>, Variant> variants) {
         variants.put(Map.of(FACING, WEST, HALF, BOTTOM, SHAPE, INNER_LEFT), this.createWestBottomInnerLeftVariant(path));
         variants.put(Map.of(FACING, WEST, HALF, BOTTOM, SHAPE, INNER_RIGHT), this.createWestBottomInnerRightVariant(path));
         variants.put(Map.of(FACING, WEST, HALF, BOTTOM, SHAPE, OUTER_LEFT), this.createWestBottomOuterLeftVariant(path));
@@ -229,51 +229,47 @@ public class StairsBlockStateProvider extends AbstractBlockStateProvider {
         variants.put(Map.of(FACING, WEST, HALF, TOP, SHAPE, STRAIGHT), this.createWestTopStraightVariant(path));
     }
 
-    private VariantBlockState.Variant createWestBottomInnerLeftVariant(String path) {
+    private Variant createWestBottomInnerLeftVariant(String path) {
         return this.createVariant(path + INNER_SUFFIX, null, ROTATION_90);
     }
 
-    private VariantBlockState.Variant createWestBottomInnerRightVariant(String path) {
+    private Variant createWestBottomInnerRightVariant(String path) {
         return this.createVariant(path + INNER_SUFFIX, null, ROTATION_180);
     }
 
-    private VariantBlockState.Variant createWestBottomOuterLeftVariant(String path) {
+    private Variant createWestBottomOuterLeftVariant(String path) {
         return this.createVariant(path + OUTER_SUFFIX, null, ROTATION_90);
     }
 
-    private VariantBlockState.Variant createWestBottomOuterRightVariant(String path) {
+    private Variant createWestBottomOuterRightVariant(String path) {
         return this.createVariant(path + OUTER_SUFFIX, null, ROTATION_180);
     }
 
-    private VariantBlockState.Variant createWestBottomStraightVariant(String path) {
+    private Variant createWestBottomStraightVariant(String path) {
         return this.createVariant(path, null, ROTATION_180);
     }
 
-    private VariantBlockState.Variant createWestTopInnerLeftVariant(String path) {
+    private Variant createWestTopInnerLeftVariant(String path) {
         return this.createVariant(path + INNER_SUFFIX, ROTATION_180, ROTATION_180);
     }
 
-    private VariantBlockState.Variant createWestTopInnerRightVariant(String path) {
+    private Variant createWestTopInnerRightVariant(String path) {
         return this.createVariant(path + INNER_SUFFIX, ROTATION_180, ROTATION_270);
     }
 
-    private VariantBlockState.Variant createWestTopOuterLeftVariant(String path) {
+    private Variant createWestTopOuterLeftVariant(String path) {
         return this.createVariant(path + OUTER_SUFFIX, ROTATION_180, ROTATION_180);
     }
 
-    private VariantBlockState.Variant createWestTopOuterRightVariant(String path) {
+    private Variant createWestTopOuterRightVariant(String path) {
         return this.createVariant(path + OUTER_SUFFIX, ROTATION_180, ROTATION_270);
     }
 
-    private VariantBlockState.Variant createWestTopStraightVariant(String path) {
+    private Variant createWestTopStraightVariant(String path) {
         return this.createVariant(path, ROTATION_180, ROTATION_180);
     }
 
-    private VariantBlockState.Variant createVariant(String model) {
-        return VariantBlockState.Variant.of(model);
-    }
-
-    private VariantBlockState.Variant createVariant(String model, Integer x, Integer y) {
-        return new VariantBlockState.Variant(model, true, x, y);
+    private Variant createVariant(String model, Integer x, Integer y) {
+        return new Variant(model, true, x, y);
     }
 }

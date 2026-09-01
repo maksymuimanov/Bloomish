@@ -39,8 +39,8 @@ public class PressurePlateBlockStateProvider extends AbstractBlockStateProvider 
         ));
     }
 
-    private VariantBlockState.Variant createVariant(String path, boolean powered) {
+    private Variant createVariant(String path, boolean powered) {
         String model = powered ? path + DOWN_SUFFIX : path;
-        return VariantBlockState.Variant.of(model);
+        return new Variant(model);
     }
 }

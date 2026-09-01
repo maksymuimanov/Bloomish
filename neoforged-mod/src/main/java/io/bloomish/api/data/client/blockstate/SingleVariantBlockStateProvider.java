@@ -29,8 +29,8 @@ public class SingleVariantBlockStateProvider extends AbstractBlockStateProvider 
     }
 
     private VariantBlockState createSingleVariantBlockState(String path) {
-        VariantBlockState.Variant variant = VariantBlockState.Variant.of(path);
-        Map<String, VariantBlockState.Variant> variants = Map.of("", variant);
+        Variant variant = new Variant(path);
+        Map<String, Variant> variants = Map.of("", variant);
         return new VariantBlockState(variants);
     }
 }

@@ -46,14 +46,14 @@ public class ButtonBlockStateProvider extends AbstractBlockStateProvider {
     }
 
     private VariantBlockState createButtonBlockState(String path) {
-        Map<Map<String, String>, VariantBlockState.Variant> variants = new HashMap<>();
+        Map<Map<String, String>, Variant> variants = new HashMap<>();
         this.createCeilingVariants(path, variants);
         this.createFloorVariants(path, variants);
         this.createWallVariants(path, variants);
         return VariantBlockState.of(variants);
     }
 
-    private void createCeilingVariants(String path, Map<Map<String, String>, VariantBlockState.Variant> variants) {
+    private void createCeilingVariants(String path, Map<Map<String, String>, Variant> variants) {
         variants.put(Map.of(FACE, CEILING, FACING, EAST, POWERED, FALSE), this.createCeilingEastVariant(path, false));
         variants.put(Map.of(FACE, CEILING, FACING, EAST, POWERED, TRUE), this.createCeilingEastVariant(path, true));
         variants.put(Map.of(FACE, CEILING, FACING, NORTH, POWERED, FALSE), this.createCeilingNorthVariant(path, false));
@@ -64,23 +64,23 @@ public class ButtonBlockStateProvider extends AbstractBlockStateProvider {
         variants.put(Map.of(FACE, CEILING, FACING, WEST, POWERED, TRUE), this.createCeilingWestVariant(path, true));
     }
 
-    private VariantBlockState.Variant createCeilingEastVariant(String path, boolean powered) {
-        return this.createVariant(path, powered, ROTATION_180, ROTATION_270);
+    private Variant createCeilingEastVariant(String path, boolean powered) {
+        return new Variant(this.resolveModel(path, powered), ROTATION_180, ROTATION_270);
     }
 
-    private VariantBlockState.Variant createCeilingNorthVariant(String path, boolean powered) {
-        return this.createVariant(path, powered, ROTATION_180, ROTATION_180);
+    private Variant createCeilingNorthVariant(String path, boolean powered) {
+        return new Variant(this.resolveModel(path, powered), ROTATION_180, ROTATION_180);
     }
 
-    private VariantBlockState.Variant createCeilingSouthVariant(String path, boolean powered) {
-        return this.createVariant(path, powered, ROTATION_180);
+    private Variant createCeilingSouthVariant(String path, boolean powered) {
+        return Variant.ofX(this.resolveModel(path, powered), ROTATION_180);
     }
 
-    private VariantBlockState.Variant createCeilingWestVariant(String path, boolean powered) {
-        return this.createVariant(path, powered, ROTATION_180, ROTATION_90);
+    private Variant createCeilingWestVariant(String path, boolean powered) {
+        return new Variant(this.resolveModel(path, powered), ROTATION_180, ROTATION_90);
     }
 
-    private void createFloorVariants(String path, Map<Map<String, String>, VariantBlockState.Variant> variants) {
+    private void createFloorVariants(String path, Map<Map<String, String>, Variant> variants) {
         variants.put(Map.of(FACE, FLOOR, FACING, EAST, POWERED, FALSE), this.createFloorEastVariant(path, false));
         variants.put(Map.of(FACE, FLOOR, FACING, EAST, POWERED, TRUE), this.createFloorEastVariant(path, true));
         variants.put(Map.of(FACE, FLOOR, FACING, NORTH, POWERED, FALSE), this.createFloorNorthVariant(path, false));
@@ -91,23 +91,23 @@ public class ButtonBlockStateProvider extends AbstractBlockStateProvider {
         variants.put(Map.of(FACE, FLOOR, FACING, WEST, POWERED, TRUE), this.createFloorWestVariant(path, true));
     }
 
-    private VariantBlockState.Variant createFloorEastVariant(String path, boolean powered) {
-        return this.createVariant(path, powered, null, ROTATION_90);
+    private Variant createFloorEastVariant(String path, boolean powered) {
+        return Variant.ofY(this.resolveModel(path, powered), ROTATION_90);
     }
 
-    private VariantBlockState.Variant createFloorNorthVariant(String path, boolean powered) {
-        return this.createVariant(path, powered);
+    private Variant createFloorNorthVariant(String path, boolean powered) {
+        return new Variant(this.resolveModel(path, powered));
     }
 
-    private VariantBlockState.Variant createFloorSouthVariant(String path, boolean powered) {
-        return this.createVariant(path, powered, null, ROTATION_180);
+    private Variant createFloorSouthVariant(String path, boolean powered) {
+        return Variant.ofY(this.resolveModel(path, powered), ROTATION_180);
     }
 
-    private VariantBlockState.Variant createFloorWestVariant(String path, boolean powered) {
-        return this.createVariant(path, powered, null, ROTATION_270);
+    private Variant createFloorWestVariant(String path, boolean powered) {
+        return Variant.ofY(this.resolveModel(path, powered), ROTATION_270);
     }
 
-    private void createWallVariants(String path, Map<Map<String, String>, VariantBlockState.Variant> variants) {
+    private void createWallVariants(String path, Map<Map<String, String>, Variant> variants) {
         variants.put(Map.of(FACE, WALL, FACING, EAST, POWERED, FALSE), this.createWallEastVariant(path, false));
         variants.put(Map.of(FACE, WALL, FACING, EAST, POWERED, TRUE), this.createWallEastVariant(path, true));
         variants.put(Map.of(FACE, WALL, FACING, NORTH, POWERED, FALSE), this.createWallNorthVariant(path, false));
@@ -118,36 +118,23 @@ public class ButtonBlockStateProvider extends AbstractBlockStateProvider {
         variants.put(Map.of(FACE, WALL, FACING, WEST, POWERED, TRUE), this.createWallWestVariant(path, true));
     }
 
-    private VariantBlockState.Variant createWallEastVariant(String path, boolean powered) {
-        return this.createVariant(path, powered, ROTATION_90, ROTATION_90, true);
+    private Variant createWallEastVariant(String path, boolean powered) {
+        return Variant.ofUvlock(this.resolveModel(path, powered), ROTATION_90, ROTATION_90);
     }
 
-    private VariantBlockState.Variant createWallNorthVariant(String path, boolean powered) {
-        return this.createVariant(path, powered, ROTATION_90, null, true);
+    private Variant createWallNorthVariant(String path, boolean powered) {
+        return Variant.ofUvlockX(this.resolveModel(path, powered), ROTATION_90);
     }
 
-    private VariantBlockState.Variant createWallSouthVariant(String path, boolean powered) {
-        return this.createVariant(path, powered, ROTATION_90, ROTATION_180, true);
+    private Variant createWallSouthVariant(String path, boolean powered) {
+        return Variant.ofUvlock(this.resolveModel(path, powered), ROTATION_90, ROTATION_180);
     }
 
-    private VariantBlockState.Variant createWallWestVariant(String path, boolean powered) {
-        return this.createVariant(path, powered, ROTATION_90, ROTATION_270, true);
+    private Variant createWallWestVariant(String path, boolean powered) {
+        return Variant.ofUvlock(this.resolveModel(path, powered), ROTATION_90, ROTATION_270);
     }
 
-    private VariantBlockState.Variant createVariant(String path, boolean powered) {
-        return this.createVariant(path, powered, null, null, false);
-    }
-
-    private VariantBlockState.Variant createVariant(String path, boolean powered, Integer x) {
-        return this.createVariant(path, powered, x, null, false);
-    }
-
-    private VariantBlockState.Variant createVariant(String path, boolean powered, Integer x, Integer y) {
-        return this.createVariant(path, powered, x, y, false);
-    }
-
-    private VariantBlockState.Variant createVariant(String path, boolean powered, Integer x, Integer y, boolean uvlock) {
-        String model = powered ? path + PRESSED_SUFFIX : path;
-        return new VariantBlockState.Variant(model, uvlock ? true : null, x, y);
+    private String resolveModel(String path, boolean powered) {
+        return powered ? path + PRESSED_SUFFIX : path;
     }
 }

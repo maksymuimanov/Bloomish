@@ -36,6 +36,7 @@ public final class DataChannels {
     public static final DataChannel BLOCK_STATE_PROVIDER_STAIRS_BLOCKS = DataChannel.create();
     public static final DataChannel BLOCK_STATE_PROVIDER_TRAPDOOR_BLOCKS = DataChannel.create();
     public static final DataChannel BLOCK_STATE_PROVIDER_AXIS_BLOCKS = DataChannel.create();
+    public static final DataChannel BLOCK_STATE_PROVIDER_FENCE_BLOCKS = DataChannel.create();
 
     private DataChannels() {
     }

@@ -44,7 +44,7 @@ public class FenceGateBlockStateProvider extends AbstractBlockStateProvider {
     }
 
     private VariantBlockState createFenceGateBlockState(String path) {
-        Map<Map<String, String>, VariantBlockState.Variant> variants = new HashMap<>();
+        Map<Map<String, String>, Variant> variants = new HashMap<>();
         this.createEastVariants(path, variants);
         this.createNorthVariants(path, variants);
         this.createSouthVariants(path, variants);
@@ -52,56 +52,56 @@ public class FenceGateBlockStateProvider extends AbstractBlockStateProvider {
         return VariantBlockState.of(variants);
     }
 
-    private void createEastVariants(String path, Map<Map<String, String>, VariantBlockState.Variant> variants) {
+    private void createEastVariants(String path, Map<Map<String, String>, Variant> variants) {
         variants.put(Map.of(FACING, EAST, IN_WALL, FALSE, OPEN, FALSE), this.createEastVariant(path, false, false));
         variants.put(Map.of(FACING, EAST, IN_WALL, FALSE, OPEN, TRUE), this.createEastVariant(path, false, true));
         variants.put(Map.of(FACING, EAST, IN_WALL, TRUE, OPEN, FALSE), this.createEastVariant(path, true, false));
         variants.put(Map.of(FACING, EAST, IN_WALL, TRUE, OPEN, TRUE), this.createEastVariant(path, true, true));
     }
 
-    private VariantBlockState.Variant createEastVariant(String path, boolean inWall, boolean open) {
+    private Variant createEastVariant(String path, boolean inWall, boolean open) {
         return this.createVariant(path + (inWall ? WALL_SUFFIX : ""), open, ROTATION_270);
     }
 
-    private void createNorthVariants(String path, Map<Map<String, String>, VariantBlockState.Variant> variants) {
+    private void createNorthVariants(String path, Map<Map<String, String>, Variant> variants) {
         variants.put(Map.of(FACING, NORTH, IN_WALL, FALSE, OPEN, FALSE), this.createNorthVariant(path, false, false));
         variants.put(Map.of(FACING, NORTH, IN_WALL, FALSE, OPEN, TRUE), this.createNorthVariant(path, false, true));
         variants.put(Map.of(FACING, NORTH, IN_WALL, TRUE, OPEN, FALSE), this.createNorthVariant(path, true, false));
         variants.put(Map.of(FACING, NORTH, IN_WALL, TRUE, OPEN, TRUE), this.createNorthVariant(path, true, true));
     }
 
-    private VariantBlockState.Variant createNorthVariant(String path, boolean inWall, boolean open) {
+    private Variant createNorthVariant(String path, boolean inWall, boolean open) {
         return this.createVariant(path + (inWall ? WALL_SUFFIX : ""), open, ROTATION_180);
     }
 
-    private void createSouthVariants(String path, Map<Map<String, String>, VariantBlockState.Variant> variants) {
+    private void createSouthVariants(String path, Map<Map<String, String>, Variant> variants) {
         variants.put(Map.of(FACING, SOUTH, IN_WALL, FALSE, OPEN, FALSE), this.createSouthVariant(path, false, false));
         variants.put(Map.of(FACING, SOUTH, IN_WALL, FALSE, OPEN, TRUE), this.createSouthVariant(path, false, true));
         variants.put(Map.of(FACING, SOUTH, IN_WALL, TRUE, OPEN, FALSE), this.createSouthVariant(path, true, false));
         variants.put(Map.of(FACING, SOUTH, IN_WALL, TRUE, OPEN, TRUE), this.createSouthVariant(path, true, true));
     }
 
-    private VariantBlockState.Variant createSouthVariant(String path, boolean inWall, boolean open) {
+    private Variant createSouthVariant(String path, boolean inWall, boolean open) {
         return this.createVariant(path + (inWall ? WALL_SUFFIX : ""), open);
     }
 
-    private void createWestVariants(String path, Map<Map<String, String>, VariantBlockState.Variant> variants) {
+    private void createWestVariants(String path, Map<Map<String, String>, Variant> variants) {
         variants.put(Map.of(FACING, WEST, IN_WALL, FALSE, OPEN, FALSE), this.createWestVariant(path, false, false));
         variants.put(Map.of(FACING, WEST, IN_WALL, FALSE, OPEN, TRUE), this.createWestVariant(path, false, true));
         variants.put(Map.of(FACING, WEST, IN_WALL, TRUE, OPEN, FALSE), this.createWestVariant(path, true, false));
         variants.put(Map.of(FACING, WEST, IN_WALL, TRUE, OPEN, TRUE), this.createWestVariant(path, true, true));
     }
 
-    private VariantBlockState.Variant createWestVariant(String path, boolean inWall, boolean open) {
+    private Variant createWestVariant(String path, boolean inWall, boolean open) {
         return this.createVariant(path + (inWall ? WALL_SUFFIX : ""), open, ROTATION_90);
     }
 
-    private VariantBlockState.Variant createVariant(String model, boolean open) {
+    private Variant createVariant(String model, boolean open) {
         return this.createVariant(model, open, null);
     }
 
-    private VariantBlockState.Variant createVariant(String model, boolean open, Integer y) {
+    private Variant createVariant(String model, boolean open, Integer y) {
         String resolvedModel = open ? model + OPEN_SUFFIX : model;
-        return new VariantBlockState.Variant(resolvedModel, true, null, y);
+        return new Variant(resolvedModel, true, null, y);
     }
 }
