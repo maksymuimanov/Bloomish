@@ -25,7 +25,7 @@ public class AxisBlockStateProvider extends AbstractBlockStateProvider {
 
     @Override
     protected void registerData() {
-        this.channelBus.<Holder<? extends Block>>forEachDrain(DataChannels.BLOCK_STATE_PROVIDER_COLUMN_BLOCKS, holder -> {
+        this.channelBus.<Holder<? extends Block>>forEachDrain(DataChannels.BLOCK_STATE_PROVIDER_AXIS_BLOCKS, holder -> {
             Block block = holder.value();
             String path = this.blockPath(block);
             BlockState blockState = this.createColumnBlockState(path);
