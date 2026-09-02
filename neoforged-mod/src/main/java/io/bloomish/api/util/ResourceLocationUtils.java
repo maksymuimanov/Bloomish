@@ -11,18 +11,14 @@ public final class ResourceLocationUtils {
     private ResourceLocationUtils() {
     }
 
-    public static ResourceLocation parseModLocation(String fullPath) {
+    public static ResourceLocation parseLocation(String fullPath) {
         return parseLocation(fullPath, ModContext.getModId());
-    }
-
-    public static ResourceLocation parseMinecraftLocation(String fullPath) {
-        return parseLocation(fullPath, MinecraftConstants.MINECRAFT);
     }
 
     public static ResourceLocation parseLocation(String fullPath, String defaultNamespace) {
         if (fullPath.contains(NAMESPACE_SEPARATOR)) {
-            String[] split = fullPath.split(NAMESPACE_SEPARATOR);
-            return ResourceLocation.fromNamespaceAndPath(split[0], split[1]);
+            String[] pathParts = fullPath.split(NAMESPACE_SEPARATOR);
+            return ResourceLocation.fromNamespaceAndPath(pathParts[0], pathParts[1]);
         } else {
             return ResourceLocation.fromNamespaceAndPath(defaultNamespace, fullPath);
         }

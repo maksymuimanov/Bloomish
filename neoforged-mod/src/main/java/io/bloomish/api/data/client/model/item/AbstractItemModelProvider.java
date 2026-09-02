@@ -3,7 +3,7 @@ package io.bloomish.api.data.client.model.item;
 import io.bloomish.api.data.client.model.AbstractModelProvider;
 import io.bloomish.api.data.client.model.item.model.ItemModel;
 import io.bloomish.api.data.client.model.item.model.LayeredItemModel;
-import io.bloomish.api.util.RegistryUtils;
+import io.bloomish.api.util.RegistryPathUtils;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.Item;
 
@@ -23,11 +23,11 @@ public abstract class AbstractItemModelProvider extends AbstractModelProvider<It
     }
 
     protected void addItemModel(Item item, ItemModel itemModel, String suffix) {
-        this.addModel(RegistryUtils.findItemPath(item), itemModel, ITEM_PATH, suffix);
+        this.addModel(RegistryPathUtils.findItemPath(item), itemModel, ITEM_PATH, suffix);
     }
 
     protected String itemPath(Item item) {
-        return RegistryUtils.findItemNamespacedPath(item, ITEM_PATH);
+        return RegistryPathUtils.findItemNamespacedPath(item, ITEM_PATH);
     }
 
     protected void createSingleLayerOverrideModel(

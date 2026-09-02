@@ -33,4 +33,8 @@ public final class StringUtils {
     public static boolean isEqualIgnoreCase(String left, String right) {
         return Objects.equals(left, right) || (left != null && left.equalsIgnoreCase(right));
     }
+
+    public static String joinWithUnderscore(String... strings) {
+        return String.join("_", strings);
+    }
 }

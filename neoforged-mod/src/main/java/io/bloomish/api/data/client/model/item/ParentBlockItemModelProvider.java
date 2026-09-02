@@ -5,7 +5,7 @@ import io.bloomish.api.channel.ValueChannelBus;
 import io.bloomish.api.data.client.model.item.model.ItemModel;
 import io.bloomish.api.data.client.model.item.model.LayeredItemModel;
 import io.bloomish.api.engine.metadata.annotation.injection.Injected;
-import io.bloomish.api.util.RegistryUtils;
+import io.bloomish.api.util.RegistryPathUtils;
 import net.minecraft.core.Holder;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.BlockItem;
@@ -32,6 +32,6 @@ public class ParentBlockItemModelProvider extends AbstractItemModelProvider {
     }
 
     private String blockPath(Item item) {
-        return RegistryUtils.findItemNamespacedPath(item, BLOCK_PATH);
+        return RegistryPathUtils.findItemNamespacedPath(item, BLOCK_PATH);
     }
 }

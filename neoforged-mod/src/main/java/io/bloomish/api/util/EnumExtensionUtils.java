@@ -21,10 +21,10 @@ public final class EnumExtensionUtils {
         return createBoatType(
                 id,
                 type,
-                () -> DeprecatedRegistryUtils.getBlock(planksBlockId),
+                () -> BlockUtils.findBlock(planksBlockId),
                 name,
-                () -> DeprecatedRegistryUtils.getItem(boatItemId),
-                () -> DeprecatedRegistryUtils.getItem(chestBoatItemId)
+                () -> ItemUtils.findItem(boatItemId),
+                () -> ItemUtils.findItem(chestBoatItemId)
         );
     }
 

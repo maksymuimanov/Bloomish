@@ -8,8 +8,8 @@ import net.minecraft.world.level.block.Block;
 
 import java.util.Objects;
 
-public final class RegistryUtils {
-    private RegistryUtils() {
+public final class RegistryPathUtils {
+    private RegistryPathUtils() {
     }
 
     public static String findBlockPath(Block block) {
