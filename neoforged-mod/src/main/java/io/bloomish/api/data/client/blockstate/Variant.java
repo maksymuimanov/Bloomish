@@ -6,35 +6,35 @@ public record Variant(
         Integer x,
         Integer y
 ) {
-    public Variant(String model) {
-        this(model, null, null);
-    }
-
-    public Variant(String model, Integer x, Integer y) {
-        this(model, null, x, y);
+    public static Variant ofUvlockModel(String model) {
+        return new Variant(model, true, null, null);
     }
 
     public static Variant ofUvlockX(String model, int x) {
-        return ofUvlock(model, x, null);
+        return new Variant(model, true, x, null);
     }
 
     public static Variant ofUvlockY(String model, int y) {
-        return ofUvlock(model, null, y);
+        return new Variant(model, true, null, y);
     }
 
-    public static Variant ofUvlock(String model) {
-        return ofUvlock(model, null, null);
-    }
-
-    public static Variant ofUvlock(String model, Integer x, Integer y) {
+    public static Variant ofUvlockXY(String model, int x, int y) {
         return new Variant(model, true, x, y);
     }
 
+    public static Variant ofModel(String model) {
+        return new Variant(model, null, null, null);
+    }
+
     public static Variant ofX(String model, int x) {
-        return new Variant(model, x, null);
+        return new Variant(model, null, x, null);
     }
 
     public static Variant ofY(String model, int y) {
-        return new Variant(model, null, y);
+        return new Variant(model, null, null, y);
+    }
+
+    public static Variant ofXY(String model, int x, int y) {
+        return new Variant(model, null, x, y);
     }
 }

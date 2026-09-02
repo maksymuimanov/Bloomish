@@ -42,33 +42,33 @@ public class FenceBlockStateProvider extends AbstractBlockStateProvider {
         return new MultipartBlockState(
                 List.of(
                         new MultipartBlockState.Part(
-                                new Variant(this.resolvePostModel(path))
+                                Variant.ofModel(this.postModel(path))
                         ),
                         new MultipartBlockState.Part(
-                                Variant.ofUvlock(this.resolveSideModel(path)),
+                                Variant.ofUvlockModel(this.sideModel(path)),
                                 NORTH, TRUE
                         ),
                         new MultipartBlockState.Part(
-                                Variant.ofUvlockY(this.resolveSideModel(path), ROTATION_90),
+                                Variant.ofUvlockY(this.sideModel(path), ROTATION_90),
                                 EAST, TRUE
                         ),
                         new MultipartBlockState.Part(
-                                Variant.ofUvlockY(this.resolveSideModel(path), ROTATION_180),
+                                Variant.ofUvlockY(this.sideModel(path), ROTATION_180),
                                 SOUTH, TRUE
                         ),
                         new MultipartBlockState.Part(
-                                Variant.ofUvlockY(this.resolveSideModel(path), ROTATION_270),
+                                Variant.ofUvlockY(this.sideModel(path), ROTATION_270),
                                 WEST, TRUE
                         )
                 )
         );
     }
 
-    private String resolvePostModel(String path) {
+    private String postModel(String path) {
         return path + POST_SUFFIX;
     }
 
-    private String resolveSideModel(String path) {
+    private String sideModel(String path) {
         return path + SIDE_SUFFIX;
     }
 }

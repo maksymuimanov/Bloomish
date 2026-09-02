@@ -35,8 +35,8 @@ public class AxisBlockStateProvider extends AbstractBlockStateProvider {
 
     private VariantBlockState createColumnBlockState(String path) {
         Map<Map<String, String>, Variant> variants = Map.of(
-                Map.of(AXIS, X), new Variant(path, ROTATION_90, ROTATION_90),
-                Map.of(AXIS, Y), new Variant(path),
+                Map.of(AXIS, X), Variant.ofXY(path, ROTATION_90, ROTATION_90),
+                Map.of(AXIS, Y), Variant.ofModel(path),
                 Map.of(AXIS, Z), Variant.ofX(path, ROTATION_90)
         );
         return VariantBlockState.of(variants);

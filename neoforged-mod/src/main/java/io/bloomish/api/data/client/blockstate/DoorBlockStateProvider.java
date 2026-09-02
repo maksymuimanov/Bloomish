@@ -61,119 +61,78 @@ public class DoorBlockStateProvider extends AbstractBlockStateProvider {
     }
 
     private void createEastVariants(String path, Map<Map<String, String>, Variant> variants) {
-        variants.put(Map.of(FACING, EAST, HALF, LOWER, HINGE, LEFT, OPEN, FALSE), this.createEastLowerLeftVariant(path, false));
-        variants.put(Map.of(FACING, EAST, HALF, LOWER, HINGE, LEFT, OPEN, TRUE), this.createEastLowerLeftVariant(path, true));
-        variants.put(Map.of(FACING, EAST, HALF, LOWER, HINGE, RIGHT, OPEN, FALSE), this.createEastLowerRightVariant(path, false));
-        variants.put(Map.of(FACING, EAST, HALF, LOWER, HINGE, RIGHT, OPEN, TRUE), this.createEastLowerRightVariant(path, true));
-        variants.put(Map.of(FACING, EAST, HALF, UPPER, HINGE, LEFT, OPEN, FALSE), this.createEastUpperLeftVariant(path, false));
-        variants.put(Map.of(FACING, EAST, HALF, UPPER, HINGE, LEFT, OPEN, TRUE), this.createEastUpperLeftVariant(path, true));
-        variants.put(Map.of(FACING, EAST, HALF, UPPER, HINGE, RIGHT, OPEN, FALSE), this.createEastUpperRightVariant(path, false));
-        variants.put(Map.of(FACING, EAST, HALF, UPPER, HINGE, RIGHT, OPEN, TRUE), this.createEastUpperRightVariant(path, true));
-    }
-
-    private Variant createEastLowerLeftVariant(String path, boolean open) {
-        return this.createVariant(path + BOTTOM_SUFFIX + LEFT_SUFFIX, open, ROTATION_90);
-    }
-
-    private Variant createEastLowerRightVariant(String path, boolean open) {
-        return this.createVariant(path + BOTTOM_SUFFIX + RIGHT_SUFFIX, open, ROTATION_270);
-    }
-
-    private Variant createEastUpperLeftVariant(String path, boolean open) {
-        return this.createVariant(path + TOP_SUFFIX + LEFT_SUFFIX, open, ROTATION_90);
-    }
-
-    private Variant createEastUpperRightVariant(String path, boolean open) {
-        return this.createVariant(path + TOP_SUFFIX + RIGHT_SUFFIX, open, ROTATION_270);
+        variants.put(Map.of(FACING, EAST, HALF, LOWER, HINGE, LEFT, OPEN, FALSE), Variant.ofY(this.bottomLeftModel(path), ROTATION_90));
+        variants.put(Map.of(FACING, EAST, HALF, LOWER, HINGE, LEFT, OPEN, TRUE), Variant.ofY(this.openBottomLeftModel(path), ROTATION_90));
+        variants.put(Map.of(FACING, EAST, HALF, LOWER, HINGE, RIGHT, OPEN, FALSE), Variant.ofY(this.bottomRightModel(path), ROTATION_270));
+        variants.put(Map.of(FACING, EAST, HALF, LOWER, HINGE, RIGHT, OPEN, TRUE), Variant.ofY(this.openBottomRightModel(path), ROTATION_270));
+        variants.put(Map.of(FACING, EAST, HALF, UPPER, HINGE, LEFT, OPEN, FALSE), Variant.ofY(this.topLeftModel(path), ROTATION_90));
+        variants.put(Map.of(FACING, EAST, HALF, UPPER, HINGE, LEFT, OPEN, TRUE), Variant.ofY(this.openTopLeftModel(path), ROTATION_90));
+        variants.put(Map.of(FACING, EAST, HALF, UPPER, HINGE, RIGHT, OPEN, FALSE), Variant.ofY(this.topRightModel(path), ROTATION_270));
+        variants.put(Map.of(FACING, EAST, HALF, UPPER, HINGE, RIGHT, OPEN, TRUE), Variant.ofY(this.openTopRightModel(path), ROTATION_270));
     }
 
     private void createNorthVariants(String path, Map<Map<String, String>, Variant> variants) {
-        variants.put(Map.of(FACING, NORTH, HALF, LOWER, HINGE, LEFT, OPEN, FALSE), this.createNorthLowerLeftVariant(path, false));
-        variants.put(Map.of(FACING, NORTH, HALF, LOWER, HINGE, LEFT, OPEN, TRUE), this.createNorthLowerLeftVariant(path, true));
-        variants.put(Map.of(FACING, NORTH, HALF, LOWER, HINGE, RIGHT, OPEN, FALSE), this.createNorthLowerRightVariant(path, false));
-        variants.put(Map.of(FACING, NORTH, HALF, LOWER, HINGE, RIGHT, OPEN, TRUE), this.createNorthLowerRightVariant(path, true));
-        variants.put(Map.of(FACING, NORTH, HALF, UPPER, HINGE, LEFT, OPEN, FALSE), this.createNorthUpperLeftVariant(path, false));
-        variants.put(Map.of(FACING, NORTH, HALF, UPPER, HINGE, LEFT, OPEN, TRUE), this.createNorthUpperLeftVariant(path, true));
-        variants.put(Map.of(FACING, NORTH, HALF, UPPER, HINGE, RIGHT, OPEN, FALSE), this.createNorthUpperRightVariant(path, false));
-        variants.put(Map.of(FACING, NORTH, HALF, UPPER, HINGE, RIGHT, OPEN, TRUE), this.createNorthUpperRightVariant(path, true));
-    }
-
-    private Variant createNorthLowerLeftVariant(String path, boolean open) {
-        return this.createVariant(path + BOTTOM_SUFFIX + LEFT_SUFFIX, open, ROTATION_270);
-    }
-
-    private Variant createNorthLowerRightVariant(String path, boolean open) {
-        return this.createVariant(path + BOTTOM_SUFFIX + RIGHT_SUFFIX, open, ROTATION_270);
-    }
-
-    private Variant createNorthUpperLeftVariant(String path, boolean open) {
-        return this.createVariant(path + TOP_SUFFIX + LEFT_SUFFIX, open, ROTATION_270);
-    }
-
-    private Variant createNorthUpperRightVariant(String path, boolean open) {
-        return this.createVariant(path + TOP_SUFFIX + RIGHT_SUFFIX, open, ROTATION_270);
+        variants.put(Map.of(FACING, NORTH, HALF, LOWER, HINGE, LEFT, OPEN, FALSE), Variant.ofY(this.bottomLeftModel(path), ROTATION_270));
+        variants.put(Map.of(FACING, NORTH, HALF, LOWER, HINGE, LEFT, OPEN, TRUE), Variant.ofY(this.openBottomLeftModel(path), ROTATION_270));
+        variants.put(Map.of(FACING, NORTH, HALF, LOWER, HINGE, RIGHT, OPEN, FALSE), Variant.ofY(this.bottomRightModel(path), ROTATION_270));
+        variants.put(Map.of(FACING, NORTH, HALF, LOWER, HINGE, RIGHT, OPEN, TRUE), Variant.ofY(this.openBottomRightModel(path), ROTATION_270));
+        variants.put(Map.of(FACING, NORTH, HALF, UPPER, HINGE, LEFT, OPEN, FALSE), Variant.ofY(this.topLeftModel(path), ROTATION_270));
+        variants.put(Map.of(FACING, NORTH, HALF, UPPER, HINGE, LEFT, OPEN, TRUE), Variant.ofY(this.openTopLeftModel(path), ROTATION_270));
+        variants.put(Map.of(FACING, NORTH, HALF, UPPER, HINGE, RIGHT, OPEN, FALSE), Variant.ofY(this.topRightModel(path), ROTATION_270));
+        variants.put(Map.of(FACING, NORTH, HALF, UPPER, HINGE, RIGHT, OPEN, TRUE), Variant.ofY(this.openTopRightModel(path), ROTATION_270));
     }
 
     private void createSouthVariants(String path, Map<Map<String, String>, Variant> variants) {
-        variants.put(Map.of(FACING, SOUTH, HALF, LOWER, HINGE, LEFT, OPEN, FALSE), this.createSouthLowerLeftVariant(path, false));
-        variants.put(Map.of(FACING, SOUTH, HALF, LOWER, HINGE, LEFT, OPEN, TRUE), this.createSouthLowerLeftVariant(path, true));
-        variants.put(Map.of(FACING, SOUTH, HALF, LOWER, HINGE, RIGHT, OPEN, FALSE), this.createSouthLowerRightVariant(path, false));
-        variants.put(Map.of(FACING, SOUTH, HALF, LOWER, HINGE, RIGHT, OPEN, TRUE), this.createSouthLowerRightVariant(path, true));
-        variants.put(Map.of(FACING, SOUTH, HALF, UPPER, HINGE, LEFT, OPEN, FALSE), this.createSouthUpperLeftVariant(path, false));
-        variants.put(Map.of(FACING, SOUTH, HALF, UPPER, HINGE, LEFT, OPEN, TRUE), this.createSouthUpperLeftVariant(path, true));
-        variants.put(Map.of(FACING, SOUTH, HALF, UPPER, HINGE, RIGHT, OPEN, FALSE), this.createSouthUpperRightVariant(path, false));
-        variants.put(Map.of(FACING, SOUTH, HALF, UPPER, HINGE, RIGHT, OPEN, TRUE), this.createSouthUpperRightVariant(path, true));
-    }
-
-    private Variant createSouthLowerLeftVariant(String path, boolean open) {
-        return this.createVariant(path + BOTTOM_SUFFIX + LEFT_SUFFIX, open, ROTATION_90);
-    }
-
-    private Variant createSouthLowerRightVariant(String path, boolean open) {
-        return this.createVariant(path + BOTTOM_SUFFIX + RIGHT_SUFFIX, open, ROTATION_90);
-    }
-
-    private Variant createSouthUpperLeftVariant(String path, boolean open) {
-        return this.createVariant(path + TOP_SUFFIX + LEFT_SUFFIX, open, ROTATION_90);
-    }
-
-    private Variant createSouthUpperRightVariant(String path, boolean open) {
-        return this.createVariant(path + TOP_SUFFIX + RIGHT_SUFFIX, open, ROTATION_90);
+        variants.put(Map.of(FACING, SOUTH, HALF, LOWER, HINGE, LEFT, OPEN, FALSE), Variant.ofY(this.bottomLeftModel(path), ROTATION_90));
+        variants.put(Map.of(FACING, SOUTH, HALF, LOWER, HINGE, LEFT, OPEN, TRUE), Variant.ofY(this.openBottomLeftModel(path), ROTATION_90));
+        variants.put(Map.of(FACING, SOUTH, HALF, LOWER, HINGE, RIGHT, OPEN, FALSE), Variant.ofY(this.bottomRightModel(path), ROTATION_90));
+        variants.put(Map.of(FACING, SOUTH, HALF, LOWER, HINGE, RIGHT, OPEN, TRUE), Variant.ofY(this.openBottomRightModel(path), ROTATION_90));
+        variants.put(Map.of(FACING, SOUTH, HALF, UPPER, HINGE, LEFT, OPEN, FALSE), Variant.ofY(this.topLeftModel(path), ROTATION_90));
+        variants.put(Map.of(FACING, SOUTH, HALF, UPPER, HINGE, LEFT, OPEN, TRUE), Variant.ofY(this.openTopLeftModel(path), ROTATION_90));
+        variants.put(Map.of(FACING, SOUTH, HALF, UPPER, HINGE, RIGHT, OPEN, FALSE), Variant.ofY(this.topRightModel(path), ROTATION_90));
+        variants.put(Map.of(FACING, SOUTH, HALF, UPPER, HINGE, RIGHT, OPEN, TRUE), Variant.ofY(this.openTopRightModel(path), ROTATION_90));
     }
 
     private void createWestVariants(String path, Map<Map<String, String>, Variant> variants) {
-        variants.put(Map.of(FACING, WEST, HALF, LOWER, HINGE, LEFT, OPEN, FALSE), this.createWestLowerLeftVariant(path, false));
-        variants.put(Map.of(FACING, WEST, HALF, LOWER, HINGE, LEFT, OPEN, TRUE), this.createWestLowerLeftVariant(path, true));
-        variants.put(Map.of(FACING, WEST, HALF, LOWER, HINGE, RIGHT, OPEN, FALSE), this.createWestLowerRightVariant(path, false));
-        variants.put(Map.of(FACING, WEST, HALF, LOWER, HINGE, RIGHT, OPEN, TRUE), this.createWestLowerRightVariant(path, true));
-        variants.put(Map.of(FACING, WEST, HALF, UPPER, HINGE, LEFT, OPEN, FALSE), this.createWestUpperLeftVariant(path, false));
-        variants.put(Map.of(FACING, WEST, HALF, UPPER, HINGE, LEFT, OPEN, TRUE), this.createWestUpperLeftVariant(path, true));
-        variants.put(Map.of(FACING, WEST, HALF, UPPER, HINGE, RIGHT, OPEN, FALSE), this.createWestUpperRightVariant(path, false));
-        variants.put(Map.of(FACING, WEST, HALF, UPPER, HINGE, RIGHT, OPEN, TRUE), this.createWestUpperRightVariant(path, true));
+        variants.put(Map.of(FACING, WEST, HALF, LOWER, HINGE, LEFT, OPEN, FALSE), Variant.ofY(this.bottomLeftModel(path), ROTATION_180));
+        variants.put(Map.of(FACING, WEST, HALF, LOWER, HINGE, LEFT, OPEN, TRUE), Variant.ofY(this.openBottomLeftModel(path), ROTATION_180));
+        variants.put(Map.of(FACING, WEST, HALF, LOWER, HINGE, RIGHT, OPEN, FALSE), Variant.ofY(this.bottomRightModel(path), ROTATION_180));
+        variants.put(Map.of(FACING, WEST, HALF, LOWER, HINGE, RIGHT, OPEN, TRUE), Variant.ofY(this.openBottomRightModel(path), ROTATION_180));
+        variants.put(Map.of(FACING, WEST, HALF, UPPER, HINGE, LEFT, OPEN, FALSE), Variant.ofY(this.topLeftModel(path), ROTATION_180));
+        variants.put(Map.of(FACING, WEST, HALF, UPPER, HINGE, LEFT, OPEN, TRUE), Variant.ofY(this.openTopLeftModel(path), ROTATION_180));
+        variants.put(Map.of(FACING, WEST, HALF, UPPER, HINGE, RIGHT, OPEN, FALSE), Variant.ofY(this.topRightModel(path), ROTATION_180));
+        variants.put(Map.of(FACING, WEST, HALF, UPPER, HINGE, RIGHT, OPEN, TRUE), Variant.ofY(this.openTopRightModel(path), ROTATION_180));
     }
 
-    private Variant createWestLowerLeftVariant(String path, boolean open) {
-        return this.createVariant(path + BOTTOM_SUFFIX + LEFT_SUFFIX, open, ROTATION_180);
+    private String bottomLeftModel(String path) {
+        return path + BOTTOM_SUFFIX + LEFT_SUFFIX;
     }
 
-    private Variant createWestLowerRightVariant(String path, boolean open) {
-        return this.createVariant(path + BOTTOM_SUFFIX + RIGHT_SUFFIX, open, ROTATION_180);
+    private String bottomRightModel(String path) {
+        return path + BOTTOM_SUFFIX + RIGHT_SUFFIX;
     }
 
-    private Variant createWestUpperLeftVariant(String path, boolean open) {
-        return this.createVariant(path + TOP_SUFFIX + LEFT_SUFFIX, open, ROTATION_180);
+    private String topLeftModel(String path) {
+        return path + TOP_SUFFIX + LEFT_SUFFIX;
     }
 
-    private Variant createWestUpperRightVariant(String path, boolean open) {
-        return this.createVariant(path + TOP_SUFFIX + RIGHT_SUFFIX, open, ROTATION_180);
+    private String topRightModel(String path) {
+        return path + TOP_SUFFIX + RIGHT_SUFFIX;
     }
 
-    private Variant createVariant(String path, boolean open, Integer y) {
-        String resolvedModel = this.resolveModel(path, open);
-        return Variant.ofY(resolvedModel, y);
+    private String openBottomLeftModel(String path) {
+        return this.bottomLeftModel(path) + OPEN_SUFFIX;
     }
 
-    private String resolveModel(String path, boolean open) {
-        return open ? path + OPEN_SUFFIX : path;
+    private String openBottomRightModel(String path) {
+        return this.bottomRightModel(path) + OPEN_SUFFIX;
+    }
+
+    private String openTopLeftModel(String path) {
+        return this.topLeftModel(path) + OPEN_SUFFIX;
+    }
+
+    private String openTopRightModel(String path) {
+        return this.topRightModel(path) + OPEN_SUFFIX;
     }
 }

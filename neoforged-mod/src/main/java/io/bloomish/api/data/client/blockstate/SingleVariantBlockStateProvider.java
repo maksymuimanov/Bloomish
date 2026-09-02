@@ -29,7 +29,7 @@ public class SingleVariantBlockStateProvider extends AbstractBlockStateProvider 
     }
 
     private VariantBlockState createSingleVariantBlockState(String path) {
-        Variant variant = new Variant(path);
+        Variant variant = Variant.ofModel(path);
         Map<String, Variant> variants = Map.of("", variant);
         return new VariantBlockState(variants);
     }

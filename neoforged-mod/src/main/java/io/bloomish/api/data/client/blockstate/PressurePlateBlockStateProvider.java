@@ -34,13 +34,12 @@ public class PressurePlateBlockStateProvider extends AbstractBlockStateProvider 
 
     private VariantBlockState createPressurePlateBlockState(String path) {
         return VariantBlockState.of(Map.of(
-                Map.of(POWERED, FALSE), this.createVariant(path, false),
-                Map.of(POWERED, TRUE), this.createVariant(path, true)
+                Map.of(POWERED, FALSE), Variant.ofModel(path),
+                Map.of(POWERED, TRUE), Variant.ofModel(this.downModel(path))
         ));
     }
 
-    private Variant createVariant(String path, boolean powered) {
-        String model = powered ? path + DOWN_SUFFIX : path;
-        return new Variant(model);
+    private String downModel(String path) {
+        return path + DOWN_SUFFIX;
     }
 }

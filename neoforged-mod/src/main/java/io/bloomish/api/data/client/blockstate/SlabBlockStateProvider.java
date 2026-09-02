@@ -37,10 +37,14 @@ public class SlabBlockStateProvider extends AbstractBlockStateProvider {
 
     private VariantBlockState createSlabBlockState(String path, String fullBlockPath) {
         return VariantBlockState.of(Map.of(
-                Map.of(TYPE, BOTTOM), new Variant(path),
-                Map.of(TYPE, DOUBLE), new Variant(fullBlockPath),
-                Map.of(TYPE, TOP), new Variant(path + TOP_SUFFIX)
+                Map.of(TYPE, BOTTOM), Variant.ofModel(path),
+                Map.of(TYPE, DOUBLE), Variant.ofModel(fullBlockPath),
+                Map.of(TYPE, TOP), Variant.ofModel(this.topModel(path))
         ));
+    }
+
+    private String topModel(String path) {
+        return path + TOP_SUFFIX;
     }
 
     public record SlabBlockHolder(

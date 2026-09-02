@@ -53,55 +53,42 @@ public class FenceGateBlockStateProvider extends AbstractBlockStateProvider {
     }
 
     private void createEastVariants(String path, Map<Map<String, String>, Variant> variants) {
-        variants.put(Map.of(FACING, EAST, IN_WALL, FALSE, OPEN, FALSE), this.createEastVariant(path, false, false));
-        variants.put(Map.of(FACING, EAST, IN_WALL, FALSE, OPEN, TRUE), this.createEastVariant(path, false, true));
-        variants.put(Map.of(FACING, EAST, IN_WALL, TRUE, OPEN, FALSE), this.createEastVariant(path, true, false));
-        variants.put(Map.of(FACING, EAST, IN_WALL, TRUE, OPEN, TRUE), this.createEastVariant(path, true, true));
-    }
-
-    private Variant createEastVariant(String path, boolean inWall, boolean open) {
-        return this.createVariant(path + (inWall ? WALL_SUFFIX : ""), open, ROTATION_270);
+        variants.put(Map.of(FACING, EAST, IN_WALL, FALSE, OPEN, FALSE), Variant.ofUvlockY(path, ROTATION_270));
+        variants.put(Map.of(FACING, EAST, IN_WALL, FALSE, OPEN, TRUE), Variant.ofUvlockY(this.openModel(path), ROTATION_270));
+        variants.put(Map.of(FACING, EAST, IN_WALL, TRUE, OPEN, FALSE), Variant.ofUvlockY(this.wallModel(path), ROTATION_270));
+        variants.put(Map.of(FACING, EAST, IN_WALL, TRUE, OPEN, TRUE), Variant.ofUvlockY(this.openWallModel(path), ROTATION_270));
     }
 
     private void createNorthVariants(String path, Map<Map<String, String>, Variant> variants) {
-        variants.put(Map.of(FACING, NORTH, IN_WALL, FALSE, OPEN, FALSE), this.createNorthVariant(path, false, false));
-        variants.put(Map.of(FACING, NORTH, IN_WALL, FALSE, OPEN, TRUE), this.createNorthVariant(path, false, true));
-        variants.put(Map.of(FACING, NORTH, IN_WALL, TRUE, OPEN, FALSE), this.createNorthVariant(path, true, false));
-        variants.put(Map.of(FACING, NORTH, IN_WALL, TRUE, OPEN, TRUE), this.createNorthVariant(path, true, true));
-    }
-
-    private Variant createNorthVariant(String path, boolean inWall, boolean open) {
-        return this.createVariant(path + (inWall ? WALL_SUFFIX : ""), open, ROTATION_180);
+        variants.put(Map.of(FACING, NORTH, IN_WALL, FALSE, OPEN, FALSE), Variant.ofUvlockY(path, ROTATION_180));
+        variants.put(Map.of(FACING, NORTH, IN_WALL, FALSE, OPEN, TRUE), Variant.ofUvlockY(this.openModel(path), ROTATION_180));
+        variants.put(Map.of(FACING, NORTH, IN_WALL, TRUE, OPEN, FALSE), Variant.ofUvlockY(this.wallModel(path), ROTATION_180));
+        variants.put(Map.of(FACING, NORTH, IN_WALL, TRUE, OPEN, TRUE), Variant.ofUvlockY(this.openWallModel(path), ROTATION_180));
     }
 
     private void createSouthVariants(String path, Map<Map<String, String>, Variant> variants) {
-        variants.put(Map.of(FACING, SOUTH, IN_WALL, FALSE, OPEN, FALSE), this.createSouthVariant(path, false, false));
-        variants.put(Map.of(FACING, SOUTH, IN_WALL, FALSE, OPEN, TRUE), this.createSouthVariant(path, false, true));
-        variants.put(Map.of(FACING, SOUTH, IN_WALL, TRUE, OPEN, FALSE), this.createSouthVariant(path, true, false));
-        variants.put(Map.of(FACING, SOUTH, IN_WALL, TRUE, OPEN, TRUE), this.createSouthVariant(path, true, true));
-    }
-
-    private Variant createSouthVariant(String path, boolean inWall, boolean open) {
-        return this.createVariant(path + (inWall ? WALL_SUFFIX : ""), open);
+        variants.put(Map.of(FACING, SOUTH, IN_WALL, FALSE, OPEN, FALSE), Variant.ofUvlockModel(path));
+        variants.put(Map.of(FACING, SOUTH, IN_WALL, FALSE, OPEN, TRUE), Variant.ofUvlockModel(this.openModel(path)));
+        variants.put(Map.of(FACING, SOUTH, IN_WALL, TRUE, OPEN, FALSE), Variant.ofUvlockModel(this.wallModel(path)));
+        variants.put(Map.of(FACING, SOUTH, IN_WALL, TRUE, OPEN, TRUE), Variant.ofUvlockModel(this.openWallModel(path)));
     }
 
     private void createWestVariants(String path, Map<Map<String, String>, Variant> variants) {
-        variants.put(Map.of(FACING, WEST, IN_WALL, FALSE, OPEN, FALSE), this.createWestVariant(path, false, false));
-        variants.put(Map.of(FACING, WEST, IN_WALL, FALSE, OPEN, TRUE), this.createWestVariant(path, false, true));
-        variants.put(Map.of(FACING, WEST, IN_WALL, TRUE, OPEN, FALSE), this.createWestVariant(path, true, false));
-        variants.put(Map.of(FACING, WEST, IN_WALL, TRUE, OPEN, TRUE), this.createWestVariant(path, true, true));
+        variants.put(Map.of(FACING, WEST, IN_WALL, FALSE, OPEN, FALSE), Variant.ofUvlockY(path, ROTATION_90));
+        variants.put(Map.of(FACING, WEST, IN_WALL, FALSE, OPEN, TRUE), Variant.ofUvlockY(this.openModel(path), ROTATION_90));
+        variants.put(Map.of(FACING, WEST, IN_WALL, TRUE, OPEN, FALSE), Variant.ofUvlockY(this.wallModel(path), ROTATION_90));
+        variants.put(Map.of(FACING, WEST, IN_WALL, TRUE, OPEN, TRUE), Variant.ofUvlockY(this.openWallModel(path), ROTATION_90));
     }
 
-    private Variant createWestVariant(String path, boolean inWall, boolean open) {
-        return this.createVariant(path + (inWall ? WALL_SUFFIX : ""), open, ROTATION_90);
+    private String openModel(String path) {
+        return path + OPEN_SUFFIX;
     }
 
-    private Variant createVariant(String model, boolean open) {
-        return this.createVariant(model, open, null);
+    private String wallModel(String path) {
+        return path + WALL_SUFFIX;
     }
 
-    private Variant createVariant(String model, boolean open, Integer y) {
-        String resolvedModel = open ? model + OPEN_SUFFIX : model;
-        return new Variant(resolvedModel, true, null, y);
+    private String openWallModel(String path) {
+        return this.wallModel(path) + OPEN_SUFFIX;
     }
 }
