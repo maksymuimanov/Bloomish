@@ -4,42 +4,74 @@ import java.util.Objects;
 import java.util.function.Supplier;
 
 public class Assertion<T, A extends Assertion<T, A>> {
-    private final T object;
+    private final T actual;
 
-    protected Assertion(T object) {
-        this.object = object;
+    protected Assertion(T actual) {
+        this.actual = actual;
+    }
+
+    public A isTypeOf(Class<?> clazz) {
+        return this.isTypeOf(clazz, () -> "Expected object to be of type " + clazz.getName());
     }
 
     public A isTypeOf(Class<?> clazz, Supplier<String> message) {
-        return this.assertTrue(clazz.isInstance(this.object), message);
+        return this.assertTrue(clazz.isInstance(this.actual), message);
+    }
+
+    public A isNotTypeOf(Class<?> clazz) {
+        return this.isNotTypeOf(clazz, () -> "Expected object not to be of type " + clazz.getName());
     }
 
     public A isNotTypeOf(Class<?> clazz, Supplier<String> message) {
-        return this.assertFalse(clazz.isInstance(this.object), message);
+        return this.assertFalse(clazz.isInstance(this.actual), message);
     }
 
-    public A isEqual(T other, Supplier<String> message) {
-        return this.assertTrue(Objects.equals(this.object, other), message);
+    public A isEqual(T expected) {
+        return this.isEqual(expected, () -> "Expected " + this.actual + " to equal " + expected);
     }
 
-    public A isNotEqual(T other, Supplier<String> message) {
-        return this.assertFalse(Objects.equals(this.object, other), message);
+    public A isEqual(T expected, Supplier<String> message) {
+        return this.assertTrue(Objects.equals(this.actual, expected), message);
     }
 
-    public A isSame(T other, Supplier<String> message) {
-        return this.assertTrue(this.object == other, message);
+    public A isNotEqual(T expected) {
+        return this.isNotEqual(expected, () -> "Expected " + this.actual + " not to equal " + expected);
     }
 
-    public A isNotSame(T other, Supplier<String> message) {
-        return this.assertFalse(this.object == other, message);
+    public A isNotEqual(T expected, Supplier<String> message) {
+        return this.assertFalse(Objects.equals(this.actual, expected), message);
+    }
+
+    public A isSame(T expected) {
+        return this.isSame(expected, () -> "Expected object to be same as " + expected);
+    }
+
+    public A isSame(T expected, Supplier<String> message) {
+        return this.assertTrue(this.actual == expected, message);
+    }
+
+    public A isNotSame(T expected) {
+        return this.isNotSame(expected, () -> "Expected object not to be same as " + expected);
+    }
+
+    public A isNotSame(T expected, Supplier<String> message) {
+        return this.assertFalse(this.actual == expected, message);
+    }
+
+    public A isNull() {
+        return this.isNull(() -> "Expected object to be null");
     }
 
     public A isNull(Supplier<String> message) {
-        return this.assertTrue(object == null, message);
+        return this.assertTrue(actual == null, message);
+    }
+
+    public A isNotNull() {
+        return this.isNotNull(() -> "Expected object not to be null");
     }
 
     public A isNotNull(Supplier<String> message) {
-        return this.assertFalse(object == null, message);
+        return this.assertFalse(actual == null, message);
     }
 
     public A assertTrue(boolean condition, Supplier<String> message) {
@@ -62,7 +94,7 @@ public class Assertion<T, A extends Assertion<T, A>> {
         return (A) this;
     }
 
-    protected T getObject() {
-        return object;
+    protected T getActual() {
+        return actual;
     }
 }
