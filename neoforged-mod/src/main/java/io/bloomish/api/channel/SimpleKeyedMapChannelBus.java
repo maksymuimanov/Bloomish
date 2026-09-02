@@ -32,7 +32,7 @@ public class SimpleKeyedMapChannelBus implements KeyedMapChannelBus {
 
     @Override
     public <K, K1, V1> void forEach(DataChannel channel, BiConsumer<? super K, Map<K1, V1>> consumer) {
-
+        this.<K, K1, V1>stream(channel).forEach(entry -> consumer.accept(entry.key(), entry.value()));
     }
 
     @SuppressWarnings("unchecked")
@@ -51,7 +51,7 @@ public class SimpleKeyedMapChannelBus implements KeyedMapChannelBus {
 
     @Override
     public <K, K1, V1> void forEachDrain(DataChannel channel, BiConsumer<? super K, Map<K1, V1>> consumer) {
-
+        this.<K, K1, V1>drain(channel).forEach(entry -> consumer.accept(entry.key(), entry.value()));
     }
 
     @SuppressWarnings("unchecked")
@@ -68,60 +68,4 @@ public class SimpleKeyedMapChannelBus implements KeyedMapChannelBus {
                         )
                 );
     }
-
-//    @SuppressWarnings("unchecked")
-//    @Override
-//    public <K, V> void send(DataChannel channel, K key, V data) {
-//        this.channels.compute(channel, (keyedQueueChannel, queueMap)  -> {
-//            if (queueMap == null) {
-//                Map<Object, Queue<?>> map = new HashMap<>();
-//                map.put(key, CollectionUtils.concurrentLinkedQueueOf(data));
-//                return map;
-//            }
-//            ((Queue<V>) queueMap.get(key)).add(data);
-//            return queueMap;
-//        });
-//    }
-//
-//    @Override
-//    public <K, V> void forEach(DataChannel channel, BiConsumer<? super K, Queue<V>> consumer) {
-//        this.<K, V>stream(channel).forEach(entry -> consumer.accept(entry.key(), entry.value()));
-//    }
-//
-//    @SuppressWarnings("unchecked")
-//    @Override
-//    public <K, V> Stream<KeyedQueueChannelEntry<K, V>> stream(DataChannel channel) {
-//        return this.channels.getOrDefault(channel, new HashMap<>())
-//                .entrySet()
-//                .stream()
-//                .map(entry ->
-//                        new KeyedQueueChannelEntry<>(
-//                                (K) entry.getKey(),
-//                                (Queue<V>) entry.getValue()
-//                        )
-//                );
-//    }
-//
-//    @Override
-//    public <K, V> void forEachDrain(DataChannel channel, BiConsumer<? super K, Queue<V>> consumer) {
-//        this.<K, V>drain(channel).forEach(entry -> consumer.accept(entry.key(), entry.value()));
-//    }
-//
-//    @SuppressWarnings("unchecked")
-//    @Override
-//    public <K, V> Stream<KeyedQueueChannelEntry<K, V>> drain(DataChannel channel) {
-//        return Optional.ofNullable(this.channels.remove(channel))
-//                .orElse(new HashMap<>())
-//                .entrySet()
-//                .stream()
-//                .map(entry ->
-//                        new KeyedQueueChannelEntry<>(
-//                                (K) entry.getKey(),
-//                                (Queue<V>) entry.getValue()
-//                        )
-//                );
-//    }
-//
-
-
 }

@@ -36,14 +36,14 @@ public class ColumnBlockStateProvider extends AbstractBlockStateProvider {
 
     private VariantBlockState createColumnBlockState(String path) {
         Map<Map<String, String>, Variant> variants = Map.of(
-                Map.of(AXIS, X), new Variant(this.resolveModel(path, true), ROTATION_90, ROTATION_90),
-                Map.of(AXIS, Y), new Variant(this.resolveModel(path, false)),
-                Map.of(AXIS, Z), Variant.ofX(this.resolveModel(path, true), ROTATION_90)
+                Map.of(AXIS, X), new Variant(this.horizontalModel(path), ROTATION_90, ROTATION_90),
+                Map.of(AXIS, Y), new Variant(path),
+                Map.of(AXIS, Z), Variant.ofX(this.horizontalModel(path), ROTATION_90)
         );
         return VariantBlockState.of(variants);
     }
 
-    private String resolveModel(String path, boolean horizontal) {
-        return horizontal ? path + HORIZONTAL_SUFFIX : path;
+    private String horizontalModel(String path) {
+        return path + HORIZONTAL_SUFFIX;
     }
 }

@@ -1,6 +1,5 @@
 package io.bloomish.api.engine.registry.extension.block;
 
-import io.bloomish.api.common.block.ApiCropBlock;
 import io.bloomish.api.engine.context.DefaultObjectRegistry;
 import io.bloomish.api.engine.registry.factory.BlockFactory;
 import io.bloomish.api.engine.registry.factory.BlockPropertiesFactory;

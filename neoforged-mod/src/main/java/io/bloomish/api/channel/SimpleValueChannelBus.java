@@ -49,6 +49,7 @@ public class SimpleValueChannelBus implements ValueChannelBus {
         this.<T>drain(channel).forEach(consumer);
     }
 
+    @SuppressWarnings("unchecked")
     @Override
     public <T> Stream<T> drain(DataChannel channel) {
         return Optional.ofNullable(this.channels.remove(channel))

@@ -24,10 +24,10 @@ public abstract class SimpleParticle extends TextureSheetParticle {
         this.setSpriteFromAge(this.spriteSet);
     }
 
-    protected static abstract class Provider implements ParticleProvider<SimpleParticleType> {
+    protected abstract static class Provider implements ParticleProvider<SimpleParticleType> {
         private final SpriteSet spriteSet;
 
-        public Provider(SpriteSet spriteSet) {
+        protected Provider(SpriteSet spriteSet) {
             this.spriteSet = spriteSet;
         }
 

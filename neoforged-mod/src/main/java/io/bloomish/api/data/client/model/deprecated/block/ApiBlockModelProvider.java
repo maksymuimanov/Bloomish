@@ -1,6 +1,5 @@
 package io.bloomish.api.data.client.model.deprecated.block;
 
-import io.bloomish.api.common.block.ApiCropBlock;
 import io.bloomish.api.data.client.model.deprecated.RenderTypes;
 import io.bloomish.api.data.client.model.deprecated.block.spec.BlockModelSpec;
 import io.bloomish.api.data.client.model.deprecated.block.spec.DependantBlockModelSpec;
