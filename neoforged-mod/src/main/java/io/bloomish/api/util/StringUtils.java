@@ -34,7 +34,7 @@ public final class StringUtils {
         return Objects.equals(left, right) || (left != null && left.equalsIgnoreCase(right));
     }
 
-    public static String joinWithUnderscore(String... strings) {
-        return String.join("_", strings);
+    public static String joinWithUnderscore(String string, String... strings) {
+        return String.join("_", CollectionUtils.arrayListOf(string, strings));
     }
 }

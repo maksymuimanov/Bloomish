@@ -2,22 +2,19 @@ package io.bloomish.api.data.client.blockstate;
 
 import io.bloomish.api.channel.DataChannels;
 import io.bloomish.api.channel.ValueChannelBus;
+import io.bloomish.api.data.client.blockstate.property.BlockStateProperty;
 import io.bloomish.api.engine.metadata.annotation.injection.Injected;
+import io.bloomish.api.util.StringUtils;
 import net.minecraft.core.Holder;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.level.block.Block;
 
-import java.util.List;
+import java.util.Locale;
 
 @Injected
 public class FenceBlockStateProvider extends AbstractBlockStateProvider {
-    private static final String POST_SUFFIX = "_post";
-    private static final String SIDE_SUFFIX = "_side";
-    private static final String NORTH = "north";
-    private static final String EAST = "east";
-    private static final String SOUTH = "south";
-    private static final String WEST = "west";
-    private static final String TRUE = "true";
+    private static final String POST_SUFFIX = "post";
+    private static final String SIDE_SUFFIX = "side";
     private final ValueChannelBus channelBus;
 
     public FenceBlockStateProvider(PackOutput packOutput, ValueChannelBus channelBus) {
@@ -36,36 +33,43 @@ public class FenceBlockStateProvider extends AbstractBlockStateProvider {
     }
 
     private MultipartBlockState createFenceBlockState(String path) {
-        return new MultipartBlockState(
-                List.of(
-                        new MultipartBlockState.Part(
-                                Variant.ofModel(this.postModel(path))
-                        ),
-                        new MultipartBlockState.Part(
-                                Variant.ofUvlockModel(this.sideModel(path)),
-                                NORTH, TRUE
-                        ),
-                        new MultipartBlockState.Part(
-                                Variant.ofUvlockY90(this.sideModel(path)),
-                                EAST, TRUE
-                        ),
-                        new MultipartBlockState.Part(
-                                Variant.ofUvlockY180(this.sideModel(path)),
-                                SOUTH, TRUE
-                        ),
-                        new MultipartBlockState.Part(
-                                Variant.ofUvlockY270(this.sideModel(path)),
-                                WEST, TRUE
-                        )
-                )
+        return MultipartBlockState.of(
+                new MultipartBlockState.Part(Variant.ofModel(this.postModel(path))),
+                MultipartBlockState.Part.of(Variant.ofUvlockModel(this.sideModel(path)), FenceFacing.NORTH),
+                MultipartBlockState.Part.of(Variant.ofUvlockY90(this.sideModel(path)), FenceFacing.EAST),
+                MultipartBlockState.Part.of(Variant.ofUvlockY180(this.sideModel(path)), FenceFacing.SOUTH),
+                MultipartBlockState.Part.of(Variant.ofUvlockY270(this.sideModel(path)), FenceFacing.WEST)
         );
     }
 
     private String postModel(String path) {
-        return path + POST_SUFFIX;
+        return StringUtils.joinWithUnderscore(path, POST_SUFFIX);
     }
 
     private String sideModel(String path) {
-        return path + SIDE_SUFFIX;
+        return StringUtils.joinWithUnderscore(path, SIDE_SUFFIX);
+    }
+
+    private enum FenceFacing implements BlockStateProperty {
+        WEST(true),
+        EAST(true),
+        NORTH(true),
+        SOUTH(true);
+
+        private final boolean value;
+
+        FenceFacing(boolean value) {
+            this.value = value;
+        }
+
+        @Override
+        public String getKey() {
+            return this.name().toLowerCase(Locale.ROOT);
+        }
+
+        @Override
+        public String getValue() {
+            return String.valueOf(this.value);
+        }
     }
 }

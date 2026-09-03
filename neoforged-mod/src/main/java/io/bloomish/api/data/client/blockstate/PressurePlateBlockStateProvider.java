@@ -2,19 +2,16 @@ package io.bloomish.api.data.client.blockstate;
 
 import io.bloomish.api.channel.DataChannels;
 import io.bloomish.api.channel.ValueChannelBus;
+import io.bloomish.api.data.client.blockstate.property.Powered;
 import io.bloomish.api.engine.metadata.annotation.injection.Injected;
+import io.bloomish.api.util.StringUtils;
 import net.minecraft.core.Holder;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.level.block.Block;
 
-import java.util.Map;
-
 @Injected
 public class PressurePlateBlockStateProvider extends AbstractBlockStateProvider {
-    private static final String DOWN_SUFFIX = "_down";
-    private static final String POWERED = "powered";
-    private static final String TRUE = "true";
-    private static final String FALSE = "false";
+    private static final String DOWN_SUFFIX = "down";
     private final ValueChannelBus channelBus;
 
     public PressurePlateBlockStateProvider(PackOutput packOutput, ValueChannelBus channelBus) {
@@ -33,13 +30,13 @@ public class PressurePlateBlockStateProvider extends AbstractBlockStateProvider 
     }
 
     private VariantBlockState createPressurePlateBlockState(String path) {
-        return VariantBlockState.of(Map.of(
-                Map.of(POWERED, FALSE), Variant.ofModel(path),
-                Map.of(POWERED, TRUE), Variant.ofModel(this.downModel(path))
-        ));
+        return VariantBlockState.ofConditionalVariants(
+                ConditionalVariant.of(Variant.ofModel(path), Powered.FALSE),
+                ConditionalVariant.of(Variant.ofModel(this.downModel(path)), Powered.TRUE)
+        );
     }
 
     private String downModel(String path) {
-        return path + DOWN_SUFFIX;
+        return StringUtils.joinWithUnderscore(path, DOWN_SUFFIX);
     }
 }

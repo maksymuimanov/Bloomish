@@ -2,19 +2,14 @@ package io.bloomish.api.data.client.blockstate;
 
 import io.bloomish.api.channel.DataChannels;
 import io.bloomish.api.channel.ValueChannelBus;
+import io.bloomish.api.data.client.blockstate.property.Axis;
 import io.bloomish.api.engine.metadata.annotation.injection.Injected;
 import net.minecraft.core.Holder;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.level.block.Block;
 
-import java.util.Map;
-
 @Injected
 public class AxisBlockStateProvider extends AbstractBlockStateProvider {
-    private static final String AXIS = "axis";
-    private static final String X = "x";
-    private static final String Y = "y";
-    private static final String Z = "z";
     private final ValueChannelBus channelBus;
 
     public AxisBlockStateProvider(PackOutput packOutput, ValueChannelBus channelBus) {
@@ -33,11 +28,10 @@ public class AxisBlockStateProvider extends AbstractBlockStateProvider {
     }
 
     private VariantBlockState createColumnBlockState(String path) {
-        Map<Map<String, String>, Variant> variants = Map.of(
-                Map.of(AXIS, X), Variant.ofX90Y90(path),
-                Map.of(AXIS, Y), Variant.ofModel(path),
-                Map.of(AXIS, Z), Variant.ofX90(path)
+        return VariantBlockState.ofConditionalVariants(
+                ConditionalVariant.of(Variant.ofX90Y90(path), Axis.X),
+                ConditionalVariant.of(Variant.ofModel(path), Axis.Y),
+                ConditionalVariant.of(Variant.ofX90(path), Axis.Z)
         );
-        return VariantBlockState.of(variants);
     }
 }

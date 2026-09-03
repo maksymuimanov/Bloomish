@@ -2,27 +2,19 @@ package io.bloomish.api.data.client.blockstate;
 
 import io.bloomish.api.channel.DataChannels;
 import io.bloomish.api.channel.ValueChannelBus;
+import io.bloomish.api.data.client.blockstate.property.EnumBlockStateProperty;
+import io.bloomish.api.data.client.blockstate.property.Facing;
+import io.bloomish.api.data.client.blockstate.property.Open;
 import io.bloomish.api.engine.metadata.annotation.injection.Injected;
+import io.bloomish.api.util.StringUtils;
 import net.minecraft.core.Holder;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.level.block.Block;
 
-import java.util.HashMap;
-import java.util.Map;
-
 @Injected
 public class FenceGateBlockStateProvider extends AbstractBlockStateProvider {
-    private static final String OPEN_SUFFIX = "_open";
-    private static final String WALL_SUFFIX = "_wall";
-    private static final String FACING = "facing";
-    private static final String IN_WALL = "in_wall";
-    private static final String OPEN = "open";
-    private static final String EAST = "east";
-    private static final String NORTH = "north";
-    private static final String SOUTH = "south";
-    private static final String WEST = "west";
-    private static final String TRUE = "true";
-    private static final String FALSE = "false";
+    private static final String OPEN_SUFFIX = "open";
+    private static final String WALL_SUFFIX = "wall";
     private final ValueChannelBus channelBus;
 
     public FenceGateBlockStateProvider(PackOutput packOutput, ValueChannelBus channelBus) {
@@ -41,51 +33,39 @@ public class FenceGateBlockStateProvider extends AbstractBlockStateProvider {
     }
 
     private VariantBlockState createFenceGateBlockState(String path) {
-        Map<Map<String, String>, Variant> variants = new HashMap<>();
-        this.createEastVariants(path, variants);
-        this.createNorthVariants(path, variants);
-        this.createSouthVariants(path, variants);
-        this.createWestVariants(path, variants);
-        return VariantBlockState.of(variants);
-    }
-
-    private void createEastVariants(String path, Map<Map<String, String>, Variant> variants) {
-        variants.put(Map.of(FACING, EAST, IN_WALL, FALSE, OPEN, FALSE), Variant.ofUvlockY270(path));
-        variants.put(Map.of(FACING, EAST, IN_WALL, FALSE, OPEN, TRUE), Variant.ofUvlockY270(this.openModel(path)));
-        variants.put(Map.of(FACING, EAST, IN_WALL, TRUE, OPEN, FALSE), Variant.ofUvlockY270(this.wallModel(path)));
-        variants.put(Map.of(FACING, EAST, IN_WALL, TRUE, OPEN, TRUE), Variant.ofUvlockY270(this.openWallModel(path)));
-    }
-
-    private void createNorthVariants(String path, Map<Map<String, String>, Variant> variants) {
-        variants.put(Map.of(FACING, NORTH, IN_WALL, FALSE, OPEN, FALSE), Variant.ofUvlockY180(path));
-        variants.put(Map.of(FACING, NORTH, IN_WALL, FALSE, OPEN, TRUE), Variant.ofUvlockY180(this.openModel(path)));
-        variants.put(Map.of(FACING, NORTH, IN_WALL, TRUE, OPEN, FALSE), Variant.ofUvlockY180(this.wallModel(path)));
-        variants.put(Map.of(FACING, NORTH, IN_WALL, TRUE, OPEN, TRUE), Variant.ofUvlockY180(this.openWallModel(path)));
-    }
-
-    private void createSouthVariants(String path, Map<Map<String, String>, Variant> variants) {
-        variants.put(Map.of(FACING, SOUTH, IN_WALL, FALSE, OPEN, FALSE), Variant.ofUvlockModel(path));
-        variants.put(Map.of(FACING, SOUTH, IN_WALL, FALSE, OPEN, TRUE), Variant.ofUvlockModel(this.openModel(path)));
-        variants.put(Map.of(FACING, SOUTH, IN_WALL, TRUE, OPEN, FALSE), Variant.ofUvlockModel(this.wallModel(path)));
-        variants.put(Map.of(FACING, SOUTH, IN_WALL, TRUE, OPEN, TRUE), Variant.ofUvlockModel(this.openWallModel(path)));
-    }
-
-    private void createWestVariants(String path, Map<Map<String, String>, Variant> variants) {
-        variants.put(Map.of(FACING, WEST, IN_WALL, FALSE, OPEN, FALSE), Variant.ofUvlockY90(path));
-        variants.put(Map.of(FACING, WEST, IN_WALL, FALSE, OPEN, TRUE), Variant.ofUvlockY90(this.openModel(path)));
-        variants.put(Map.of(FACING, WEST, IN_WALL, TRUE, OPEN, FALSE), Variant.ofUvlockY90(this.wallModel(path)));
-        variants.put(Map.of(FACING, WEST, IN_WALL, TRUE, OPEN, TRUE), Variant.ofUvlockY90(this.openWallModel(path)));
-    }
-
-    private String openModel(String path) {
-        return path + OPEN_SUFFIX;
-    }
-
-    private String wallModel(String path) {
-        return path + WALL_SUFFIX;
+        return VariantBlockState.ofConditionalVariants(
+                ConditionalVariant.of(Variant.ofUvlockY270(path), Facing.EAST, InWall.FALSE, Open.FALSE),
+                ConditionalVariant.of(Variant.ofUvlockY270(this.openModel(path)), Facing.EAST, InWall.FALSE, Open.TRUE),
+                ConditionalVariant.of(Variant.ofUvlockY270(this.wallModel(path)), Facing.EAST, InWall.TRUE, Open.FALSE),
+                ConditionalVariant.of(Variant.ofUvlockY270(this.openWallModel(path)), Facing.EAST, InWall.TRUE, Open.TRUE),
+                ConditionalVariant.of(Variant.ofUvlockY180(path), Facing.NORTH, InWall.FALSE, Open.FALSE),
+                ConditionalVariant.of(Variant.ofUvlockY180(this.openModel(path)), Facing.NORTH, InWall.FALSE, Open.TRUE),
+                ConditionalVariant.of(Variant.ofUvlockY180(this.wallModel(path)), Facing.NORTH, InWall.TRUE, Open.FALSE),
+                ConditionalVariant.of(Variant.ofUvlockY180(this.openWallModel(path)), Facing.NORTH, InWall.TRUE, Open.TRUE),
+                ConditionalVariant.of(Variant.ofUvlockModel(path), Facing.SOUTH, InWall.FALSE, Open.FALSE),
+                ConditionalVariant.of(Variant.ofUvlockModel(this.openModel(path)), Facing.SOUTH, InWall.FALSE, Open.TRUE),
+                ConditionalVariant.of(Variant.ofUvlockModel(this.wallModel(path)), Facing.SOUTH, InWall.TRUE, Open.FALSE),
+                ConditionalVariant.of(Variant.ofUvlockModel(this.openWallModel(path)), Facing.SOUTH, InWall.TRUE, Open.TRUE),
+                ConditionalVariant.of(Variant.ofUvlockY90(path), Facing.WEST, InWall.FALSE, Open.FALSE),
+                ConditionalVariant.of(Variant.ofUvlockY90(this.openModel(path)), Facing.WEST, InWall.FALSE, Open.TRUE),
+                ConditionalVariant.of(Variant.ofUvlockY90(this.wallModel(path)), Facing.WEST, InWall.TRUE, Open.FALSE),
+                ConditionalVariant.of(Variant.ofUvlockY90(this.openWallModel(path)), Facing.WEST, InWall.TRUE, Open.TRUE)
+        );
     }
 
     private String openWallModel(String path) {
-        return this.wallModel(path) + OPEN_SUFFIX;
+        return StringUtils.joinWithUnderscore(path, WALL_SUFFIX, OPEN_SUFFIX);
+    }
+
+    private String openModel(String path) {
+        return StringUtils.joinWithUnderscore(path, OPEN_SUFFIX);
+    }
+
+    private String wallModel(String path) {
+        return StringUtils.joinWithUnderscore(path, WALL_SUFFIX);
+    }
+
+    private enum InWall implements EnumBlockStateProperty {
+        TRUE, FALSE
     }
 }

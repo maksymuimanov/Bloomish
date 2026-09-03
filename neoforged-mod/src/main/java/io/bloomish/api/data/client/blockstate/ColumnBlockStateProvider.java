@@ -2,20 +2,16 @@ package io.bloomish.api.data.client.blockstate;
 
 import io.bloomish.api.channel.DataChannels;
 import io.bloomish.api.channel.ValueChannelBus;
+import io.bloomish.api.data.client.blockstate.property.Axis;
 import io.bloomish.api.engine.metadata.annotation.injection.Injected;
+import io.bloomish.api.util.StringUtils;
 import net.minecraft.core.Holder;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.level.block.Block;
 
-import java.util.Map;
-
 @Injected
 public class ColumnBlockStateProvider extends AbstractBlockStateProvider {
-    private static final String HORIZONTAL_SUFFIX = "_horizontal";
-    private static final String AXIS = "axis";
-    private static final String X = "x";
-    private static final String Y = "y";
-    private static final String Z = "z";
+    private static final String HORIZONTAL_SUFFIX = "horizontal";
     private final ValueChannelBus channelBus;
 
     public ColumnBlockStateProvider(PackOutput packOutput, ValueChannelBus channelBus) {
@@ -34,15 +30,14 @@ public class ColumnBlockStateProvider extends AbstractBlockStateProvider {
     }
 
     private VariantBlockState createColumnBlockState(String path) {
-        Map<Map<String, String>, Variant> variants = Map.of(
-                Map.of(AXIS, X), Variant.ofX90Y90(this.horizontalModel(path)),
-                Map.of(AXIS, Y), Variant.ofModel(path),
-                Map.of(AXIS, Z), Variant.ofX90(this.horizontalModel(path))
+        return VariantBlockState.ofConditionalVariants(
+                ConditionalVariant.of(Variant.ofX90Y90(this.horizontalModel(path)), Axis.X),
+                ConditionalVariant.of(Variant.ofModel(path), Axis.Y),
+                ConditionalVariant.of(Variant.ofX90(this.horizontalModel(path)), Axis.Z)
         );
-        return VariantBlockState.of(variants);
     }
 
     private String horizontalModel(String path) {
-        return path + HORIZONTAL_SUFFIX;
+        return StringUtils.joinWithUnderscore(path, HORIZONTAL_SUFFIX);
     }
 }

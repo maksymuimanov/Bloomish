@@ -37,6 +37,7 @@ public final class DataChannels {
     public static final DataChannel BLOCK_STATE_PROVIDER_TRAPDOOR_BLOCKS = new DataChannel("block_state_provider_trapdoor_blocks");
     public static final DataChannel BLOCK_STATE_PROVIDER_AXIS_BLOCKS = new DataChannel("block_state_provider_axis_blocks");
     public static final DataChannel BLOCK_STATE_PROVIDER_FENCE_BLOCKS = new DataChannel("block_state_provider_fence_blocks");
+    public static final DataChannel BLOCK_STATE_PROVIDER_WALL_BLOCKS = new DataChannel("block_state_provider_wall_blocks");
 
     private DataChannels() {
     }

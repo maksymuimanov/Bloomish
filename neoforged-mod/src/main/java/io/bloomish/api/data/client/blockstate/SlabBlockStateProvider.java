@@ -2,22 +2,17 @@ package io.bloomish.api.data.client.blockstate;
 
 import io.bloomish.api.channel.DataChannels;
 import io.bloomish.api.channel.ValueChannelBus;
+import io.bloomish.api.data.client.blockstate.property.EnumBlockStateProperty;
 import io.bloomish.api.engine.metadata.annotation.injection.Injected;
+import io.bloomish.api.util.StringUtils;
 import net.minecraft.core.Holder;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SlabBlock;
 
-import java.util.Map;
-
 @Injected
 public class SlabBlockStateProvider extends AbstractBlockStateProvider {
-    private static final String TOP_SUFFIX = "_top";
-    private static final String TYPE = "type";
-    private static final String BOTTOM = "bottom";
-    private static final String DOUBLE = "double";
-    private static final String TOP = "top";
-
+    private static final String TOP_SUFFIX = "top";
     private final ValueChannelBus channelBus;
 
     public SlabBlockStateProvider(PackOutput packOutput, ValueChannelBus channelBus) {
@@ -36,15 +31,15 @@ public class SlabBlockStateProvider extends AbstractBlockStateProvider {
     }
 
     private VariantBlockState createSlabBlockState(String path, String fullBlockPath) {
-        return VariantBlockState.of(Map.of(
-                Map.of(TYPE, BOTTOM), Variant.ofModel(path),
-                Map.of(TYPE, DOUBLE), Variant.ofModel(fullBlockPath),
-                Map.of(TYPE, TOP), Variant.ofModel(this.topModel(path))
-        ));
+        return VariantBlockState.ofConditionalVariants(
+                ConditionalVariant.of(Variant.ofModel(path), Type.BOTTOM),
+                ConditionalVariant.of(Variant.ofModel(fullBlockPath), Type.DOUBLE),
+                ConditionalVariant.of(Variant.ofModel(this.topModel(path)), Type.TOP)
+        );
     }
 
     private String topModel(String path) {
-        return path + TOP_SUFFIX;
+        return StringUtils.joinWithUnderscore(path, TOP_SUFFIX);
     }
 
     public record SlabBlockHolder(
@@ -54,5 +49,9 @@ public class SlabBlockStateProvider extends AbstractBlockStateProvider {
         public SlabBlock getBlock() {
             return this.holder.value();
         }
+    }
+
+    private enum Type implements EnumBlockStateProperty {
+        BOTTOM, DOUBLE, TOP
     }
 }
