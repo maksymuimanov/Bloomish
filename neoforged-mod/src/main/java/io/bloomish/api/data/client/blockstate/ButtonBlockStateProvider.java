@@ -25,9 +25,6 @@ public class ButtonBlockStateProvider extends AbstractBlockStateProvider {
     private static final String WEST = "west";
     private static final String TRUE = "true";
     private static final String FALSE = "false";
-    private static final int ROTATION_90 = 90;
-    private static final int ROTATION_180 = 180;
-    private static final int ROTATION_270 = 270;
     private final ValueChannelBus channelBus;
 
     public ButtonBlockStateProvider(PackOutput packOutput, ValueChannelBus channelBus) {
@@ -54,36 +51,36 @@ public class ButtonBlockStateProvider extends AbstractBlockStateProvider {
     }
 
     private void createCeilingVariants(String path, Map<Map<String, String>, Variant> variants) {
-        variants.put(Map.of(FACE, CEILING, FACING, EAST, POWERED, FALSE), Variant.ofXY(path, ROTATION_180, ROTATION_270));
-        variants.put(Map.of(FACE, CEILING, FACING, EAST, POWERED, TRUE), Variant.ofXY(this.pressedModel(path), ROTATION_180, ROTATION_270));
-        variants.put(Map.of(FACE, CEILING, FACING, NORTH, POWERED, FALSE), Variant.ofXY(path, ROTATION_180, ROTATION_180));
-        variants.put(Map.of(FACE, CEILING, FACING, NORTH, POWERED, TRUE), Variant.ofXY(this.pressedModel(path), ROTATION_180, ROTATION_180));
-        variants.put(Map.of(FACE, CEILING, FACING, SOUTH, POWERED, FALSE), Variant.ofX(path, ROTATION_180));
-        variants.put(Map.of(FACE, CEILING, FACING, SOUTH, POWERED, TRUE), Variant.ofX(this.pressedModel(path), ROTATION_180));
-        variants.put(Map.of(FACE, CEILING, FACING, WEST, POWERED, FALSE), Variant.ofXY(path, ROTATION_180, ROTATION_90));
-        variants.put(Map.of(FACE, CEILING, FACING, WEST, POWERED, TRUE), Variant.ofXY(this.pressedModel(path), ROTATION_180, ROTATION_90));
+        variants.put(Map.of(FACE, CEILING, FACING, EAST, POWERED, FALSE), Variant.ofX180Y270(path));
+        variants.put(Map.of(FACE, CEILING, FACING, EAST, POWERED, TRUE), Variant.ofX180Y270(this.pressedModel(path)));
+        variants.put(Map.of(FACE, CEILING, FACING, NORTH, POWERED, FALSE), Variant.ofX180Y180(path));
+        variants.put(Map.of(FACE, CEILING, FACING, NORTH, POWERED, TRUE), Variant.ofX180Y180(this.pressedModel(path)));
+        variants.put(Map.of(FACE, CEILING, FACING, SOUTH, POWERED, FALSE), Variant.ofX180(path));
+        variants.put(Map.of(FACE, CEILING, FACING, SOUTH, POWERED, TRUE), Variant.ofX180(this.pressedModel(path)));
+        variants.put(Map.of(FACE, CEILING, FACING, WEST, POWERED, FALSE), Variant.ofX180Y90(path));
+        variants.put(Map.of(FACE, CEILING, FACING, WEST, POWERED, TRUE), Variant.ofX180Y90(this.pressedModel(path)));
     }
 
     private void createFloorVariants(String path, Map<Map<String, String>, Variant> variants) {
-        variants.put(Map.of(FACE, FLOOR, FACING, EAST, POWERED, FALSE), Variant.ofY(path, ROTATION_90));
-        variants.put(Map.of(FACE, FLOOR, FACING, EAST, POWERED, TRUE), Variant.ofY(this.pressedModel(path), ROTATION_90));
+        variants.put(Map.of(FACE, FLOOR, FACING, EAST, POWERED, FALSE), Variant.ofY90(path));
+        variants.put(Map.of(FACE, FLOOR, FACING, EAST, POWERED, TRUE), Variant.ofY90(this.pressedModel(path)));
         variants.put(Map.of(FACE, FLOOR, FACING, NORTH, POWERED, FALSE), Variant.ofModel(path));
         variants.put(Map.of(FACE, FLOOR, FACING, NORTH, POWERED, TRUE), Variant.ofModel(this.pressedModel(path)));
-        variants.put(Map.of(FACE, FLOOR, FACING, SOUTH, POWERED, FALSE), Variant.ofY(path, ROTATION_180));
-        variants.put(Map.of(FACE, FLOOR, FACING, SOUTH, POWERED, TRUE), Variant.ofY(this.pressedModel(path), ROTATION_180));
-        variants.put(Map.of(FACE, FLOOR, FACING, WEST, POWERED, FALSE), Variant.ofY(path, ROTATION_270));
-        variants.put(Map.of(FACE, FLOOR, FACING, WEST, POWERED, TRUE), Variant.ofY(this.pressedModel(path), ROTATION_270));
+        variants.put(Map.of(FACE, FLOOR, FACING, SOUTH, POWERED, FALSE), Variant.ofY180(path));
+        variants.put(Map.of(FACE, FLOOR, FACING, SOUTH, POWERED, TRUE), Variant.ofY180(this.pressedModel(path)));
+        variants.put(Map.of(FACE, FLOOR, FACING, WEST, POWERED, FALSE), Variant.ofY270(path));
+        variants.put(Map.of(FACE, FLOOR, FACING, WEST, POWERED, TRUE), Variant.ofY270(this.pressedModel(path)));
     }
 
     private void createWallVariants(String path, Map<Map<String, String>, Variant> variants) {
-        variants.put(Map.of(FACE, WALL, FACING, EAST, POWERED, FALSE), Variant.ofUvlockXY(path, ROTATION_90, ROTATION_90));
-        variants.put(Map.of(FACE, WALL, FACING, EAST, POWERED, TRUE), Variant.ofUvlockXY(this.pressedModel(path), ROTATION_90, ROTATION_90));
-        variants.put(Map.of(FACE, WALL, FACING, NORTH, POWERED, FALSE), Variant.ofUvlockX(path, ROTATION_90));
-        variants.put(Map.of(FACE, WALL, FACING, NORTH, POWERED, TRUE), Variant.ofUvlockX(this.pressedModel(path), ROTATION_90));
-        variants.put(Map.of(FACE, WALL, FACING, SOUTH, POWERED, FALSE), Variant.ofUvlockXY(path, ROTATION_90, ROTATION_180));
-        variants.put(Map.of(FACE, WALL, FACING, SOUTH, POWERED, TRUE), Variant.ofUvlockXY(this.pressedModel(path), ROTATION_90, ROTATION_180));
-        variants.put(Map.of(FACE, WALL, FACING, WEST, POWERED, FALSE), Variant.ofUvlockXY(path, ROTATION_90, ROTATION_270));
-        variants.put(Map.of(FACE, WALL, FACING, WEST, POWERED, TRUE), Variant.ofUvlockXY(this.pressedModel(path), ROTATION_90, ROTATION_270));
+        variants.put(Map.of(FACE, WALL, FACING, EAST, POWERED, FALSE), Variant.ofUvlockX90Y90(path));
+        variants.put(Map.of(FACE, WALL, FACING, EAST, POWERED, TRUE), Variant.ofUvlockX90Y90(this.pressedModel(path)));
+        variants.put(Map.of(FACE, WALL, FACING, NORTH, POWERED, FALSE), Variant.ofUvlockX90(path));
+        variants.put(Map.of(FACE, WALL, FACING, NORTH, POWERED, TRUE), Variant.ofUvlockX90(this.pressedModel(path)));
+        variants.put(Map.of(FACE, WALL, FACING, SOUTH, POWERED, FALSE), Variant.ofUvlockX90Y180(path));
+        variants.put(Map.of(FACE, WALL, FACING, SOUTH, POWERED, TRUE), Variant.ofUvlockX90Y180(this.pressedModel(path)));
+        variants.put(Map.of(FACE, WALL, FACING, WEST, POWERED, FALSE), Variant.ofUvlockX90Y270(path));
+        variants.put(Map.of(FACE, WALL, FACING, WEST, POWERED, TRUE), Variant.ofUvlockX90Y270(this.pressedModel(path)));
     }
 
     private String pressedModel(String path) {

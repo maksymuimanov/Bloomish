@@ -23,9 +23,6 @@ public class FenceGateBlockStateProvider extends AbstractBlockStateProvider {
     private static final String WEST = "west";
     private static final String TRUE = "true";
     private static final String FALSE = "false";
-    private static final int ROTATION_90 = 90;
-    private static final int ROTATION_180 = 180;
-    private static final int ROTATION_270 = 270;
     private final ValueChannelBus channelBus;
 
     public FenceGateBlockStateProvider(PackOutput packOutput, ValueChannelBus channelBus) {
@@ -53,17 +50,17 @@ public class FenceGateBlockStateProvider extends AbstractBlockStateProvider {
     }
 
     private void createEastVariants(String path, Map<Map<String, String>, Variant> variants) {
-        variants.put(Map.of(FACING, EAST, IN_WALL, FALSE, OPEN, FALSE), Variant.ofUvlockY(path, ROTATION_270));
-        variants.put(Map.of(FACING, EAST, IN_WALL, FALSE, OPEN, TRUE), Variant.ofUvlockY(this.openModel(path), ROTATION_270));
-        variants.put(Map.of(FACING, EAST, IN_WALL, TRUE, OPEN, FALSE), Variant.ofUvlockY(this.wallModel(path), ROTATION_270));
-        variants.put(Map.of(FACING, EAST, IN_WALL, TRUE, OPEN, TRUE), Variant.ofUvlockY(this.openWallModel(path), ROTATION_270));
+        variants.put(Map.of(FACING, EAST, IN_WALL, FALSE, OPEN, FALSE), Variant.ofUvlockY270(path));
+        variants.put(Map.of(FACING, EAST, IN_WALL, FALSE, OPEN, TRUE), Variant.ofUvlockY270(this.openModel(path)));
+        variants.put(Map.of(FACING, EAST, IN_WALL, TRUE, OPEN, FALSE), Variant.ofUvlockY270(this.wallModel(path)));
+        variants.put(Map.of(FACING, EAST, IN_WALL, TRUE, OPEN, TRUE), Variant.ofUvlockY270(this.openWallModel(path)));
     }
 
     private void createNorthVariants(String path, Map<Map<String, String>, Variant> variants) {
-        variants.put(Map.of(FACING, NORTH, IN_WALL, FALSE, OPEN, FALSE), Variant.ofUvlockY(path, ROTATION_180));
-        variants.put(Map.of(FACING, NORTH, IN_WALL, FALSE, OPEN, TRUE), Variant.ofUvlockY(this.openModel(path), ROTATION_180));
-        variants.put(Map.of(FACING, NORTH, IN_WALL, TRUE, OPEN, FALSE), Variant.ofUvlockY(this.wallModel(path), ROTATION_180));
-        variants.put(Map.of(FACING, NORTH, IN_WALL, TRUE, OPEN, TRUE), Variant.ofUvlockY(this.openWallModel(path), ROTATION_180));
+        variants.put(Map.of(FACING, NORTH, IN_WALL, FALSE, OPEN, FALSE), Variant.ofUvlockY180(path));
+        variants.put(Map.of(FACING, NORTH, IN_WALL, FALSE, OPEN, TRUE), Variant.ofUvlockY180(this.openModel(path)));
+        variants.put(Map.of(FACING, NORTH, IN_WALL, TRUE, OPEN, FALSE), Variant.ofUvlockY180(this.wallModel(path)));
+        variants.put(Map.of(FACING, NORTH, IN_WALL, TRUE, OPEN, TRUE), Variant.ofUvlockY180(this.openWallModel(path)));
     }
 
     private void createSouthVariants(String path, Map<Map<String, String>, Variant> variants) {
@@ -74,10 +71,10 @@ public class FenceGateBlockStateProvider extends AbstractBlockStateProvider {
     }
 
     private void createWestVariants(String path, Map<Map<String, String>, Variant> variants) {
-        variants.put(Map.of(FACING, WEST, IN_WALL, FALSE, OPEN, FALSE), Variant.ofUvlockY(path, ROTATION_90));
-        variants.put(Map.of(FACING, WEST, IN_WALL, FALSE, OPEN, TRUE), Variant.ofUvlockY(this.openModel(path), ROTATION_90));
-        variants.put(Map.of(FACING, WEST, IN_WALL, TRUE, OPEN, FALSE), Variant.ofUvlockY(this.wallModel(path), ROTATION_90));
-        variants.put(Map.of(FACING, WEST, IN_WALL, TRUE, OPEN, TRUE), Variant.ofUvlockY(this.openWallModel(path), ROTATION_90));
+        variants.put(Map.of(FACING, WEST, IN_WALL, FALSE, OPEN, FALSE), Variant.ofUvlockY90(path));
+        variants.put(Map.of(FACING, WEST, IN_WALL, FALSE, OPEN, TRUE), Variant.ofUvlockY90(this.openModel(path)));
+        variants.put(Map.of(FACING, WEST, IN_WALL, TRUE, OPEN, FALSE), Variant.ofUvlockY90(this.wallModel(path)));
+        variants.put(Map.of(FACING, WEST, IN_WALL, TRUE, OPEN, TRUE), Variant.ofUvlockY90(this.openWallModel(path)));
     }
 
     private String openModel(String path) {

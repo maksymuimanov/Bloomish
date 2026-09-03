@@ -16,7 +16,6 @@ public class ColumnBlockStateProvider extends AbstractBlockStateProvider {
     private static final String X = "x";
     private static final String Y = "y";
     private static final String Z = "z";
-    private static final int ROTATION_90 = 90;
     private final ValueChannelBus channelBus;
 
     public ColumnBlockStateProvider(PackOutput packOutput, ValueChannelBus channelBus) {
@@ -36,9 +35,9 @@ public class ColumnBlockStateProvider extends AbstractBlockStateProvider {
 
     private VariantBlockState createColumnBlockState(String path) {
         Map<Map<String, String>, Variant> variants = Map.of(
-                Map.of(AXIS, X), Variant.ofXY(this.horizontalModel(path), ROTATION_90, ROTATION_90),
+                Map.of(AXIS, X), Variant.ofX90Y90(this.horizontalModel(path)),
                 Map.of(AXIS, Y), Variant.ofModel(path),
-                Map.of(AXIS, Z), Variant.ofX(this.horizontalModel(path), ROTATION_90)
+                Map.of(AXIS, Z), Variant.ofX90(this.horizontalModel(path))
         );
         return VariantBlockState.of(variants);
     }

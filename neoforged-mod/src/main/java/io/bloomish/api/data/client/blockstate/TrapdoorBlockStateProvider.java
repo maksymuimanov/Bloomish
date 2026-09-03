@@ -26,10 +26,6 @@ public class TrapdoorBlockStateProvider extends AbstractBlockStateProvider {
     private static final String WEST = "west";
     private static final String TRUE = "true";
     private static final String FALSE = "false";
-    private static final int ROTATION_90 = 90;
-    private static final int ROTATION_180 = 180;
-    private static final int ROTATION_270 = 270;
-    private static final Integer ROTATION_0 = 0;
     private final ValueChannelBus channelBus;
 
     public TrapdoorBlockStateProvider(PackOutput packOutput, ValueChannelBus channelBus) {
@@ -57,31 +53,31 @@ public class TrapdoorBlockStateProvider extends AbstractBlockStateProvider {
     }
 
     private void createEastVariants(String path, Map<Map<String, String>, Variant> variants) {
-        variants.put(Map.of(FACING, EAST, HALF, BOTTOM, OPEN, FALSE), Variant.ofY(this.bottomModel(path), ROTATION_90));
-        variants.put(Map.of(FACING, EAST, HALF, BOTTOM, OPEN, TRUE), Variant.ofY(this.openBottomModel(path), ROTATION_90));
-        variants.put(Map.of(FACING, EAST, HALF, TOP, OPEN, FALSE), Variant.ofY(this.topModel(path), ROTATION_90));
-        variants.put(Map.of(FACING, EAST, HALF, TOP, OPEN, TRUE), Variant.ofXY(this.openModel(path), ROTATION_180, ROTATION_270));
+        variants.put(Map.of(FACING, EAST, HALF, BOTTOM, OPEN, FALSE), Variant.ofY90(this.bottomModel(path)));
+        variants.put(Map.of(FACING, EAST, HALF, BOTTOM, OPEN, TRUE), Variant.ofY90(this.openBottomModel(path)));
+        variants.put(Map.of(FACING, EAST, HALF, TOP, OPEN, FALSE), Variant.ofY90(this.topModel(path)));
+        variants.put(Map.of(FACING, EAST, HALF, TOP, OPEN, TRUE), Variant.ofX180Y270(this.openModel(path)));
     }
 
     private void createNorthVariants(String path, Map<Map<String, String>, Variant> variants) {
         variants.put(Map.of(FACING, NORTH, HALF, BOTTOM, OPEN, FALSE), Variant.ofModel(this.bottomModel(path)));
         variants.put(Map.of(FACING, NORTH, HALF, BOTTOM, OPEN, TRUE), Variant.ofModel(this.openBottomModel(path)));
         variants.put(Map.of(FACING, NORTH, HALF, TOP, OPEN, FALSE), Variant.ofModel(this.topModel(path)));
-        variants.put(Map.of(FACING, NORTH, HALF, TOP, OPEN, TRUE), Variant.ofXY(this.openModel(path), ROTATION_180, ROTATION_180));
+        variants.put(Map.of(FACING, NORTH, HALF, TOP, OPEN, TRUE), Variant.ofX180Y180(this.openModel(path)));
     }
 
     private void createSouthVariants(String path, Map<Map<String, String>, Variant> variants) {
-        variants.put(Map.of(FACING, SOUTH, HALF, BOTTOM, OPEN, FALSE), Variant.ofY(this.bottomModel(path), ROTATION_180));
-        variants.put(Map.of(FACING, SOUTH, HALF, BOTTOM, OPEN, TRUE), Variant.ofY(this.openBottomModel(path), ROTATION_180));
-        variants.put(Map.of(FACING, SOUTH, HALF, TOP, OPEN, FALSE), Variant.ofY(this.topModel(path), ROTATION_180));
-        variants.put(Map.of(FACING, SOUTH, HALF, TOP, OPEN, TRUE), Variant.ofXY(this.openModel(path), ROTATION_180, ROTATION_0));
+        variants.put(Map.of(FACING, SOUTH, HALF, BOTTOM, OPEN, FALSE), Variant.ofY180(this.bottomModel(path)));
+        variants.put(Map.of(FACING, SOUTH, HALF, BOTTOM, OPEN, TRUE), Variant.ofY180(this.openBottomModel(path)));
+        variants.put(Map.of(FACING, SOUTH, HALF, TOP, OPEN, FALSE), Variant.ofY180(this.topModel(path)));
+        variants.put(Map.of(FACING, SOUTH, HALF, TOP, OPEN, TRUE), Variant.ofX180Y0(this.openModel(path)));
     }
 
     private void createWestVariants(String path, Map<Map<String, String>, Variant> variants) {
-        variants.put(Map.of(FACING, WEST, HALF, BOTTOM, OPEN, FALSE), Variant.ofY(this.bottomModel(path), ROTATION_270));
-        variants.put(Map.of(FACING, WEST, HALF, BOTTOM, OPEN, TRUE), Variant.ofY(this.openBottomModel(path), ROTATION_270));
-        variants.put(Map.of(FACING, WEST, HALF, TOP, OPEN, FALSE), Variant.ofY(this.topModel(path), ROTATION_270));
-        variants.put(Map.of(FACING, WEST, HALF, TOP, OPEN, TRUE), Variant.ofXY(this.openModel(path), ROTATION_180, ROTATION_90));
+        variants.put(Map.of(FACING, WEST, HALF, BOTTOM, OPEN, FALSE), Variant.ofY270(this.bottomModel(path)));
+        variants.put(Map.of(FACING, WEST, HALF, BOTTOM, OPEN, TRUE), Variant.ofY270(this.openBottomModel(path)));
+        variants.put(Map.of(FACING, WEST, HALF, TOP, OPEN, FALSE), Variant.ofY270(this.topModel(path)));
+        variants.put(Map.of(FACING, WEST, HALF, TOP, OPEN, TRUE), Variant.ofX180Y90(this.openModel(path)));
     }
 
     private String bottomModel(String path) {

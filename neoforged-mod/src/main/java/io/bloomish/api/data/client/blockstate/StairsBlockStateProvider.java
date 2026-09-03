@@ -28,9 +28,6 @@ public class StairsBlockStateProvider extends AbstractBlockStateProvider {
     private static final String NORTH = "north";
     private static final String SOUTH = "south";
     private static final String WEST = "west";
-    private static final int ROTATION_90 = 90;
-    private static final int ROTATION_180 = 180;
-    private static final int ROTATION_270 = 270;
     private final ValueChannelBus channelBus;
 
     public StairsBlockStateProvider(PackOutput packOutput, ValueChannelBus channelBus) {
@@ -58,55 +55,55 @@ public class StairsBlockStateProvider extends AbstractBlockStateProvider {
     }
 
     private void createEastVariants(String path, Map<Map<String, String>, Variant> variants) {
-        variants.put(Map.of(FACING, EAST, HALF, BOTTOM, SHAPE, INNER_LEFT), Variant.ofUvlockY(this.innerModel(path), ROTATION_270));
+        variants.put(Map.of(FACING, EAST, HALF, BOTTOM, SHAPE, INNER_LEFT), Variant.ofUvlockY270(this.innerModel(path)));
         variants.put(Map.of(FACING, EAST, HALF, BOTTOM, SHAPE, INNER_RIGHT), Variant.ofModel(this.innerModel(path)));
-        variants.put(Map.of(FACING, EAST, HALF, BOTTOM, SHAPE, OUTER_LEFT), Variant.ofUvlockY(this.outerModel(path), ROTATION_270));
+        variants.put(Map.of(FACING, EAST, HALF, BOTTOM, SHAPE, OUTER_LEFT), Variant.ofUvlockY270(this.outerModel(path)));
         variants.put(Map.of(FACING, EAST, HALF, BOTTOM, SHAPE, OUTER_RIGHT), Variant.ofModel(this.outerModel(path)));
         variants.put(Map.of(FACING, EAST, HALF, BOTTOM, SHAPE, STRAIGHT), Variant.ofModel(this.straightModel(path)));
-        variants.put(Map.of(FACING, EAST, HALF, TOP, SHAPE, INNER_LEFT), Variant.ofUvlockX(this.innerModel(path), ROTATION_180));
-        variants.put(Map.of(FACING, EAST, HALF, TOP, SHAPE, INNER_RIGHT), Variant.ofXY(this.innerModel(path), ROTATION_180, ROTATION_90));
-        variants.put(Map.of(FACING, EAST, HALF, TOP, SHAPE, OUTER_LEFT), Variant.ofUvlockX(this.outerModel(path), ROTATION_180));
-        variants.put(Map.of(FACING, EAST, HALF, TOP, SHAPE, OUTER_RIGHT), Variant.ofXY(this.outerModel(path), ROTATION_180, ROTATION_90));
-        variants.put(Map.of(FACING, EAST, HALF, TOP, SHAPE, STRAIGHT), Variant.ofUvlockX(this.straightModel(path), ROTATION_180));
+        variants.put(Map.of(FACING, EAST, HALF, TOP, SHAPE, INNER_LEFT), Variant.ofUvlockX180(this.innerModel(path)));
+        variants.put(Map.of(FACING, EAST, HALF, TOP, SHAPE, INNER_RIGHT), Variant.ofX180Y90(this.innerModel(path)));
+        variants.put(Map.of(FACING, EAST, HALF, TOP, SHAPE, OUTER_LEFT), Variant.ofUvlockX180(this.outerModel(path)));
+        variants.put(Map.of(FACING, EAST, HALF, TOP, SHAPE, OUTER_RIGHT), Variant.ofX180Y90(this.outerModel(path)));
+        variants.put(Map.of(FACING, EAST, HALF, TOP, SHAPE, STRAIGHT), Variant.ofUvlockX180(this.straightModel(path)));
     }
 
     private void createNorthVariants(String path, Map<Map<String, String>, Variant> variants) {
-        variants.put(Map.of(FACING, NORTH, HALF, BOTTOM, SHAPE, INNER_LEFT), Variant.ofUvlockY(this.innerModel(path), ROTATION_180));
-        variants.put(Map.of(FACING, NORTH, HALF, BOTTOM, SHAPE, INNER_RIGHT), Variant.ofUvlockY(this.innerModel(path), ROTATION_270));
-        variants.put(Map.of(FACING, NORTH, HALF, BOTTOM, SHAPE, OUTER_LEFT), Variant.ofUvlockY(this.outerModel(path), ROTATION_180));
-        variants.put(Map.of(FACING, NORTH, HALF, BOTTOM, SHAPE, OUTER_RIGHT), Variant.ofUvlockY(this.outerModel(path), ROTATION_270));
-        variants.put(Map.of(FACING, NORTH, HALF, BOTTOM, SHAPE, STRAIGHT), Variant.ofUvlockY(this.straightModel(path), ROTATION_270));
-        variants.put(Map.of(FACING, NORTH, HALF, TOP, SHAPE, INNER_LEFT), Variant.ofXY(this.innerModel(path), ROTATION_180, ROTATION_270));
-        variants.put(Map.of(FACING, NORTH, HALF, TOP, SHAPE, INNER_RIGHT), Variant.ofUvlockX(this.innerModel(path), ROTATION_180));
-        variants.put(Map.of(FACING, NORTH, HALF, TOP, SHAPE, OUTER_LEFT), Variant.ofXY(this.outerModel(path), ROTATION_180, ROTATION_270));
-        variants.put(Map.of(FACING, NORTH, HALF, TOP, SHAPE, OUTER_RIGHT), Variant.ofUvlockX(this.outerModel(path), ROTATION_180));
-        variants.put(Map.of(FACING, NORTH, HALF, TOP, SHAPE, STRAIGHT), Variant.ofXY(this.straightModel(path), ROTATION_180, ROTATION_270));
+        variants.put(Map.of(FACING, NORTH, HALF, BOTTOM, SHAPE, INNER_LEFT), Variant.ofUvlockY180(this.innerModel(path)));
+        variants.put(Map.of(FACING, NORTH, HALF, BOTTOM, SHAPE, INNER_RIGHT), Variant.ofUvlockY270(this.innerModel(path)));
+        variants.put(Map.of(FACING, NORTH, HALF, BOTTOM, SHAPE, OUTER_LEFT), Variant.ofUvlockY180(this.outerModel(path)));
+        variants.put(Map.of(FACING, NORTH, HALF, BOTTOM, SHAPE, OUTER_RIGHT), Variant.ofUvlockY270(this.outerModel(path)));
+        variants.put(Map.of(FACING, NORTH, HALF, BOTTOM, SHAPE, STRAIGHT), Variant.ofUvlockY270(this.straightModel(path)));
+        variants.put(Map.of(FACING, NORTH, HALF, TOP, SHAPE, INNER_LEFT), Variant.ofX180Y270(this.innerModel(path)));
+        variants.put(Map.of(FACING, NORTH, HALF, TOP, SHAPE, INNER_RIGHT), Variant.ofUvlockX180(this.innerModel(path)));
+        variants.put(Map.of(FACING, NORTH, HALF, TOP, SHAPE, OUTER_LEFT), Variant.ofX180Y270(this.outerModel(path)));
+        variants.put(Map.of(FACING, NORTH, HALF, TOP, SHAPE, OUTER_RIGHT), Variant.ofUvlockX180(this.outerModel(path)));
+        variants.put(Map.of(FACING, NORTH, HALF, TOP, SHAPE, STRAIGHT), Variant.ofX180Y270(this.straightModel(path)));
     }
 
     private void createSouthVariants(String path, Map<Map<String, String>, Variant> variants) {
         variants.put(Map.of(FACING, SOUTH, HALF, BOTTOM, SHAPE, INNER_LEFT), Variant.ofModel(this.innerModel(path)));
-        variants.put(Map.of(FACING, SOUTH, HALF, BOTTOM, SHAPE, INNER_RIGHT), Variant.ofUvlockY(this.innerModel(path), ROTATION_90));
+        variants.put(Map.of(FACING, SOUTH, HALF, BOTTOM, SHAPE, INNER_RIGHT), Variant.ofUvlockY90(this.innerModel(path)));
         variants.put(Map.of(FACING, SOUTH, HALF, BOTTOM, SHAPE, OUTER_LEFT), Variant.ofModel(this.outerModel(path)));
-        variants.put(Map.of(FACING, SOUTH, HALF, BOTTOM, SHAPE, OUTER_RIGHT), Variant.ofUvlockY(this.outerModel(path), ROTATION_90));
-        variants.put(Map.of(FACING, SOUTH, HALF, BOTTOM, SHAPE, STRAIGHT), Variant.ofUvlockY(this.straightModel(path), ROTATION_90));
-        variants.put(Map.of(FACING, SOUTH, HALF, TOP, SHAPE, INNER_LEFT), Variant.ofXY(this.innerModel(path), ROTATION_180, ROTATION_90));
-        variants.put(Map.of(FACING, SOUTH, HALF, TOP, SHAPE, INNER_RIGHT), Variant.ofXY(this.innerModel(path), ROTATION_180, ROTATION_180));
-        variants.put(Map.of(FACING, SOUTH, HALF, TOP, SHAPE, OUTER_LEFT), Variant.ofXY(this.outerModel(path), ROTATION_180, ROTATION_90));
-        variants.put(Map.of(FACING, SOUTH, HALF, TOP, SHAPE, OUTER_RIGHT), Variant.ofXY(this.outerModel(path), ROTATION_180, ROTATION_180));
-        variants.put(Map.of(FACING, SOUTH, HALF, TOP, SHAPE, STRAIGHT), Variant.ofXY(this.straightModel(path), ROTATION_180, ROTATION_90));
+        variants.put(Map.of(FACING, SOUTH, HALF, BOTTOM, SHAPE, OUTER_RIGHT), Variant.ofUvlockY90(this.outerModel(path)));
+        variants.put(Map.of(FACING, SOUTH, HALF, BOTTOM, SHAPE, STRAIGHT), Variant.ofUvlockY90(this.straightModel(path)));
+        variants.put(Map.of(FACING, SOUTH, HALF, TOP, SHAPE, INNER_LEFT), Variant.ofX180Y90(this.innerModel(path)));
+        variants.put(Map.of(FACING, SOUTH, HALF, TOP, SHAPE, INNER_RIGHT), Variant.ofX180Y180(this.innerModel(path)));
+        variants.put(Map.of(FACING, SOUTH, HALF, TOP, SHAPE, OUTER_LEFT), Variant.ofX180Y90(this.outerModel(path)));
+        variants.put(Map.of(FACING, SOUTH, HALF, TOP, SHAPE, OUTER_RIGHT), Variant.ofX180Y180(this.outerModel(path)));
+        variants.put(Map.of(FACING, SOUTH, HALF, TOP, SHAPE, STRAIGHT), Variant.ofX180Y90(this.straightModel(path)));
     }
 
     private void createWestVariants(String path, Map<Map<String, String>, Variant> variants) {
-        variants.put(Map.of(FACING, WEST, HALF, BOTTOM, SHAPE, INNER_LEFT), Variant.ofUvlockY(this.innerModel(path), ROTATION_90));
-        variants.put(Map.of(FACING, WEST, HALF, BOTTOM, SHAPE, INNER_RIGHT), Variant.ofUvlockY(this.innerModel(path), ROTATION_180));
-        variants.put(Map.of(FACING, WEST, HALF, BOTTOM, SHAPE, OUTER_LEFT), Variant.ofUvlockY(this.outerModel(path), ROTATION_90));
-        variants.put(Map.of(FACING, WEST, HALF, BOTTOM, SHAPE, OUTER_RIGHT), Variant.ofUvlockY(this.outerModel(path), ROTATION_180));
-        variants.put(Map.of(FACING, WEST, HALF, BOTTOM, SHAPE, STRAIGHT), Variant.ofUvlockY(this.straightModel(path), ROTATION_180));
-        variants.put(Map.of(FACING, WEST, HALF, TOP, SHAPE, INNER_LEFT), Variant.ofXY(this.innerModel(path), ROTATION_180, ROTATION_180));
-        variants.put(Map.of(FACING, WEST, HALF, TOP, SHAPE, INNER_RIGHT), Variant.ofXY(this.innerModel(path), ROTATION_180, ROTATION_270));
-        variants.put(Map.of(FACING, WEST, HALF, TOP, SHAPE, OUTER_LEFT), Variant.ofXY(this.outerModel(path), ROTATION_180, ROTATION_180));
-        variants.put(Map.of(FACING, WEST, HALF, TOP, SHAPE, OUTER_RIGHT), Variant.ofXY(this.outerModel(path), ROTATION_180, ROTATION_270));
-        variants.put(Map.of(FACING, WEST, HALF, TOP, SHAPE, STRAIGHT), Variant.ofXY(this.straightModel(path), ROTATION_180, ROTATION_180));
+        variants.put(Map.of(FACING, WEST, HALF, BOTTOM, SHAPE, INNER_LEFT), Variant.ofUvlockY90(this.innerModel(path)));
+        variants.put(Map.of(FACING, WEST, HALF, BOTTOM, SHAPE, INNER_RIGHT), Variant.ofUvlockY180(this.innerModel(path)));
+        variants.put(Map.of(FACING, WEST, HALF, BOTTOM, SHAPE, OUTER_LEFT), Variant.ofUvlockY90(this.outerModel(path)));
+        variants.put(Map.of(FACING, WEST, HALF, BOTTOM, SHAPE, OUTER_RIGHT), Variant.ofUvlockY180(this.outerModel(path)));
+        variants.put(Map.of(FACING, WEST, HALF, BOTTOM, SHAPE, STRAIGHT), Variant.ofUvlockY180(this.straightModel(path)));
+        variants.put(Map.of(FACING, WEST, HALF, TOP, SHAPE, INNER_LEFT), Variant.ofX180Y180(this.innerModel(path)));
+        variants.put(Map.of(FACING, WEST, HALF, TOP, SHAPE, INNER_RIGHT), Variant.ofX180Y270(this.innerModel(path)));
+        variants.put(Map.of(FACING, WEST, HALF, TOP, SHAPE, OUTER_LEFT), Variant.ofX180Y180(this.outerModel(path)));
+        variants.put(Map.of(FACING, WEST, HALF, TOP, SHAPE, OUTER_RIGHT), Variant.ofX180Y270(this.outerModel(path)));
+        variants.put(Map.of(FACING, WEST, HALF, TOP, SHAPE, STRAIGHT), Variant.ofX180Y180(this.straightModel(path)));
     }
 
     private String innerModel(String path) {

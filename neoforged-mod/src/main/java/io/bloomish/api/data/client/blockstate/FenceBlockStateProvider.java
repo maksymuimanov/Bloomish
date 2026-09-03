@@ -18,9 +18,6 @@ public class FenceBlockStateProvider extends AbstractBlockStateProvider {
     private static final String SOUTH = "south";
     private static final String WEST = "west";
     private static final String TRUE = "true";
-    private static final int ROTATION_90 = 90;
-    private static final int ROTATION_180 = 180;
-    private static final int ROTATION_270 = 270;
     private final ValueChannelBus channelBus;
 
     public FenceBlockStateProvider(PackOutput packOutput, ValueChannelBus channelBus) {
@@ -49,15 +46,15 @@ public class FenceBlockStateProvider extends AbstractBlockStateProvider {
                                 NORTH, TRUE
                         ),
                         new MultipartBlockState.Part(
-                                Variant.ofUvlockY(this.sideModel(path), ROTATION_90),
+                                Variant.ofUvlockY90(this.sideModel(path)),
                                 EAST, TRUE
                         ),
                         new MultipartBlockState.Part(
-                                Variant.ofUvlockY(this.sideModel(path), ROTATION_180),
+                                Variant.ofUvlockY180(this.sideModel(path)),
                                 SOUTH, TRUE
                         ),
                         new MultipartBlockState.Part(
-                                Variant.ofUvlockY(this.sideModel(path), ROTATION_270),
+                                Variant.ofUvlockY270(this.sideModel(path)),
                                 WEST, TRUE
                         )
                 )
