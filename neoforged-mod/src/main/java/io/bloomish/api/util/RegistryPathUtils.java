@@ -25,8 +25,29 @@ public final class RegistryPathUtils {
         return location.getPath();
     }
 
+    public static String findBlockNamespace(Block block) {
+        return findNamespace(BuiltInRegistries.BLOCK, block);
+    }
+
+    public static String findItemNamespace(Item item) {
+        return findNamespace(BuiltInRegistries.ITEM, item);
+    }
+
+    public static <T> String findNamespace(Registry<T> registry, T value) {
+        ResourceLocation location = Objects.requireNonNull(registry.getKey(value));
+        return location.getNamespace();
+    }
+
+    public static String findBlockNamespacedPath(Block block) {
+        return findNamespacedPath(BuiltInRegistries.BLOCK, block);
+    }
+
     public static String findBlockNamespacedPath(Block block, String prefix) {
         return findNamespacedPath(BuiltInRegistries.BLOCK, block, prefix);
+    }
+
+    public static String findItemNamespacedPath(Item item) {
+        return findNamespacedPath(BuiltInRegistries.ITEM, item);
     }
 
     public static String findItemNamespacedPath(Item item, String prefix) {
@@ -42,6 +63,6 @@ public final class RegistryPathUtils {
         ResourceLocation location = Objects.requireNonNull(registry.getKey(value));
         return prefix.isBlank()
                 ? location.toString()
-                : ResourceLocationUtils.joinNamespacedPath(location, prefix, location.getPath());
+                : ResourceLocationUtils.joinNamespacedPath(location, prefix);
     }
 }

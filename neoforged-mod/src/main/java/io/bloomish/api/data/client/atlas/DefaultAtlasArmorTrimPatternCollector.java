@@ -36,7 +36,7 @@ public class DefaultAtlasArmorTrimPatternCollector implements AtlasArmorTrimPatt
     @Override
     public List<String> collectPatterns() {
         this.channelBus.<ResourceLocation>forEachDrain(DataChannels.ATLAS_ARMOR_TRIM_PROVIDER_TRIM_PATTERNS, location -> {
-            String path = ResourceLocationUtils.joinNamespacedPath(location, TRIMS_MODELS_ARMOR_PATH, location.getPath());
+            String path = ResourceLocationUtils.joinNamespacedPath(location, TRIMS_MODELS_ARMOR_PATH);
             this.addPattern(path);
         });
         return List.copyOf(this.trimPatterns);

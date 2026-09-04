@@ -40,8 +40,8 @@ public final class ResourceLocationUtils {
         return joinNamespacedPath(MinecraftConstants.MINECRAFT, pathPart, pathParts);
     }
 
-    public static String joinNamespacedPath(ResourceLocation location, String pathPart, String... pathParts) {
-        return joinNamespacedPath(location.getNamespace(), pathPart, pathParts);
+    public static String joinNamespacedPath(ResourceLocation location, String prefix) {
+        return joinNamespacedPath(location.getNamespace(), prefix, location.getPath());
     }
 
     public static String joinNamespacedPath(String namespace, String pathPart, String... pathParts) {

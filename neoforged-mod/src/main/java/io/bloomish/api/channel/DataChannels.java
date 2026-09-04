@@ -25,6 +25,7 @@ public final class DataChannels {
     public static final DataChannel ITEM_MODEL_PROVIDER_POTION_ITEMS = new DataChannel("item_model_provider_potion_items");
     public static final DataChannel ITEM_MODEL_PROVIDER_SPAWN_EGG_ITEMS = new DataChannel("item_model_provider_spawn_egg_items");
     public static final DataChannel ITEM_MODEL_PROVIDER_PARENT_BLOCK_ITEMS = new DataChannel("item_model_provider_parent_block_items");
+    public static final DataChannel ITEM_MODEL_PROVIDER_BUTTON_PARENT_BLOCK_ITEMS = new DataChannel("item_model_provider_button_parent_block_items");
 
     public static final DataChannel BLOCK_STATE_PROVIDER_SINGLE_VARIANT_BLOCKS = new DataChannel("block_state_provider_single_variant_blocks");
     public static final DataChannel BLOCK_STATE_PROVIDER_COLUMN_BLOCKS = new DataChannel("block_state_provider_column_blocks");
@@ -38,6 +39,8 @@ public final class DataChannels {
     public static final DataChannel BLOCK_STATE_PROVIDER_AXIS_BLOCKS = new DataChannel("block_state_provider_axis_blocks");
     public static final DataChannel BLOCK_STATE_PROVIDER_FENCE_BLOCKS = new DataChannel("block_state_provider_fence_blocks");
     public static final DataChannel BLOCK_STATE_PROVIDER_WALL_BLOCKS = new DataChannel("block_state_provider_wall_blocks");
+
+    public static final DataChannel BLOCK_MODEL_PROVIDER_BUTTON_BLOCKS = new DataChannel("block_model_provider_button_blocks");
 
     private DataChannels() {
     }

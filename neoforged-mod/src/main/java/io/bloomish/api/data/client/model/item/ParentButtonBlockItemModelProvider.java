@@ -25,7 +25,7 @@ public class ParentButtonBlockItemModelProvider extends AbstractItemModelProvide
 
     @Override
     protected void registerData() {
-        this.channelBus.<Holder<? extends BlockItem>>forEachDrain(DataChannels.ITEM_MODEL_PROVIDER_PARENT_BLOCK_ITEMS, holder -> {
+        this.channelBus.<Holder<? extends BlockItem>>forEachDrain(DataChannels.ITEM_MODEL_PROVIDER_BUTTON_PARENT_BLOCK_ITEMS, holder -> {
             Item item = holder.value();
             String path = this.blockPath(item);
             ItemModel itemModel = LayeredItemModel.ofParent(path);

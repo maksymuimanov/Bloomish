@@ -36,7 +36,7 @@ public class DefaultAtlasArmorTrimMaterialCollector implements AtlasArmorTrimMat
     public Map<String, String> collectMaterials() {
         this.channelBus.<String, ResourceLocation>forEachDrain(DataChannels.ATLAS_ARMOR_TRIM_PROVIDER_TRIM_MATERIALS,
                 (assetName, location) ->
-                        this.trimMaterials.put(assetName, ResourceLocationUtils.joinNamespacedPath(location, TRIMS_COLOR_PALETTES_PATH, location.getPath())));
+                        this.trimMaterials.put(assetName, ResourceLocationUtils.joinNamespacedPath(location, TRIMS_COLOR_PALETTES_PATH)));
         return Map.copyOf(this.trimMaterials);
     }
 }
