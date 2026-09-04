@@ -5,6 +5,7 @@ import io.bloomish.api.channel.ValueChannelBus;
 import io.bloomish.api.data.client.model.item.model.ItemModel;
 import io.bloomish.api.data.client.model.item.model.LayeredItemModel;
 import io.bloomish.api.engine.metadata.annotation.injection.Injected;
+import io.bloomish.api.util.StringUtils;
 import net.minecraft.core.Holder;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.ArmorItem;
@@ -18,7 +19,7 @@ public class TrimmedArmorItemModelProvider extends AbstractItemModelProvider {
     private static final String[] TRIM_MATERIALS = {"quartz", "iron", "netherite", "redstone", "copper", "gold", "emerald", "diamond", "lapis", "amethyst"};
     private static final float TRIM_TYPE_COEFFICIENT = 10F;
     private static final String MINECRAFT_TRIM_TYPE = "minecraft:trim_type";
-    private static final String TRIM_IDENTIFIER = "_trim_";
+    private static final String TRIM_SUFFIX = "trim";
     private static final String TRIM_PATH_PREFIX = "trims";
     private static final String ITEMS_DIRECTORY = "items";
     private final ValueChannelBus channelBus;
@@ -51,7 +52,7 @@ public class TrimmedArmorItemModelProvider extends AbstractItemModelProvider {
     }
 
     private void addTrimToOverrides(int index, String path, String trimMaterial, List<LayeredItemModel.Override> overrides) {
-        String trimModelPath = path + TRIM_IDENTIFIER + trimMaterial;
+        String trimModelPath = StringUtils.joinWithUnderscore(path, TRIM_SUFFIX, trimMaterial);
         float trimTypePropertyValue = (index + 1) / TRIM_TYPE_COEFFICIENT;
         Map<String, Float> predicate = Map.of(
                 MINECRAFT_TRIM_TYPE, trimTypePropertyValue
@@ -62,9 +63,8 @@ public class TrimmedArmorItemModelProvider extends AbstractItemModelProvider {
 
     private void createTrimmedArmorItemModel(ArmorItem item, String parent, String trimMaterial, String path) {
         String armorTypeName = item.getType().getName();
-        String trimeMaterialSuffix = TRIM_IDENTIFIER + trimMaterial;
-        String trimmedArmorModelPath = this.minecraftPath(TRIM_PATH_PREFIX, ITEMS_DIRECTORY, armorTypeName + trimeMaterialSuffix);
+        String trimmedArmorModelPath = this.minecraftPath(TRIM_PATH_PREFIX, ITEMS_DIRECTORY, StringUtils.joinWithUnderscore(armorTypeName, TRIM_SUFFIX, trimMaterial));
         ItemModel trimmedArmorItemModel = LayeredItemModel.ofLayers(parent, List.of(path, trimmedArmorModelPath));
-        this.addItemModel(item, trimmedArmorItemModel, trimeMaterialSuffix);
+        this.addItemModel(item, trimmedArmorItemModel, StringUtils.joinWithUnderscore(TRIM_SUFFIX, trimMaterial));
     }
 }

@@ -5,6 +5,7 @@ import io.bloomish.api.channel.ValueChannelBus;
 import io.bloomish.api.data.client.model.item.model.ItemModel;
 import io.bloomish.api.data.client.model.item.model.LayeredItemModel;
 import io.bloomish.api.engine.metadata.annotation.injection.Injected;
+import io.bloomish.api.util.StringUtils;
 import net.minecraft.core.Holder;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.Item;
@@ -21,7 +22,6 @@ public class BowItemModelProvider extends AbstractItemModelProvider {
     private static final int IS_PULLING = 1;
     private static final float IS_HALF_PULLED = 0.65F;
     private static final float IS_NEARLY_END_PULLED = 0.9F;
-    private static final String PULLING_IDENTIFIER = "_pulling_";
     private final ValueChannelBus channelBus;
 
     public BowItemModelProvider(PackOutput packOutput, ValueChannelBus channelBus) {
@@ -83,7 +83,7 @@ public class BowItemModelProvider extends AbstractItemModelProvider {
             Map<String, Number> predicate,
             List<LayeredItemModel.Override> overrides
     ) {
-        String pullingModelSuffix = PULLING_IDENTIFIER + index;
+        String pullingModelSuffix = StringUtils.joinWithUnderscore(PULL_PATH, String.valueOf(index));
         this.createSingleLayerOverrideModel(pullingModelSuffix, item, parent, path, predicate, overrides);
     }
 }

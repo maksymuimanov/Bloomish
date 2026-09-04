@@ -4,6 +4,7 @@ import io.bloomish.api.data.client.model.AbstractModelProvider;
 import io.bloomish.api.data.client.model.item.model.ItemModel;
 import io.bloomish.api.data.client.model.item.model.LayeredItemModel;
 import io.bloomish.api.util.RegistryPathUtils;
+import io.bloomish.api.util.StringUtils;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.Item;
 
@@ -18,6 +19,21 @@ public abstract class AbstractItemModelProvider extends AbstractModelProvider<It
         super(packOutput);
     }
 
+    protected void createSingleLayerOverrideModel(
+            String suffix,
+            Item item,
+            String parent,
+            String path,
+            Map<String, Number> predicate,
+            List<LayeredItemModel.Override> overrides
+    ) {
+        String modelPath = StringUtils.joinWithUnderscore(path, suffix);
+        LayeredItemModel.Override override = new LayeredItemModel.Override(modelPath, predicate);
+        overrides.add(override);
+        ItemModel itemModel = LayeredItemModel.ofLayer(parent, modelPath);
+        this.addItemModel(item, itemModel, suffix);
+    }
+
     protected void addItemModel(Item item, ItemModel itemModel) {
         this.addItemModel(item, itemModel, "");
     }
@@ -28,20 +44,5 @@ public abstract class AbstractItemModelProvider extends AbstractModelProvider<It
 
     protected String itemPath(Item item) {
         return RegistryPathUtils.findItemNamespacedPath(item, ITEM_PATH);
-    }
-
-    protected void createSingleLayerOverrideModel(
-            String suffix,
-            Item item,
-            String parent,
-            String path,
-            Map<String, Number> predicate,
-            List<LayeredItemModel.Override> overrides
-    ) {
-        String modelPath = path + suffix;
-        LayeredItemModel.Override override = new LayeredItemModel.Override(modelPath, predicate);
-        overrides.add(override);
-        ItemModel itemModel = LayeredItemModel.ofLayer(parent, modelPath);
-        this.addItemModel(item, itemModel, suffix);
     }
 }

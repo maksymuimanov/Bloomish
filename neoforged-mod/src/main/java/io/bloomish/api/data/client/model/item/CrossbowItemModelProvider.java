@@ -5,6 +5,7 @@ import io.bloomish.api.channel.ValueChannelBus;
 import io.bloomish.api.data.client.model.item.model.ItemModel;
 import io.bloomish.api.data.client.model.item.model.LayeredItemModel;
 import io.bloomish.api.engine.metadata.annotation.injection.Injected;
+import io.bloomish.api.util.StringUtils;
 import net.minecraft.core.Holder;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.Item;
@@ -25,9 +26,6 @@ public class CrossbowItemModelProvider extends AbstractItemModelProvider {
     private static final int IS_FIREWORK = 1;
     private static final float IS_HALF_PULLED = 0.58F;
     private static final float IS_FULLY_PULLED = 1F;
-    private static final String PULLING_IDENTIFIER = "_pulling_";
-    private static final String CHARGED_IDENTIFIER = "_arrow";
-    private static final String FIREWORK_IDENTIFIER = "_firework";
     private final ValueChannelBus channelBus;
 
     public CrossbowItemModelProvider(PackOutput packOutput, ValueChannelBus channelBus) {
@@ -91,7 +89,7 @@ public class CrossbowItemModelProvider extends AbstractItemModelProvider {
             Map<String, Number> predicate,
             List<LayeredItemModel.Override> overrides
     ) {
-        String pullingModelSuffix = PULLING_IDENTIFIER + index;
+        String pullingModelSuffix =  StringUtils.joinWithUnderscore(PULLING_PATH, String.valueOf(index));
         this.createSingleLayerOverrideModel(pullingModelSuffix, item, parent, path, predicate, overrides);
     }
 
@@ -99,7 +97,7 @@ public class CrossbowItemModelProvider extends AbstractItemModelProvider {
         Map<String, Number> predicate = Map.of(
                 this.minecraftPath(CHARGED_PATH), IS_CHARGED
         );
-        this.createSingleLayerOverrideModel(CHARGED_IDENTIFIER, item, parent, path, predicate, overrides);
+        this.createSingleLayerOverrideModel(CHARGED_PATH, item, parent, path, predicate, overrides);
     }
 
     private void createFirework(Item item, String parent, String path, List<LayeredItemModel.Override> overrides) {
@@ -107,6 +105,6 @@ public class CrossbowItemModelProvider extends AbstractItemModelProvider {
                 this.minecraftPath(CHARGED_PATH), IS_CHARGED,
                 this.minecraftPath(FIREWORK_PATH), IS_FIREWORK
         );
-        this.createSingleLayerOverrideModel(FIREWORK_IDENTIFIER, item, parent, path, predicate, overrides);
+        this.createSingleLayerOverrideModel(FIREWORK_PATH, item, parent, path, predicate, overrides);
     }
 }
