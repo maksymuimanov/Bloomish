@@ -2,12 +2,12 @@ package io.bloomish.api.engine.metadata.strategy.type.data;
 
 import io.bloomish.api.data.server.modifier.ApiGlobalLootModifierProvider;
 import io.bloomish.api.data.server.modifier.ChestModifierDescription;
-import io.bloomish.api.engine.initialization.initializer.StrategyInitializer;
 import io.bloomish.api.engine.metadata.annotation.data.GenerateChestLootModifier;
 import io.bloomish.api.engine.metadata.annotation.injection.Strategy;
 import io.bloomish.api.engine.metadata.pool.ProcessorScope;
 import io.bloomish.api.engine.metadata.processor.DataEventHandlerAnnotationProcessorAdapter;
 import io.bloomish.api.engine.metadata.strategy.type.ClassAnnotationStrategy;
+import io.bloomish.api.initialization.initializer.StrategyInitializer;
 import io.bloomish.api.util.ReflectionUtils;
 
 @Strategy(StrategyInitializer.DEFAULT_CLASS_DATA)

@@ -1,13 +1,13 @@
 package io.bloomish.api.engine.metadata.strategy.field.event.creative;
 
-import io.bloomish.api.engine.event.handler.CreativeModeTabEventHandler;
-import io.bloomish.api.engine.initialization.initializer.StrategyInitializer;
 import io.bloomish.api.engine.metadata.annotation.event.creative.AddCreativeModeTab;
 import io.bloomish.api.engine.metadata.annotation.injection.Strategy;
 import io.bloomish.api.engine.metadata.constant.CreativeModeTabType;
 import io.bloomish.api.engine.metadata.pool.ProcessorScope;
 import io.bloomish.api.engine.metadata.processor.CreativeModeTabEventHandlerAnnotationProcessorAdapter;
 import io.bloomish.api.engine.metadata.strategy.field.FieldAnnotationStrategy;
+import io.bloomish.api.event.listener.CreativeModeTabEventListener;
+import io.bloomish.api.initialization.initializer.StrategyInitializer;
 import io.bloomish.api.util.MapUtils;
 import io.bloomish.api.util.ReflectionUtils;
 import net.minecraft.core.Holder;
@@ -25,7 +25,7 @@ public class AddCreativeModeTabStrategy implements FieldAnnotationStrategy<AddCr
         CreativeModeTabType[] tabTypes = annotation.value();
         for (CreativeModeTabType tabType : tabTypes) {
             ResourceKey<CreativeModeTab> tab = tabType.getCreativeTab();
-            MapUtils.putToListMap(CreativeModeTabEventHandler.CREATIVE_MODE_TABS_CONTENT, tab, item);
+            MapUtils.putToListMap(CreativeModeTabEventListener.CREATIVE_MODE_TABS_CONTENT, tab, item);
         }
     }
 

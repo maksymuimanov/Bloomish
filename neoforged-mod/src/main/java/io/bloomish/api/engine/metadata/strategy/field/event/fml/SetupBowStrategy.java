@@ -1,13 +1,13 @@
 package io.bloomish.api.engine.metadata.strategy.field.event.fml;
 
-import io.bloomish.api.engine.event.handler.FMLClientSetupEventHandler;
-import io.bloomish.api.engine.event.handler.FovModifierEventHandler;
-import io.bloomish.api.engine.initialization.initializer.StrategyInitializer;
 import io.bloomish.api.engine.metadata.annotation.event.fml.SetupBow;
 import io.bloomish.api.engine.metadata.annotation.injection.Strategy;
 import io.bloomish.api.engine.metadata.pool.ProcessorScope;
 import io.bloomish.api.engine.metadata.processor.FMLClientSetupEventHandlerAnnotationProcessorAdapter;
 import io.bloomish.api.engine.metadata.strategy.field.FieldAnnotationStrategy;
+import io.bloomish.api.event.listener.FMLClientSetupEventListener;
+import io.bloomish.api.event.listener.FovModifierEventListener;
+import io.bloomish.api.initialization.initializer.StrategyInitializer;
 import io.bloomish.api.util.ReflectionUtils;
 import net.minecraft.core.Holder;
 import net.minecraft.world.item.Item;
@@ -19,8 +19,8 @@ public class SetupBowStrategy implements FieldAnnotationStrategy<SetupBow> {
     @Override
     public void execute(Field field, Object object, SetupBow annotation) throws Exception {
         Holder<? extends Item> bow = ReflectionUtils.getFieldValue(field, object);
-        FovModifierEventHandler.BOWS.add(bow);
-        FMLClientSetupEventHandler.BOWS.add(bow);
+        FovModifierEventListener.BOWS.add(bow);
+        FMLClientSetupEventListener.BOWS.add(bow);
     }
 
     @Override

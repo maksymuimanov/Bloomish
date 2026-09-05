@@ -1,7 +1,7 @@
 package io.bloomish.api.engine.context;
 
 import io.bloomish.api.ApiMod;
-import io.bloomish.api.engine.initialization.scanner.ModClassScanner;
+import io.bloomish.api.initialization.scanner.ModClassScanner;
 import net.neoforged.fml.common.Mod;
 
 import java.util.LinkedHashSet;

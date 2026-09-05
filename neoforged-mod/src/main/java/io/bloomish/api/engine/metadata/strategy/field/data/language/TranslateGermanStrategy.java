@@ -1,9 +1,9 @@
 package io.bloomish.api.engine.metadata.strategy.field.data.language;
 
 import io.bloomish.api.engine.event.data.client.language.provider.GermanProvider;
-import io.bloomish.api.engine.initialization.initializer.StrategyInitializer;
 import io.bloomish.api.engine.metadata.annotation.data.language.TranslateGerman;
 import io.bloomish.api.engine.metadata.annotation.injection.Strategy;
+import io.bloomish.api.initialization.initializer.StrategyInitializer;
 
 @Strategy(StrategyInitializer.DEFAULT_FIELD_DATA)
 public class TranslateGermanStrategy extends TranslationStrategy<TranslateGerman> {

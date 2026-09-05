@@ -1,12 +1,12 @@
 package io.bloomish.api.engine.metadata.strategy.field.data.tag;
 
 import io.bloomish.api.data.server.tag.GameEventTagsProvider;
-import io.bloomish.api.engine.initialization.initializer.StrategyInitializer;
 import io.bloomish.api.engine.metadata.annotation.data.tag.AddGameEventTag;
 import io.bloomish.api.engine.metadata.annotation.injection.Strategy;
 import io.bloomish.api.engine.metadata.pool.ProcessorScope;
 import io.bloomish.api.engine.metadata.processor.DataEventHandlerAnnotationProcessorAdapter;
 import io.bloomish.api.engine.metadata.strategy.field.FieldAnnotationStrategy;
+import io.bloomish.api.initialization.initializer.StrategyInitializer;
 import io.bloomish.api.util.MapUtils;
 import io.bloomish.api.util.ReflectionUtils;
 import net.minecraft.core.Holder;

@@ -4,7 +4,6 @@ import io.bloomish.api.ApiMod;
 import io.bloomish.api.engine.config.ConfigLayer;
 import io.bloomish.api.engine.config.ConfigLayerCustomizer;
 import io.bloomish.api.engine.context.ModContext;
-import io.bloomish.api.engine.event.EventLayer;
 import io.bloomish.api.engine.finalization.FinalizationLayer;
 import io.bloomish.api.engine.finalization.FinalizationLayerCustomizer;
 import io.bloomish.api.engine.initialization.InitializationLayer;
@@ -52,12 +51,6 @@ public class EngineBuilder {
         return this.configureLayer(metadataLayer, layerCustomizer);
     }
 
-    public EngineBuilder eventLayer() {
-        EventLayer eventLayer = new EventLayer();
-        this.addLayer(eventLayer);
-        return this;
-    }
-
     public EngineBuilder configLayer() {
         return this.configLayer(layerCustomizer -> {});
     }
@@ -98,7 +91,7 @@ public class EngineBuilder {
 
     public LayerContainer build() {
         this.layerContainer.getLayers().forEach(this::processLayer);
-        ApiMod.LOGGER.info("Mod: {} has been registered as a Bloomish component!", ModContext.currentMod.getModId());
+        ApiMod.LOGGER.info("Mod: {} has been registered as a Bloomish component!", ModContext.getModId());
         return this.layerContainer;
     }
 

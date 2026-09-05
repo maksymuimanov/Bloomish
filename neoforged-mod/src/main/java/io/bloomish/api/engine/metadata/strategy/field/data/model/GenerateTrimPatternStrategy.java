@@ -2,12 +2,12 @@ package io.bloomish.api.engine.metadata.strategy.field.data.model;
 
 import io.bloomish.api.data.server.trim.pattern.ApiTrimPatternProvider;
 import io.bloomish.api.data.server.trim.pattern.TrimPatternDescription;
-import io.bloomish.api.engine.initialization.initializer.StrategyInitializer;
 import io.bloomish.api.engine.metadata.annotation.data.model.GenerateTrimPattern;
 import io.bloomish.api.engine.metadata.annotation.injection.Strategy;
 import io.bloomish.api.engine.metadata.pool.ProcessorScope;
 import io.bloomish.api.engine.metadata.processor.DataEventHandlerAnnotationProcessorAdapter;
 import io.bloomish.api.engine.metadata.strategy.field.FieldAnnotationStrategy;
+import io.bloomish.api.initialization.initializer.StrategyInitializer;
 import io.bloomish.api.util.ReflectionUtils;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.armortrim.TrimPattern;

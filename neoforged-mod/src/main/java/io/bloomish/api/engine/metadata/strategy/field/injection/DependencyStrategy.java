@@ -2,12 +2,12 @@ package io.bloomish.api.engine.metadata.strategy.field.injection;
 
 import io.bloomish.api.engine.context.DefaultObjectRegistry;
 import io.bloomish.api.engine.context.ObjectRegistry;
-import io.bloomish.api.engine.initialization.initializer.StrategyInitializer;
 import io.bloomish.api.engine.metadata.annotation.injection.Dependency;
 import io.bloomish.api.engine.metadata.annotation.injection.Strategy;
 import io.bloomish.api.engine.metadata.pool.ProcessorScope;
 import io.bloomish.api.engine.metadata.processor.InjectionAnnotationProcessor;
 import io.bloomish.api.engine.metadata.strategy.field.FieldAnnotationStrategy;
+import io.bloomish.api.initialization.initializer.StrategyInitializer;
 import net.neoforged.fml.ModList;
 
 import java.lang.reflect.Field;

@@ -1,12 +1,12 @@
 package io.bloomish.api.engine.metadata.strategy.field.event.block;
 
-import io.bloomish.api.engine.event.handler.BlockEntityTypeEventHandler;
-import io.bloomish.api.engine.initialization.initializer.StrategyInitializer;
 import io.bloomish.api.engine.metadata.annotation.event.block.AddBlockEntityType;
 import io.bloomish.api.engine.metadata.annotation.injection.Strategy;
 import io.bloomish.api.engine.metadata.pool.ProcessorScope;
 import io.bloomish.api.engine.metadata.processor.BlockEntityTypeEventHandlerAnnotationProcessorAdapter;
 import io.bloomish.api.engine.metadata.strategy.field.FieldAnnotationStrategy;
+import io.bloomish.api.event.listener.BlockEntityTypeEventListener;
+import io.bloomish.api.initialization.initializer.StrategyInitializer;
 import io.bloomish.api.util.DeprecatedRegistryUtils;
 import io.bloomish.api.util.MapUtils;
 import io.bloomish.api.util.ReflectionUtils;
@@ -22,7 +22,7 @@ public class AddBlockEntityTypeStrategy implements FieldAnnotationStrategy<AddBl
     public void execute(Field field, Object object, AddBlockEntityType annotation) throws Exception {
         Holder<Block> block = ReflectionUtils.getFieldValue(field, object);
         BlockEntityType<?> blockEntityType = DeprecatedRegistryUtils.getBlockEntityType(annotation.value());
-        MapUtils.putToListMap(BlockEntityTypeEventHandler.BLOCKS, blockEntityType, block);
+        MapUtils.putToListMap(BlockEntityTypeEventListener.BLOCKS, blockEntityType, block);
     }
 
     @Override

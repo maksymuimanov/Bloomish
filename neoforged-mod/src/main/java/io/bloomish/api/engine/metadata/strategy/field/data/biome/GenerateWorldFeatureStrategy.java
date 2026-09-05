@@ -4,12 +4,12 @@ import io.bloomish.api.data.server.biome.GenerationDescriptionContainer;
 import io.bloomish.api.data.server.biome.configuration.ConfiguredFeatureDefinition;
 import io.bloomish.api.data.server.biome.modifier.BiomeModifierDefinition;
 import io.bloomish.api.data.server.biome.placement.PlacedFeatureDefinition;
-import io.bloomish.api.engine.initialization.initializer.StrategyInitializer;
 import io.bloomish.api.engine.metadata.annotation.data.biome.GenerateWorldFeature;
 import io.bloomish.api.engine.metadata.annotation.injection.Strategy;
 import io.bloomish.api.engine.metadata.pool.ProcessorScope;
 import io.bloomish.api.engine.metadata.processor.DataEventHandlerAnnotationProcessorAdapter;
 import io.bloomish.api.engine.metadata.strategy.field.FieldAnnotationStrategy;
+import io.bloomish.api.initialization.initializer.StrategyInitializer;
 import io.bloomish.api.util.ReflectionUtils;
 
 import java.lang.reflect.Field;

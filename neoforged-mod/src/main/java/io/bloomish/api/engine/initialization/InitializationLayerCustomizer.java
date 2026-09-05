@@ -1,9 +1,9 @@
 package io.bloomish.api.engine.initialization;
 
 import io.bloomish.api.engine.LayerCustomizer;
-import io.bloomish.api.engine.initialization.initializer.*;
-import io.bloomish.api.engine.initialization.scanner.ClasspathModClassScanner;
-import io.bloomish.api.engine.initialization.scanner.ModClassScanner;
+import io.bloomish.api.initialization.initializer.*;
+import io.bloomish.api.initialization.scanner.ClasspathModClassScanner;
+import io.bloomish.api.initialization.scanner.ModClassScanner;
 
 import java.util.List;
 

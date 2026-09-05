@@ -2,12 +2,12 @@ package io.bloomish.api.engine.metadata.strategy.field.data.properties;
 
 import io.bloomish.api.data.server.map.ApiDataMapProvider;
 import io.bloomish.api.data.server.map.RaidHeroGiftDto;
-import io.bloomish.api.engine.initialization.initializer.StrategyInitializer;
 import io.bloomish.api.engine.metadata.annotation.data.properties.RaidHeroGift;
 import io.bloomish.api.engine.metadata.annotation.injection.Strategy;
 import io.bloomish.api.engine.metadata.pool.ProcessorScope;
 import io.bloomish.api.engine.metadata.processor.DataEventHandlerAnnotationProcessorAdapter;
 import io.bloomish.api.engine.metadata.strategy.field.FieldAnnotationStrategy;
+import io.bloomish.api.initialization.initializer.StrategyInitializer;
 import io.bloomish.api.util.ReflectionUtils;
 import net.minecraft.core.Holder;
 import net.minecraft.world.entity.npc.VillagerProfession;

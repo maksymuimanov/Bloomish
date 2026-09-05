@@ -13,14 +13,14 @@ import net.neoforged.neoforgespi.locating.IModFile;
 import org.objectweb.asm.Type;
 
 import java.lang.annotation.Annotation;
+import java.lang.annotation.Documented;
+import java.lang.annotation.Retention;
+import java.lang.annotation.Target;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Comparator;
-import java.util.Set;
+import java.util.*;
 import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
@@ -29,6 +29,21 @@ import java.util.stream.Stream;
 // BIG TODO :(
 public final class ReflectionUtils {
     private ReflectionUtils() {
+    }
+
+    public static Set<Annotation> getDeepTypeAnnotations(Class<?> clazz) {
+        Set<Annotation> annotations = new HashSet<>();
+        for (Annotation annotation : clazz.getDeclaredAnnotations()) {
+            Class<? extends Annotation> annotationType = annotation.annotationType();
+            if (!Retention.class.equals(annotationType)
+                    && !Target.class.equals(annotationType)
+                    && !Documented.class.equals(annotationType)) {
+                annotations.add(annotation);
+                Set<Annotation> childAnnotations = getDeepTypeAnnotations(annotationType);
+                annotations.addAll(childAnnotations);
+            }
+        }
+        return annotations;
     }
 
     public static <T> T createObject(Class<? extends T> clazz) {
@@ -41,31 +56,12 @@ public final class ReflectionUtils {
         }
     }
 
-    public static <T> T getFieldValue(Class<?> clazz, String fieldName, Object object) {
-        try {
-            Field field = clazz.getDeclaredField(fieldName);
-            field.setAccessible(true);
-            return getFieldValue(field, object);
-        } catch (NoSuchFieldException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
     @SuppressWarnings("unchecked")
     public static <T> T getFieldValue(Field field, Object object) {
         try {
+            field.setAccessible(true);
             return (T) field.get(object);
         } catch (IllegalAccessException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    public static <T> T invokeMethod(Class<?> clazz, String methodName, Object object) {
-        try {
-            Method method = clazz.getDeclaredMethod(methodName);
-            method.setAccessible(true);
-            return invokeMethod(method, object);
-        } catch (NoSuchMethodException e) {
             throw new RuntimeException(e);
         }
     }
@@ -73,6 +69,7 @@ public final class ReflectionUtils {
     @SuppressWarnings("unchecked")
     public static <T> T invokeMethod(Method method, Object object) {
         try {
+            method.setAccessible(true);
             return (T) method.invoke(object);
         } catch (IllegalAccessException | InvocationTargetException e) {
             throw new RuntimeException(e);

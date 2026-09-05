@@ -1,12 +1,12 @@
 package io.bloomish.api.engine.metadata.strategy.field.event.particle;
 
-import io.bloomish.api.engine.event.handler.RegisterParticleProvidersEventHandler;
-import io.bloomish.api.engine.initialization.initializer.StrategyInitializer;
 import io.bloomish.api.engine.metadata.annotation.event.particle.RegisterParticleProvider;
 import io.bloomish.api.engine.metadata.annotation.injection.Strategy;
 import io.bloomish.api.engine.metadata.pool.ProcessorScope;
 import io.bloomish.api.engine.metadata.processor.RegisterParticleProvidersEventHandlerAnnotationProcessorAdapter;
 import io.bloomish.api.engine.metadata.strategy.field.FieldAnnotationStrategy;
+import io.bloomish.api.event.listener.RegisterParticleProvidersEventListener;
+import io.bloomish.api.initialization.initializer.StrategyInitializer;
 import io.bloomish.api.util.ReflectionUtils;
 import net.minecraft.client.particle.ParticleProvider;
 import net.minecraft.client.particle.SpriteSet;
@@ -26,7 +26,7 @@ public class RegisterParticleProviderStrategy implements FieldAnnotationStrategy
         Holder<? extends ParticleType<ParticleOptions>> particleType = ReflectionUtils.getFieldValue(field, object);
         Class<? extends ParticleProvider<?>> providerClass = annotation.value();
         Constructor<? extends ParticleProvider<?>> providerConstructor = providerClass.getDeclaredConstructor(SpriteSet.class);
-        RegisterParticleProvidersEventHandler.PROVIDER_REGISTRIES.add(event -> {
+        RegisterParticleProvidersEventListener.PROVIDER_REGISTRIES.add(event -> {
             event.registerSpriteSet(particleType.value(), spriteSet -> {
                 try {
                     return (ParticleProvider<ParticleOptions>) providerConstructor.newInstance(spriteSet);

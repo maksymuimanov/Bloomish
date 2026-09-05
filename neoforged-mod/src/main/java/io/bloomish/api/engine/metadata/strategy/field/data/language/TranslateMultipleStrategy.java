@@ -1,6 +1,5 @@
 package io.bloomish.api.engine.metadata.strategy.field.data.language;
 
-import io.bloomish.api.engine.initialization.initializer.StrategyInitializer;
 import io.bloomish.api.engine.metadata.annotation.data.language.TranslateMultiple;
 import io.bloomish.api.engine.metadata.annotation.injection.Strategy;
 import io.bloomish.api.engine.metadata.pool.ProcessorScope;
@@ -8,6 +7,7 @@ import io.bloomish.api.engine.metadata.pool.SimpleStrategyPool;
 import io.bloomish.api.engine.metadata.pool.StrategyPool;
 import io.bloomish.api.engine.metadata.processor.DataEventHandlerAnnotationProcessorAdapter;
 import io.bloomish.api.engine.metadata.strategy.field.FieldAnnotationStrategy;
+import io.bloomish.api.initialization.initializer.StrategyInitializer;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;

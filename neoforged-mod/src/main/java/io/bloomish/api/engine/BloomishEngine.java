@@ -35,7 +35,6 @@ public class BloomishEngine {
                 .registryLayer()
                 .metadataLayer()
                 .configLayer()
-                .eventLayer()
                 .finalizationLayer();
     }
 

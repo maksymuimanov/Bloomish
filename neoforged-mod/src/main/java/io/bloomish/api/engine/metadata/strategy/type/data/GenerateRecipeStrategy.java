@@ -2,12 +2,12 @@ package io.bloomish.api.engine.metadata.strategy.type.data;
 
 import io.bloomish.api.data.server.recipe.ApiRecipeProvider;
 import io.bloomish.api.data.server.recipe.description.RecipeDescription;
-import io.bloomish.api.engine.initialization.initializer.StrategyInitializer;
 import io.bloomish.api.engine.metadata.annotation.data.GenerateRecipe;
 import io.bloomish.api.engine.metadata.annotation.injection.Strategy;
 import io.bloomish.api.engine.metadata.pool.ProcessorScope;
 import io.bloomish.api.engine.metadata.processor.DataEventHandlerAnnotationProcessorAdapter;
 import io.bloomish.api.engine.metadata.strategy.type.ClassAnnotationStrategy;
+import io.bloomish.api.initialization.initializer.StrategyInitializer;
 
 import java.lang.reflect.Constructor;
 

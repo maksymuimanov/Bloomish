@@ -1,11 +1,11 @@
 package io.bloomish.api.engine.metadata.strategy.method.injection;
 
-import io.bloomish.api.engine.initialization.initializer.StrategyInitializer;
 import io.bloomish.api.engine.metadata.annotation.injection.Execute;
 import io.bloomish.api.engine.metadata.annotation.injection.Strategy;
 import io.bloomish.api.engine.metadata.pool.ProcessorScope;
 import io.bloomish.api.engine.metadata.processor.InjectionAnnotationProcessor;
 import io.bloomish.api.engine.metadata.strategy.method.MethodAnnotationStrategy;
+import io.bloomish.api.initialization.initializer.StrategyInitializer;
 import net.neoforged.fml.ModList;
 
 import java.lang.reflect.Method;

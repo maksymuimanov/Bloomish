@@ -1,8 +1,8 @@
 package io.bloomish.api.engine.config;
 
+import io.bloomish.api.config.screen.ConfigShowcaser;
+import io.bloomish.api.config.screen.SimpleConfigShowcaser;
 import io.bloomish.api.engine.LayerCustomizer;
-import io.bloomish.api.engine.config.screen.ConfigShowcaser;
-import io.bloomish.api.engine.config.screen.SimpleConfigShowcaser;
 
 import java.util.List;
 

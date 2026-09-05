@@ -1,12 +1,12 @@
 package io.bloomish.api.engine.metadata.strategy.method.event.attributes;
 
-import io.bloomish.api.engine.event.handler.EntityAttributeEventHandler;
-import io.bloomish.api.engine.initialization.initializer.StrategyInitializer;
 import io.bloomish.api.engine.metadata.annotation.event.attributes.CreateEntityAttributes;
 import io.bloomish.api.engine.metadata.annotation.injection.Strategy;
 import io.bloomish.api.engine.metadata.pool.ProcessorScope;
 import io.bloomish.api.engine.metadata.processor.EntityAttributeEventHandlerAnnotationProcessorAdapter;
 import io.bloomish.api.engine.metadata.strategy.method.MethodAnnotationStrategy;
+import io.bloomish.api.event.listener.EntityAttributeEventListener;
+import io.bloomish.api.initialization.initializer.StrategyInitializer;
 import io.bloomish.api.util.DeprecatedRegistryUtils;
 import io.bloomish.api.util.ReflectionUtils;
 import net.minecraft.core.Holder;
@@ -24,7 +24,7 @@ public class CreateEntityAttributesStrategy implements MethodAnnotationStrategy<
         String[] entityTypeIds = annotation.value();
         for (String id : entityTypeIds) {
             Holder<? extends EntityType<?>> entityType = DeprecatedRegistryUtils.getEntityType(id).builtInRegistryHolder();
-            EntityAttributeEventHandler.ENTITY_ATTRIBUTES.put(entityType, attributes);
+            EntityAttributeEventListener.ENTITY_ATTRIBUTES.put(entityType, attributes);
         }
     }
 

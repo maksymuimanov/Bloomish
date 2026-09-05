@@ -4,12 +4,12 @@ import io.bloomish.api.data.preparer.tag.BiomeTagDynamicPreparer;
 import io.bloomish.api.data.preparer.tag.BlockTagDynamicPreparer;
 import io.bloomish.api.data.preparer.tag.EnchantmentTagDynamicPreparer;
 import io.bloomish.api.data.preparer.tag.ItemTagDynamicPreparer;
-import io.bloomish.api.engine.initialization.initializer.StrategyInitializer;
 import io.bloomish.api.engine.metadata.annotation.data.tag.AddTagContainer;
 import io.bloomish.api.engine.metadata.annotation.injection.Strategy;
 import io.bloomish.api.engine.metadata.pool.ProcessorScope;
 import io.bloomish.api.engine.metadata.processor.DataEventHandlerAnnotationProcessorAdapter;
 import io.bloomish.api.engine.metadata.strategy.type.ClassAnnotationStrategy;
+import io.bloomish.api.initialization.initializer.StrategyInitializer;
 
 @Strategy(StrategyInitializer.DEFAULT_CLASS_DATA)
 public class AddTagContainerStrategy implements ClassAnnotationStrategy<AddTagContainer> {

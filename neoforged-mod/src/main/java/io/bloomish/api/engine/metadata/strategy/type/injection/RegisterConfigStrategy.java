@@ -1,12 +1,12 @@
 package io.bloomish.api.engine.metadata.strategy.type.injection;
 
 import io.bloomish.api.engine.context.DefaultObjectRegistry;
-import io.bloomish.api.engine.initialization.initializer.StrategyInitializer;
 import io.bloomish.api.engine.metadata.annotation.injection.RegisterConfig;
 import io.bloomish.api.engine.metadata.annotation.injection.Strategy;
 import io.bloomish.api.engine.metadata.pool.ProcessorScope;
 import io.bloomish.api.engine.metadata.processor.ConfigAnnotationProcessor;
 import io.bloomish.api.engine.metadata.strategy.type.ClassAnnotationStrategy;
+import io.bloomish.api.initialization.initializer.StrategyInitializer;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.neoforge.common.ModConfigSpec;
 import org.apache.commons.lang3.tuple.Pair;
