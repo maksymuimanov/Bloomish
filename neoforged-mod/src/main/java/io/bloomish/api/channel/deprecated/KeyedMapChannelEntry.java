@@ -1,4 +1,4 @@
-package io.bloomish.api.channel;
+package io.bloomish.api.channel.deprecated;
 
 import java.util.Map;
 

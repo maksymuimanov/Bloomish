@@ -1,7 +1,7 @@
 package io.bloomish.api.data.client.blockstate;
 
-import io.bloomish.api.channel.DataChannels;
-import io.bloomish.api.channel.ValueChannelBus;
+import io.bloomish.api.channel.deprecated.DataChannels;
+import io.bloomish.api.channel.deprecated.ValueChannelBus;
 import io.bloomish.api.data.client.blockstate.property.Facing;
 import io.bloomish.api.data.client.blockstate.property.Half;
 import io.bloomish.api.data.client.blockstate.property.Open;

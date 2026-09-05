@@ -1,5 +1,6 @@
-package io.bloomish.api.channel;
+package io.bloomish.api.channel.deprecated;
 
+import io.bloomish.api.channel.ObjectChannel;
 import io.bloomish.api.engine.metadata.annotation.injection.Injected;
 import io.bloomish.api.util.CollectionUtils;
 
@@ -12,7 +13,7 @@ import java.util.stream.Stream;
 
 @Injected
 public class SimpleKeyedMapChannelBus implements KeyedMapChannelBus {
-    private final Map<DataChannel, Map<Object, Map<?, ?>>> channels;
+    private final Map<ObjectChannel, Map<Object, Map<?, ?>>> channels;
 
     public SimpleKeyedMapChannelBus() {
         this.channels = new ConcurrentHashMap<>();
@@ -20,7 +21,7 @@ public class SimpleKeyedMapChannelBus implements KeyedMapChannelBus {
 
     @SuppressWarnings("unchecked")
     @Override
-    public <K, K1, V1> void send(DataChannel channel, K key, K1 dataKey, V1 data) {
+    public <K, K1, V1> void send(ObjectChannel channel, K key, K1 dataKey, V1 data) {
         this.channels.compute(channel, (keyedQueueChannel, multiMap)  -> {
             if (multiMap == null) {
                 return CollectionUtils.hashMapOf(key, CollectionUtils.hashMapOf(dataKey, data));
@@ -31,13 +32,13 @@ public class SimpleKeyedMapChannelBus implements KeyedMapChannelBus {
     }
 
     @Override
-    public <K, K1, V1> void forEach(DataChannel channel, BiConsumer<? super K, Map<K1, V1>> consumer) {
+    public <K, K1, V1> void forEach(ObjectChannel channel, BiConsumer<? super K, Map<K1, V1>> consumer) {
         this.<K, K1, V1>stream(channel).forEach(entry -> consumer.accept(entry.key(), entry.value()));
     }
 
     @SuppressWarnings("unchecked")
     @Override
-    public <K, K1, V1> Stream<KeyedMapChannelEntry<K, K1, V1>> stream(DataChannel channel) {
+    public <K, K1, V1> Stream<KeyedMapChannelEntry<K, K1, V1>> stream(ObjectChannel channel) {
         return this.channels.getOrDefault(channel, new HashMap<>())
                 .entrySet()
                 .stream()
@@ -50,13 +51,13 @@ public class SimpleKeyedMapChannelBus implements KeyedMapChannelBus {
     }
 
     @Override
-    public <K, K1, V1> void forEachDrain(DataChannel channel, BiConsumer<? super K, Map<K1, V1>> consumer) {
+    public <K, K1, V1> void forEachDrain(ObjectChannel channel, BiConsumer<? super K, Map<K1, V1>> consumer) {
         this.<K, K1, V1>drain(channel).forEach(entry -> consumer.accept(entry.key(), entry.value()));
     }
 
     @SuppressWarnings("unchecked")
     @Override
-    public <K, K1, V1> Stream<KeyedMapChannelEntry<K, K1, V1>> drain(DataChannel channel) {
+    public <K, K1, V1> Stream<KeyedMapChannelEntry<K, K1, V1>> drain(ObjectChannel channel) {
         return Optional.ofNullable(this.channels.remove(channel))
                 .orElse(new HashMap<>())
                 .entrySet()

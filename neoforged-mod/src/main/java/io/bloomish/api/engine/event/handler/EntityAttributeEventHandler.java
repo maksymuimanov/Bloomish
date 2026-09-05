@@ -1,7 +1,7 @@
 package io.bloomish.api.engine.event.handler;
 
-import io.bloomish.api.channel.DataChannels;
-import io.bloomish.api.channel.KeyedChannelBus;
+import io.bloomish.api.channel.deprecated.DataChannels;
+import io.bloomish.api.channel.deprecated.KeyedChannelBus;
 import io.bloomish.api.engine.event.subscriber.ModEventBusSubscriber;
 import io.bloomish.api.engine.metadata.annotation.injection.Injected;
 import net.minecraft.core.Holder;

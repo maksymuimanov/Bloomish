@@ -2,6 +2,7 @@ package io.bloomish.api.util;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.stream.Stream;
 
 public final class CollectionUtils {
     private CollectionUtils() {
@@ -44,5 +45,9 @@ public final class CollectionUtils {
 
     private static <T> List<T> listFromNullableArray(T[] rest) {
         return rest == null ? List.of() : List.of(rest);
+    }
+
+    public static <T> Stream<T> toStream(Collection<T> collection) {
+        return collection == null ? Stream.empty() : collection.stream();
     }
 }

@@ -1,8 +1,8 @@
 package io.bloomish.api.engine.event.handler;
 
-import io.bloomish.api.channel.DataChannel;
-import io.bloomish.api.channel.DataChannels;
-import io.bloomish.api.channel.ValueChannelBus;
+import io.bloomish.api.channel.ObjectChannel;
+import io.bloomish.api.channel.deprecated.DataChannels;
+import io.bloomish.api.channel.deprecated.ValueChannelBus;
 import io.bloomish.api.engine.event.subscriber.ModEventBusSubscriber;
 import io.bloomish.api.engine.metadata.annotation.injection.Injected;
 import io.bloomish.api.fml.*;
@@ -49,7 +49,7 @@ public class FMLClientSetupEventHandler extends AbstractEventHandler<FMLClientSe
         });
     }
 
-    private <T> void applyClientSetup(DataChannel channel, FmlClientSetup<T> clientSetup) {
+    private <T> void applyClientSetup(ObjectChannel channel, FmlClientSetup<T> clientSetup) {
         this.channelBus.forEachDrain(channel, clientSetup::setup);
     }
 }

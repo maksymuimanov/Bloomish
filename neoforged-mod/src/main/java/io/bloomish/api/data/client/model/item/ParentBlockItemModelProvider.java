@@ -1,7 +1,7 @@
 package io.bloomish.api.data.client.model.item;
 
-import io.bloomish.api.channel.DataChannels;
-import io.bloomish.api.channel.ValueChannelBus;
+import io.bloomish.api.channel.deprecated.DataChannels;
+import io.bloomish.api.channel.deprecated.ValueChannelBus;
 import io.bloomish.api.data.client.model.item.model.ItemModel;
 import io.bloomish.api.data.client.model.item.model.LayeredItemModel;
 import io.bloomish.api.engine.metadata.annotation.injection.Injected;

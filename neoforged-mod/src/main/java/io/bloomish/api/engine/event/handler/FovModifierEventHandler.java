@@ -1,7 +1,7 @@
 package io.bloomish.api.engine.event.handler;
 
-import io.bloomish.api.channel.DataChannels;
-import io.bloomish.api.channel.ValueChannelBus;
+import io.bloomish.api.channel.deprecated.DataChannels;
+import io.bloomish.api.channel.deprecated.ValueChannelBus;
 import io.bloomish.api.engine.event.subscriber.NeoForgeEventBusSubscriber;
 import io.bloomish.api.engine.metadata.annotation.injection.Injected;
 import io.bloomish.api.fov.FovModifier;

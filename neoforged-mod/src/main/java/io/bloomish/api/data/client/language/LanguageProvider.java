@@ -1,7 +1,7 @@
 package io.bloomish.api.data.client.language;
 
-import io.bloomish.api.channel.DataChannels;
-import io.bloomish.api.channel.KeyedMapChannelBus;
+import io.bloomish.api.channel.deprecated.DataChannels;
+import io.bloomish.api.channel.deprecated.KeyedMapChannelBus;
 import io.bloomish.api.data.AbstractMultiDataProvider;
 import io.bloomish.api.data.DataTarget;
 import io.bloomish.api.data.client.ClientDataProvider;

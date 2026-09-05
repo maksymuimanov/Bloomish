@@ -1,5 +1,6 @@
-package io.bloomish.api.channel;
+package io.bloomish.api.channel.deprecated;
 
+import io.bloomish.api.channel.ObjectChannel;
 import io.bloomish.api.engine.metadata.annotation.injection.Injected;
 import io.bloomish.api.util.CollectionUtils;
 
@@ -13,7 +14,7 @@ import java.util.stream.Stream;
 
 @Injected
 public class SimpleValueChannelBus implements ValueChannelBus {
-    private final Map<DataChannel, Queue<?>> channels;
+    private final Map<ObjectChannel, Queue<?>> channels;
 
     public SimpleValueChannelBus() {
         this.channels = new ConcurrentHashMap<>();
@@ -21,7 +22,7 @@ public class SimpleValueChannelBus implements ValueChannelBus {
 
     @SuppressWarnings("unchecked")
     @Override
-    public <T> void send(DataChannel channel, T data) {
+    public <T> void send(ObjectChannel channel, T data) {
         this.channels.compute(channel, (ignored, queue)  -> {
             if (queue == null) {
                 return CollectionUtils.concurrentLinkedQueueOf(data);
@@ -32,26 +33,26 @@ public class SimpleValueChannelBus implements ValueChannelBus {
     }
 
     @Override
-    public <T> void forEach(DataChannel channel, Consumer<? super T> consumer) {
+    public <T> void forEach(ObjectChannel channel, Consumer<? super T> consumer) {
         this.<T>stream(channel).forEach(consumer);
     }
 
     @SuppressWarnings("unchecked")
     @Override
-    public <T> Stream<T> stream(DataChannel channel) {
+    public <T> Stream<T> stream(ObjectChannel channel) {
         return this.channels.getOrDefault(channel, new ConcurrentLinkedQueue<>())
                 .stream()
                 .map(data -> (T) data);
     }
 
     @Override
-    public <T> void forEachDrain(DataChannel channel, Consumer<? super T> consumer) {
+    public <T> void forEachDrain(ObjectChannel channel, Consumer<? super T> consumer) {
         this.<T>drain(channel).forEach(consumer);
     }
 
     @SuppressWarnings("unchecked")
     @Override
-    public <T> Stream<T> drain(DataChannel channel) {
+    public <T> Stream<T> drain(ObjectChannel channel) {
         return Optional.ofNullable(this.channels.remove(channel))
                 .orElse(new ConcurrentLinkedQueue<>())
                 .stream()

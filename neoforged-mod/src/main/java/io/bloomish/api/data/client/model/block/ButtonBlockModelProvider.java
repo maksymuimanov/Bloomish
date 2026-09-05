@@ -1,18 +1,16 @@
 package io.bloomish.api.data.client.model.block;
 
-import io.bloomish.api.channel.DataChannels;
-import io.bloomish.api.channel.ValueChannelBus;
+import io.bloomish.api.channel.deprecated.DataChannels;
+import io.bloomish.api.channel.deprecated.ValueChannelBus;
+import io.bloomish.api.data.client.model.block.holder.BlockHolder;
 import io.bloomish.api.data.client.model.block.model.BlockModel;
 import io.bloomish.api.data.client.model.block.model.TexturedBlockModel;
 import io.bloomish.api.data.client.model.block.texture.BlockTexture;
 import io.bloomish.api.data.client.model.block.texture.DefaultBlockTexture;
 import io.bloomish.api.engine.metadata.annotation.injection.Injected;
 import io.bloomish.api.util.ResourceLocationUtils;
-import net.minecraft.core.Holder;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.level.block.Block;
-
-import java.util.Optional;
 
 @Injected
 public class ButtonBlockModelProvider extends AbstractBlockModelProvider {
@@ -39,14 +37,5 @@ public class ButtonBlockModelProvider extends AbstractBlockModelProvider {
         return blockHolder.texture()
                 .map(DefaultBlockTexture::ofFullPath)
                 .orElseGet(() -> DefaultBlockTexture.ofBlock(blockHolder.value()));
-    }
-
-    public record BlockHolder(
-            Holder<? extends Block> block,
-            Optional<String> texture
-    ) {
-        private Block value() {
-            return block.value();
-        }
     }
 }

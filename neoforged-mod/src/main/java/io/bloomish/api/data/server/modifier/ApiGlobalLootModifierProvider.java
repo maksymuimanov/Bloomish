@@ -1,7 +1,7 @@
 package io.bloomish.api.data.server.modifier;
 
-import io.bloomish.api.channel.DataChannels;
-import io.bloomish.api.channel.ValueChannelBus;
+import io.bloomish.api.channel.deprecated.DataChannels;
+import io.bloomish.api.channel.deprecated.ValueChannelBus;
 import io.bloomish.api.common.loot.AddItemModifier;
 import io.bloomish.api.engine.context.ModContext;
 import io.bloomish.api.util.DeprecatedResourceUtils;

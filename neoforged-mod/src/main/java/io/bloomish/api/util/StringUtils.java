@@ -6,6 +6,14 @@ public final class StringUtils {
     private StringUtils() {
     }
 
+    public static boolean isUpperCase(String string) {
+        return isBlank(string) || string.codePoints().allMatch(Character::isUpperCase);
+    }
+
+    public static boolean isLowerCase(String string) {
+        return isBlank(string) || string.codePoints().allMatch(Character::isLowerCase);
+    }
+
     public static boolean isNotEmpty(String string) {
         return !isEmpty(string);
     }
@@ -20,14 +28,6 @@ public final class StringUtils {
 
     public static boolean isBlank(String string) {
         return string == null || string.isBlank();
-    }
-
-    public static boolean isUpperCase(String string) {
-        return string.toUpperCase().equals(string);
-    }
-
-    public static boolean isLowerCase(String string) {
-        return string.toLowerCase().equals(string);
     }
 
     public static boolean isEqualIgnoreCase(String left, String right) {
