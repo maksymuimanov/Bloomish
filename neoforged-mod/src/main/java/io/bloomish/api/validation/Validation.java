@@ -1,17 +1,21 @@
-package io.bloomish.api.assertion;
+package io.bloomish.api.validation;
 
 import java.util.Objects;
 import java.util.function.Supplier;
 
-public class Assertion<T, A extends Assertion<T, A>> {
+public class Validation<T, A extends Validation<T, A>> {
     private final T actual;
 
-    protected Assertion(T actual) {
+    protected Validation(T actual) {
         this.actual = actual;
     }
 
     public A isTypeOf(Class<?> clazz) {
         return this.isTypeOf(clazz, () -> "Expected object to be of type " + clazz.getName());
+    }
+
+    public A isTypeOf(Class<?> clazz, String message) {
+        return this.isTypeOf(clazz, () -> message);
     }
 
     public A isTypeOf(Class<?> clazz, Supplier<String> message) {
@@ -22,12 +26,20 @@ public class Assertion<T, A extends Assertion<T, A>> {
         return this.isNotTypeOf(clazz, () -> "Expected object not to be of type " + clazz.getName());
     }
 
+    public A isNotTypeOf(Class<?> clazz, String message) {
+        return this.isNotTypeOf(clazz, () -> message);
+    }
+
     public A isNotTypeOf(Class<?> clazz, Supplier<String> message) {
         return this.assertFalse(clazz.isInstance(this.actual), message);
     }
 
     public A isEqual(T expected) {
         return this.isEqual(expected, () -> "Expected " + this.actual + " to equal " + expected);
+    }
+
+    public A isEqual(T expected, String message) {
+        return this.isEqual(expected, () -> message);
     }
 
     public A isEqual(T expected, Supplier<String> message) {
@@ -38,12 +50,20 @@ public class Assertion<T, A extends Assertion<T, A>> {
         return this.isNotEqual(expected, () -> "Expected " + this.actual + " not to equal " + expected);
     }
 
+    public A isNotEqual(T expected, String message) {
+        return this.isNotEqual(expected, () -> message);
+    }
+
     public A isNotEqual(T expected, Supplier<String> message) {
         return this.assertFalse(Objects.equals(this.actual, expected), message);
     }
 
     public A isSame(T expected) {
         return this.isSame(expected, () -> "Expected object to be same as " + expected);
+    }
+
+    public A isSame(T expected, String message) {
+        return this.isSame(expected, () -> message);
     }
 
     public A isSame(T expected, Supplier<String> message) {
@@ -54,12 +74,20 @@ public class Assertion<T, A extends Assertion<T, A>> {
         return this.isNotSame(expected, () -> "Expected object not to be same as " + expected);
     }
 
+    public A isNotSame(T expected, String message) {
+        return this.isNotSame(expected, () -> message);
+    }
+
     public A isNotSame(T expected, Supplier<String> message) {
         return this.assertFalse(this.actual == expected, message);
     }
 
     public A isNull() {
         return this.isNull(() -> "Expected object to be null");
+    }
+
+    public A isNull(String message) {
+        return this.isNull(() -> message);
     }
 
     public A isNull(Supplier<String> message) {
@@ -70,12 +98,24 @@ public class Assertion<T, A extends Assertion<T, A>> {
         return this.isNotNull(() -> "Expected object not to be null");
     }
 
+    public A isNotNull(String message) {
+        return this.isNotNull(() -> message);
+    }
+
     public A isNotNull(Supplier<String> message) {
         return this.assertFalse(actual == null, message);
     }
 
+    public A assertTrue(boolean condition, String message) {
+        return this.assertTrue(condition, () -> message);
+    }
+
     public A assertTrue(boolean condition, Supplier<String> message) {
         return this.failIf(!condition, message);
+    }
+
+    public A assertFalse(boolean condition, String message) {
+        return this.assertFalse(condition, () -> message);
     }
 
     public A assertFalse(boolean condition, Supplier<String> message) {
@@ -84,7 +124,7 @@ public class Assertion<T, A extends Assertion<T, A>> {
 
     protected A failIf(boolean condition, Supplier<String> message) {
         if (condition) {
-            throw new AssertionError(message.get());
+            throw new IllegalArgumentException(message.get());
         }
         return this.self();
     }

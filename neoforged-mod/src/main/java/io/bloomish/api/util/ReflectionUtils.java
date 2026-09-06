@@ -23,6 +23,8 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public final class ReflectionUtils {
+    private static final Set<Class<? extends Annotation>> IGNORED_ANNOTATIONS = Set.of(Retention.class, Target.class, Documented.class);
+
     private ReflectionUtils() {
     }
 
@@ -67,21 +69,21 @@ public final class ReflectionUtils {
         return Optional.empty();
     }
 
-    public static Set<Annotation> getDeepAnnotations(Class<?> clazz) {
-        return getDeepAnnotations(clazz, Set.of(Retention.class, Target.class, Documented.class));
+    public static Set<Annotation> extractDeepAnnotations(Annotation[] annotations) {
+        return extractDeepAnnotations(annotations, IGNORED_ANNOTATIONS);
     }
 
-    public static Set<Annotation> getDeepAnnotations(Class<?> clazz, Set<Class<? extends Annotation>> ignoredAnnotations) {
-        Set<Annotation> annotations = new HashSet<>();
-        for (Annotation annotation : clazz.getDeclaredAnnotations()) {
+    public static Set<Annotation> extractDeepAnnotations(Annotation[] annotations, Set<Class<? extends Annotation>> ignoredAnnotations) {
+        Set<Annotation> extractedAnnotations = new HashSet<>();
+        for (Annotation annotation : annotations) {
             Class<? extends Annotation> annotationType = annotation.annotationType();
             if (!ignoredAnnotations.contains(annotationType)) {
-                annotations.add(annotation);
-                Set<Annotation> childAnnotations = getDeepAnnotations(annotationType, ignoredAnnotations);
-                annotations.addAll(childAnnotations);
+                extractedAnnotations.add(annotation);
+                Set<Annotation> childAnnotations = extractDeepAnnotations(annotationType.getDeclaredAnnotations(), ignoredAnnotations);
+                extractedAnnotations.addAll(childAnnotations);
             }
         }
-        return annotations;
+        return extractedAnnotations;
     }
 
     public static <T> T createObject(Class<? extends T> clazz) {

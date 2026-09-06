@@ -1,5 +1,6 @@
 package io.bloomish.api.event.listener;
 
+import io.bloomish.api.bean.Bean;
 import io.bloomish.api.channel.ObserveObjectChannel;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.builders.LayerDefinition;
@@ -7,7 +8,7 @@ import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 
 import java.util.stream.Stream;
 
-@EventListener
+@Bean
 public class EntityRendererRegisterLayerDefinitionEventListener {
     private final Stream<ModelLocationLayerDefinition> modelLocationLayerDefinitions;
 
@@ -17,6 +18,7 @@ public class EntityRendererRegisterLayerDefinitionEventListener {
         this.modelLocationLayerDefinitions = modelLocationLayerDefinitions;
     }
 
+    @ListenEvent
     public void listen(EntityRenderersEvent.RegisterLayerDefinitions event) {
         this.modelLocationLayerDefinitions.forEach(modelLocationLayerDefinition ->
                 event.registerLayerDefinition(modelLocationLayerDefinition.location(), modelLocationLayerDefinition::definition));

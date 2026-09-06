@@ -1,5 +1,6 @@
 package io.bloomish.api.event.listener;
 
+import io.bloomish.api.bean.Bean;
 import io.bloomish.api.channel.ObserveObjectChannel;
 import io.bloomish.api.event.fov.FovModifier;
 import net.minecraft.core.Holder;
@@ -8,7 +9,7 @@ import net.neoforged.neoforge.client.event.ComputeFovModifierEvent;
 
 import java.util.stream.Stream;
 
-@EventListener
+@Bean
 public class BowFovModifierEventListener {
     private final Stream<Holder<? extends Item>> bows;
     private final FovModifier fovModifier;
@@ -21,6 +22,7 @@ public class BowFovModifierEventListener {
         this.fovModifier = fovModifier;
     }
 
+    @ListenEvent
     public void listen(ComputeFovModifierEvent event) {
         this.bows.forEach(bow -> this.fovModifier.modify(event, bow.value()));
     }

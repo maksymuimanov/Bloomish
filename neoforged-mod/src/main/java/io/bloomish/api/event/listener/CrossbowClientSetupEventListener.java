@@ -1,5 +1,6 @@
 package io.bloomish.api.event.listener;
 
+import io.bloomish.api.bean.Bean;
 import io.bloomish.api.channel.ObserveObjectChannel;
 import io.bloomish.api.event.fml.CrossbowClientSetup;
 import io.bloomish.api.event.fml.FmlClientSetup;
@@ -9,7 +10,7 @@ import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 
 import java.util.stream.Stream;
 
-@EventListener
+@Bean
 public class CrossbowClientSetupEventListener {
     private final Stream<Holder<? extends Item>> crossbows;
     private final FmlClientSetup<Holder<? extends Item>> crossbowClientSetup;
@@ -22,6 +23,7 @@ public class CrossbowClientSetupEventListener {
         this.crossbowClientSetup = crossbowClientSetup;
     }
 
+    @ListenEvent
     public void listen(FMLClientSetupEvent event) {
         event.enqueueWork(() -> this.crossbows.forEach(this.crossbowClientSetup::setup));
     }

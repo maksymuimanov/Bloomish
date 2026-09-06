@@ -1,5 +1,6 @@
 package io.bloomish.api.event.listener;
 
+import io.bloomish.api.bean.Bean;
 import io.bloomish.api.channel.ObserveObjectChannel;
 import net.minecraft.core.Holder;
 import net.minecraft.world.entity.EntityType;
@@ -9,7 +10,7 @@ import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
 
 import java.util.stream.Stream;
 
-@EventListener
+@Bean
 public class EntityAttributeEventListener {
     private final Stream<EntityAttribute> entityAttributes;
 
@@ -20,6 +21,7 @@ public class EntityAttributeEventListener {
     }
 
     @SuppressWarnings("unchecked")
+    @ListenEvent
     public void listen(EntityAttributeCreationEvent event) {
         this.entityAttributes.forEach(entityAttribute -> {
             EntityType<? extends LivingEntity> livingEntityType = (EntityType<? extends LivingEntity>) entityAttribute.entityType().value();

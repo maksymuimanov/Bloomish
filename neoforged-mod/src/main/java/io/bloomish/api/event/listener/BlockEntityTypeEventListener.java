@@ -1,5 +1,6 @@
 package io.bloomish.api.event.listener;
 
+import io.bloomish.api.bean.Bean;
 import io.bloomish.api.channel.ObserveObjectChannel;
 import net.minecraft.core.Holder;
 import net.minecraft.world.level.block.Block;
@@ -8,7 +9,7 @@ import net.neoforged.neoforge.event.BlockEntityTypeAddBlocksEvent;
 
 import java.util.stream.Stream;
 
-@EventListener
+@Bean
 public class BlockEntityTypeEventListener {
     private final Stream<BlockEntityTypeBlock> blockEntityTypeBlocks;
 
@@ -18,6 +19,7 @@ public class BlockEntityTypeEventListener {
         this.blockEntityTypeBlocks = blockEntityTypeBlocks;
     }
 
+    @ListenEvent
     public void listen(BlockEntityTypeAddBlocksEvent event) {
         this.blockEntityTypeBlocks.forEach(blockEntityTypeBlock ->
                 event.modify(blockEntityTypeBlock.blockEntityType(), blockEntityTypeBlock.block().value()));

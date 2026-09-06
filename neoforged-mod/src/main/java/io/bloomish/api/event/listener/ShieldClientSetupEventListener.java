@@ -1,5 +1,6 @@
 package io.bloomish.api.event.listener;
 
+import io.bloomish.api.bean.Bean;
 import io.bloomish.api.channel.ObserveObjectChannel;
 import io.bloomish.api.event.fml.FmlClientSetup;
 import io.bloomish.api.event.fml.ShieldClientSetup;
@@ -9,7 +10,7 @@ import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 
 import java.util.stream.Stream;
 
-@EventListener
+@Bean
 public class ShieldClientSetupEventListener {
     private final Stream<Holder<? extends Item>> shields;
     private final FmlClientSetup<Holder<? extends Item>> shieldClientSetup;
@@ -22,6 +23,7 @@ public class ShieldClientSetupEventListener {
         this.shieldClientSetup = shieldClientSetup;
     }
 
+    @ListenEvent
     public void listen(FMLClientSetupEvent event) {
         event.enqueueWork(() -> this.shields.forEach(this.shieldClientSetup::setup));
     }
