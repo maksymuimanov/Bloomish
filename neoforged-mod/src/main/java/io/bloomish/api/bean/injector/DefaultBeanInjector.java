@@ -37,7 +37,7 @@ public class DefaultBeanInjector implements BeanInjector {
         if (Iterable.class.isAssignableFrom(parameterType)) {
             ParameterizedType parameterizedType = (ParameterizedType) parameter.getParameterizedType();
             Type genericType = parameterizedType.getActualTypeArguments()[0];
-            return registry.getAllByInterface(genericType.getClass());
+            return registry.getAllByInterface((Class<?>) genericType);
         } else {
             return registry.getByClass(parameterType);
         }
