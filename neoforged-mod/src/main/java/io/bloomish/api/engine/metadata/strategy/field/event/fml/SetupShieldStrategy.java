@@ -17,7 +17,7 @@ import java.lang.reflect.Field;
 public class SetupShieldStrategy implements FieldAnnotationStrategy<SetupShield> {
     @Override
     public void execute(Field field, Object object, SetupShield annotation) throws Exception {
-        Holder<? extends Item> shield = ReflectionUtils.getFieldValue(field, object);
+        Holder<? extends Item> shield = ReflectionUtils.extractFieldValue(field, object);
         FMLClientSetupEventListener.SHIELDS.add(shield);
     }
 

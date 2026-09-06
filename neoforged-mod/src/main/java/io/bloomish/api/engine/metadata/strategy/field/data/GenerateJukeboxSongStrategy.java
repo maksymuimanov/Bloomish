@@ -18,7 +18,7 @@ import java.lang.reflect.Field;
 public class GenerateJukeboxSongStrategy implements FieldAnnotationStrategy<GenerateJukeboxSong> {
     @Override
     public void execute(Field field, Object object, GenerateJukeboxSong annotation) throws Exception {
-        ResourceKey<JukeboxSong> jukeboxSong = ReflectionUtils.getFieldValue(field, object);
+        ResourceKey<JukeboxSong> jukeboxSong = ReflectionUtils.extractFieldValue(field, object);
         JukeboxSongDescription description = new JukeboxSongDescription(jukeboxSong, annotation.soundEvent(), annotation.lengthInSeconds(), annotation.comparatorOutput());
         ApiJukeboxSongProvider.SONGS.add(description);
     }

@@ -18,7 +18,7 @@ import java.lang.reflect.Field;
 public class AddFluidTagStrategy implements FieldAnnotationStrategy<AddFluidTag> {
     @Override
     public void execute(Field field, Object object, AddFluidTag annotation) throws Exception {
-        Holder<? extends Fluid> fluid = ReflectionUtils.getFieldValue(field, object);
+        Holder<? extends Fluid> fluid = ReflectionUtils.extractFieldValue(field, object);
         for (String tag : annotation.value()) {
             MapUtils.putToListMap(FluidTagsProvider.TAG_GENERATION_DESCRIPTIONS, tag, fluid);
         }

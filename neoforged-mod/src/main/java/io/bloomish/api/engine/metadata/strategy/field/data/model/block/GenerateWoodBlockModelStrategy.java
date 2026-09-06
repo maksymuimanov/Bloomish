@@ -18,7 +18,7 @@ import java.lang.reflect.Field;
 public class GenerateWoodBlockModelStrategy implements FieldAnnotationStrategy<GenerateWoodBlockModel> {
     @Override
     public void execute(Field field, Object object, GenerateWoodBlockModel annotation) throws Exception {
-        Holder<? extends Block> holder = ReflectionUtils.getFieldValue(field, object);
+        Holder<? extends Block> holder = ReflectionUtils.extractFieldValue(field, object);
         BlockModelSpec spec = new BlockModelSpec(holder, annotation.renderType());
         BlockModelContainer.WOODS.add(spec);
     }

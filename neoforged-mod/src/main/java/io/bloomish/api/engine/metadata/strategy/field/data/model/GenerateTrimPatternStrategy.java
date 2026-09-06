@@ -18,7 +18,7 @@ import java.lang.reflect.Field;
 public class GenerateTrimPatternStrategy implements FieldAnnotationStrategy<GenerateTrimPattern> {
     @Override
     public void execute(Field field, Object object, GenerateTrimPattern annotation) throws Exception {
-        ResourceKey<TrimPattern> trimPattern = ReflectionUtils.getFieldValue(field, object);
+        ResourceKey<TrimPattern> trimPattern = ReflectionUtils.extractFieldValue(field, object);
         TrimPatternDescription descriptionHolder = new TrimPatternDescription(annotation.item(), annotation.decal());
         ApiTrimPatternProvider.TRIM_PATTERNS.put(trimPattern, descriptionHolder);
     }

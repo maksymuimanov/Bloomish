@@ -13,13 +13,13 @@ import java.util.List;
 
 public class ProcessorInitializer implements ObjectRegistryInitializer {
     @Override
-    public void initialize(Collection<Class<?>> classes, List<?> externalObjects, ObjectRegistry objectRegistry) {
+    public void initialize(Collection<Class<?>> classes, List<?> externalObjects, ObjectRegistry registry) {
         ProcessorPool processorPool = new SimpleProcessorPool();
         classes.stream()
                 .filter(clazz -> clazz.isAnnotationPresent(Processor.class))
                 .sorted(ReflectionUtils.compareByAnnotationOverrideMethodPresence(Processor.class))
                 .forEach(clazz -> this.registerProcessor(clazz, processorPool));
-        objectRegistry.registerValue(processorPool);
+        registry.registerValue(processorPool);
     }
 
     private void registerProcessor(Class<?> clazz, ProcessorPool processorPool) {

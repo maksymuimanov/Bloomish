@@ -18,7 +18,7 @@ import java.lang.reflect.Field;
 public class GenerateCrossBlockModelStrategy implements FieldAnnotationStrategy<GenerateCrossBlockModel> {
     @Override
     public void execute(Field field, Object object, GenerateCrossBlockModel annotation) throws Exception {
-        Holder<? extends Block> holder = ReflectionUtils.getFieldValue(field, object);
+        Holder<? extends Block> holder = ReflectionUtils.extractFieldValue(field, object);
         BlockModelSpec spec = new BlockModelSpec(holder, annotation.renderType());
         BlockModelContainer.CROSS_BLOCKS.add(spec);
     }

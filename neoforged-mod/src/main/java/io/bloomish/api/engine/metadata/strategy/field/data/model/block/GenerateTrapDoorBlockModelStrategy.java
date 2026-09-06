@@ -18,7 +18,7 @@ import java.lang.reflect.Field;
 public class GenerateTrapDoorBlockModelStrategy implements FieldAnnotationStrategy<GenerateTrapDoorBlockModel> {
     @Override
     public void execute(Field field, Object object, GenerateTrapDoorBlockModel annotation) throws Exception {
-        Holder<? extends Block> holder = ReflectionUtils.getFieldValue(field, object);
+        Holder<? extends Block> holder = ReflectionUtils.extractFieldValue(field, object);
         TrapDoorBlockModelSpec spec = new TrapDoorBlockModelSpec(holder, annotation.renderType(), annotation.orientable());
         BlockModelContainer.TRAPDOORS.add(spec);
     }

@@ -18,7 +18,7 @@ import java.lang.reflect.Field;
 public class AddPointOfInterestTypeTagStrategy implements FieldAnnotationStrategy<AddPointOfInterestTypeTag> {
     @Override
     public void execute(Field field, Object object, AddPointOfInterestTypeTag annotation) throws Exception {
-        Holder<? extends PoiType> poiType = ReflectionUtils.getFieldValue(field, object);
+        Holder<? extends PoiType> poiType = ReflectionUtils.extractFieldValue(field, object);
         for (String tag : annotation.value()) {
             MapUtils.putToListMap(PointOfInterestTypeTagsProvider.TAG_GENERATION_DESCRIPTIONS, tag, poiType);
         }

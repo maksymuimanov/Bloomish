@@ -18,7 +18,7 @@ import java.lang.reflect.Field;
 public class AddDamageTypeTagStrategy implements FieldAnnotationStrategy<AddDamageTypeTag> {
     @Override
     public void execute(Field field, Object object, AddDamageTypeTag annotation) throws Exception {
-        ResourceKey<DamageType> damageType = ReflectionUtils.getFieldValue(field, object);
+        ResourceKey<DamageType> damageType = ReflectionUtils.extractFieldValue(field, object);
         for (String tag : annotation.value()) {
             MapUtils.putToListMap(DamageTypeTagsProvider.TAG_GENERATION_DESCRIPTIONS, tag, damageType);
         }

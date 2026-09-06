@@ -10,7 +10,7 @@ public class GsonInitializer implements ObjectRegistryInitializer {
     private static final String GSON_KEY = "$Gson";
 
     @Override
-    public void initialize(Collection<Class<?>> classes, List<?> externalObjects, ObjectRegistry objectRegistry) {
-        objectRegistry.registerValueByName(new Gson(), GSON_KEY);
+    public void initialize(Collection<Class<?>> classes, List<?> externalObjects, ObjectRegistry registry) {
+        registry.registerValueByName(new Gson(), GSON_KEY);
     }
 }

@@ -18,7 +18,7 @@ import java.lang.reflect.Field;
 public class GenerateCarpetBlockModelStrategy implements FieldAnnotationStrategy<GenerateCarpetBlockModel> {
     @Override
     public void execute(Field field, Object object, GenerateCarpetBlockModel annotation) throws Exception {
-        Holder<? extends Block> holder = ReflectionUtils.getFieldValue(field, object);
+        Holder<? extends Block> holder = ReflectionUtils.extractFieldValue(field, object);
         BlockModelSpec spec = new BlockModelSpec(holder, annotation.renderType());
         BlockModelContainer.CARPETS.add(spec);
     }

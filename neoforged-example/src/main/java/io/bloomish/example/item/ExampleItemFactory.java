@@ -1,7 +1,6 @@
 package io.bloomish.example.item;
 
-import io.bloomish.api.engine.metadata.annotation.injection.Injected;
-import com.bloomish.api.core.engine.registry.extension.item.*;
+import io.bloomish.api.bean.Injected;
 import io.bloomish.api.engine.registry.extension.item.*;
 import io.bloomish.api.engine.registry.factory.ItemFactory;
 

@@ -20,7 +20,7 @@ import java.lang.reflect.Field;
 public class AddBlockEntityTypeStrategy implements FieldAnnotationStrategy<AddBlockEntityType> {
     @Override
     public void execute(Field field, Object object, AddBlockEntityType annotation) throws Exception {
-        Holder<Block> block = ReflectionUtils.getFieldValue(field, object);
+        Holder<Block> block = ReflectionUtils.extractFieldValue(field, object);
         BlockEntityType<?> blockEntityType = DeprecatedRegistryUtils.getBlockEntityType(annotation.value());
         MapUtils.putToListMap(BlockEntityTypeEventListener.BLOCKS, blockEntityType, block);
     }

@@ -18,7 +18,7 @@ import java.lang.reflect.Field;
 public class GenerateTrimMaterialStrategy implements FieldAnnotationStrategy<GenerateTrimMaterial> {
     @Override
     public void execute(Field field, Object object, GenerateTrimMaterial annotation) throws Exception {
-        ResourceKey<TrimMaterial> trimMaterial = ReflectionUtils.getFieldValue(field, object);
+        ResourceKey<TrimMaterial> trimMaterial = ReflectionUtils.extractFieldValue(field, object);
         TrimMaterialDescription descriptionHolder = new TrimMaterialDescription(annotation.item(), annotation.color(), annotation.itemModelIndex());
         ApiTrimMaterialProvider.TRIM_MATERIALS.put(trimMaterial, descriptionHolder);
     }

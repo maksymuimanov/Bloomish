@@ -1,8 +1,8 @@
 package io.bloomish.api.channel.registry;
 
+import io.bloomish.api.bean.Inject;
+import io.bloomish.api.bean.Injected;
 import io.bloomish.api.channel.ObjectChannel;
-import io.bloomish.api.engine.metadata.annotation.injection.Inject;
-import io.bloomish.api.engine.metadata.annotation.injection.Injected;
 
 import java.util.Map;
 import java.util.Optional;

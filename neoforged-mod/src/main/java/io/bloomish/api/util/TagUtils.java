@@ -109,7 +109,7 @@ public final class TagUtils {
     @Deprecated
     @SuppressWarnings("unchecked")
     public static <T> Stream<TagKey<T>> getTagKeyStream(Class<?> tagClassHolder) {
-        return ReflectionUtils.getStaticFieldStream(tagClassHolder,
+        return ReflectionUtils.staticFieldStream(tagClassHolder,
                 field -> TagKey.class.isAssignableFrom(field.getType()),
                 o -> (TagKey<T>) o);
     }

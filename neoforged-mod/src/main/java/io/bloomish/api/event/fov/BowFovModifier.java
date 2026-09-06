@@ -1,6 +1,6 @@
 package io.bloomish.api.event.fov;
 
-import io.bloomish.api.engine.metadata.annotation.injection.Injected;
+import io.bloomish.api.bean.Injected;
 import io.bloomish.api.util.CollectionUtils;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;

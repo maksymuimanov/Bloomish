@@ -1,11 +1,7 @@
 package io.bloomish.api.util;
 
 import io.bloomish.api.ApiMod;
-import io.bloomish.api.engine.registry.factory.ObjectFactory;
-import net.minecraft.core.Holder;
-import net.minecraft.world.item.Item;
 import net.neoforged.fml.ModList;
-import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforgespi.language.IModFileInfo;
 import net.neoforged.neoforgespi.language.IModInfo;
 import net.neoforged.neoforgespi.language.ModFileScanData;
@@ -26,20 +22,62 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-// BIG TODO :(
 public final class ReflectionUtils {
     private ReflectionUtils() {
     }
 
-    public static Set<Annotation> getDeepTypeAnnotations(Class<?> clazz) {
+    public static boolean isConstructorDependency(Constructor<?> constructor, Constructor<?> dependency) {
+        return isParameterTypePresent(constructor, dependency.getDeclaringClass());
+    }
+
+    public static boolean isParameterTypePresent(Constructor<?> constructor, Class<?> clazz) {
+        return Arrays.asList(constructor.getParameterTypes()).contains(clazz);
+    }
+
+    public static <T> Stream<T> staticFieldStream(Class<?> clazz, Predicate<Field> filteringPredicate, Function<Object, T> mapper) {
+        return Arrays.stream(clazz.getDeclaredFields())
+                .filter(filteringPredicate)
+                .map(ReflectionUtils::extractStaticFieldValue)
+                .map(mapper);
+    }
+
+    public static boolean isAnnotationPresentDeep(Class<?> clazz, Class<? extends Annotation> target) {
+        for (Annotation annotation : clazz.getDeclaredAnnotations()) {
+            Class<? extends Annotation> annotationType = annotation.annotationType();
+            boolean isPresent = annotationType.equals(target) || isAnnotationPresentDeep(annotationType, target);
+            if (isPresent) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @SuppressWarnings("unchecked")
+    public static <A extends Annotation> Optional<A> findDeepAnnotation(Class<?> clazz, Class<A> target) {
+        for (Annotation annotation : clazz.getDeclaredAnnotations()) {
+            Class<? extends Annotation> annotationType = annotation.annotationType();
+            if (annotationType.equals(target)) {
+                return Optional.of((A) annotation);
+            }
+            Optional<A> result = findDeepAnnotation(annotationType, target);
+            if (result.isPresent()) {
+                return result;
+            }
+        }
+        return Optional.empty();
+    }
+
+    public static Set<Annotation> getDeepAnnotations(Class<?> clazz) {
+        return getDeepAnnotations(clazz, Set.of(Retention.class, Target.class, Documented.class));
+    }
+
+    public static Set<Annotation> getDeepAnnotations(Class<?> clazz, Set<Class<? extends Annotation>> ignoredAnnotations) {
         Set<Annotation> annotations = new HashSet<>();
         for (Annotation annotation : clazz.getDeclaredAnnotations()) {
             Class<? extends Annotation> annotationType = annotation.annotationType();
-            if (!Retention.class.equals(annotationType)
-                    && !Target.class.equals(annotationType)
-                    && !Documented.class.equals(annotationType)) {
+            if (!ignoredAnnotations.contains(annotationType)) {
                 annotations.add(annotation);
-                Set<Annotation> childAnnotations = getDeepTypeAnnotations(annotationType);
+                Set<Annotation> childAnnotations = getDeepAnnotations(annotationType, ignoredAnnotations);
                 annotations.addAll(childAnnotations);
             }
         }
@@ -48,108 +86,65 @@ public final class ReflectionUtils {
 
     public static <T> T createObject(Class<? extends T> clazz) {
         try {
-            Constructor<? extends T> constructor = clazz.getDeclaredConstructor();
-            constructor.setAccessible(true);
-            return constructor.newInstance();
-        } catch (NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e) {
-            throw new RuntimeException(e);
+            return createObject(clazz.getConstructor());
+        } catch (NoSuchMethodException e) {
+            throw new ReflectionException("Failed to create object for class with default constructor " + clazz.getName(), e);
         }
     }
 
+    public static <T> T createObject(Constructor<? extends T> constructor, Object... params) {
+        try {
+            constructor.setAccessible(true);
+            return constructor.newInstance(params);
+        } catch (InstantiationException | IllegalAccessException | InvocationTargetException e) {
+            throw new ReflectionException("Failed to create object for class " + constructor.getDeclaringClass().getName() + " with parameter count " + constructor.getParameterCount(), e);
+        }
+    }
+
+    public static <T> T extractStaticFieldValue(Field field) {
+        return extractFieldValue(field, null);
+    }
+
     @SuppressWarnings("unchecked")
-    public static <T> T getFieldValue(Field field, Object object) {
+    public static <T> T extractFieldValue(Field field, Object object) {
         try {
             field.setAccessible(true);
             return (T) field.get(object);
         } catch (IllegalAccessException e) {
-            throw new RuntimeException(e);
+            throw new ReflectionException("Failed to get field value for field " + field.getName(), e);
         }
     }
 
     @SuppressWarnings("unchecked")
-    public static <T> T invokeMethod(Method method, Object object) {
+    public static <T> T invokeStaticMethod(Method method, Object... params) {
         try {
             method.setAccessible(true);
-            return (T) method.invoke(object);
+            return (T) method.invoke(null, params);
         } catch (IllegalAccessException | InvocationTargetException e) {
-            throw new RuntimeException(e);
+            throw new ReflectionException("Failed to invoke method for method " + method.getName(), e);
         }
-    }
-
-    public static boolean isFactoryPresent(Class<?> clazz) {
-        Field[] declaredFields = clazz.getDeclaredFields();
-        for (Field declaredField : declaredFields) {
-            if (ObjectFactory.class.isAssignableFrom(declaredField.getType())) return true;
-        }
-        return false;
-    }
-
-    public static Class<?> forType(Type type, Class<?> rootClass) {
-        return forName(type.getClassName(), rootClass);
-    }
-
-    public static Class<?> forName(String name, Class<?> rootClass) {
-        try {
-            return Class.forName(name, false, rootClass.getClassLoader());
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    public static <T> Stream<T> getStaticFieldTypeStream(Class<?> container, Predicate<Field> filteringPredicate, Function<Class<?>, T> mapper) {
-        return Arrays.stream(container.getDeclaredFields())
-                .filter(filteringPredicate)
-                .map(Field::getType)
-                .map(mapper);
-    }
-
-    public static <T> Stream<T> getStaticFieldStream(Class<?> container, Predicate<Field> filteringPredicate, Function<Object, T> mapper) {
-        return Arrays.stream(container.getDeclaredFields())
-                .filter(filteringPredicate)
-                .map(field -> {
-                    try {
-                        field.setAccessible(true);
-                        return field.get(null);
-                    } catch (IllegalAccessException e) {
-                        throw new RuntimeException(e);
-                    }
-                })
-                .map(mapper);
     }
 
     @SuppressWarnings("unchecked")
-    public static Holder<? extends Item> getItemHolder(Field field, Object object) throws Exception {
-        if (field.get(object) instanceof DeferredBlock<?> deferredBlock) {
-            return deferredBlock.asItem()
-                    .getDefaultInstance()
-                    .getItemHolder();
-        } else {
-            return (Holder<? extends Item>) field.get(object);
+    public static <T> T invokeMethod(Method method, Object object, Object... params) {
+        try {
+            method.setAccessible(true);
+            return (T) method.invoke(object, params);
+        } catch (IllegalAccessException | InvocationTargetException e) {
+            throw new ReflectionException("Failed to invoke method for method " + method.getName(), e);
         }
     }
 
-    public static <T extends Annotation> Comparator<Class<?>> compareByAnnotationOverrideMethodPresence(Class<? extends T> annotation) {
-        return (c1, c2) -> {
-            try {
-                T a1 = c1.getDeclaredAnnotation(annotation);
-                T a2 = c2.getDeclaredAnnotation(annotation);
-                String overrideMethodName = "override";
-                Method method = annotation.getDeclaredMethod(overrideMethodName);
-                boolean isA1Override = !method.getDefaultValue().equals(method.invoke(a1));
-                boolean isA2Override = !method.getDefaultValue().equals(method.invoke(a2));
-                if (isA1Override && isA2Override) {
-                    return 0;
-                } else if (isA1Override) {
-                    return 1;
-                } else if (isA2Override) {
-                    return -1;
-                } else {
-                    return 0;
-                }
-            } catch (Exception e) {
-                throw new RuntimeException(e);
-            }
-        };
+    public static Class<?> forType(Type type, Class<?> clazz) {
+        return forName(type.getClassName(), clazz);
+    }
+
+    public static Class<?> forName(String name, Class<?> clazz) {
+        try {
+            return Class.forName(name, false, clazz.getClassLoader());
+        } catch (ClassNotFoundException e) {
+            throw new ReflectionException("Failed to load class for name " + name, e);
+        }
     }
 
     public static Set<Class<?>> getApiDependentsClasses() {

@@ -1,6 +1,6 @@
 package io.bloomish.api.event.subscriber;
 
-import io.bloomish.api.engine.metadata.annotation.injection.Injected;
+import io.bloomish.api.bean.Injected;
 import net.neoforged.bus.api.Event;
 import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.IEventBus;

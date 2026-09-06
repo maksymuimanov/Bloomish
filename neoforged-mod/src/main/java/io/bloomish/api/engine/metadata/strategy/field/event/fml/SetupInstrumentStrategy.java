@@ -17,7 +17,7 @@ import java.lang.reflect.Field;
 public class SetupInstrumentStrategy implements FieldAnnotationStrategy<SetupInstrument> {
     @Override
     public void execute(Field field, Object object, SetupInstrument annotation) throws Exception {
-        Holder<? extends Item> instrument = ReflectionUtils.getFieldValue(field, object);
+        Holder<? extends Item> instrument = ReflectionUtils.extractFieldValue(field, object);
         FMLClientSetupEventListener.INSTRUMENTS.add(instrument);
     }
 

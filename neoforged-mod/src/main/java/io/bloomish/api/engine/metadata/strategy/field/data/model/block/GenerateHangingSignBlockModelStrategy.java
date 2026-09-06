@@ -18,7 +18,7 @@ import java.lang.reflect.Field;
 public class GenerateHangingSignBlockModelStrategy implements FieldAnnotationStrategy<GenerateHangingSignBlockModel> {
     @Override
     public void execute(Field field, Object object, GenerateHangingSignBlockModel annotation) throws Exception {
-        Holder<? extends Block> holder = ReflectionUtils.getFieldValue(field, object);
+        Holder<? extends Block> holder = ReflectionUtils.extractFieldValue(field, object);
         SignBlockModelSpec spec = new SignBlockModelSpec(holder, annotation.wallHangingSign(), annotation.particleTexture());
         BlockModelContainer.HANGING_SIGNS.add(spec);
     }

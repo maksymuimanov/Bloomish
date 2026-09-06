@@ -18,7 +18,7 @@ import java.lang.reflect.Field;
 public class AddBiomeTagStrategy implements FieldAnnotationStrategy<AddBiomeTag> {
     @Override
     public void execute(Field field, Object object, AddBiomeTag annotation) throws Exception {
-        ResourceKey<Biome> biome = ReflectionUtils.getFieldValue(field, object);
+        ResourceKey<Biome> biome = ReflectionUtils.extractFieldValue(field, object);
         for (String tag : annotation.value()) {
             MapUtils.putToListMap(BiomeTagsProvider.TAG_GENERATION_DESCRIPTIONS, tag, biome);
         }

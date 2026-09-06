@@ -21,7 +21,7 @@ public class RegisterBlockEntityRendererStrategy implements FieldAnnotationStrat
     @Override
     @SuppressWarnings("unchecked")
     public void execute(Field field, Object object, RegisterBlockEntityRenderer annotation) throws Exception {
-        Holder<? extends BlockEntityType<? extends BlockEntity>> blockEntityType = ReflectionUtils.getFieldValue(field, object);
+        Holder<? extends BlockEntityType<? extends BlockEntity>> blockEntityType = ReflectionUtils.extractFieldValue(field, object);
         Class<? extends BlockEntityRenderer<?>> rendererClass = annotation.value();
         Constructor<? extends BlockEntityRenderer<?>> rendererConstructor = rendererClass.getDeclaredConstructor(rendererClass);
         EntityRendererRegisterRendererEventListener.RENDERING_REGISTRIES.add(event -> {

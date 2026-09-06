@@ -20,7 +20,7 @@ import java.lang.reflect.Field;
 public class GenerateWolfVariantStrategy implements FieldAnnotationStrategy<GenerateWolfVariant> {
     @Override
     public void execute(Field field, Object object, GenerateWolfVariant annotation) throws Exception {
-        ResourceKey<WolfVariant> variantResourceKey = ReflectionUtils.getFieldValue(field, object);
+        ResourceKey<WolfVariant> variantResourceKey = ReflectionUtils.extractFieldValue(field, object);
         TagUtils.putTagContainer(BiomeTagDynamicPreparer.TAG_CONTAINERS, annotation.biomeTagContainer());
         ApiWolfVariantProvider.VARIANTS.add(new WolfVariantDescription(variantResourceKey, annotation.biomeTag()));
     }

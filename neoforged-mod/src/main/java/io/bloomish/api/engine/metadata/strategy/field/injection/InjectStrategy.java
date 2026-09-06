@@ -1,9 +1,9 @@
 package io.bloomish.api.engine.metadata.strategy.field.injection;
 
+import io.bloomish.api.bean.Inject;
+import io.bloomish.api.bean.Injected;
 import io.bloomish.api.engine.context.DefaultObjectRegistry;
 import io.bloomish.api.engine.context.ObjectRegistry;
-import io.bloomish.api.engine.metadata.annotation.injection.Inject;
-import io.bloomish.api.engine.metadata.annotation.injection.Injected;
 import io.bloomish.api.engine.metadata.annotation.injection.Strategy;
 import io.bloomish.api.engine.metadata.pool.ProcessorScope;
 import io.bloomish.api.engine.metadata.processor.InjectionAnnotationProcessor;
@@ -22,7 +22,7 @@ public class InjectStrategy implements FieldAnnotationStrategy<Inject> {
         field.set(object, poolObject);
         Class<?> objectClass = object.getClass();
         Injected injected = objectClass.getDeclaredAnnotation(Injected.class);
-        if (!injected.shouldInject()) throw new IllegalStateException("@Inject annotation can be applied if class is annotated with @Injected(isContextObject=true)");
+        if (!injected.register()) throw new IllegalStateException("@Inject annotation can be applied if class is annotated with @Injected(isContextObject=true)");
         String rootBeanName = injected.value();
         if (rootBeanName.isBlank()) {
             objectRegistry.registerValueByClass(objectClass);

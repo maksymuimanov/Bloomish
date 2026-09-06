@@ -28,13 +28,13 @@ public class StrategyInitializer implements ObjectRegistryInitializer {
     public static final String DEFAULT_METHOD_DATA = "default_method_data";
 
     @Override
-    public void initialize(Collection<Class<?>> classes, List<?> externalObjects, ObjectRegistry objectRegistry) {
+    public void initialize(Collection<Class<?>> classes, List<?> externalObjects, ObjectRegistry registry) {
         StrategyPool strategyPool = new SimpleStrategyPool();
         classes.stream()
                 .filter(clazz -> clazz.isAnnotationPresent(Strategy.class))
                 .sorted(ReflectionUtils.compareByAnnotationOverrideMethodPresence(Strategy.class))
                 .forEach(clazz -> this.registerStrategy(clazz, strategyPool));
-        objectRegistry.registerValue(strategyPool);
+        registry.registerValue(strategyPool);
     }
 
     @SuppressWarnings("unchecked")

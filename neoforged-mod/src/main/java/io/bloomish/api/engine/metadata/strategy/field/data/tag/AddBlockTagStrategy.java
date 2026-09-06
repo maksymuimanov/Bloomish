@@ -18,7 +18,7 @@ import java.lang.reflect.Field;
 public class AddBlockTagStrategy implements FieldAnnotationStrategy<AddBlockTag> {
     @Override
     public void execute(Field field, Object object, AddBlockTag annotation) throws Exception {
-        Holder<? extends Block> block = ReflectionUtils.getFieldValue(field, object);
+        Holder<? extends Block> block = ReflectionUtils.extractFieldValue(field, object);
         for (String tag : annotation.value()) {
             MapUtils.putToListMap(BlockTagsProvider.TAG_GENERATION_DESCRIPTIONS, tag, block);
         }

@@ -21,7 +21,7 @@ import java.util.List;
 public class GenerateSoundStrategy implements FieldAnnotationStrategy<GenerateSound> {
     @Override
     public void execute(Field field, Object object, GenerateSound annotation) throws Exception {
-        Holder<SoundEvent> soundEvent = ReflectionUtils.getFieldValue(field, object);
+        Holder<SoundEvent> soundEvent = ReflectionUtils.extractFieldValue(field, object);
         SoundHolder description = new SoundHolder(soundEvent, annotation.replace());
         List<SoundDescription> soundDescriptions = Arrays.stream(annotation.value())
                 .map(sound -> new SoundDescription(sound.fileName(), sound.type(),

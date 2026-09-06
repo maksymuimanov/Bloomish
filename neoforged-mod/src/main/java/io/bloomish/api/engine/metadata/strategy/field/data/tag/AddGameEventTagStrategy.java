@@ -18,7 +18,7 @@ import java.lang.reflect.Field;
 public class AddGameEventTagStrategy implements FieldAnnotationStrategy<AddGameEventTag> {
     @Override
     public void execute(Field field, Object object, AddGameEventTag annotation) throws Exception {
-        Holder<? extends GameEvent> gameEvent = ReflectionUtils.getFieldValue(field, object);
+        Holder<? extends GameEvent> gameEvent = ReflectionUtils.extractFieldValue(field, object);
         for (String tag : annotation.value()) {
             MapUtils.putToListMap(GameEventTagsProvider.TAG_GENERATION_DESCRIPTIONS, tag, gameEvent);
         }

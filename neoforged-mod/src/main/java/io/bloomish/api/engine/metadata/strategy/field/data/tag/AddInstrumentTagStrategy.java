@@ -18,7 +18,7 @@ import java.lang.reflect.Field;
 public class AddInstrumentTagStrategy implements FieldAnnotationStrategy<AddInstrumentTag> {
     @Override
     public void execute(Field field, Object object, AddInstrumentTag annotation) throws Exception {
-        Holder<? extends Instrument> instrument = ReflectionUtils.getFieldValue(field, object);
+        Holder<? extends Instrument> instrument = ReflectionUtils.extractFieldValue(field, object);
         for (String tag : annotation.value()) {
             MapUtils.putToListMap(InstrumentTagsProvider.TAG_GENERATION_DESCRIPTIONS, tag, instrument);
         }

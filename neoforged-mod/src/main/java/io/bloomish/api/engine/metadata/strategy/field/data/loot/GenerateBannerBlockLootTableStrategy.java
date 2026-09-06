@@ -18,7 +18,7 @@ import java.lang.reflect.Field;
 public class GenerateBannerBlockLootTableStrategy implements FieldAnnotationStrategy<GenerateBannerBlockLootTable> {
     @Override
     public void execute(Field field, Object object, GenerateBannerBlockLootTable annotation) throws Exception {
-        Holder<? extends Block> holder = ReflectionUtils.getFieldValue(field, object);
+        Holder<? extends Block> holder = ReflectionUtils.extractFieldValue(field, object);
         BlockLootTableSpec spec = new BlockLootTableSpec(holder);
         BlockLootTableContainer.BANNERS.add(spec);
     }

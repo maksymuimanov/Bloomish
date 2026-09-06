@@ -1,8 +1,8 @@
 package io.bloomish.api.data.client.blockstate;
 
+import io.bloomish.api.bean.Injected;
 import io.bloomish.api.channel.deprecated.DataChannels;
 import io.bloomish.api.channel.deprecated.ValueChannelBus;
-import io.bloomish.api.engine.metadata.annotation.injection.Injected;
 import net.minecraft.core.Holder;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.level.block.Block;

@@ -18,7 +18,7 @@ import java.lang.reflect.Field;
 public class AddPaintingVariantTagStrategy implements FieldAnnotationStrategy<AddPaintingVariantTag> {
     @Override
     public void execute(Field field, Object object, AddPaintingVariantTag annotation) throws Exception {
-        ResourceKey<PaintingVariant> paintingVariant = ReflectionUtils.getFieldValue(field, object);
+        ResourceKey<PaintingVariant> paintingVariant = ReflectionUtils.extractFieldValue(field, object);
         for (String tag : annotation.value()) {
             MapUtils.putToListMap(PaintingVariantTagsProvider.TAG_GENERATION_DESCRIPTIONS, tag, paintingVariant);
         }

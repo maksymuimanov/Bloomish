@@ -18,7 +18,7 @@ import java.lang.reflect.Field;
 public class GenerateCropBlockLootTableStrategy implements FieldAnnotationStrategy<GenerateCropBlockLootTable> {
     @Override
     public void execute(Field field, Object object, GenerateCropBlockLootTable annotation) throws Exception {
-        Holder<? extends Block> holder = ReflectionUtils.getFieldValue(field, object);
+        Holder<? extends Block> holder = ReflectionUtils.extractFieldValue(field, object);
         CropBlockLootTableSpec spec = new CropBlockLootTableSpec(holder, annotation.grown(), annotation.seeds(), annotation.grownAge(), annotation.minAge(), annotation.maxAge());
         BlockLootTableContainer.CROPS.add(spec);
     }

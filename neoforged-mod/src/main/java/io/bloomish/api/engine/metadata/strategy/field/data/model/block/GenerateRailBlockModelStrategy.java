@@ -18,7 +18,7 @@ import java.lang.reflect.Field;
 public class GenerateRailBlockModelStrategy implements FieldAnnotationStrategy<GenerateRailBlockModel> {
     @Override
     public void execute(Field field, Object object, GenerateRailBlockModel annotation) throws Exception {
-        Holder<? extends Block> holder = ReflectionUtils.getFieldValue(field, object);
+        Holder<? extends Block> holder = ReflectionUtils.extractFieldValue(field, object);
         BlockModelSpec spec = new BlockModelSpec(holder, annotation.renderType());
         BlockModelContainer.RAILS.add(spec);
     }

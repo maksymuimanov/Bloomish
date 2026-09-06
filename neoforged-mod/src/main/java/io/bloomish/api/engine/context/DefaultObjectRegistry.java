@@ -93,7 +93,7 @@ public class DefaultObjectRegistry implements ObjectRegistry {
     }
 
     @Override
-    public <T> Collection<T> getAll(Class<T> commonInterface) {
+    public <T> Collection<T> getAllByInterface(Class<T> commonInterface) {
         return this.objects.values()
                 .stream()
                 .filter(commonInterface::isInstance)

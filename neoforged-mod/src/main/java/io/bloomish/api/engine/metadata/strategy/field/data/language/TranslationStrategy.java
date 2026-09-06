@@ -31,7 +31,7 @@ public abstract class TranslationStrategy<A extends Annotation> implements Field
 
     @Override
     public void execute(Field field, Object object, A annotation) throws Exception {
-        Object o = ReflectionUtils.getFieldValue(field, object);
+        Object o = ReflectionUtils.extractFieldValue(field, object);
         Class<? extends A> annotationClass = this.getAnnotationClass();
         String id = ReflectionUtils.invokeMethod(annotationClass, TRANSLATION_ID_METHOD, annotation);
         String value = ReflectionUtils.invokeMethod(annotationClass, TRANSLATION_VALUE_METHOD, annotation);
@@ -68,7 +68,7 @@ public abstract class TranslationStrategy<A extends Annotation> implements Field
     protected <T> void putTranslation(T key, String value, String prefix, String suffix, KeyTransformer<T> keyTransformer) {
         try {
 
-            Map<String, String> translationMap = ReflectionUtils.getFieldValue(this.getTranslationProvider(), ApiLanguageProvider.TRANSLATIONS_FIELD_NAME, null);
+            Map<String, String> translationMap = ReflectionUtils.extractFieldValue(this.getTranslationProvider(), ApiLanguageProvider.TRANSLATIONS_FIELD_NAME, null);
             String translationKey = keyTransformer.transform(key);
             if (!prefix.isBlank()) translationKey = prefix + "." + translationKey;
             if (!suffix.isBlank()) translationKey = translationKey + "." + suffix;

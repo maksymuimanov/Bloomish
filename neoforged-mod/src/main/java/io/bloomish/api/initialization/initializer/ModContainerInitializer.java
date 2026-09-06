@@ -8,12 +8,12 @@ import java.util.List;
 
 public class ModContainerInitializer implements ObjectRegistryInitializer {
     @Override
-    public void initialize(Collection<Class<?>> classes, List<?> externalObjects, ObjectRegistry objectRegistry) {
+    public void initialize(Collection<Class<?>> classes, List<?> externalObjects, ObjectRegistry registry) {
         if (externalObjects == null || externalObjects.isEmpty()) return;
         externalObjects.stream()
                 .filter(ModContainer.class::isInstance)
                 .map(ModContainer.class::cast)
                 .findAny()
-                .ifPresent(objectRegistry::registerValue);
+                .ifPresent(registry::registerValue);
     }
 }

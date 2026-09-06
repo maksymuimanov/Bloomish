@@ -1,4 +1,4 @@
-package io.bloomish.api.engine.metadata.annotation.injection;
+package io.bloomish.api.bean;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -6,7 +6,9 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.RUNTIME)
-@Target({ElementType.PARAMETER, ElementType.CONSTRUCTOR})
-public @interface Inject {
+@Target(ElementType.TYPE)
+public @interface Injected {
     String value() default "";
+
+    boolean register() default true;
 }

@@ -18,7 +18,7 @@ import java.lang.reflect.Field;
 public class GenerateBannerPatternStrategy implements FieldAnnotationStrategy<GenerateBannerPattern> {
     @Override
     public void execute(Field field, Object object, GenerateBannerPattern annotation) throws Exception {
-        ResourceKey<BannerPattern> patternResourceKey = ReflectionUtils.getFieldValue(field, object);
+        ResourceKey<BannerPattern> patternResourceKey = ReflectionUtils.extractFieldValue(field, object);
         ApiBannerPatternProvider.PATTERNS.add(new BannerPatternDescription(patternResourceKey));
     }
 

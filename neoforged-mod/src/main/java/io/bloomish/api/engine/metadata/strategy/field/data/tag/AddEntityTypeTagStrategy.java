@@ -18,7 +18,7 @@ import java.lang.reflect.Field;
 public class AddEntityTypeTagStrategy implements FieldAnnotationStrategy<AddEntityTypeTag> {
     @Override
     public void execute(Field field, Object object, AddEntityTypeTag annotation) throws Exception {
-        Holder<? extends EntityType<?>> entityType = ReflectionUtils.getFieldValue(field, object);
+        Holder<? extends EntityType<?>> entityType = ReflectionUtils.extractFieldValue(field, object);
         for (String tag : annotation.value()) {
             MapUtils.putToListMap(EntityTypeTagsProvider.TAG_GENERATION_DESCRIPTIONS, tag, entityType);
         }

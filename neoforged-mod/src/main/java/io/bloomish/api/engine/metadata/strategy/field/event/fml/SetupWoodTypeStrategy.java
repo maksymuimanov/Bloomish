@@ -16,7 +16,7 @@ import java.lang.reflect.Field;
 public class SetupWoodTypeStrategy implements FieldAnnotationStrategy<SetupWoodType> {
     @Override
     public void execute(Field field, Object object, SetupWoodType annotation) throws Exception {
-        WoodType woodType = ReflectionUtils.getFieldValue(field, object);
+        WoodType woodType = ReflectionUtils.extractFieldValue(field, object);
         FMLClientSetupEventListener.WOOD_TYPES.add(woodType);
     }
 

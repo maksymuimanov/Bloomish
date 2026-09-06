@@ -18,7 +18,7 @@ import java.lang.reflect.Field;
 public class RaidHeroGiftStrategy implements FieldAnnotationStrategy<RaidHeroGift> {
     @Override
     public void execute(Field field, Object object, RaidHeroGift annotation) throws Exception {
-        Holder<VillagerProfession> villagerProfession = ReflectionUtils.getFieldValue(field, object);
+        Holder<VillagerProfession> villagerProfession = ReflectionUtils.extractFieldValue(field, object);
         RaidHeroGiftDto raidHeroGiftDto = new RaidHeroGiftDto(villagerProfession, annotation.lootTablePath(), annotation.replace());
         ApiDataMapProvider.RAID_HERO_GIFTS.add(raidHeroGiftDto);
     }

@@ -1,6 +1,6 @@
 package io.bloomish.api.event.trade.villager;
 
-import io.bloomish.api.engine.metadata.annotation.injection.Injected;
+import io.bloomish.api.bean.Injected;
 import io.bloomish.api.event.trade.TradeProvider;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import net.minecraft.world.entity.npc.VillagerTrades;

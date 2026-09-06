@@ -18,7 +18,7 @@ import java.lang.reflect.Field;
 public class AddEnchantmentTagStrategy implements FieldAnnotationStrategy<AddEnchantmentTag> {
     @Override
     public void execute(Field field, Object object, AddEnchantmentTag annotation) throws Exception {
-        ResourceKey<Enchantment> enchantment = ReflectionUtils.getFieldValue(field, object);
+        ResourceKey<Enchantment> enchantment = ReflectionUtils.extractFieldValue(field, object);
         for (String tag : annotation.value()) {
             MapUtils.putToListMap(EnchantmentTagsProvider.TAG_GENERATION_DESCRIPTIONS, tag, enchantment);
         }

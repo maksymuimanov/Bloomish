@@ -67,7 +67,7 @@ public final class DeprecatedResourceUtils {
 
     @SuppressWarnings("unchecked")
     public static <T> Stream<ResourceKey<T>> getResourceKeyStream(Class<?> resourceClassHolder) {
-        return ReflectionUtils.getStaticFieldStream(resourceClassHolder,
+        return ReflectionUtils.staticFieldStream(resourceClassHolder,
                 field -> ResourceKey.class.isAssignableFrom(field.getType()),
                 o -> (ResourceKey<T>) o);
     }

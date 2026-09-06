@@ -1,8 +1,8 @@
 package io.bloomish.api.data.client.atlas;
 
+import io.bloomish.api.bean.Injected;
 import io.bloomish.api.channel.deprecated.DataChannels;
 import io.bloomish.api.channel.deprecated.KeyedChannelBus;
-import io.bloomish.api.engine.metadata.annotation.injection.Injected;
 import io.bloomish.api.util.ResourceKeyUtils;
 import io.bloomish.api.util.ResourceLocationUtils;
 import net.minecraft.resources.ResourceKey;

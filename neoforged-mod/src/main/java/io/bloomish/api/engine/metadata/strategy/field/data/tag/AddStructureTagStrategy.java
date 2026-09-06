@@ -18,7 +18,7 @@ import java.lang.reflect.Field;
 public class AddStructureTagStrategy implements FieldAnnotationStrategy<AddStructureTag> {
     @Override
     public void execute(Field field, Object object, AddStructureTag annotation) throws Exception {
-        ResourceKey<Structure> structure = ReflectionUtils.getFieldValue(field, object);
+        ResourceKey<Structure> structure = ReflectionUtils.extractFieldValue(field, object);
         for (String tag : annotation.value()) {
             MapUtils.putToListMap(StructureTagsProvider.TAG_GENERATION_DESCRIPTIONS, tag, structure);
         }

@@ -1,8 +1,8 @@
 package io.bloomish.api.data;
 
+import io.bloomish.api.bean.Injected;
 import io.bloomish.api.data.client.ClientDataProvider;
 import io.bloomish.api.data.server.ServerDataProvider;
-import io.bloomish.api.engine.metadata.annotation.injection.Injected;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.DataProvider;
 import net.neoforged.neoforge.data.event.GatherDataEvent;

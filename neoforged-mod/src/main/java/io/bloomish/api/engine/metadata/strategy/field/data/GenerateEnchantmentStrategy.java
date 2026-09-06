@@ -19,7 +19,7 @@ import java.lang.reflect.Field;
 public class GenerateEnchantmentStrategy implements FieldAnnotationStrategy<GenerateEnchantment> {
     @Override
     public void execute(Field field, Object object, GenerateEnchantment annotation) throws Exception {
-        ResourceKey<Enchantment> enchantment = ReflectionUtils.getFieldValue(field, object);
+        ResourceKey<Enchantment> enchantment = ReflectionUtils.extractFieldValue(field, object);
         Constructor<?> constructor = annotation.value().getDeclaredConstructor();
         constructor.setAccessible(true);
         EnchantmentDescription descriptionHolder = (EnchantmentDescription) constructor.newInstance();

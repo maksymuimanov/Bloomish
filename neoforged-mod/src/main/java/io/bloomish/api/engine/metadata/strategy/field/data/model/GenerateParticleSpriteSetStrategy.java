@@ -18,7 +18,7 @@ import java.lang.reflect.Field;
 public class GenerateParticleSpriteSetStrategy implements FieldAnnotationStrategy<GenerateParticleSpriteSet> {
     @Override
     public void execute(Field field, Object object, GenerateParticleSpriteSet annotation) throws Exception {
-        Holder<ParticleType<?>> particleType = ReflectionUtils.getFieldValue(field, object);
+        Holder<ParticleType<?>> particleType = ReflectionUtils.extractFieldValue(field, object);
         ParticleDescription particleDescription = new ParticleDescription(annotation.id(), annotation.count(), annotation.reverse());
         ApiParticleProvider.PARTICLE_SPRITES.put(particleType, particleDescription);
     }

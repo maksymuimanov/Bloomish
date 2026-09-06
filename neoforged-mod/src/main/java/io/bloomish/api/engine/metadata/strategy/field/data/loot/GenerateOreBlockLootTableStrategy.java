@@ -18,7 +18,7 @@ import java.lang.reflect.Field;
 public class GenerateOreBlockLootTableStrategy implements FieldAnnotationStrategy<GenerateOreBlockLootTable> {
     @Override
     public void execute(Field field, Object object, GenerateOreBlockLootTable annotation) throws Exception {
-        Holder<? extends Block> holder = ReflectionUtils.getFieldValue(field, object);
+        Holder<? extends Block> holder = ReflectionUtils.extractFieldValue(field, object);
         OtherItemBlockLootTableSpec spec = new OtherItemBlockLootTableSpec(holder, annotation.rawOre());
         BlockLootTableContainer.ORES.add(spec);
     }

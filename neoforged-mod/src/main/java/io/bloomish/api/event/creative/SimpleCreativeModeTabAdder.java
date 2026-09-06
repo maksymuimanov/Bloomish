@@ -1,6 +1,6 @@
 package io.bloomish.api.event.creative;
 
-import io.bloomish.api.engine.metadata.annotation.injection.Injected;
+import io.bloomish.api.bean.Injected;
 import io.bloomish.api.util.CollectionUtils;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.CreativeModeTab;

@@ -1,9 +1,9 @@
 package io.bloomish.api.data.client.atlas;
 
+import io.bloomish.api.bean.Injected;
 import io.bloomish.api.data.AbstractMultiDataProvider;
 import io.bloomish.api.data.DataTarget;
 import io.bloomish.api.data.client.ClientDataProvider;
-import io.bloomish.api.engine.metadata.annotation.injection.Injected;
 import net.minecraft.data.PackOutput;
 
 @Injected

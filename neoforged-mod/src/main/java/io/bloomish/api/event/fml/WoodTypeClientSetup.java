@@ -1,6 +1,6 @@
 package io.bloomish.api.event.fml;
 
-import io.bloomish.api.engine.metadata.annotation.injection.Injected;
+import io.bloomish.api.bean.Injected;
 import net.minecraft.client.renderer.Sheets;
 import net.minecraft.world.level.block.state.properties.WoodType;
 

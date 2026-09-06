@@ -1,6 +1,6 @@
 package io.bloomish.api.event.fml;
 
-import io.bloomish.api.engine.metadata.annotation.injection.Injected;
+import io.bloomish.api.bean.Injected;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.item.CrossbowItem;
 import net.minecraft.world.item.Item;

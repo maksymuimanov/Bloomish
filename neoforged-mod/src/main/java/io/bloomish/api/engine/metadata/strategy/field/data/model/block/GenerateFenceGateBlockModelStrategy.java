@@ -18,7 +18,7 @@ import java.lang.reflect.Field;
 public class GenerateFenceGateBlockModelStrategy implements FieldAnnotationStrategy<GenerateFenceGateBlockModel> {
     @Override
     public void execute(Field field, Object object, GenerateFenceGateBlockModel annotation) throws Exception {
-        Holder<? extends Block> holder = ReflectionUtils.getFieldValue(field, object);
+        Holder<? extends Block> holder = ReflectionUtils.extractFieldValue(field, object);
         DependantBlockModelSpec spec = new DependantBlockModelSpec(holder, annotation.renderType(), annotation.fullBlock());
         BlockModelContainer.FENCE_GATES.add(spec);
     }

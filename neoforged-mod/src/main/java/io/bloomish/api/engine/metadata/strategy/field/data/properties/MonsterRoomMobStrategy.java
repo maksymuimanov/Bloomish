@@ -18,7 +18,7 @@ import java.lang.reflect.Field;
 public class MonsterRoomMobStrategy implements FieldAnnotationStrategy<MonsterRoomMob> {
     @Override
     public void execute(Field field, Object object, MonsterRoomMob annotation) throws Exception {
-        Holder<EntityType<?>> entityType = ReflectionUtils.getFieldValue(field, object);
+        Holder<EntityType<?>> entityType = ReflectionUtils.extractFieldValue(field, object);
         MonsterRoomMobDto monsterRoomMobDto = new MonsterRoomMobDto(entityType, annotation.weight(), annotation.replace());
         ApiDataMapProvider.MONSTER_ROOM_MOBS.add(monsterRoomMobDto);
     }

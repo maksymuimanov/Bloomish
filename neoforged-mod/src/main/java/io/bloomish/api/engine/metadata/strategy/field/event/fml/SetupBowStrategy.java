@@ -18,7 +18,7 @@ import java.lang.reflect.Field;
 public class SetupBowStrategy implements FieldAnnotationStrategy<SetupBow> {
     @Override
     public void execute(Field field, Object object, SetupBow annotation) throws Exception {
-        Holder<? extends Item> bow = ReflectionUtils.getFieldValue(field, object);
+        Holder<? extends Item> bow = ReflectionUtils.extractFieldValue(field, object);
         FovModifierEventListener.BOWS.add(bow);
         FMLClientSetupEventListener.BOWS.add(bow);
     }

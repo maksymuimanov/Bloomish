@@ -18,7 +18,7 @@ import java.lang.reflect.Field;
 public class OxidizableStrategy implements FieldAnnotationStrategy<Oxidizable> {
     @Override
     public void execute(Field field, Object object, Oxidizable annotation) throws Exception {
-        Holder<? extends Block> block = ReflectionUtils.getFieldValue(field, object);
+        Holder<? extends Block> block = ReflectionUtils.extractFieldValue(field, object);
         OxidizableDto oxidizableDto = new OxidizableDto(block, annotation.nextBlock(), annotation.replace());
         ApiDataMapProvider.OXIDIZABLES.add(oxidizableDto);
     }

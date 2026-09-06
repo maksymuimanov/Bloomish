@@ -12,7 +12,7 @@ public final class ResourceKeyUtils {
 
     @SuppressWarnings("unchecked")
     public static <T> Stream<ResourceKey<T>> extractResourceKeys(Class<?> resourceClassHolder) {
-        return ReflectionUtils.getStaticFieldStream(
+        return ReflectionUtils.staticFieldStream(
                 resourceClassHolder,
                 field -> ResourceKey.class.isAssignableFrom(field.getType()),
                 resourceKey -> (ResourceKey<T>) resourceKey

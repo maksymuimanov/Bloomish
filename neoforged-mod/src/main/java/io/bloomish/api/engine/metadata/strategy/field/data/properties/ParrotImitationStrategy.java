@@ -18,7 +18,7 @@ import java.lang.reflect.Field;
 public class ParrotImitationStrategy implements FieldAnnotationStrategy<ParrotImitation> {
     @Override
     public void execute(Field field, Object object, ParrotImitation annotation) throws Exception {
-        Holder<EntityType<?>> entityType = ReflectionUtils.getFieldValue(field, object);
+        Holder<EntityType<?>> entityType = ReflectionUtils.extractFieldValue(field, object);
         ParrotImitationDto parrotImitationDto = new ParrotImitationDto(entityType, annotation.soundEvent(), annotation.replace());
         ApiDataMapProvider.PARROT_IMITATIONS.add(parrotImitationDto);
     }

@@ -21,7 +21,7 @@ import java.lang.reflect.Field;
 public class GenerateGrassStrategy implements FieldAnnotationStrategy<GenerateGrass> {
     @Override
     public void execute(Field field, Object object, GenerateGrass annotation) throws Exception {
-        ResourceKey<ConfiguredFeature<?, ?>> configuredFeatureKey = ReflectionUtils.getFieldValue(field, object);
+        ResourceKey<ConfiguredFeature<?, ?>> configuredFeatureKey = ReflectionUtils.extractFieldValue(field, object);
         var annotationConfiguration = annotation.configuration();
         var annotationPlacement = annotation.placement();
         var annotationBiomeModifier = annotation.biomeModifier();

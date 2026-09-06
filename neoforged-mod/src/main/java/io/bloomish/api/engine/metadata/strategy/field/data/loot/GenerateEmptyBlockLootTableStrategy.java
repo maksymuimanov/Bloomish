@@ -18,7 +18,7 @@ import java.lang.reflect.Field;
 public class GenerateEmptyBlockLootTableStrategy implements FieldAnnotationStrategy<GenerateEmptyBlockLootTable> {
     @Override
     public void execute(Field field, Object object, GenerateEmptyBlockLootTable annotation) throws Exception {
-        Holder<? extends Block> holder = ReflectionUtils.getFieldValue(field, object);
+        Holder<? extends Block> holder = ReflectionUtils.extractFieldValue(field, object);
         BlockLootTableSpec spec = new BlockLootTableSpec(holder);
         BlockLootTableContainer.EMPTY.add(spec);
     }

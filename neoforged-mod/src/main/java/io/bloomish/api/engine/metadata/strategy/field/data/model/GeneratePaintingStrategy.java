@@ -22,7 +22,7 @@ public class GeneratePaintingStrategy implements FieldAnnotationStrategy<Generat
 
     @Override
     public void execute(Field field, Object object, GeneratePainting annotation) throws Exception {
-        ResourceKey<PaintingVariant> paintingVariant = ReflectionUtils.getFieldValue(field, object);
+        ResourceKey<PaintingVariant> paintingVariant = ReflectionUtils.extractFieldValue(field, object);
         PaintingVariantDescription paintingVariantDescription = new PaintingVariantDescription(paintingVariant, annotation.width(), annotation.height());
         ApiPaintingVariantProvider.PAINTINGS.add(paintingVariantDescription);
         MapUtils.putToListMap(PaintingVariantTagsProvider.TAG_GENERATION_DESCRIPTIONS, MINECRAFT_PLACEABLES_TAG, paintingVariant);

@@ -18,7 +18,7 @@ import java.lang.reflect.Field;
 public class WaxableStrategy implements FieldAnnotationStrategy<Waxable> {
     @Override
     public void execute(Field field, Object object, Waxable annotation) throws Exception {
-        Holder<? extends Block> block = ReflectionUtils.getFieldValue(field, object);
+        Holder<? extends Block> block = ReflectionUtils.extractFieldValue(field, object);
         WaxableDto waxableDto = new WaxableDto(block, annotation.waxedBlock(), annotation.replace());
         ApiDataMapProvider.WAXABLES.add(waxableDto);
     }

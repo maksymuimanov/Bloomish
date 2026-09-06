@@ -1,6 +1,6 @@
 package io.bloomish.api.data.client.atlas;
 
-import io.bloomish.api.engine.metadata.annotation.injection.Injected;
+import io.bloomish.api.bean.Injected;
 
 import java.util.List;
 import java.util.Map;

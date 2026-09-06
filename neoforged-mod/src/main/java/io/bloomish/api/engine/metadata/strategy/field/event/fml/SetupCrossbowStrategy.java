@@ -17,7 +17,7 @@ import java.lang.reflect.Field;
 public class SetupCrossbowStrategy implements FieldAnnotationStrategy<SetupCrossbow> {
     @Override
     public void execute(Field field, Object object, SetupCrossbow annotation) throws Exception {
-        Holder<? extends Item> crossbow = ReflectionUtils.getFieldValue(field, object);
+        Holder<? extends Item> crossbow = ReflectionUtils.extractFieldValue(field, object);
         FMLClientSetupEventListener.CROSSBOWS.add(crossbow);
     }
 

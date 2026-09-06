@@ -1,6 +1,6 @@
 package io.bloomish.api.event.trade.wanderer;
 
-import io.bloomish.api.engine.metadata.annotation.injection.Injected;
+import io.bloomish.api.bean.Injected;
 import io.bloomish.api.event.trade.TradeProvider;
 import net.minecraft.world.entity.npc.VillagerTrades;
 import net.neoforged.neoforge.event.village.WandererTradesEvent;

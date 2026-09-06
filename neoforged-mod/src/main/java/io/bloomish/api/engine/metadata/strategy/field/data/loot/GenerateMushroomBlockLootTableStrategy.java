@@ -18,7 +18,7 @@ import java.lang.reflect.Field;
 public class GenerateMushroomBlockLootTableStrategy implements FieldAnnotationStrategy<GenerateMushroomBlockLootTable> {
     @Override
     public void execute(Field field, Object object, GenerateMushroomBlockLootTable annotation) throws Exception {
-        Holder<? extends Block> holder = ReflectionUtils.getFieldValue(field, object);
+        Holder<? extends Block> holder = ReflectionUtils.extractFieldValue(field, object);
         OtherItemBlockLootTableSpec spec = new OtherItemBlockLootTableSpec(holder, annotation.mushroom());
         BlockLootTableContainer.MUSHROOM_BLOCKS.add(spec);
     }

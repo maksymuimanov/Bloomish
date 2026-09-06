@@ -1,11 +1,11 @@
 package io.bloomish.api.data.client.language;
 
+import io.bloomish.api.bean.Injected;
 import io.bloomish.api.channel.deprecated.DataChannels;
 import io.bloomish.api.channel.deprecated.KeyedMapChannelBus;
 import io.bloomish.api.data.AbstractMultiDataProvider;
 import io.bloomish.api.data.DataTarget;
 import io.bloomish.api.data.client.ClientDataProvider;
-import io.bloomish.api.engine.metadata.annotation.injection.Injected;
 import net.minecraft.data.PackOutput;
 
 import java.util.Map;

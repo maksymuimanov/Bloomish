@@ -1,10 +1,10 @@
 package io.bloomish.api.data.client.model.item;
 
+import io.bloomish.api.bean.Injected;
 import io.bloomish.api.channel.deprecated.DataChannels;
 import io.bloomish.api.channel.deprecated.ValueChannelBus;
 import io.bloomish.api.data.client.model.item.model.ItemModel;
 import io.bloomish.api.data.client.model.item.model.LayeredItemModel;
-import io.bloomish.api.engine.metadata.annotation.injection.Injected;
 import io.bloomish.api.util.StringUtils;
 import net.minecraft.core.Holder;
 import net.minecraft.data.PackOutput;

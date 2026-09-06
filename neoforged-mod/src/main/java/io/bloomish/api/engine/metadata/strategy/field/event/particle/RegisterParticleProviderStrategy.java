@@ -23,7 +23,7 @@ public class RegisterParticleProviderStrategy implements FieldAnnotationStrategy
     @Override
     @SuppressWarnings("unchecked")
     public void execute(Field field, Object object, RegisterParticleProvider annotation) throws Exception {
-        Holder<? extends ParticleType<ParticleOptions>> particleType = ReflectionUtils.getFieldValue(field, object);
+        Holder<? extends ParticleType<ParticleOptions>> particleType = ReflectionUtils.extractFieldValue(field, object);
         Class<? extends ParticleProvider<?>> providerClass = annotation.value();
         Constructor<? extends ParticleProvider<?>> providerConstructor = providerClass.getDeclaredConstructor(SpriteSet.class);
         RegisterParticleProvidersEventListener.PROVIDER_REGISTRIES.add(event -> {

@@ -9,12 +9,12 @@ import java.util.List;
 
 public class EventBusInitializer implements ObjectRegistryInitializer {
     @Override
-    public void initialize(Collection<Class<?>> classes, List<?> externalObjects, ObjectRegistry objectRegistry) {
+    public void initialize(Collection<Class<?>> classes, List<?> externalObjects, ObjectRegistry registry) {
         if (CollectionUtils.isEmpty(externalObjects)) return;
         externalObjects.stream()
                 .filter(IEventBus.class::isInstance)
                 .map(IEventBus.class::cast)
                 .findAny()
-                .ifPresent(objectRegistry::registerValue);
+                .ifPresent(registry::registerValue);
     }
 }

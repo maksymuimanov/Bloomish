@@ -28,7 +28,7 @@ public final class ModContext implements ObjectRegistryContext<String>, NeoModCo
     }
 
     public static <T> Collection<? extends T> getObjects(Class<T> commonInterface) {
-        return getCurrentRegistry().getAll(commonInterface);
+        return getCurrentRegistry().getAllByInterface(commonInterface);
     }
 
     public static <T> T getObject(Class<? extends T> clazz) {

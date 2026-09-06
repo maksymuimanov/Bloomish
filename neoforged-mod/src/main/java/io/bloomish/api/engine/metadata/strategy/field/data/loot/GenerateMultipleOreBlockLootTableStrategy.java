@@ -18,7 +18,7 @@ import java.lang.reflect.Field;
 public class GenerateMultipleOreBlockLootTableStrategy implements FieldAnnotationStrategy<GenerateMultipleOreBlockLootTable> {
     @Override
     public void execute(Field field, Object object, GenerateMultipleOreBlockLootTable annotation) throws Exception {
-        Holder<? extends Block> holder = ReflectionUtils.getFieldValue(field, object);
+        Holder<? extends Block> holder = ReflectionUtils.extractFieldValue(field, object);
         MultipleOreBlockLootTableSpec spec = new MultipleOreBlockLootTableSpec(holder, annotation.rawOre(), annotation.min(), annotation.max());
         BlockLootTableContainer.MULTIPLE_ORES.add(spec);
     }

@@ -1,7 +1,7 @@
 package io.bloomish.api.data.client.language;
 
+import io.bloomish.api.bean.Injected;
 import io.bloomish.api.data.client.language.key.TranslationKeyResolver;
-import io.bloomish.api.engine.metadata.annotation.injection.Injected;
 
 import java.util.HashMap;
 import java.util.Map;

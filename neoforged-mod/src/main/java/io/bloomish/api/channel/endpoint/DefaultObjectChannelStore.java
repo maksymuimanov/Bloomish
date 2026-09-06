@@ -1,7 +1,7 @@
 package io.bloomish.api.channel.endpoint;
 
+import io.bloomish.api.bean.Injected;
 import io.bloomish.api.channel.ObjectChannel;
-import io.bloomish.api.engine.metadata.annotation.injection.Injected;
 import io.bloomish.api.util.CollectionUtils;
 
 import java.util.Map;

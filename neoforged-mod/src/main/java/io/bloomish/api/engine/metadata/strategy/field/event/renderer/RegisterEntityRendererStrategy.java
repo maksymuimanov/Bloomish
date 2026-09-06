@@ -22,7 +22,7 @@ public class RegisterEntityRendererStrategy implements FieldAnnotationStrategy<R
     @Override
     @SuppressWarnings("unchecked")
     public void execute(Field field, Object object, RegisterEntityRenderer annotation) throws Exception {
-        Holder<? extends EntityType<? extends Entity>> entityType = ReflectionUtils.getFieldValue(field, object);
+        Holder<? extends EntityType<? extends Entity>> entityType = ReflectionUtils.extractFieldValue(field, object);
         Class<? extends EntityRenderer<?>> rendererClass = annotation.value();
         Constructor<? extends EntityRenderer<?>> rendererConstructor = rendererClass.getDeclaredConstructor(EntityRendererProvider.Context.class);
         EntityRendererRegisterRendererEventListener.RENDERING_REGISTRIES.add(event -> {

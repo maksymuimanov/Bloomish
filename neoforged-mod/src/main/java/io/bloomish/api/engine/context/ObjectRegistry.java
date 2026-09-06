@@ -28,7 +28,7 @@ public interface ObjectRegistry extends Iterable<Object> {
 
     Collection<?> getAll();
 
-    <T> Collection<T> getAll(Class<T> commonInterface);
+    <T> Collection<T> getAllByInterface(Class<T> commonInterface);
 
     Object getByName(String name);
 

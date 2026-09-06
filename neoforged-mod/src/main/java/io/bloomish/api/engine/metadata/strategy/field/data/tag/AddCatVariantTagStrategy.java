@@ -18,7 +18,7 @@ import java.lang.reflect.Field;
 public class AddCatVariantTagStrategy implements FieldAnnotationStrategy<AddCatVariantTag> {
     @Override
     public void execute(Field field, Object object, AddCatVariantTag annotation) throws Exception {
-        Holder<? extends CatVariant> catVariant = ReflectionUtils.getFieldValue(field, object);
+        Holder<? extends CatVariant> catVariant = ReflectionUtils.extractFieldValue(field, object);
         for (String tag : annotation.value()) {
             MapUtils.putToListMap(CatVariantTagsProvider.TAG_GENERATION_DESCRIPTIONS, tag, catVariant);
         }

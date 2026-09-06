@@ -1,5 +1,6 @@
 package io.bloomish.api.data.client.model.block;
 
+import io.bloomish.api.bean.Injected;
 import io.bloomish.api.channel.deprecated.DataChannels;
 import io.bloomish.api.channel.deprecated.ValueChannelBus;
 import io.bloomish.api.data.client.model.block.holder.BlockHolder;
@@ -7,7 +8,6 @@ import io.bloomish.api.data.client.model.block.model.BlockModel;
 import io.bloomish.api.data.client.model.block.model.TexturedBlockModel;
 import io.bloomish.api.data.client.model.block.texture.BlockTexture;
 import io.bloomish.api.data.client.model.block.texture.DefaultBlockTexture;
-import io.bloomish.api.engine.metadata.annotation.injection.Injected;
 import io.bloomish.api.util.ResourceLocationUtils;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.level.block.Block;

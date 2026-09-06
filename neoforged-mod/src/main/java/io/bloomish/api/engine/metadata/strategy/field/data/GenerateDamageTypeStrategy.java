@@ -18,7 +18,7 @@ import java.lang.reflect.Field;
 public class GenerateDamageTypeStrategy implements FieldAnnotationStrategy<GenerateDamageType> {
     @Override
     public void execute(Field field, Object object, GenerateDamageType annotation) throws Exception {
-        ResourceKey<DamageType> damageType = ReflectionUtils.getFieldValue(field, object);
+        ResourceKey<DamageType> damageType = ReflectionUtils.extractFieldValue(field, object);
         DamageTypeDescription description = new DamageTypeDescription(annotation.scaling(), annotation.exhaustion(), annotation.effects(), annotation.message());
         ApiDamageTypeProvider.DAMAGE_TYPES.put(damageType, description);
     }

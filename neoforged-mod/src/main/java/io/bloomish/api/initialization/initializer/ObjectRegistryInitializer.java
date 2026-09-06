@@ -7,5 +7,5 @@ import java.util.List;
 
 @FunctionalInterface
 public interface ObjectRegistryInitializer {
-    void initialize(Collection<Class<?>> classes, List<?> externalObjects, ObjectRegistry objectRegistry);
+    void initialize(Collection<Class<?>> classes, List<?> externalObjects, ObjectRegistry registry);
 }
