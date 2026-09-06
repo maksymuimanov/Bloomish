@@ -1,21 +1,22 @@
 package io.bloomish.api.event.listener;
 
-import io.bloomish.api.channel.deprecated.DataChannels;
-import io.bloomish.api.channel.deprecated.ValueChannelBus;
+import io.bloomish.api.channel.ObserveObjectChannel;
 import net.neoforged.neoforge.client.event.RegisterParticleProvidersEvent;
 
 import java.util.function.Consumer;
+import java.util.stream.Stream;
 
 @EventListener
 public class RegisterParticleProvidersEventListener {
-    private final ValueChannelBus channelBus;
+    private final Stream<Consumer<RegisterParticleProvidersEvent>> registerParticleProvidersEventConsumers;
 
-    public RegisterParticleProvidersEventListener(ValueChannelBus channelBus) {
-        this.channelBus = channelBus;
+    public RegisterParticleProvidersEventListener(
+            @ObserveObjectChannel("RegisterParticleProvidersEventListener") Stream<Consumer<RegisterParticleProvidersEvent>> registerParticleProvidersEventConsumers
+    ) {
+        this.registerParticleProvidersEventConsumers = registerParticleProvidersEventConsumers;
     }
 
     public void listen(RegisterParticleProvidersEvent event) {
-        this.channelBus.<Consumer<RegisterParticleProvidersEvent>>forEachDrain(DataChannels.REGISTER_PARTICLE_PROVIDERS_EVENT_HANDLER,
-                consumer -> consumer.accept(event));
+        this.registerParticleProvidersEventConsumers.forEach(consumer -> consumer.accept(event));
     }
 }

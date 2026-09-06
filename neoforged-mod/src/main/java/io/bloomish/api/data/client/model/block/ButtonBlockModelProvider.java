@@ -1,6 +1,6 @@
 package io.bloomish.api.data.client.model.block;
 
-import io.bloomish.api.bean.Injected;
+import io.bloomish.api.bean.Bean;
 import io.bloomish.api.channel.deprecated.DataChannels;
 import io.bloomish.api.channel.deprecated.ValueChannelBus;
 import io.bloomish.api.data.client.model.block.holder.BlockHolder;
@@ -12,7 +12,7 @@ import io.bloomish.api.util.ResourceLocationUtils;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.level.block.Block;
 
-@Injected
+@Bean
 public class ButtonBlockModelProvider extends AbstractBlockModelProvider {
     private static final String BUTTON_PATH = "button";
     private final ValueChannelBus channelBus;

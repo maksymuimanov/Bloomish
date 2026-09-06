@@ -1,6 +1,6 @@
 package io.bloomish.api.event.fov;
 
-import io.bloomish.api.bean.Injected;
+import io.bloomish.api.bean.Bean;
 import io.bloomish.api.util.CollectionUtils;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
@@ -8,7 +8,7 @@ import net.neoforged.neoforge.client.event.ComputeFovModifierEvent;
 
 import java.util.List;
 
-@Injected
+@Bean
 public class BowFovModifier implements FovModifier {
     private static final float TICKS_PER_SECOND = 20.0F;
     private static final float MAX_DRAW_PROGRESS = 1.0F;

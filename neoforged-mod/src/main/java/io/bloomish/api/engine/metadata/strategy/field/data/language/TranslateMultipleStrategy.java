@@ -7,7 +7,6 @@ import io.bloomish.api.engine.metadata.pool.SimpleStrategyPool;
 import io.bloomish.api.engine.metadata.pool.StrategyPool;
 import io.bloomish.api.engine.metadata.processor.DataEventHandlerAnnotationProcessorAdapter;
 import io.bloomish.api.engine.metadata.strategy.field.FieldAnnotationStrategy;
-import io.bloomish.api.initialization.initializer.StrategyInitializer;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;

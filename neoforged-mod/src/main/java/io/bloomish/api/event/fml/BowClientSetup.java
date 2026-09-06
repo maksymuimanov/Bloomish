@@ -1,9 +1,9 @@
 package io.bloomish.api.event.fml;
 
-import io.bloomish.api.bean.Injected;
+import io.bloomish.api.bean.Bean;
 import net.minecraft.world.item.Item;
 
-@Injected
+@Bean
 public class BowClientSetup extends AbstractItemClientSetup {
     private static final String PULL = "pull";
     private static final String PULLING = "pulling";

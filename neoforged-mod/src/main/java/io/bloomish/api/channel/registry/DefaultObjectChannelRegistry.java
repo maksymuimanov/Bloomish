@@ -1,18 +1,19 @@
 package io.bloomish.api.channel.registry;
 
-import io.bloomish.api.bean.Inject;
-import io.bloomish.api.bean.Injected;
+import io.bloomish.api.bean.Bean;
+import io.bloomish.api.bean.BeanConstructor;
 import io.bloomish.api.channel.ObjectChannel;
+import io.bloomish.api.channel.ObjectChannelRegistry;
 
 import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 
-@Injected
+@Bean
 public class DefaultObjectChannelRegistry implements ObjectChannelRegistry {
     private final Map<String, ObjectChannel> channels;
 
-    @Inject
+    @BeanConstructor
     public DefaultObjectChannelRegistry() {
         this(Map.of());
     }

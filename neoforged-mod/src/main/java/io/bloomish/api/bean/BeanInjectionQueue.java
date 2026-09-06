@@ -113,6 +113,12 @@ public class BeanInjectionQueue implements Queue<BeanDefinition> {
         public int compare(BeanDefinition o1, BeanDefinition o2) {
             Constructor<?> c1 = o1.constructor();
             Constructor<?> c2 = o2.constructor();
+            if (c1.getParameterCount() == 0 && c2.getParameterCount() != 0) {
+                return -1;
+            }
+            if (c1.getParameterCount() != 0 && c2.getParameterCount() == 0) {
+                return 1;
+            }
             if (ReflectionUtils.isConstructorDependency(c1, c2)) {
                 return 1;
             }

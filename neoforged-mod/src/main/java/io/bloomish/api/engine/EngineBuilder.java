@@ -2,7 +2,6 @@ package io.bloomish.api.engine;
 
 import io.bloomish.api.ApiMod;
 import io.bloomish.api.engine.config.ConfigLayer;
-import io.bloomish.api.engine.config.ConfigLayerCustomizer;
 import io.bloomish.api.engine.context.ModContext;
 import io.bloomish.api.engine.finalization.FinalizationLayer;
 import io.bloomish.api.engine.finalization.FinalizationLayerCustomizer;
@@ -52,14 +51,9 @@ public class EngineBuilder {
     }
 
     public EngineBuilder configLayer() {
-        return this.configLayer(layerCustomizer -> {});
-    }
-
-    public EngineBuilder configLayer(Consumer<ConfigLayerCustomizer> customizerConsumer) {
         ConfigLayer configLayer = new ConfigLayer();
-        ConfigLayerCustomizer layerCustomizer = new ConfigLayerCustomizer();
-        customizerConsumer.accept(layerCustomizer);
-        return this.configureLayer(configLayer, layerCustomizer);
+        this.addLayer(configLayer);
+        return this;
     }
 
     public EngineBuilder finalizationLayer() {

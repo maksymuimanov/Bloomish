@@ -1,12 +1,12 @@
 package io.bloomish.api.data.client.language.key;
 
-import io.bloomish.api.bean.Injected;
+import io.bloomish.api.bean.Bean;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.stats.StatType;
 
-@Injected
+@Bean
 public class StatTypeTranslationKeyResolver extends AbstractResourceKeyResolver<StatType<?>> {
     public static final String PREFIX = "stat_type";
 

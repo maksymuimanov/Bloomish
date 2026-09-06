@@ -1,6 +1,6 @@
 package io.bloomish.api.event.creative;
 
-import io.bloomish.api.bean.Injected;
+import io.bloomish.api.bean.Bean;
 import io.bloomish.api.util.CollectionUtils;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.CreativeModeTab;
@@ -9,33 +9,20 @@ import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 
 import java.util.List;
 
-@Injected
+@Bean
 public class SimpleCreativeModeTabAdder implements CreativeModeTabAdder {
     @Override
-    public void addToTab(
-            BuildCreativeModeTabContentsEvent event,
-            ResourceKey<CreativeModeTab> creativeModeTab,
-            ItemLike item,
-            ItemLike... items
-    ) {
+    public void addToTab(BuildCreativeModeTabContentsEvent event, ResourceKey<CreativeModeTab> creativeModeTab, ItemLike item, ItemLike... items) {
         List<? extends ItemLike> itemsToAdd = CollectionUtils.arrayListOf(item, items);
         this.addAllToTab(event, creativeModeTab, itemsToAdd);
     }
 
     @Override
-    public void addAllToTab(
-            BuildCreativeModeTabContentsEvent event,
-            ResourceKey<CreativeModeTab> creativeModeTab,
-            Iterable<? extends ItemLike> items
-    ) {
+    public void addAllToTab(BuildCreativeModeTabContentsEvent event, ResourceKey<CreativeModeTab> creativeModeTab, Iterable<? extends ItemLike> items) {
         items.forEach(itemToAdd -> this.addItemToTab(event, creativeModeTab, itemToAdd));
     }
 
-    private void addItemToTab(
-            BuildCreativeModeTabContentsEvent event,
-            ResourceKey<CreativeModeTab> creativeModeTab,
-            ItemLike item
-    ) {
+    private void addItemToTab(BuildCreativeModeTabContentsEvent event, ResourceKey<CreativeModeTab> creativeModeTab, ItemLike item) {
         try {
             if (event.getTabKey() == creativeModeTab) event.accept(item);
         } catch (Exception e) {

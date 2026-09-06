@@ -1,8 +1,8 @@
 package io.bloomish.api.data.client.language.key;
 
-import io.bloomish.api.bean.Injected;
+import io.bloomish.api.bean.Bean;
 
-@Injected
+@Bean
 public class StringTranslationKeyResolver implements TranslationKeyResolver<String> {
     @Override
     public boolean supports(Object object) {

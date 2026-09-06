@@ -1,6 +1,6 @@
 package io.bloomish.api.data.client.blockstate;
 
-import io.bloomish.api.bean.Injected;
+import io.bloomish.api.bean.Bean;
 import io.bloomish.api.channel.deprecated.DataChannels;
 import io.bloomish.api.channel.deprecated.ValueChannelBus;
 import io.bloomish.api.data.client.blockstate.property.EnumBlockStateProperty;
@@ -11,7 +11,7 @@ import net.minecraft.core.Holder;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.level.block.Block;
 
-@Injected
+@Bean
 public class ButtonBlockStateProvider extends AbstractBlockStateProvider {
     private static final String PRESSED_SUFFIX = "pressed";
     private final ValueChannelBus channelBus;

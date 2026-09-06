@@ -1,6 +1,6 @@
 package io.bloomish.api.data.client.blockstate;
 
-import io.bloomish.api.bean.Injected;
+import io.bloomish.api.bean.Bean;
 import io.bloomish.api.channel.deprecated.DataChannels;
 import io.bloomish.api.channel.deprecated.ValueChannelBus;
 import io.bloomish.api.data.client.blockstate.property.BlockStateProperty;
@@ -11,7 +11,7 @@ import net.minecraft.world.level.block.Block;
 
 import java.util.Locale;
 
-@Injected
+@Bean
 public class FenceBlockStateProvider extends AbstractBlockStateProvider {
     private static final String POST_SUFFIX = "post";
     private static final String SIDE_SUFFIX = "side";

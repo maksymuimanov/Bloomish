@@ -1,6 +1,4 @@
-package io.bloomish.api.channel.registry;
-
-import io.bloomish.api.channel.ObjectChannel;
+package io.bloomish.api.channel;
 
 import java.util.Optional;
 

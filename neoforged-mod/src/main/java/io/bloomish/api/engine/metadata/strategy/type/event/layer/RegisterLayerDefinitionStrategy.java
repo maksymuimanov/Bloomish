@@ -6,7 +6,6 @@ import io.bloomish.api.engine.metadata.pool.ProcessorScope;
 import io.bloomish.api.engine.metadata.processor.EntityRendererRegisterLayerDefinitionEventHandlerAnnotationProcessorAdapter;
 import io.bloomish.api.engine.metadata.strategy.type.ClassAnnotationStrategy;
 import io.bloomish.api.event.listener.EntityRendererRegisterLayerDefinitionEventListener;
-import io.bloomish.api.initialization.initializer.StrategyInitializer;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.builders.LayerDefinition;
 

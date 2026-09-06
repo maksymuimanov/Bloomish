@@ -5,7 +5,7 @@ import net.neoforged.bus.api.EventPriority;
 
 import java.util.function.Consumer;
 
-public interface EventBusSubscriber {
+public interface EventSubscriber {
     default <E extends Event> void subscribe(Class<E> eventClass, Consumer<E> eventConsumer) {
         this.subscribe(eventClass, eventConsumer, EventPriority.NORMAL);
     }

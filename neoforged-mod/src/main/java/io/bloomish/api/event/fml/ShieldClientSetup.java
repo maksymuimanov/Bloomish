@@ -1,9 +1,9 @@
 package io.bloomish.api.event.fml;
 
-import io.bloomish.api.bean.Injected;
+import io.bloomish.api.bean.Bean;
 import net.minecraft.world.item.Item;
 
-@Injected
+@Bean
 public class ShieldClientSetup extends AbstractItemClientSetup {
     private static final String BLOCKING = "blocking";
     private static final float FULL_BLOCK = 1.0F;

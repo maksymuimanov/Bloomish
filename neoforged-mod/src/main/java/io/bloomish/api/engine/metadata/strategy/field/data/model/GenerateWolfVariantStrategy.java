@@ -8,7 +8,6 @@ import io.bloomish.api.engine.metadata.annotation.injection.Strategy;
 import io.bloomish.api.engine.metadata.pool.ProcessorScope;
 import io.bloomish.api.engine.metadata.processor.DataEventHandlerAnnotationProcessorAdapter;
 import io.bloomish.api.engine.metadata.strategy.field.FieldAnnotationStrategy;
-import io.bloomish.api.initialization.initializer.StrategyInitializer;
 import io.bloomish.api.util.ReflectionUtils;
 import io.bloomish.api.util.TagUtils;
 import net.minecraft.resources.ResourceKey;

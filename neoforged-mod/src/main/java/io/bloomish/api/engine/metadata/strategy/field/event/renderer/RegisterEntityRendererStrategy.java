@@ -6,7 +6,6 @@ import io.bloomish.api.engine.metadata.pool.ProcessorScope;
 import io.bloomish.api.engine.metadata.processor.EntityRendererRegisterRendererEventHandlerAnnotationProcessorAdapter;
 import io.bloomish.api.engine.metadata.strategy.field.FieldAnnotationStrategy;
 import io.bloomish.api.event.listener.EntityRendererRegisterRendererEventListener;
-import io.bloomish.api.initialization.initializer.StrategyInitializer;
 import io.bloomish.api.util.ReflectionUtils;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;

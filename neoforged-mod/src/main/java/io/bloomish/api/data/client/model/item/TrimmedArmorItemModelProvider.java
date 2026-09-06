@@ -1,6 +1,6 @@
 package io.bloomish.api.data.client.model.item;
 
-import io.bloomish.api.bean.Injected;
+import io.bloomish.api.bean.Bean;
 import io.bloomish.api.channel.deprecated.DataChannels;
 import io.bloomish.api.channel.deprecated.ValueChannelBus;
 import io.bloomish.api.data.client.model.item.model.ItemModel;
@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-@Injected
+@Bean
 public class TrimmedArmorItemModelProvider extends AbstractItemModelProvider {
     private static final String[] TRIM_MATERIALS = {"quartz", "iron", "netherite", "redstone", "copper", "gold", "emerald", "diamond", "lapis", "amethyst"};
     private static final float TRIM_TYPE_COEFFICIENT = 10F;

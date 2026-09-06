@@ -1,6 +1,6 @@
 package io.bloomish.api.event.subscriber;
 
-import io.bloomish.api.bean.Injected;
+import io.bloomish.api.bean.Bean;
 import net.neoforged.bus.api.Event;
 import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.IEventBus;
@@ -9,11 +9,11 @@ import net.neoforged.neoforge.common.NeoForge;
 
 import java.util.function.Consumer;
 
-@Injected
-public class DefaultEventBusSubscriber implements EventBusSubscriber {
+@Bean
+public class DefaultEventSubscriber implements EventSubscriber {
     private final IEventBus modEventBus;
 
-    public DefaultEventBusSubscriber(IEventBus modEventBus) {
+    public DefaultEventSubscriber(IEventBus modEventBus) {
         this.modEventBus = modEventBus;
     }
 

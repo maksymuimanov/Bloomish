@@ -44,7 +44,7 @@ Extract a cohesive set of functionality into a separate component/class to impro
 
 - Component has a single responsibility
 - Component is properly encapsulated
-- Dependencies are injected appropriately
+- Dependencies are bean appropriately
 - Original code is simplified
 - Code compiles successfully
 - Tests pass

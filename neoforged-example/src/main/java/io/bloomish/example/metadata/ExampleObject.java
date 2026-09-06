@@ -1,8 +1,8 @@
 package io.bloomish.example.metadata;
 
-import io.bloomish.api.bean.Injected;
+import io.bloomish.api.bean.Bean;
 
-@Injected
+@Bean
 @ExampleAnnotation("Hello from Class")
 public class ExampleObject {
     @ExampleAnnotation("Hello from Field")

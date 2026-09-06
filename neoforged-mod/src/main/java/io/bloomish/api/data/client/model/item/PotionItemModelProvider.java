@@ -1,6 +1,6 @@
 package io.bloomish.api.data.client.model.item;
 
-import io.bloomish.api.bean.Injected;
+import io.bloomish.api.bean.Bean;
 import io.bloomish.api.channel.deprecated.DataChannels;
 import io.bloomish.api.channel.deprecated.ValueChannelBus;
 import io.bloomish.api.data.client.model.item.model.ItemModel;
@@ -11,7 +11,7 @@ import net.minecraft.world.item.Item;
 
 import java.util.List;
 
-@Injected
+@Bean
 public class PotionItemModelProvider extends AbstractItemModelProvider {
     private static final String POTION_OVERLAY_PATH = "potion_overlay";
     private final ValueChannelBus channelBus;

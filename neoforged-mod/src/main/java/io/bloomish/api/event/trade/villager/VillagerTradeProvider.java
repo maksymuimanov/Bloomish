@@ -1,6 +1,6 @@
 package io.bloomish.api.event.trade.villager;
 
-import io.bloomish.api.bean.Injected;
+import io.bloomish.api.bean.Bean;
 import io.bloomish.api.event.trade.TradeProvider;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import net.minecraft.world.entity.npc.VillagerTrades;
@@ -8,7 +8,7 @@ import net.neoforged.neoforge.event.village.VillagerTradesEvent;
 
 import java.util.List;
 
-@Injected
+@Bean
 public class VillagerTradeProvider implements TradeProvider<VillagerTradesEvent, VillagerTrade> {
     @Override
     public void provide(VillagerTradesEvent event, VillagerTrade trade) {

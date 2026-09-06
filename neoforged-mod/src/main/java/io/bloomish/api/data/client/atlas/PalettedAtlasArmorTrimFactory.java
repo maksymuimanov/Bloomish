@@ -1,11 +1,11 @@
 package io.bloomish.api.data.client.atlas;
 
-import io.bloomish.api.bean.Injected;
+import io.bloomish.api.bean.Bean;
 
 import java.util.List;
 import java.util.Map;
 
-@Injected
+@Bean
 public class PalettedAtlasArmorTrimFactory implements AtlasArmorTrimFactory {
     private static final String PALETTED_PERMUTATIONS_TYPE = "paletted_permutations";
     private static final String PALETTE_KEY_PATH = "trims/color_palettes/trim_palette";

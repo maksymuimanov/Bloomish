@@ -7,7 +7,6 @@ import io.bloomish.api.engine.metadata.pool.ProcessorScope;
 import io.bloomish.api.engine.metadata.processor.CreativeModeTabEventHandlerAnnotationProcessorAdapter;
 import io.bloomish.api.engine.metadata.strategy.field.FieldAnnotationStrategy;
 import io.bloomish.api.event.listener.CreativeModeTabEventListener;
-import io.bloomish.api.initialization.initializer.StrategyInitializer;
 import io.bloomish.api.util.MapUtils;
 import io.bloomish.api.util.ReflectionUtils;
 import net.minecraft.core.Holder;

@@ -1,27 +1,30 @@
 package io.bloomish.api.event.listener;
 
-import io.bloomish.api.channel.deprecated.DataChannels;
-import io.bloomish.api.channel.deprecated.KeyedChannelBus;
+import io.bloomish.api.channel.ObserveObjectChannel;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 
+import java.util.stream.Stream;
+
 @EventListener
 public class EntityRendererRegisterLayerDefinitionEventListener {
-    private final KeyedChannelBus channelBus;
+    private final Stream<ModelLocationLayerDefinition> modelLocationLayerDefinitions;
 
-    public EntityRendererRegisterLayerDefinitionEventListener(KeyedChannelBus channelBus) {
-        this.channelBus = channelBus;
+    public EntityRendererRegisterLayerDefinitionEventListener(
+            @ObserveObjectChannel("EntityRendererRegisterLayerDefinitionEventListener") Stream<ModelLocationLayerDefinition> modelLocationLayerDefinitions
+    ) {
+        this.modelLocationLayerDefinitions = modelLocationLayerDefinitions;
     }
 
     public void listen(EntityRenderersEvent.RegisterLayerDefinitions event) {
-        this.channelBus.<ModelLayerLocation, LayerDefinition>forEachDrain(DataChannels.ENTITY_RENDERER_REGISTER_LAYER_DEFINITION_EVENT_HANDLER,
-                (location, definition) ->
-                        this.addLayerDefinition(event, location, definition));
-
+        this.modelLocationLayerDefinitions.forEach(modelLocationLayerDefinition ->
+                event.registerLayerDefinition(modelLocationLayerDefinition.location(), modelLocationLayerDefinition::definition));
     }
 
-    private void addLayerDefinition(EntityRenderersEvent.RegisterLayerDefinitions event, ModelLayerLocation location, LayerDefinition definition) {
-        event.registerLayerDefinition(location, () -> definition);
+    public record ModelLocationLayerDefinition(
+            ModelLayerLocation location,
+            LayerDefinition definition
+    ) {
     }
 }

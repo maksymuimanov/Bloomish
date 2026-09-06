@@ -1,6 +1,6 @@
 package io.bloomish.api.data.client.model.item;
 
-import io.bloomish.api.bean.Injected;
+import io.bloomish.api.bean.Bean;
 import io.bloomish.api.channel.deprecated.DataChannels;
 import io.bloomish.api.channel.deprecated.ValueChannelBus;
 import io.bloomish.api.data.client.model.item.model.ItemModel;
@@ -9,7 +9,7 @@ import net.minecraft.core.Holder;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.Item;
 
-@Injected
+@Bean
 public class FlatItemModelProvider extends AbstractItemModelProvider {
     private final ValueChannelBus channelBus;
 

@@ -1,6 +1,6 @@
 package io.bloomish.api.data.client.atlas;
 
-import io.bloomish.api.bean.Injected;
+import io.bloomish.api.bean.Bean;
 import io.bloomish.api.channel.deprecated.DataChannels;
 import io.bloomish.api.channel.deprecated.ValueChannelBus;
 import io.bloomish.api.util.ResourceKeyUtils;
@@ -13,7 +13,7 @@ import net.minecraft.world.item.armortrim.TrimPatterns;
 import java.util.ArrayList;
 import java.util.List;
 
-@Injected
+@Bean
 public class DefaultAtlasArmorTrimPatternCollector implements AtlasArmorTrimPatternCollector {
     private static final String TRIMS_MODELS_ARMOR_PATH = "trims/models/armor/";
     private static final String LEGGINGS_SUFFIX = "_leggings";

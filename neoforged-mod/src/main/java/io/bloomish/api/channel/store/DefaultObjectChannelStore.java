@@ -1,7 +1,9 @@
-package io.bloomish.api.channel.endpoint;
+package io.bloomish.api.channel.store;
 
-import io.bloomish.api.bean.Injected;
+import io.bloomish.api.bean.Bean;
+import io.bloomish.api.bean.BeanConstructor;
 import io.bloomish.api.channel.ObjectChannel;
+import io.bloomish.api.channel.ObjectChannelStore;
 import io.bloomish.api.util.CollectionUtils;
 
 import java.util.Map;
@@ -10,10 +12,11 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.stream.Stream;
 
-@Injected
+@Bean
 public class DefaultObjectChannelStore implements ObjectChannelStore {
     private final Map<ObjectChannel, Queue<Object>> data;
 
+    @BeanConstructor
     public DefaultObjectChannelStore() {
         this(Map.of());
     }
@@ -24,7 +27,7 @@ public class DefaultObjectChannelStore implements ObjectChannelStore {
 
     @Override
     public void produce(ObjectChannel channel, Object input) {
-        this.lazyQueue(channel).add(input);
+        this.queue(channel).add(input);
     }
 
     @SuppressWarnings("unchecked")
@@ -36,12 +39,12 @@ public class DefaultObjectChannelStore implements ObjectChannelStore {
 
     @Override
     public <T> Stream<T> consume(ObjectChannel channel) {
-        return this.<T>lazyQueue(channel).stream();
+        return this.<T>queue(channel).stream();
     }
 
     @SuppressWarnings("unchecked")
     @Override
-    public <T> Queue<T> lazyQueue(ObjectChannel channel) {
+    public <T> Queue<T> queue(ObjectChannel channel) {
         return (Queue<T>) this.data.computeIfAbsent(channel, key -> new ConcurrentLinkedQueue<>());
     }
 

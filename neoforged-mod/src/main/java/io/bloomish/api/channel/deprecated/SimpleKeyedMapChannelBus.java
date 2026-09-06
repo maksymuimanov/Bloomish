@@ -1,6 +1,6 @@
 package io.bloomish.api.channel.deprecated;
 
-import io.bloomish.api.bean.Injected;
+import io.bloomish.api.bean.Bean;
 import io.bloomish.api.channel.ObjectChannel;
 import io.bloomish.api.util.CollectionUtils;
 
@@ -11,7 +11,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.function.BiConsumer;
 import java.util.stream.Stream;
 
-@Injected
+@Bean
 public class SimpleKeyedMapChannelBus implements KeyedMapChannelBus {
     private final Map<ObjectChannel, Map<Object, Map<?, ?>>> channels;
 

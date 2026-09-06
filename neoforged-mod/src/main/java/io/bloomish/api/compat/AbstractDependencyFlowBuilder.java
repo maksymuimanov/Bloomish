@@ -1,7 +1,6 @@
 package io.bloomish.api.compat;
 
 import io.bloomish.api.ApiMod;
-import io.bloomish.api.engine.event.EventHandler;
 import net.neoforged.fml.ModList;
 
 import java.util.ArrayDeque;
@@ -20,11 +19,6 @@ public abstract class AbstractDependencyFlowBuilder<B extends AbstractDependency
     protected AbstractDependencyFlowBuilder(List<String> dependencyIds, Queue<DependencyFunction> callbacks) {
         this.dependencyIds = dependencyIds;
         this.callbacks = callbacks;
-    }
-
-    @Override
-    public B onEvent(EventHandler eventHandler) {
-        return this.onDependency(eventHandler::handle);
     }
 
     @SuppressWarnings("unchecked")

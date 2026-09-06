@@ -1,12 +1,12 @@
 package io.bloomish.api.data.client.atlas;
 
-import io.bloomish.api.bean.Injected;
+import io.bloomish.api.bean.Bean;
 import io.bloomish.api.data.AbstractMultiDataProvider;
 import io.bloomish.api.data.DataTarget;
 import io.bloomish.api.data.client.ClientDataProvider;
 import net.minecraft.data.PackOutput;
 
-@Injected
+@Bean
 public class AtlasArmorTrimProvider extends AbstractMultiDataProvider implements ClientDataProvider {
     private static final DataTarget DATA_TARGET = DataTarget.createMinecraftAsset("atlases", "armor_trims");
     private final AtlasArmorTrimFactory atlasArmorTrimFactory;

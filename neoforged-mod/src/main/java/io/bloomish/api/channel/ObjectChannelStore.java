@@ -1,6 +1,4 @@
-package io.bloomish.api.channel.endpoint;
-
-import io.bloomish.api.channel.ObjectChannel;
+package io.bloomish.api.channel;
 
 import java.util.Queue;
 import java.util.stream.Stream;
@@ -12,7 +10,7 @@ public interface ObjectChannelStore {
 
     <T> Stream<T> consume(ObjectChannel channel);
 
-    <T> Queue<T> lazyQueue(ObjectChannel channel);
+    <T> Queue<T> queue(ObjectChannel channel);
 
     void clear();
 }

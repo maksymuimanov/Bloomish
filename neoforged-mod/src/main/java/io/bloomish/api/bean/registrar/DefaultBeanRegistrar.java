@@ -7,12 +7,12 @@ import io.bloomish.api.util.ReflectionUtils;
 import java.util.Collection;
 import java.util.stream.Collectors;
 
-public class InjectedBeanRegistrar implements BeanRegistrar {
+public class DefaultBeanRegistrar implements BeanRegistrar {
     private final BeanFilterChain beanFilterChain;
     private final BeanDefinitionResolver beanDefinitionResolver;
     private final BeanInjector beanInjector;
 
-    public InjectedBeanRegistrar(BeanFilterChain beanFilterChain, BeanDefinitionResolver beanDefinitionResolver, BeanInjector beanInjector) {
+    public DefaultBeanRegistrar(BeanFilterChain beanFilterChain, BeanDefinitionResolver beanDefinitionResolver, BeanInjector beanInjector) {
         this.beanFilterChain = beanFilterChain;
         this.beanDefinitionResolver = beanDefinitionResolver;
         this.beanInjector = beanInjector;
@@ -21,7 +21,7 @@ public class InjectedBeanRegistrar implements BeanRegistrar {
     @Override
     public void registerBeans(Collection<Class<?>> classes, ObjectRegistry registry) {
         classes.stream()
-                .filter(clazz -> ReflectionUtils.isAnnotationPresentDeep(clazz, Injected.class))
+                .filter(clazz -> ReflectionUtils.isAnnotationPresentDeep(clazz, Bean.class))
                 .filter(this.beanFilterChain::shouldRegister)
                 .map(this.beanDefinitionResolver::resolveDefinition)
                 .collect(Collectors.toCollection(BeanInjectionQueue::new))

@@ -1,13 +1,13 @@
 package io.bloomish.api.event.trade.wanderer;
 
-import io.bloomish.api.bean.Injected;
+import io.bloomish.api.bean.Bean;
 import io.bloomish.api.event.trade.TradeProvider;
 import net.minecraft.world.entity.npc.VillagerTrades;
 import net.neoforged.neoforge.event.village.WandererTradesEvent;
 
 import java.util.List;
 
-@Injected
+@Bean
 public class WandererTradeProvider implements TradeProvider<WandererTradesEvent, WandererTrade> {
     @Override
     public void provide(WandererTradesEvent event, WandererTrade trade) {

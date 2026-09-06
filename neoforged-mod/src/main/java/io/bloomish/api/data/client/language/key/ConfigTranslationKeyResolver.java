@@ -1,9 +1,9 @@
 package io.bloomish.api.data.client.language.key;
 
-import io.bloomish.api.bean.Injected;
+import io.bloomish.api.bean.Bean;
 import net.neoforged.neoforge.common.ModConfigSpec;
 
-@Injected
+@Bean
 public class ConfigTranslationKeyResolver implements TranslationKeyResolver<ModConfigSpec.ConfigValue<?>> {
     @Override
     public boolean supports(Object object) {

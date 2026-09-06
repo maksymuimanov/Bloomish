@@ -1,6 +1,6 @@
 package io.bloomish.api.data.client.atlas;
 
-import io.bloomish.api.bean.Injected;
+import io.bloomish.api.bean.Bean;
 import io.bloomish.api.channel.deprecated.DataChannels;
 import io.bloomish.api.channel.deprecated.KeyedChannelBus;
 import io.bloomish.api.util.ResourceKeyUtils;
@@ -13,7 +13,7 @@ import net.minecraft.world.item.armortrim.TrimMaterials;
 import java.util.HashMap;
 import java.util.Map;
 
-@Injected
+@Bean
 public class DefaultAtlasArmorTrimMaterialCollector implements AtlasArmorTrimMaterialCollector {
     private static final String TRIMS_COLOR_PALETTES_PATH = "trims/color_palettes/";
     private final Map<String, String> trimMaterials;

@@ -1,6 +1,6 @@
 package io.bloomish.api.data.client.language;
 
-import io.bloomish.api.bean.Injected;
+import io.bloomish.api.bean.Bean;
 import io.bloomish.api.channel.deprecated.DataChannels;
 import io.bloomish.api.channel.deprecated.KeyedMapChannelBus;
 import io.bloomish.api.data.AbstractMultiDataProvider;
@@ -10,7 +10,7 @@ import net.minecraft.data.PackOutput;
 
 import java.util.Map;
 
-@Injected
+@Bean
 public class LanguageProvider extends AbstractMultiDataProvider implements ClientDataProvider {
     private static final String LANGUAGE_PATH = "lang";
     private final KeyedMapChannelBus channelBus;

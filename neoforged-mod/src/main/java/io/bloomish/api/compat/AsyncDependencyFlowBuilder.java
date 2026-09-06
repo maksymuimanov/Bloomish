@@ -1,6 +1,5 @@
 package io.bloomish.api.compat;
 
-import io.bloomish.api.ApiMod;
 import io.bloomish.api.util.CollectionUtils;
 
 import java.util.List;
@@ -51,8 +50,7 @@ public class AsyncDependencyFlowBuilder extends AbstractDependencyFlowBuilder<As
         try {
             callback.execute();
         } catch (Exception e) {
-            ApiMod.LOGGER.error("Error while running dependency process", e);
-            throw new DependencyFlowException(e);
+            throw new DependencyFlowException("Error while running dependency process", e);
         }
     }
 }

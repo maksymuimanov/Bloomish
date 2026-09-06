@@ -1,11 +1,11 @@
 package io.bloomish.api.event.listener;
 
-import io.bloomish.api.bean.Injected;
+import io.bloomish.api.bean.Bean;
 import net.neoforged.bus.api.EventPriority;
 
 import java.lang.annotation.*;
 
-@Injected
+@Bean
 @Documented
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)

@@ -1,13 +1,13 @@
 package io.bloomish.api.data;
 
-import io.bloomish.api.bean.Injected;
+import io.bloomish.api.bean.Bean;
 import io.bloomish.api.data.client.ClientDataProvider;
 import io.bloomish.api.data.server.ServerDataProvider;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.DataProvider;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 
-@Injected
+@Bean
 public class ApiDataGenerator implements DataGatherer {
     private final Iterable<ServerDataProvider> serverProviders;
     private final Iterable<ClientDataProvider> clientProviders;

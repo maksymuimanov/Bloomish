@@ -7,11 +7,8 @@ import io.bloomish.api.engine.context.ModContext;
 import io.bloomish.api.engine.metadata.processor.AnnotationProcessor;
 import io.bloomish.api.engine.metadata.processor.ConfigAnnotationProcessor;
 
-import java.util.List;
-
 public class ConfigLayer implements EngineLayer {
     private static final AnnotationProcessor CONFIG_PROCESSOR = new ConfigAnnotationProcessor();
-    private List<ConfigShowcaser> configShowcasers;
 
     @Override
     public void process() {
@@ -21,17 +18,9 @@ public class ConfigLayer implements EngineLayer {
     }
 
     private void runConfigShowcasers() {
-        this.configShowcasers.forEach(configShowcaser -> {
-            ApiMod.LOGGER.debug("Running defaulted ConfigShowcaser - {}", configShowcaser.getClass().getName());
-            configShowcaser.showcase();
-        });
         ModContext.forEachObject(ConfigShowcaser.class, configShowcaser -> {
             ApiMod.LOGGER.debug("Running dynamic ConfigShowcaser - {}", configShowcaser.getClass().getName());
             configShowcaser.showcase();
         });
-    }
-
-    void setConfigShowcasers(List<ConfigShowcaser> configShowcasers) {
-        this.configShowcasers = configShowcasers;
     }
 }

@@ -6,7 +6,6 @@ import io.bloomish.api.engine.metadata.pool.ProcessorScope;
 import io.bloomish.api.engine.metadata.processor.EntityAttributeEventHandlerAnnotationProcessorAdapter;
 import io.bloomish.api.engine.metadata.strategy.method.MethodAnnotationStrategy;
 import io.bloomish.api.event.listener.EntityAttributeEventListener;
-import io.bloomish.api.initialization.initializer.StrategyInitializer;
 import io.bloomish.api.util.DeprecatedRegistryUtils;
 import io.bloomish.api.util.ReflectionUtils;
 import net.minecraft.core.Holder;

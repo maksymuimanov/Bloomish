@@ -1,9 +1,9 @@
 package io.bloomish.api.data.client.language.key;
 
-import io.bloomish.api.bean.Injected;
+import io.bloomish.api.bean.Bean;
 import net.minecraft.network.chat.Component;
 
-@Injected
+@Bean
 public class ComponentTranslationKeyResolver implements TranslationKeyResolver<Component> {
     @Override
     public boolean supports(Object object) {

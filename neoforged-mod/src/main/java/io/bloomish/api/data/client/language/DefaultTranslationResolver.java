@@ -1,12 +1,12 @@
 package io.bloomish.api.data.client.language;
 
-import io.bloomish.api.bean.Injected;
+import io.bloomish.api.bean.Bean;
 import io.bloomish.api.data.client.language.key.TranslationKeyResolver;
 
 import java.util.HashMap;
 import java.util.Map;
 
-@Injected
+@Bean
 public class DefaultTranslationResolver implements TranslationResolver {
     private final Iterable<TranslationKeyResolver<?>> keyResolvers;
 

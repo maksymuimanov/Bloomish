@@ -1,6 +1,6 @@
 package io.bloomish.api.data.client.blockstate;
 
-import io.bloomish.api.bean.Injected;
+import io.bloomish.api.bean.Bean;
 import io.bloomish.api.channel.deprecated.DataChannels;
 import io.bloomish.api.channel.deprecated.ValueChannelBus;
 import net.minecraft.core.Holder;
@@ -9,7 +9,7 @@ import net.minecraft.world.level.block.Block;
 
 import java.util.Map;
 
-@Injected
+@Bean
 public class SingleVariantBlockStateProvider extends AbstractBlockStateProvider {
     private final ValueChannelBus channelBus;
 

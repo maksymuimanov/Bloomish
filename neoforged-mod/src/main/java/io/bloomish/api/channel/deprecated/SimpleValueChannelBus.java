@@ -1,6 +1,6 @@
 package io.bloomish.api.channel.deprecated;
 
-import io.bloomish.api.bean.Injected;
+import io.bloomish.api.bean.Bean;
 import io.bloomish.api.channel.ObjectChannel;
 import io.bloomish.api.util.CollectionUtils;
 
@@ -12,7 +12,7 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.function.Consumer;
 import java.util.stream.Stream;
 
-@Injected
+@Bean
 public class SimpleValueChannelBus implements ValueChannelBus {
     private final Map<ObjectChannel, Queue<?>> channels;
 
