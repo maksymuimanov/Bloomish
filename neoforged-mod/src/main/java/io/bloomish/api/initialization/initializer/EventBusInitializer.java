@@ -15,6 +15,6 @@ public class EventBusInitializer implements ObjectRegistryInitializer {
                 .filter(IEventBus.class::isInstance)
                 .map(IEventBus.class::cast)
                 .findAny()
-                .ifPresent(registry::registerValue);
+                .ifPresent(registry::register);
     }
 }

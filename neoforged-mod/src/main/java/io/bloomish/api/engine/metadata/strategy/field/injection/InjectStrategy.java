@@ -17,7 +17,7 @@ public class InjectStrategy implements FieldAnnotationStrategy<BeanCandidate> {
     public void execute(Field field, Object object, BeanCandidate annotation) throws Exception {
         ObjectRegistry objectRegistry = DefaultObjectRegistry.getInstance();
         String beanName = annotation.value();
-        Object poolObject = beanName.isBlank() ? objectRegistry.getByClass(field.getType()) : objectRegistry.getByName(beanName);
+        Object poolObject = beanName.isBlank() ? objectRegistry.findByClass(field.getType()) : objectRegistry.findByName(beanName);
         field.set(object, poolObject);
         Class<?> objectClass = object.getClass();
         Bean bean = objectClass.getDeclaredAnnotation(Bean.class);
@@ -26,7 +26,7 @@ public class InjectStrategy implements FieldAnnotationStrategy<BeanCandidate> {
         if (rootBeanName.isBlank()) {
             objectRegistry.registerValueByClass(objectClass);
         } else {
-            objectRegistry.registerValue(rootBeanName, objectClass);
+            objectRegistry.register(rootBeanName, objectClass);
         }
     }
 

@@ -18,7 +18,7 @@ public class StringValidation extends Validation<String, StringValidation> {
     }
 
     public StringValidation isEmpty(Supplier<String> message) {
-        return this.assertTrue(StringUtils.isEmpty(this.getActual()), message);
+        return this.isTrue(StringUtils.isEmpty(this.getActual()), message);
     }
 
     public StringValidation isNotEmpty() {
@@ -30,7 +30,7 @@ public class StringValidation extends Validation<String, StringValidation> {
     }
 
     public StringValidation isNotEmpty(Supplier<String> message) {
-        return this.assertFalse(StringUtils.isEmpty(this.getActual()), message);
+        return this.isFalse(StringUtils.isEmpty(this.getActual()), message);
     }
 
     public StringValidation isBlank() {
@@ -42,7 +42,7 @@ public class StringValidation extends Validation<String, StringValidation> {
     }
 
     public StringValidation isBlank(Supplier<String> message) {
-        return this.assertTrue(StringUtils.isBlank(this.getActual()), message);
+        return this.isTrue(StringUtils.isBlank(this.getActual()), message);
     }
 
     public StringValidation isNotBlank() {
@@ -54,7 +54,7 @@ public class StringValidation extends Validation<String, StringValidation> {
     }
 
     public StringValidation isNotBlank(Supplier<String> message) {
-        return this.assertFalse(StringUtils.isBlank(this.getActual()), message);
+        return this.isFalse(StringUtils.isBlank(this.getActual()), message);
     }
 
     public StringValidation isUpperCase() {
@@ -66,7 +66,7 @@ public class StringValidation extends Validation<String, StringValidation> {
     }
 
     public StringValidation isUpperCase(Supplier<String> message) {
-        return this.assertTrue(StringUtils.isUpperCase(this.getActual()), message);
+        return this.isTrue(StringUtils.isUpperCase(this.getActual()), message);
     }
 
     public StringValidation isLowerCase() {
@@ -78,7 +78,7 @@ public class StringValidation extends Validation<String, StringValidation> {
     }
 
     public StringValidation isLowerCase(Supplier<String> message) {
-        return this.assertTrue(StringUtils.isLowerCase(this.getActual()), message);
+        return this.isTrue(StringUtils.isLowerCase(this.getActual()), message);
     }
 
     public StringValidation isEqualIgnoreCase(String expected) {
@@ -90,7 +90,7 @@ public class StringValidation extends Validation<String, StringValidation> {
     }
 
     public StringValidation isEqualIgnoreCase(String expected, Supplier<String> message) {
-        return this.assertTrue(StringUtils.isEqualIgnoreCase(this.getActual(), expected), message);
+        return this.isTrue(StringUtils.isEqualIgnoreCase(this.getActual(), expected), message);
     }
 
     public StringValidation isContaining(String expected) {
@@ -102,7 +102,7 @@ public class StringValidation extends Validation<String, StringValidation> {
     }
 
     public StringValidation isContaining(String expected, Supplier<String> message) {
-        return this.assertTrue(this.getActual().contains(expected), message);
+        return this.isTrue(this.getActual().contains(expected), message);
     }
 
     public StringValidation isNotContaining(String expected) {
@@ -114,7 +114,7 @@ public class StringValidation extends Validation<String, StringValidation> {
     }
 
     public StringValidation isNotContaining(String expected, Supplier<String> message) {
-        return this.assertFalse(this.getActual().contains(expected), message);
+        return this.isFalse(this.getActual().contains(expected), message);
     }
 
     public StringValidation isStartingWith(String expected) {
@@ -126,7 +126,7 @@ public class StringValidation extends Validation<String, StringValidation> {
     }
 
     public StringValidation isStartingWith(String expected, Supplier<String> message) {
-        return this.assertTrue(this.getActual().startsWith(expected), message);
+        return this.isTrue(this.getActual().startsWith(expected), message);
     }
 
     public StringValidation isNotStartingWith(String expected) {
@@ -138,7 +138,7 @@ public class StringValidation extends Validation<String, StringValidation> {
     }
 
     public StringValidation isNotStartingWith(String expected, Supplier<String> message) {
-        return this.assertFalse(this.getActual().startsWith(expected), message);
+        return this.isFalse(this.getActual().startsWith(expected), message);
     }
 
     public StringValidation isEndingWith(String expected) {
@@ -150,7 +150,7 @@ public class StringValidation extends Validation<String, StringValidation> {
     }
 
     public StringValidation isEndingWith(String expected, Supplier<String> message) {
-        return this.assertTrue(this.getActual().endsWith(expected), message);
+        return this.isTrue(this.getActual().endsWith(expected), message);
     }
 
     public StringValidation isNotEndingWith(String expected) {
@@ -162,6 +162,6 @@ public class StringValidation extends Validation<String, StringValidation> {
     }
 
     public StringValidation isNotEndingWith(String expected, Supplier<String> message) {
-        return this.assertFalse(this.getActual().endsWith(expected), message);
+        return this.isFalse(this.getActual().endsWith(expected), message);
     }
 }

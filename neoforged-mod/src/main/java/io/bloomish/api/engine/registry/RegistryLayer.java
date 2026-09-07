@@ -2,7 +2,6 @@ package io.bloomish.api.engine.registry;
 
 import io.bloomish.api.ApiMod;
 import io.bloomish.api.context.ModContext;
-import io.bloomish.api.context.ObjectRegistry;
 import io.bloomish.api.engine.EngineLayer;
 import io.bloomish.api.engine.registry.registrar.FactoryRegistrar;
 import net.neoforged.bus.api.IEventBus;
@@ -14,8 +13,7 @@ public class RegistryLayer implements EngineLayer {
 
     @Override
     public void process() {
-        ObjectRegistry objectRegistry = ModContext.getCurrentRegistry();
-        IEventBus eventBus = objectRegistry.getByClass(IEventBus.class);
+        IEventBus eventBus = ModContext.getObject(IEventBus.class).orElseThrow();
         factoryRegistrars.forEach(factoryRegistrar -> {
             ApiMod.LOGGER.debug("Registering factories with {}", factoryRegistrar.getClass().getName());
             factoryRegistrar.registerFactories(eventBus);

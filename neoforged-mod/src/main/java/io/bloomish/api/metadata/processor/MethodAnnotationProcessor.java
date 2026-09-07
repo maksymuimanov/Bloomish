@@ -17,7 +17,7 @@ public class MethodAnnotationProcessor extends AbstractAnnotationProcessor<Metho
 
     @Override
     public void process(Class<?> clazz) {
-        Object instance = ModContext.getObject(clazz);
+        Object instance = ModContext.getObject(clazz).orElseThrow();
         for (Method method : clazz.getDeclaredMethods()) {
             if (Modifier.isStatic(method.getModifiers())) continue;
             this.applyExecutors(method.getDeclaredAnnotations(), (annotation, executor) ->

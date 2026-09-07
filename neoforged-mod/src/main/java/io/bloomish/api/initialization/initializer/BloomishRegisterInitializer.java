@@ -22,7 +22,7 @@ public class BloomishRegisterInitializer implements ObjectRegistryInitializer {
         this.putRegister(registry, Registries.BLOCK_ENTITY_TYPE, "$BlockEntityTypes");
         this.putRegister(registry, Registries.BLOCK_PREDICATE_TYPE, "$BlockPredicateTypes");
         this.putRegister(registry, Registries.BLOCK_STATE_PROVIDER_TYPE, "$BlockStateProviderTypes");
-        registry.registerValueByName(BloomishRegister.createBlocks(), "$Blocks");
+        registry.registerByName(BloomishRegister.createBlocks(), "$Blocks");
         this.putRegister(registry, Registries.BLOCK_TYPE, "$BlockTypes");
         this.putRegister(registry, Registries.CARVER, "$Carvers");
         this.putRegister(registry, Registries.CHUNK_GENERATOR, "$ChunkGenerators");
@@ -55,7 +55,7 @@ public class BloomishRegisterInitializer implements ObjectRegistryInitializer {
         this.putRegister(registry, NeoForgeRegistries.Keys.INGREDIENT_TYPES, "$IngredientTypes");
         this.putRegister(registry, Registries.INT_PROVIDER_TYPE, "$IntProviderTypes");
         this.putRegister(registry, Registries.ITEM_SUB_PREDICATE_TYPE, "$ItemSubPredicateTypes");
-        registry.registerValueByName(BloomishRegister.createItems(), "$Items");
+        registry.registerByName(BloomishRegister.createItems(), "$Items");
         this.putRegister(registry, Registries.LOOT_CONDITION_TYPE, "$LootConditionTypes");
         this.putRegister(registry, Registries.LOOT_FUNCTION_TYPE, "$LootFunctionTypes");
         this.putRegister(registry, Registries.LOOT_NBT_PROVIDER_TYPE, "$LootNbtProviderTypes");
@@ -102,6 +102,6 @@ public class BloomishRegisterInitializer implements ObjectRegistryInitializer {
     }
 
     private <T> void putRegister(ObjectRegistry registry, ResourceKey<Registry<T>> registryKey, String name) {
-        registry.registerValueByName(BloomishRegister.create(registryKey), name);
+        registry.registerByName(BloomishRegister.create(registryKey), name);
     }
 }

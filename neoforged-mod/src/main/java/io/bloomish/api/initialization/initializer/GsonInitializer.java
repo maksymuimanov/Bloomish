@@ -11,6 +11,6 @@ public class GsonInitializer implements ObjectRegistryInitializer {
 
     @Override
     public void initialize(Collection<Class<?>> classes, List<?> externalObjects, ObjectRegistry registry) {
-        registry.registerValueByName(new Gson(), GSON_KEY);
+        registry.registerByName(new Gson(), GSON_KEY);
     }
 }

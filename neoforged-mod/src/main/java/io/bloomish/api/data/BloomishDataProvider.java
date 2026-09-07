@@ -11,7 +11,7 @@ import java.util.concurrent.CompletableFuture;
 
 public interface BloomishDataProvider extends DataProvider {
     default CompletableFuture<?> saveDataToFile(CachedOutput cacheOutput, Object content, Path targetPath) {
-        Gson gson = ModContext.getObject(Gson.class);
+        Gson gson = ModContext.getObject(Gson.class).orElseThrow();
         return DataProvider.saveStable(cacheOutput, gson.toJsonTree(content), targetPath);
     }
 

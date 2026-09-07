@@ -14,10 +14,10 @@ public class ObserveObjectChannelBeanCandidateResolver implements BeanCandidateR
     @Override
     public Optional<Object> resolveBeanCandidate(Parameter parameter, ObjectRegistry registry) {
         ObserveObjectChannel observeObjectChannel = parameter.getAnnotation(ObserveObjectChannel.class);
-        ObjectChannelRegistry channelRegistry = registry.getByClass(ObjectChannelRegistry.class);
+        ObjectChannelRegistry channelRegistry = registry.findByClass(ObjectChannelRegistry.class).orElseThrow();
         String channelId = observeObjectChannel.value();
         ObjectChannel channel = channelRegistry.findOrRegisterChannel(channelId);
-        ObjectChannelStore channelStore = registry.getByClass(ObjectChannelStore.class);
+        ObjectChannelStore channelStore = registry.findByClass(ObjectChannelStore.class).orElseThrow();
         Object value = switch (observeObjectChannel.returnType()) {
             case STREAM -> channelStore.consume(channel);
             case QUEUE -> channelStore.queue(channel);

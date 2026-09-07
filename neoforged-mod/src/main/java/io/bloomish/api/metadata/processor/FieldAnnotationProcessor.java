@@ -17,7 +17,7 @@ public class FieldAnnotationProcessor extends AbstractAnnotationProcessor<FieldA
 
     @Override
     public void process(Class<?> clazz) {
-        Object instance = ModContext.getObject(clazz);
+        Object instance = ModContext.getObject(clazz).orElseThrow();
         for (Field field : clazz.getDeclaredFields()) {
             if (Modifier.isStatic(field.getModifiers())) continue;
             this.applyExecutors(field.getDeclaredAnnotations(), (annotation, executor) ->

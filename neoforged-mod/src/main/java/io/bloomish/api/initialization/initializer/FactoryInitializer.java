@@ -9,7 +9,7 @@ import java.util.List;
 public class FactoryInitializer implements ObjectRegistryInitializer {
     @Override
     public void initialize(Collection<Class<?>> classes, List<?> externalObjects, ObjectRegistry registry) {
-        registry.registerAllValues(
+        registry.registerAll(
                 new ItemFactory(),
                 new BlockFactory(),
                 new ActivityFactory(),

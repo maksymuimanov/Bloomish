@@ -14,6 +14,6 @@ public class ModContainerInitializer implements ObjectRegistryInitializer {
                 .filter(ModContainer.class::isInstance)
                 .map(ModContainer.class::cast)
                 .findAny()
-                .ifPresent(registry::registerValue);
+                .ifPresent(registry::register);
     }
 }

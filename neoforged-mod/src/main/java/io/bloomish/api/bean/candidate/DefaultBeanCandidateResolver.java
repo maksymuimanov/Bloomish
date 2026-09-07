@@ -10,7 +10,7 @@ public class DefaultBeanCandidateResolver implements BeanCandidateResolver {
     @Override
     public Optional<Object> resolveBeanCandidate(Parameter parameter, ObjectRegistry registry) {
         Class<?> parameterType = parameter.getType();
-        return Optional.of(registry.getByClass(parameterType));
+        return registry.findByClass(parameterType);
     }
 
     @Override

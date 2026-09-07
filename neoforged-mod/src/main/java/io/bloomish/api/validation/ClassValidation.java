@@ -16,7 +16,7 @@ public class ClassValidation extends Validation<Class<?>, ClassValidation> {
     }
 
     public ClassValidation isSubtypeOf(Class<?> expected, Supplier<String> message) {
-        return this.assertTrue(expected.isAssignableFrom(this.getActual()), message);
+        return this.isTrue(expected.isAssignableFrom(this.getActual()), message);
     }
 
     public ClassValidation isNotSubtypeOf(Class<?> expected) {
@@ -28,6 +28,6 @@ public class ClassValidation extends Validation<Class<?>, ClassValidation> {
     }
 
     public ClassValidation isNotSubtypeOf(Class<?> expected, Supplier<String> message) {
-        return this.assertFalse(expected.isAssignableFrom(this.getActual()), message);
+        return this.isFalse(expected.isAssignableFrom(this.getActual()), message);
     }
 }

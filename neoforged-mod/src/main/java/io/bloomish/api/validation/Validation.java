@@ -19,7 +19,7 @@ public class Validation<T, A extends Validation<T, A>> {
     }
 
     public A isTypeOf(Class<?> clazz, Supplier<String> message) {
-        return this.assertTrue(clazz.isInstance(this.actual), message);
+        return this.isTrue(clazz.isInstance(this.actual), message);
     }
 
     public A isNotTypeOf(Class<?> clazz) {
@@ -31,7 +31,7 @@ public class Validation<T, A extends Validation<T, A>> {
     }
 
     public A isNotTypeOf(Class<?> clazz, Supplier<String> message) {
-        return this.assertFalse(clazz.isInstance(this.actual), message);
+        return this.isFalse(clazz.isInstance(this.actual), message);
     }
 
     public A isEqual(T expected) {
@@ -43,7 +43,7 @@ public class Validation<T, A extends Validation<T, A>> {
     }
 
     public A isEqual(T expected, Supplier<String> message) {
-        return this.assertTrue(Objects.equals(this.actual, expected), message);
+        return this.isTrue(Objects.equals(this.actual, expected), message);
     }
 
     public A isNotEqual(T expected) {
@@ -55,7 +55,7 @@ public class Validation<T, A extends Validation<T, A>> {
     }
 
     public A isNotEqual(T expected, Supplier<String> message) {
-        return this.assertFalse(Objects.equals(this.actual, expected), message);
+        return this.isFalse(Objects.equals(this.actual, expected), message);
     }
 
     public A isSame(T expected) {
@@ -67,7 +67,7 @@ public class Validation<T, A extends Validation<T, A>> {
     }
 
     public A isSame(T expected, Supplier<String> message) {
-        return this.assertTrue(this.actual == expected, message);
+        return this.isTrue(this.actual == expected, message);
     }
 
     public A isNotSame(T expected) {
@@ -79,7 +79,7 @@ public class Validation<T, A extends Validation<T, A>> {
     }
 
     public A isNotSame(T expected, Supplier<String> message) {
-        return this.assertFalse(this.actual == expected, message);
+        return this.isFalse(this.actual == expected, message);
     }
 
     public A isNull() {
@@ -91,7 +91,7 @@ public class Validation<T, A extends Validation<T, A>> {
     }
 
     public A isNull(Supplier<String> message) {
-        return this.assertTrue(actual == null, message);
+        return this.isTrue(actual == null, message);
     }
 
     public A isNotNull() {
@@ -103,22 +103,22 @@ public class Validation<T, A extends Validation<T, A>> {
     }
 
     public A isNotNull(Supplier<String> message) {
-        return this.assertFalse(actual == null, message);
+        return this.isFalse(actual == null, message);
     }
 
-    public A assertTrue(boolean condition, String message) {
-        return this.assertTrue(condition, () -> message);
+    public A isTrue(boolean condition, String message) {
+        return this.isTrue(condition, () -> message);
     }
 
-    public A assertTrue(boolean condition, Supplier<String> message) {
+    public A isTrue(boolean condition, Supplier<String> message) {
         return this.failIf(!condition, message);
     }
 
-    public A assertFalse(boolean condition, String message) {
-        return this.assertFalse(condition, () -> message);
+    public A isFalse(boolean condition, String message) {
+        return this.isFalse(condition, () -> message);
     }
 
-    public A assertFalse(boolean condition, Supplier<String> message) {
+    public A isFalse(boolean condition, Supplier<String> message) {
         return this.failIf(condition, message);
     }
 

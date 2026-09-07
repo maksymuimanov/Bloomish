@@ -19,7 +19,7 @@ public class ModValidation extends Validation<String, ModValidation> {
     }
 
     public ModValidation isLoaded(Supplier<String> message) {
-        return this.assertTrue(ModList.get().isLoaded(this.getActual()), message);
+        return this.isTrue(ModList.get().isLoaded(this.getActual()), message);
     }
 
     public ModValidation isNotLoaded() {
@@ -31,7 +31,7 @@ public class ModValidation extends Validation<String, ModValidation> {
     }
 
     public ModValidation isNotLoaded(Supplier<String> message) {
-        return this.assertFalse(ModList.get().isLoaded(this.getActual()), message);
+        return this.isFalse(ModList.get().isLoaded(this.getActual()), message);
     }
 
     public ModValidation isCurrent() {

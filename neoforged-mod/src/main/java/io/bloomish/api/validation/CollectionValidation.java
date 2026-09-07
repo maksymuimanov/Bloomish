@@ -19,7 +19,7 @@ public class CollectionValidation extends Validation<Collection<?>, CollectionVa
     }
 
     public CollectionValidation isEmpty(Supplier<String> message) {
-        return this.assertTrue(CollectionUtils.isEmpty(this.getActual()), message);
+        return this.isTrue(CollectionUtils.isEmpty(this.getActual()), message);
     }
 
     public CollectionValidation isNotEmpty() {
@@ -31,7 +31,7 @@ public class CollectionValidation extends Validation<Collection<?>, CollectionVa
     }
 
     public CollectionValidation isNotEmpty(Supplier<String> message) {
-        return this.assertFalse(CollectionUtils.isEmpty(this.getActual()), message);
+        return this.isFalse(CollectionUtils.isEmpty(this.getActual()), message);
     }
 
     public CollectionValidation hasSize(int size) {
@@ -43,7 +43,7 @@ public class CollectionValidation extends Validation<Collection<?>, CollectionVa
     }
 
     public CollectionValidation hasSize(int size, Supplier<String> message) {
-        return this.assertTrue(this.getActual().size() == size, message);
+        return this.isTrue(this.getActual().size() == size, message);
     }
 
     public CollectionValidation hasSizeGreaterThan(int size) {
@@ -55,7 +55,7 @@ public class CollectionValidation extends Validation<Collection<?>, CollectionVa
     }
 
     public CollectionValidation hasSizeGreaterThan(int size, Supplier<String> message) {
-        return this.assertTrue(this.getActual().size() > size, message);
+        return this.isTrue(this.getActual().size() > size, message);
     }
 
     public CollectionValidation hasSizeLessThan(int size) {
@@ -67,7 +67,7 @@ public class CollectionValidation extends Validation<Collection<?>, CollectionVa
     }
 
     public CollectionValidation hasSizeLessThan(int size, Supplier<String> message) {
-        return this.assertTrue(this.getActual().size() < size, message);
+        return this.isTrue(this.getActual().size() < size, message);
     }
 
     public CollectionValidation hasSizeBetween(int min, int max) {
@@ -79,7 +79,7 @@ public class CollectionValidation extends Validation<Collection<?>, CollectionVa
     }
 
     public CollectionValidation hasSizeBetween(int min, int max, Supplier<String> message) {
-        return this.assertTrue(this.getActual().size() >= min && this.getActual().size() <= max, message);
+        return this.isTrue(this.getActual().size() >= min && this.getActual().size() <= max, message);
     }
 
     public CollectionValidation hasSizeNotBetween(int min, int max) {
@@ -91,7 +91,7 @@ public class CollectionValidation extends Validation<Collection<?>, CollectionVa
     }
 
     public CollectionValidation hasSizeNotBetween(int min, int max, Supplier<String> message) {
-        return this.assertFalse(this.getActual().size() >= min && this.getActual().size() <= max, message);
+        return this.isFalse(this.getActual().size() >= min && this.getActual().size() <= max, message);
     }
 
     public CollectionValidation isContaining(Object expected) {
@@ -103,7 +103,7 @@ public class CollectionValidation extends Validation<Collection<?>, CollectionVa
     }
 
     public CollectionValidation isContaining(Object expected, Supplier<String> message) {
-        return this.assertTrue(this.getActual().contains(expected), message);
+        return this.isTrue(this.getActual().contains(expected), message);
     }
 
     public CollectionValidation isNotContaining(Object expected) {
@@ -115,6 +115,6 @@ public class CollectionValidation extends Validation<Collection<?>, CollectionVa
     }
 
     public CollectionValidation isNotContaining(Object expected, Supplier<String> message) {
-        return this.assertFalse(this.getActual().contains(expected), message);
+        return this.isFalse(this.getActual().contains(expected), message);
     }
 }

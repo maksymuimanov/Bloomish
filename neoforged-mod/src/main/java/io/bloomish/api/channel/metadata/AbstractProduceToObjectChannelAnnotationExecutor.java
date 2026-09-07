@@ -20,7 +20,7 @@ public abstract class AbstractProduceToObjectChannelAnnotationExecutor implement
         Class<? extends ObjectTransformer> transformerType = annotation.transformer();
         Object value = ObjectTransformer.class.equals(transformerType)
                 ? channelCandidate
-                : ModContext.getObject(transformerType).transform(channelCandidate);
+                : ModContext.getObject(transformerType).orElseThrow().transform(channelCandidate);
         this.channelStore.produce(channel, value);
     }
 

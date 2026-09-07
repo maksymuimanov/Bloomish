@@ -14,7 +14,7 @@ public class AnnotatedBeanCandidateResolver implements BeanCandidateResolver {
         BeanCandidate beanCandidate = parameter.getDeclaredAnnotation(BeanCandidate.class);
         String beanQualifier = beanCandidate.value();
         return StringUtils.isNotBlank(beanQualifier)
-                ? Optional.of(registry.getByName(beanQualifier))
+                ? registry.findByName(beanQualifier)
                 : Optional.empty();
     }
 

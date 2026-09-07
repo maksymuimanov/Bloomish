@@ -9,4 +9,6 @@ public @interface Bean {
     String name() default "";
 
     boolean register() default true;
+
+    boolean primary() default false;
 }

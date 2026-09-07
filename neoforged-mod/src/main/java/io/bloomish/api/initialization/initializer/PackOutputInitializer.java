@@ -15,6 +15,6 @@ public class PackOutputInitializer implements ObjectRegistryInitializer {
     public void initialize(Collection<Class<?>> classes, List<?> externalObjects, ObjectRegistry registry) {
         Path outputPath = GENERATED_RESOURCES_PATH.toAbsolutePath().normalize();
         PackOutput packOutput = new PackOutput(outputPath);
-        registry.registerValueByName(packOutput, PACK_OUTPUT_KEY);
+        registry.registerByName(packOutput, PACK_OUTPUT_KEY);
     }
 }

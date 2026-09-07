@@ -29,9 +29,9 @@ public class DefaultBeanInjector implements BeanInjector {
 
     private void registerBean(Object bean, String beanName, ObjectRegistry registry) {
         if (StringUtils.isNotBlank(beanName)) {
-            registry.registerValueByName(bean, beanName);
+            registry.registerByName(bean, beanName);
         } else {
-            registry.registerValue(bean);
+            registry.register(bean);
         }
     }
 }

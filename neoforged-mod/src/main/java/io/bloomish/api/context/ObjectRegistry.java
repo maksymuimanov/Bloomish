@@ -1,62 +1,42 @@
 package io.bloomish.api.context;
 
 import java.util.Collection;
-import java.util.function.Predicate;
+import java.util.Optional;
 
 public interface ObjectRegistry extends Iterable<Object> {
-    void registerAllValues(Object... values);
+    boolean isRegistered(String name);
 
-    void registerValue(Object value);
+    boolean isRegistered(Class<?> clazz);
 
-    void registerValueByName(Object value, String name);
+    boolean isRegistered(ObjectKey<?> key);
 
-    void registerValueByClass(Class<?> clazz);
+    <T> Collection<T> findAllByInterface(Class<T> commonInterface);
 
-    <T> void registerValueByClass(T value, Class<? extends T> clazz);
+    Optional<Object> findByName(String name);
 
-    void registerValueByKey(ObjectKey<?> key);
+    <T> Optional<T> findByClass(Class<? extends T> clazz);
 
-    <T> void registerValueByKey(T value, ObjectKey<? extends T> key);
+    <T> Optional<T> findByKey(ObjectKey<T> key);
+
+    Collection<ObjectKey<?>> keys();
+
+    Collection<?> values();
+
+    void registerAll(Object value, Object... values);
+
+    void register(Object value);
+
+    void registerByName(Object value, String name);
+
+    <T> void registerByKey(T value, ObjectKey<T> key);
+
+    void unregister(Object value);
 
     void unregisterByName(String name);
 
     void unregisterByClass(Class<?> clazz);
 
-    boolean isRegistered(String name);
-
-    boolean isRegistered(Class<?> clazz);
-
-    Collection<?> getAll();
-
-    <T> Collection<T> getAllByInterface(Class<T> commonInterface);
-
-    Object getByName(String name);
-
-    Object getByNameOrNull(String name);
-
-    <T> T getByName(String name, Class<T> clazz);
-
-    <T> T getByNameOrNull(String name, Class<T> clazz);
-
-    <T> T getByClass(Class<? extends T> clazz);
-
-    <T> T getByClassOrNull(Class<? extends T> clazz);
-
-    <T> T get(ObjectKey<T> key);
-
-    <T> T getOrNull(ObjectKey<T> key);
-
-    ObjectKey<?> getKeyByName(String name);
-
-    ObjectKey<?> getKeyByNameOrNull(String name);
-
-    <T> ObjectKey<T> getKeyByClass(Class<? extends T> clazz);
-
-    <T> ObjectKey<T> getKeyByClassOrNull(Class<? extends T> clazz);
-
-    ObjectKey<?> getKey(Predicate<? super ObjectKey<?>> predicate);
-
-    ObjectKey<?> getKeyOrNull(Predicate<? super ObjectKey<?>> predicate);
+    void unregisterByKey(ObjectKey<?> key);
 
     void clear();
 }
