@@ -8,9 +8,9 @@ import java.lang.annotation.*;
 public @interface ObserveObjectChannel {
     String value();
 
-    ReturnType returnType() default ReturnType.DETACHED_STREAM;
+    ReturnType returnType() default ReturnType.STREAM;
 
     enum ReturnType {
-        STREAM, DETACHED_STREAM, QUEUE
+        STREAM, QUEUE
     }
 }

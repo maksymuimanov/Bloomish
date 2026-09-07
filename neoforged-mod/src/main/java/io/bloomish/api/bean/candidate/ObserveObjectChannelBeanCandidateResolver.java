@@ -20,7 +20,6 @@ public class ObserveObjectChannelBeanCandidateResolver implements BeanCandidateR
         ObjectChannelStore channelStore = registry.getByClass(ObjectChannelStore.class);
         Object value = switch (observeObjectChannel.returnType()) {
             case STREAM -> channelStore.consume(channel);
-            case DETACHED_STREAM -> channelStore.detach(channel);
             case QUEUE -> channelStore.queue(channel);
         };
         return Optional.of(value);
