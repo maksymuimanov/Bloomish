@@ -10,7 +10,7 @@ public interface ObjectRegistry extends Iterable<Object> {
 
     boolean isRegistered(ObjectKey<?> key);
 
-    <T> Collection<T> findAllByInterface(Class<T> commonInterface);
+    <T> Collection<T> findAllByClass(Class<T> commonInterface);
 
     Optional<Object> findByName(String name);
 
@@ -30,11 +30,11 @@ public interface ObjectRegistry extends Iterable<Object> {
 
     <T> void registerByKey(T value, ObjectKey<T> key);
 
+    void unregisterAllByClass(Class<?> clazz);
+
     void unregister(Object value);
 
     void unregisterByName(String name);
-
-    void unregisterByClass(Class<?> clazz);
 
     void unregisterByKey(ObjectKey<?> key);
 

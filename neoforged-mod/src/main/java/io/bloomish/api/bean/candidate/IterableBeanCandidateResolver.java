@@ -13,7 +13,7 @@ public class IterableBeanCandidateResolver implements BeanCandidateResolver {
     public Optional<Object> resolveBeanCandidate(Parameter parameter, ObjectRegistry registry) {
         ParameterizedType parameterizedType = (ParameterizedType) parameter.getParameterizedType();
         Type genericType = parameterizedType.getActualTypeArguments()[0];
-        return Optional.of(registry.findAllByInterface((Class<?>) genericType));
+        return Optional.of(registry.findAllByClass((Class<?>) genericType));
     }
 
     @Override

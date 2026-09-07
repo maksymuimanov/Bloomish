@@ -16,6 +16,7 @@ public class DefaultObjectRegistry implements ObjectRegistry {
 
     @Override
     public boolean isRegistered(String name) {
+        Validations.validateThatString(name).isNotBlank();
         return this.objects.keySet()
                 .stream()
                 .anyMatch(key -> key.name().equals(name));
@@ -23,6 +24,7 @@ public class DefaultObjectRegistry implements ObjectRegistry {
 
     @Override
     public boolean isRegistered(Class<?> clazz) {
+        Validations.validateThat(clazz).isNotNull();
         return this.objects.keySet()
                 .stream()
                 .anyMatch(key -> key.clazz().equals(clazz));
@@ -30,20 +32,23 @@ public class DefaultObjectRegistry implements ObjectRegistry {
 
     @Override
     public boolean isRegistered(ObjectKey<?> key) {
+        Validations.validateThat(key).isNotNull();
         return this.objects.containsKey(key);
     }
 
     @Override
-    public <T> Collection<T> findAllByInterface(Class<T> commonInterface) {
+    public <T> Collection<T> findAllByClass(Class<T> clazz) {
+        Validations.validateThat(clazz).isNotNull();
         return this.objects.values()
                 .stream()
-                .filter(commonInterface::isInstance)
-                .map(commonInterface::cast)
+                .filter(clazz::isInstance)
+                .map(clazz::cast)
                 .toList();
     }
 
     @Override
     public Optional<Object> findByName(String name) {
+        Validations.validateThatString(name).isNotBlank();
         List<Map.Entry<ObjectKey<?>, Object>> values = this.objects.entrySet()
                 .stream()
                 .filter(entry -> entry.getKey().name().equals(name))
@@ -57,9 +62,9 @@ public class DefaultObjectRegistry implements ObjectRegistry {
         }
     }
 
-    @SuppressWarnings("unchecked")
     @Override
     public <T> Optional<T> findByClass(Class<? extends T> clazz) {
+        Validations.validateThat(clazz).isNotNull();
         List<Map.Entry<ObjectKey<?>, Object>> values = this.objects.entrySet()
                 .stream()
                 .filter(entry -> entry.getKey().clazz().equals(clazz))
@@ -67,32 +72,23 @@ public class DefaultObjectRegistry implements ObjectRegistry {
         if (values.isEmpty()) {
             return Optional.empty();
         } else if (values.size() == 1) {
-            return (Optional<T>) Optional.of(values.getFirst().getValue());
+            return Optional.of(clazz.cast(values.getFirst().getValue()));
         } else {
             List<Object> primaryValues = values.stream()
                     .filter(entry -> entry.getKey().primary())
                     .map(Map.Entry::getValue)
                     .toList();
             Validations.validateThatCollection(primaryValues)
-                    .hasSize(1, "Primary values cannot have more than one value");
-            return (Optional<T>) Optional.of(primaryValues.getFirst());
+                    .hasSize(1, "Exactly one primary value is required for class: " + clazz.getName());
+            return Optional.of(clazz.cast(primaryValues.getFirst()));
         }
     }
 
-    @SuppressWarnings("unchecked")
     @Override
     public <T> Optional<T> findByKey(ObjectKey<T> key) {
-        List<Map.Entry<ObjectKey<?>, Object>> values = this.objects.entrySet()
-                .stream()
-                .filter(entry -> entry.getKey().equals(key))
-                .toList();
-        if (values.isEmpty()) {
-            return Optional.empty();
-        } else {
-            Validations.validateThatCollection(values)
-                    .hasSize(1, "Multiple values found for key: " + key);
-            return (Optional<T>) Optional.of(values.getFirst().getValue());
-        }
+        Validations.validateThat(key).isNotNull();
+        Object value = this.objects.get(key);
+        return Optional.ofNullable(key.clazz().cast(value));
     }
 
     @Override
@@ -107,76 +103,74 @@ public class DefaultObjectRegistry implements ObjectRegistry {
 
     @Override
     public void registerAll(Object value, Object... values) {
-        Validations.validateThat(value).isNotNull("Value cannot be null");
+        Validations.validateThat(value).isNotNull();
         List<Object> valueList = CollectionUtils.arrayListOf(value, values);
         valueList.forEach(this::register);
     }
 
     @Override
     public void register(Object value) {
-        Validations.validateThat(value).isNotNull("Value cannot be null");
+        Validations.validateThat(value).isNotNull();
         Class<?> clazz = value.getClass();
         ObjectKey<?> objectKey = new ObjectKey<>(clazz.getSimpleName(), clazz, false);
-        this.objects.put(objectKey, value);
+        this.putValue(value, objectKey);
     }
 
     @Override
     public void registerByName(Object value, String name) {
-        Validations.validateThat(value).isNotNull("Value cannot be null");
-        Validations.validateThatString(name).isNotBlank("Name cannot be blank");
+        Validations.validateThat(value).isNotNull();
+        Validations.validateThatString(name).isNotBlank();
         ObjectKey<?> objectKey = new ObjectKey<>(name, value.getClass(), false);
-        this.objects.put(objectKey, value);
+        this.putValue(value, objectKey);
     }
 
     @Override
     public <T> void registerByKey(T value, ObjectKey<T> key) {
-        Validations.validateThat(value).isNotNull("Value cannot be null");
-        Validations.validateThat(key).isNotNull("Key cannot be null");
-        this.objects.put(key, value);
+        Validations.validateThat(value).isNotNull();
+        Validations.validateThat(key).isNotNull();
+        this.putValue(value, key);
+    }
+
+    private void putValue(Object value, ObjectKey<?> objectKey) {
+        Object result = this.objects.putIfAbsent(objectKey, value);
+        Validations.validateThat(result).isNull(() -> "Value already registered: " + objectKey);
+    }
+
+    @Override
+    public void unregisterAllByClass(Class<?> clazz) {
+        Validations.validateThat(clazz).isNotNull();
+        this.objects.keySet()
+                .stream()
+                .filter(key -> key.clazz().equals(clazz))
+                .forEach(this.objects::remove);
     }
 
     @Override
     public void unregister(Object value) {
-        Validations.validateThat(value)
-                .isNotNull("Value cannot be null");
+        Validations.validateThat(value).isNotNull();
         ObjectKey<?> objectKey = this.objects.entrySet()
                 .stream()
                 .filter(entry -> entry.getValue().equals(value))
                 .map(Map.Entry::getKey)
                 .findFirst()
-                .orElseThrow(() -> new IllegalArgumentException("Value not registered"));
+                .orElseThrow(() -> new IllegalArgumentException("Value not registered: " + value.getClass().getName()));
         this.objects.remove(objectKey);
     }
 
     @Override
     public void unregisterByName(String name) {
-        Validations.validateThatString(name)
-                .isNotBlank("Name cannot be blank");
+        Validations.validateThatString(name).isNotBlank();
         ObjectKey<?> objectKey = this.objects.keySet()
                 .stream()
                 .filter(key -> key.name().equals(name))
                 .findFirst()
-                .orElseThrow(() -> new IllegalArgumentException("Value not registered by name"));
-        this.objects.remove(objectKey);
-    }
-
-    @Override
-    public void unregisterByClass(Class<?> clazz) {
-        Validations.validateThat(clazz)
-                .isNotNull("Class cannot be null");
-        ObjectKey<?> objectKey = this.objects.keySet()
-                .stream()
-                .filter(key -> key.clazz().equals(clazz))
-                .findFirst()
-                .orElseThrow(() -> new IllegalArgumentException("Value not registered by class"));
+                .orElseThrow(() -> new IllegalArgumentException("Value not registered by name: " + name));
         this.objects.remove(objectKey);
     }
 
     @Override
     public void unregisterByKey(ObjectKey<?> key) {
-        Validations.validateThat(key)
-                .isNotNull("Key cannot be null")
-                .isTrue(this.objects.containsKey(key), "Value not registered by key");
+        Validations.validateThat(key).isNotNull();
         this.objects.remove(key);
     }
 
