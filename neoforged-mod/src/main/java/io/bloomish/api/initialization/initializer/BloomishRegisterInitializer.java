@@ -1,6 +1,6 @@
 package io.bloomish.api.initialization.initializer;
 
-import io.bloomish.api.engine.context.ObjectRegistry;
+import io.bloomish.api.context.ObjectRegistry;
 import io.bloomish.api.engine.registry.BloomishRegister;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.Registries;

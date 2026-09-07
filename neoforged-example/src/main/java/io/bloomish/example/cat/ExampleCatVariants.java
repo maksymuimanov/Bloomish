@@ -1,6 +1,6 @@
 package io.bloomish.example.cat;
 
-import io.bloomish.api.engine.context.DefaultObjectRegistry;
+import io.bloomish.api.context.DefaultObjectRegistry;
 import io.bloomish.api.engine.metadata.annotation.data.tag.AddCatVariantTag;
 import io.bloomish.api.engine.registry.factory.CatVariantFactory;
 import net.minecraft.world.entity.animal.CatVariant;

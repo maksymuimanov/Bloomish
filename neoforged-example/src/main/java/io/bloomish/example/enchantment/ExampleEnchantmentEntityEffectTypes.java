@@ -1,6 +1,6 @@
 package io.bloomish.example.enchantment;
 
-import io.bloomish.api.engine.context.DefaultObjectRegistry;
+import io.bloomish.api.context.DefaultObjectRegistry;
 import io.bloomish.api.engine.registry.factory.EnchantmentEntityEffectTypeFactory;
 import net.neoforged.neoforge.registries.DeferredHolder;
 

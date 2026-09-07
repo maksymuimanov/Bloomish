@@ -1,6 +1,6 @@
 package io.bloomish.api.util;
 
-import io.bloomish.api.engine.context.ModContext;
+import io.bloomish.api.context.ModContext;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.Item;
 

@@ -1,4 +1,4 @@
-package io.bloomish.api.engine.context;
+package io.bloomish.api.context;
 
 public interface NeoModContext {
     NeoMod getNeoMod();

@@ -1,8 +1,8 @@
 package io.bloomish.api.engine.initialization;
 
 import io.bloomish.api.ApiMod;
+import io.bloomish.api.context.*;
 import io.bloomish.api.engine.EngineLayer;
-import io.bloomish.api.engine.context.*;
 import io.bloomish.api.initialization.initializer.ObjectRegistryInitializer;
 import io.bloomish.api.initialization.scanner.ModClassScanner;
 import io.bloomish.api.util.ReflectionUtils;
@@ -53,11 +53,11 @@ public class InitializationLayer implements EngineLayer {
 
     private void executeInitialization(Set<Class<?>> initializationClasses, ObjectRegistry objectRegistry) {
         initializers.forEach(initializer -> {
-            ApiMod.LOGGER.debug("Running defaulted ObjectPoolInitializer - {}", initializer.getClass().getName());
+            ApiMod.LOGGER.debug("Running defaulted ObjectPoolInitializer: {}", initializer.getClass().getName());
             initializer.initialize(initializationClasses, this.externalSource, objectRegistry);
         });
         ModContext.forEachObject(ObjectRegistryInitializer.class, initializer -> {
-            ApiMod.LOGGER.debug("Running dynamic ObjectPoolInitializer - {}", initializer.getClass().getName());
+            ApiMod.LOGGER.debug("Running dynamic ObjectPoolInitializer: {}", initializer.getClass().getName());
             initializer.initialize(initializationClasses, this.externalSource, objectRegistry);
         });
     }

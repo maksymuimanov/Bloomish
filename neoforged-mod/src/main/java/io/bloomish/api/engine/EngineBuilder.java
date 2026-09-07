@@ -1,14 +1,12 @@
 package io.bloomish.api.engine;
 
 import io.bloomish.api.ApiMod;
+import io.bloomish.api.context.ModContext;
 import io.bloomish.api.engine.config.ConfigLayer;
-import io.bloomish.api.engine.context.ModContext;
 import io.bloomish.api.engine.finalization.FinalizationLayer;
-import io.bloomish.api.engine.finalization.FinalizationLayerCustomizer;
 import io.bloomish.api.engine.initialization.InitializationLayer;
 import io.bloomish.api.engine.initialization.InitializationLayerCustomizer;
 import io.bloomish.api.engine.metadata.MetadataLayer;
-import io.bloomish.api.engine.metadata.MetadataLayerCustomizer;
 import io.bloomish.api.engine.registry.RegistryLayer;
 import io.bloomish.api.engine.registry.RegistryLayerCustomizer;
 
@@ -40,31 +38,21 @@ public class EngineBuilder {
     }
 
     public EngineBuilder metadataLayer() {
-        return this.metadataLayer(layerCustomizer -> {});
-    }
-
-    public EngineBuilder metadataLayer(Consumer<MetadataLayerCustomizer> customizerConsumer) {
-        MetadataLayer metadataLayer = new MetadataLayer();
-        MetadataLayerCustomizer layerCustomizer = new MetadataLayerCustomizer();
-        customizerConsumer.accept(layerCustomizer);
-        return this.configureLayer(metadataLayer, layerCustomizer);
+        EngineLayer metadataLayer = new MetadataLayer();
+        this.addLayer(metadataLayer);
+        return this;
     }
 
     public EngineBuilder configLayer() {
-        ConfigLayer configLayer = new ConfigLayer();
+        EngineLayer configLayer = new ConfigLayer();
         this.addLayer(configLayer);
         return this;
     }
 
     public EngineBuilder finalizationLayer() {
-        return this.finalizationLayer(layerCustomizer -> {});
-    }
-
-    public EngineBuilder finalizationLayer(Consumer<FinalizationLayerCustomizer> customizerConsumer) {
-        FinalizationLayer finalizationLayer = new FinalizationLayer();
-        FinalizationLayerCustomizer layerCustomizer = new FinalizationLayerCustomizer();
-        customizerConsumer.accept(layerCustomizer);
-        return this.configureLayer(finalizationLayer, layerCustomizer);
+        EngineLayer finalizationLayer = new FinalizationLayer();
+        this.addLayer(finalizationLayer);
+        return this;
     }
 
     private <L extends EngineLayer, C extends LayerCustomizer<L>> EngineBuilder configureLayer(L layer, C customizer) {

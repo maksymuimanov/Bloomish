@@ -1,7 +1,7 @@
 package io.bloomish.api.engine.metadata.strategy.field.injection;
 
-import io.bloomish.api.engine.context.DefaultObjectRegistry;
-import io.bloomish.api.engine.context.ObjectRegistry;
+import io.bloomish.api.context.DefaultObjectRegistry;
+import io.bloomish.api.context.ObjectRegistry;
 import io.bloomish.api.engine.metadata.annotation.injection.Dependency;
 import io.bloomish.api.engine.metadata.annotation.injection.Strategy;
 import io.bloomish.api.engine.metadata.pool.ProcessorScope;

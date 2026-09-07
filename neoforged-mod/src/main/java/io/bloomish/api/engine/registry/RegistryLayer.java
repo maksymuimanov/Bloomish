@@ -1,9 +1,9 @@
 package io.bloomish.api.engine.registry;
 
 import io.bloomish.api.ApiMod;
+import io.bloomish.api.context.ModContext;
+import io.bloomish.api.context.ObjectRegistry;
 import io.bloomish.api.engine.EngineLayer;
-import io.bloomish.api.engine.context.ModContext;
-import io.bloomish.api.engine.context.ObjectRegistry;
 import io.bloomish.api.engine.registry.registrar.FactoryRegistrar;
 import net.neoforged.bus.api.IEventBus;
 

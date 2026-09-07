@@ -1,6 +1,6 @@
 package io.bloomish.api.initialization.initializer;
 
-import io.bloomish.api.engine.context.ObjectRegistry;
+import io.bloomish.api.context.ObjectRegistry;
 import io.bloomish.api.util.CollectionUtils;
 import net.neoforged.bus.api.IEventBus;
 

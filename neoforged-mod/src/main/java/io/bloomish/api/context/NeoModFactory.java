@@ -1,4 +1,4 @@
-package io.bloomish.api.engine.context;
+package io.bloomish.api.context;
 
 import io.bloomish.api.ApiMod;
 import io.bloomish.api.initialization.scanner.ModClassScanner;

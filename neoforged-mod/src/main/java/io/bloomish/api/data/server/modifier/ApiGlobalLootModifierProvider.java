@@ -3,7 +3,7 @@ package io.bloomish.api.data.server.modifier;
 import io.bloomish.api.channel.deprecated.DataChannels;
 import io.bloomish.api.channel.deprecated.ValueChannelBus;
 import io.bloomish.api.common.loot.AddItemModifier;
-import io.bloomish.api.engine.context.ModContext;
+import io.bloomish.api.context.ModContext;
 import io.bloomish.api.util.DeprecatedResourceUtils;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;

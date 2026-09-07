@@ -1,7 +1,7 @@
 package io.bloomish.api.data.server.loot;
 
+import io.bloomish.api.context.DefaultObjectRegistry;
 import io.bloomish.api.data.server.loot.spec.BlockLootTableSpec;
-import io.bloomish.api.engine.context.DefaultObjectRegistry;
 import io.bloomish.api.engine.registry.factory.BlockFactory;
 import io.bloomish.api.util.DeprecatedRegistryUtils;
 import net.minecraft.core.HolderLookup;

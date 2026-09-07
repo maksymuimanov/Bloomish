@@ -1,6 +1,6 @@
 package io.bloomish.api.engine.metadata.pool;
 
-import io.bloomish.api.engine.context.DefaultObjectRegistry;
+import io.bloomish.api.context.DefaultObjectRegistry;
 import io.bloomish.api.engine.metadata.processor.AnnotationProcessor;
 import io.bloomish.api.engine.metadata.processor.StrategySpec;
 import io.bloomish.api.engine.metadata.strategy.AnnotationStrategy;

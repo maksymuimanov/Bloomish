@@ -1,6 +1,6 @@
 package io.bloomish.api.data;
 
-import io.bloomish.api.engine.context.ModContext;
+import io.bloomish.api.context.ModContext;
 import io.bloomish.api.util.MinecraftConstants;
 import net.minecraft.data.PackOutput;
 

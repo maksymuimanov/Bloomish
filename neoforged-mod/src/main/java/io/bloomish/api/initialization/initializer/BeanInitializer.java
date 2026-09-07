@@ -8,7 +8,7 @@ import io.bloomish.api.bean.filter.DefaultBeanFilterChain;
 import io.bloomish.api.bean.filter.OnModBeanFilter;
 import io.bloomish.api.bean.injector.DefaultBeanInjector;
 import io.bloomish.api.bean.registrar.DefaultBeanRegistrar;
-import io.bloomish.api.engine.context.ObjectRegistry;
+import io.bloomish.api.context.ObjectRegistry;
 
 import java.util.Collection;
 import java.util.List;

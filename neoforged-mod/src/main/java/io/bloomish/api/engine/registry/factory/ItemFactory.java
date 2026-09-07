@@ -1,6 +1,6 @@
 package io.bloomish.api.engine.registry.factory;
 
-import io.bloomish.api.engine.context.DefaultObjectRegistry;
+import io.bloomish.api.context.DefaultObjectRegistry;
 import io.bloomish.api.engine.registry.BloomishRegister;
 import net.minecraft.world.item.Item;
 import net.neoforged.neoforge.registries.DeferredItem;

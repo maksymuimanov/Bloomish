@@ -1,6 +1,6 @@
 package io.bloomish.example.metadata;
 
-import io.bloomish.api.engine.context.ModContext;
+import io.bloomish.api.context.ModContext;
 import io.bloomish.api.engine.metadata.MetadataLayer;
 import io.bloomish.api.engine.metadata.annotation.injection.Processor;
 import io.bloomish.api.engine.metadata.processor.AbstractAnnotationProcessor;

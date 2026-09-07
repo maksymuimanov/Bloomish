@@ -1,6 +1,6 @@
 package io.bloomish.example.sound;
 
-import io.bloomish.api.engine.context.DefaultObjectRegistry;
+import io.bloomish.api.context.DefaultObjectRegistry;
 import io.bloomish.api.engine.metadata.annotation.data.GenerateSound;
 import io.bloomish.api.engine.metadata.annotation.data.language.TranslateAmericanEnglish;
 import io.bloomish.api.engine.registry.factory.SoundEventFactory;

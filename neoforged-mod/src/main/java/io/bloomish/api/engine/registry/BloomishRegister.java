@@ -1,7 +1,7 @@
 package io.bloomish.api.engine.registry;
 
 import io.bloomish.api.ApiMod;
-import io.bloomish.api.engine.context.ModContext;
+import io.bloomish.api.context.ModContext;
 import net.minecraft.core.Registry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;

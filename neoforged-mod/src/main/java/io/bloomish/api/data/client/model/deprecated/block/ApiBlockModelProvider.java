@@ -1,9 +1,9 @@
 package io.bloomish.api.data.client.model.deprecated.block;
 
+import io.bloomish.api.context.ModContext;
 import io.bloomish.api.data.client.model.deprecated.RenderTypes;
 import io.bloomish.api.data.client.model.deprecated.block.spec.BlockModelSpec;
 import io.bloomish.api.data.client.model.deprecated.block.spec.DependantBlockModelSpec;
-import io.bloomish.api.engine.context.ModContext;
 import io.bloomish.api.util.DeprecatedResourceUtils;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;

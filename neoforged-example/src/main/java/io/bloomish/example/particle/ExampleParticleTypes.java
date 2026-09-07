@@ -1,6 +1,6 @@
 package io.bloomish.example.particle;
 
-import io.bloomish.api.engine.context.DefaultObjectRegistry;
+import io.bloomish.api.context.DefaultObjectRegistry;
 import io.bloomish.api.engine.metadata.annotation.data.model.GenerateParticleSpriteSet;
 import io.bloomish.api.engine.metadata.annotation.event.particle.RegisterParticleProvider;
 import io.bloomish.api.engine.registry.factory.ParticleTypeFactory;

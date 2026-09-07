@@ -1,6 +1,6 @@
 package io.bloomish.example.armor;
 
-import io.bloomish.api.engine.context.DefaultObjectRegistry;
+import io.bloomish.api.context.DefaultObjectRegistry;
 import io.bloomish.api.engine.registry.factory.ArmorMaterialFactory;
 import io.bloomish.example.sound.ExampleSounds;
 import io.bloomish.example.tag.ExampleItemTags;

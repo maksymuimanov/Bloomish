@@ -14,7 +14,7 @@ public class TypeAnnotationProcessor extends AbstractAnnotationProcessor<TypeAnn
 
     @Override
     public void process(Class<?> clazz) {
-        this.runExecutors(clazz.getDeclaredAnnotations(), (annotation, executor) ->
+        this.applyExecutors(clazz.getDeclaredAnnotations(), (annotation, executor) ->
                 executor.execute(annotation, clazz));
     }
 }

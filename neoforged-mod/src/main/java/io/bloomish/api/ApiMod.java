@@ -1,7 +1,7 @@
 package io.bloomish.api;
 
 import com.mojang.logging.LogUtils;
-import io.bloomish.api.engine.context.ModContext;
+import io.bloomish.api.context.ModContext;
 import io.bloomish.api.util.ReflectionUtils;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;

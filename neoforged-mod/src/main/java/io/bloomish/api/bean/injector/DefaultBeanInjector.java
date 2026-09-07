@@ -3,7 +3,7 @@ package io.bloomish.api.bean.injector;
 import io.bloomish.api.bean.BeanCandidateResolverChain;
 import io.bloomish.api.bean.BeanDefinition;
 import io.bloomish.api.bean.BeanInjector;
-import io.bloomish.api.engine.context.ObjectRegistry;
+import io.bloomish.api.context.ObjectRegistry;
 import io.bloomish.api.util.ReflectionUtils;
 import io.bloomish.api.util.StringUtils;
 

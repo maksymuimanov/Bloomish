@@ -1,8 +1,8 @@
 package io.bloomish.api.data.server.recipe.strategy;
 
+import io.bloomish.api.context.ModContext;
 import io.bloomish.api.data.server.recipe.ApiRecipeProvider;
 import io.bloomish.api.data.server.recipe.description.ShapelessRecipeDescription;
-import io.bloomish.api.engine.context.ModContext;
 import net.minecraft.data.recipes.RecipeOutput;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import org.jetbrains.annotations.NotNull;

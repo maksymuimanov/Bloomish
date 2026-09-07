@@ -1,4 +1,4 @@
-package io.bloomish.api.engine.context;
+package io.bloomish.api.context;
 
 import java.util.Collection;
 import java.util.function.Predicate;

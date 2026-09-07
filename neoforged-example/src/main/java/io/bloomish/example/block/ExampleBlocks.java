@@ -1,7 +1,7 @@
 package io.bloomish.example.block;
 
+import io.bloomish.api.context.DefaultObjectRegistry;
 import io.bloomish.api.data.client.model.deprecated.RenderTypes;
-import io.bloomish.api.engine.context.DefaultObjectRegistry;
 import io.bloomish.api.engine.metadata.annotation.data.language.TranslateAmericanEnglish;
 import io.bloomish.api.engine.metadata.annotation.data.loot.*;
 import io.bloomish.api.engine.metadata.annotation.data.model.block.*;

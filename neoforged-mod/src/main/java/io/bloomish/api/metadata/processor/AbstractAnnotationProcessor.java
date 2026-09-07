@@ -20,7 +20,7 @@ public abstract class AbstractAnnotationProcessor<E extends AnnotationExecutor<?
                 .collect(Collectors.toMap(AnnotationExecutor::annotationType, Function.identity()));
     }
 
-    protected void runExecutors(Annotation[] annotations, BiConsumer<Annotation, E> executorConsumer) {
+    protected void applyExecutors(Annotation[] annotations, BiConsumer<Annotation, E> executorConsumer) {
         for (Annotation annotation : ReflectionUtils.extractDeepAnnotations(annotations)) {
             this.getAnnotationExecutor(annotation).ifPresent(executor ->
                     executorConsumer.accept(annotation, executor));

@@ -18,7 +18,7 @@ public class StaticMethodAnnotationProcessor extends AbstractAnnotationProcessor
     public void process(Class<?> clazz) {
         for (Method method : clazz.getDeclaredMethods()) {
             if (!Modifier.isStatic(method.getModifiers())) continue;
-            this.runExecutors(method.getDeclaredAnnotations(), (annotation, executor) ->
+            this.applyExecutors(method.getDeclaredAnnotations(), (annotation, executor) ->
                     executor.execute(annotation, method));
         }
     }

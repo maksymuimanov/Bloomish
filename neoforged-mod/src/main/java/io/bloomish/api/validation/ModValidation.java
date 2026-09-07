@@ -1,6 +1,6 @@
 package io.bloomish.api.validation;
 
-import io.bloomish.api.engine.context.ModContext;
+import io.bloomish.api.context.ModContext;
 import net.neoforged.fml.ModList;
 
 import java.util.function.Supplier;

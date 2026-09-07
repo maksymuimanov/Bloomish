@@ -2,7 +2,7 @@ package io.bloomish.api.bean.candidate;
 
 import io.bloomish.api.bean.BeanCandidate;
 import io.bloomish.api.bean.BeanCandidateResolver;
-import io.bloomish.api.engine.context.ObjectRegistry;
+import io.bloomish.api.context.ObjectRegistry;
 import io.bloomish.api.util.StringUtils;
 
 import java.lang.reflect.Parameter;

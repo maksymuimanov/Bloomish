@@ -5,7 +5,7 @@ import io.bloomish.api.channel.ObjectChannel;
 import io.bloomish.api.channel.ObjectChannelRegistry;
 import io.bloomish.api.channel.ObjectChannelStore;
 import io.bloomish.api.channel.ObserveObjectChannel;
-import io.bloomish.api.engine.context.ObjectRegistry;
+import io.bloomish.api.context.ObjectRegistry;
 
 import java.lang.reflect.Parameter;
 import java.util.Optional;

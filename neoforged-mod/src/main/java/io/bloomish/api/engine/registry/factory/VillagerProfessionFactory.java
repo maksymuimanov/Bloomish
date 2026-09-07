@@ -1,7 +1,7 @@
 package io.bloomish.api.engine.registry.factory;
 
 import com.google.common.collect.ImmutableSet;
-import io.bloomish.api.engine.context.DefaultObjectRegistry;
+import io.bloomish.api.context.DefaultObjectRegistry;
 import io.bloomish.api.engine.registry.BloomishRegister;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.entity.ai.village.poi.PoiType;

@@ -1,7 +1,7 @@
 package io.bloomish.api.data;
 
 import com.google.gson.Gson;
-import io.bloomish.api.engine.context.ModContext;
+import io.bloomish.api.context.ModContext;
 import net.minecraft.data.CachedOutput;
 import net.minecraft.data.DataProvider;
 import org.jetbrains.annotations.NotNull;

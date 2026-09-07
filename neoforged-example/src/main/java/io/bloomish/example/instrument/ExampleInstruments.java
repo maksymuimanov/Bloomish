@@ -1,6 +1,6 @@
 package io.bloomish.example.instrument;
 
-import io.bloomish.api.engine.context.DefaultObjectRegistry;
+import io.bloomish.api.context.DefaultObjectRegistry;
 import io.bloomish.api.engine.metadata.annotation.data.tag.AddInstrumentTag;
 import io.bloomish.api.engine.registry.factory.InstrumentFactory;
 import io.bloomish.example.sound.ExampleSounds;

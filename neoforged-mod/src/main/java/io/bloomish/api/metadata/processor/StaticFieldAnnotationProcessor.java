@@ -18,7 +18,7 @@ public class StaticFieldAnnotationProcessor extends AbstractAnnotationProcessor<
     public void process(Class<?> clazz) {
         for (Field field : clazz.getDeclaredFields()) {
             if (!Modifier.isStatic(field.getModifiers())) continue;
-            this.runExecutors(field.getDeclaredAnnotations(), (annotation, executor) ->
+            this.applyExecutors(field.getDeclaredAnnotations(), (annotation, executor) ->
                     executor.execute(annotation, field));
         }
     }

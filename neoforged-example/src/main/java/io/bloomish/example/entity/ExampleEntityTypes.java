@@ -1,6 +1,6 @@
 package io.bloomish.example.entity;
 
-import io.bloomish.api.engine.context.DefaultObjectRegistry;
+import io.bloomish.api.context.DefaultObjectRegistry;
 import io.bloomish.api.engine.metadata.annotation.event.renderer.RegisterEntityRenderer;
 import io.bloomish.api.engine.registry.factory.EntityTypeFactory;
 import io.bloomish.example.entity.renderer.ExampleRenderer;

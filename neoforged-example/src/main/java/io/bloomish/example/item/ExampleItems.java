@@ -1,6 +1,6 @@
 package io.bloomish.example.item;
 
-import io.bloomish.api.engine.context.DefaultObjectRegistry;
+import io.bloomish.api.context.DefaultObjectRegistry;
 import io.bloomish.api.engine.metadata.annotation.data.language.TranslateAmericanEnglish;
 import io.bloomish.api.engine.metadata.annotation.data.language.TranslateMultiple;
 import io.bloomish.api.engine.metadata.annotation.data.model.item.*;

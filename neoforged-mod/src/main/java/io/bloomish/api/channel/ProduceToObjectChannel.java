@@ -7,9 +7,9 @@ import java.lang.annotation.*;
 
 @Documented
 @Retention(RetentionPolicy.RUNTIME)
-@Target({ElementType.ANNOTATION_TYPE, ElementType.TYPE, ElementType.FIELD})
-public @interface ObjectChannelElement {
-    String channelId();
+@Target({ElementType.ANNOTATION_TYPE, ElementType.FIELD})
+public @interface ProduceToObjectChannel {
+    String value();
 
     Class<? extends ObjectTransformer> transformer() default ObjectTransformer.class;
 

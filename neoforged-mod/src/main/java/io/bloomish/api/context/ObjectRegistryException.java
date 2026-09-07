@@ -1,4 +1,4 @@
-package io.bloomish.api.engine.context;
+package io.bloomish.api.context;
 
 public class ObjectRegistryException extends RuntimeException {
     public ObjectRegistryException(String message) {
