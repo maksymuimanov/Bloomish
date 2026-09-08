@@ -38,4 +38,8 @@ public final class Validations {
     public static ClassValidation validateThatClass(Class<?> clazz) {
         return new ClassValidation(clazz);
     }
+
+    public static BooleanValidation validateThatBoolean(Boolean bool) {
+        return new BooleanValidation(bool);
+    }
 }

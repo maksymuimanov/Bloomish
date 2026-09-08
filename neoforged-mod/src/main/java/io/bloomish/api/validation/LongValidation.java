@@ -16,7 +16,7 @@ public class LongValidation extends Validation<Long, LongValidation> {
     }
 
     public LongValidation isPositive(Supplier<String> message) {
-        return this.isTrue(this.getActual() > 0, message);
+        return this.isCondition(actual -> actual > 0, message);
     }
 
     public LongValidation isNegative() {
@@ -28,7 +28,7 @@ public class LongValidation extends Validation<Long, LongValidation> {
     }
 
     public LongValidation isNegative(Supplier<String> message) {
-        return this.isTrue(this.getActual() < 0, message);
+        return this.isCondition(actual -> actual < 0, message);
     }
 
     public LongValidation isZero() {
@@ -40,7 +40,7 @@ public class LongValidation extends Validation<Long, LongValidation> {
     }
 
     public LongValidation isZero(Supplier<String> message) {
-        return this.isTrue(this.getActual() == 0, message);
+        return this.isCondition(actual -> actual == 0, message);
     }
 
     public LongValidation isNotZero() {
@@ -52,7 +52,7 @@ public class LongValidation extends Validation<Long, LongValidation> {
     }
 
     public LongValidation isNotZero(Supplier<String> message) {
-        return this.isFalse(this.getActual() == 0, message);
+        return this.isNotCondition(actual -> actual == 0, message);
     }
 
     public LongValidation isBetween(Long min, Long max) {
@@ -64,7 +64,7 @@ public class LongValidation extends Validation<Long, LongValidation> {
     }
 
     public LongValidation isBetween(Long min, Long max, Supplier<String> message) {
-        return this.isTrue(this.getActual() >= min && this.getActual() <= max, message);
+        return this.isCondition(actual -> actual >= min && actual <= max, message);
     }
 
     public LongValidation isNotBetween(Long min, Long max) {
@@ -76,7 +76,7 @@ public class LongValidation extends Validation<Long, LongValidation> {
     }
 
     public LongValidation isNotBetween(Long min, Long max, Supplier<String> message) {
-        return this.isFalse(this.getActual() >= min && this.getActual() <= max, message);
+        return this.isNotCondition(actual -> actual >= min && actual <= max, message);
     }
 
     public LongValidation isGreaterThan(Long expected) {
@@ -88,7 +88,7 @@ public class LongValidation extends Validation<Long, LongValidation> {
     }
 
     public LongValidation isGreaterThan(Long expected, Supplier<String> message) {
-        return this.isTrue(this.getActual() > expected, message);
+        return this.isCondition(actual -> actual > expected, message);
     }
 
     public LongValidation isGreaterThanOrEqualTo(Long expected) {
@@ -100,7 +100,7 @@ public class LongValidation extends Validation<Long, LongValidation> {
     }
 
     public LongValidation isGreaterThanOrEqualTo(Long expected, Supplier<String> message) {
-        return this.isTrue(this.getActual() >= expected, message);
+        return this.isCondition(actual -> actual >= expected, message);
     }
 
     public LongValidation isLessThan(Long expected) {
@@ -112,7 +112,7 @@ public class LongValidation extends Validation<Long, LongValidation> {
     }
 
     public LongValidation isLessThan(Long expected, Supplier<String> message) {
-        return this.isTrue(this.getActual() < expected, message);
+        return this.isCondition(actual -> actual < expected, message);
     }
 
     public LongValidation isLessThanOrEqualTo(Long expected) {
@@ -124,6 +124,6 @@ public class LongValidation extends Validation<Long, LongValidation> {
     }
 
     public LongValidation isLessThanOrEqualTo(Long expected, Supplier<String> message) {
-        return this.isTrue(this.getActual() <= expected, message);
+        return this.isCondition(actual -> actual <= expected, message);
     }
 }

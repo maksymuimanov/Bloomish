@@ -1,6 +1,7 @@
 package io.bloomish.api.validation;
 
 import java.util.Objects;
+import java.util.function.Predicate;
 import java.util.function.Supplier;
 
 public class Validation<T, A extends Validation<T, A>> {
@@ -19,7 +20,7 @@ public class Validation<T, A extends Validation<T, A>> {
     }
 
     public A isTypeOf(Class<?> clazz, Supplier<String> message) {
-        return this.isTrue(clazz.isInstance(this.actual), message);
+        return this.isCondition(clazz::isInstance, message);
     }
 
     public A isNotTypeOf(Class<?> clazz) {
@@ -31,7 +32,7 @@ public class Validation<T, A extends Validation<T, A>> {
     }
 
     public A isNotTypeOf(Class<?> clazz, Supplier<String> message) {
-        return this.isFalse(clazz.isInstance(this.actual), message);
+        return this.isNotCondition(clazz::isInstance, message);
     }
 
     public A isEqual(T expected) {
@@ -43,7 +44,7 @@ public class Validation<T, A extends Validation<T, A>> {
     }
 
     public A isEqual(T expected, Supplier<String> message) {
-        return this.isTrue(Objects.equals(this.actual, expected), message);
+        return this.isCondition(actual -> Objects.equals(actual, expected), message);
     }
 
     public A isNotEqual(T expected) {
@@ -55,7 +56,7 @@ public class Validation<T, A extends Validation<T, A>> {
     }
 
     public A isNotEqual(T expected, Supplier<String> message) {
-        return this.isFalse(Objects.equals(this.actual, expected), message);
+        return this.isNotCondition(actual -> Objects.equals(actual, expected), message);
     }
 
     public A isSame(T expected) {
@@ -67,7 +68,7 @@ public class Validation<T, A extends Validation<T, A>> {
     }
 
     public A isSame(T expected, Supplier<String> message) {
-        return this.isTrue(this.actual == expected, message);
+        return this.isCondition(actual -> actual == expected, message);
     }
 
     public A isNotSame(T expected) {
@@ -79,7 +80,7 @@ public class Validation<T, A extends Validation<T, A>> {
     }
 
     public A isNotSame(T expected, Supplier<String> message) {
-        return this.isFalse(this.actual == expected, message);
+        return this.isNotCondition(actual -> actual == expected, message);
     }
 
     public A isNull() {
@@ -91,7 +92,7 @@ public class Validation<T, A extends Validation<T, A>> {
     }
 
     public A isNull(Supplier<String> message) {
-        return this.isTrue(actual == null, message);
+        return this.isCondition(Objects::isNull, message);
     }
 
     public A isNotNull() {
@@ -103,23 +104,23 @@ public class Validation<T, A extends Validation<T, A>> {
     }
 
     public A isNotNull(Supplier<String> message) {
-        return this.isFalse(actual == null, message);
+        return this.isNotCondition(Objects::isNull, message);
     }
 
-    public A isTrue(boolean condition, String message) {
-        return this.isTrue(condition, () -> message);
+    public A isCondition(Predicate<T> condition, String message) {
+        return this.isCondition(condition, () -> message);
     }
 
-    public A isTrue(boolean condition, Supplier<String> message) {
-        return this.failIf(!condition, message);
+    public A isCondition(Predicate<T> condition, Supplier<String> message) {
+        return this.failIf(!condition.test(this.actual), message);
     }
 
-    public A isFalse(boolean condition, String message) {
-        return this.isFalse(condition, () -> message);
+    public A isNotCondition(Predicate<T> condition, String message) {
+        return this.isNotCondition(condition, () -> message);
     }
 
-    public A isFalse(boolean condition, Supplier<String> message) {
-        return this.failIf(condition, message);
+    public A isNotCondition(Predicate<T> condition, Supplier<String> message) {
+        return this.failIf(condition.test(this.actual), message);
     }
 
     protected A failIf(boolean condition, Supplier<String> message) {

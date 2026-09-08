@@ -16,7 +16,7 @@ public class DoubleValidation extends Validation<Double, DoubleValidation> {
     }
 
     public DoubleValidation isPositive(Supplier<String> message) {
-        return this.isTrue(this.getActual() > 0, message);
+        return this.isCondition(actual -> actual > 0, message);
     }
 
     public DoubleValidation isNegative() {
@@ -28,7 +28,7 @@ public class DoubleValidation extends Validation<Double, DoubleValidation> {
     }
 
     public DoubleValidation isNegative(Supplier<String> message) {
-        return this.isTrue(this.getActual() < 0, message);
+        return this.isCondition(actual -> actual < 0, message);
     }
 
     public DoubleValidation isZero() {
@@ -40,7 +40,7 @@ public class DoubleValidation extends Validation<Double, DoubleValidation> {
     }
 
     public DoubleValidation isZero(Supplier<String> message) {
-        return this.isTrue(this.getActual() == 0, message);
+        return this.isCondition(actual -> actual == 0, message);
     }
 
     public DoubleValidation isNotZero() {
@@ -52,7 +52,7 @@ public class DoubleValidation extends Validation<Double, DoubleValidation> {
     }
 
     public DoubleValidation isNotZero(Supplier<String> message) {
-        return this.isFalse(this.getActual() == 0, message);
+        return this.isNotCondition(actual -> actual == 0, message);
     }
 
     public DoubleValidation isBetween(Double min, Double max) {
@@ -64,7 +64,7 @@ public class DoubleValidation extends Validation<Double, DoubleValidation> {
     }
 
     public DoubleValidation isBetween(Double min, Double max, Supplier<String> message) {
-        return this.isTrue(this.getActual() >= min && this.getActual() <= max, message);
+        return this.isCondition(actual -> actual >= min && actual <= max, message);
     }
 
     public DoubleValidation isNotBetween(Double min, Double max) {
@@ -76,7 +76,7 @@ public class DoubleValidation extends Validation<Double, DoubleValidation> {
     }
 
     public DoubleValidation isNotBetween(Double min, Double max, Supplier<String> message) {
-        return this.isFalse(this.getActual() >= min && this.getActual() <= max, message);
+        return this.isNotCondition(actual -> actual >= min && actual <= max, message);
     }
 
     public DoubleValidation isGreaterThan(Double expected) {
@@ -88,7 +88,7 @@ public class DoubleValidation extends Validation<Double, DoubleValidation> {
     }
 
     public DoubleValidation isGreaterThan(Double expected, Supplier<String> message) {
-        return this.isTrue(this.getActual() > expected, message);
+        return this.isCondition(actual -> actual > expected, message);
     }
 
     public DoubleValidation isGreaterThanOrEqualTo(Double expected) {
@@ -100,7 +100,7 @@ public class DoubleValidation extends Validation<Double, DoubleValidation> {
     }
 
     public DoubleValidation isGreaterThanOrEqualTo(Double expected, Supplier<String> message) {
-        return this.isTrue(this.getActual() >= expected, message);
+        return this.isCondition(actual -> actual >= expected, message);
     }
 
     public DoubleValidation isLessThan(Double expected) {
@@ -112,7 +112,7 @@ public class DoubleValidation extends Validation<Double, DoubleValidation> {
     }
 
     public DoubleValidation isLessThan(Double expected, Supplier<String> message) {
-        return this.isTrue(this.getActual() < expected, message);
+        return this.isCondition(actual -> actual < expected, message);
     }
 
     public DoubleValidation isLessThanOrEqualTo(Double expected) {
@@ -124,6 +124,6 @@ public class DoubleValidation extends Validation<Double, DoubleValidation> {
     }
 
     public DoubleValidation isLessThanOrEqualTo(Double expected, Supplier<String> message) {
-        return this.isTrue(this.getActual() <= expected, message);
+        return this.isCondition(actual -> actual <= expected, message);
     }
 }

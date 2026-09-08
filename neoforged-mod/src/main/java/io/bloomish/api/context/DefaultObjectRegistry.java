@@ -139,39 +139,29 @@ public class DefaultObjectRegistry implements ObjectRegistry {
     @Override
     public void unregisterAllByClass(Class<?> clazz) {
         Validations.validateThat(clazz).isNotNull();
-        this.objects.keySet()
-                .stream()
-                .filter(key -> key.clazz().equals(clazz))
-                .forEach(this.objects::remove);
+        boolean removed = this.objects.keySet().removeIf(key -> clazz.isAssignableFrom(key.clazz()));
+        Validations.validateThatBoolean(removed).isTrue(() -> "No values registered by class: " + clazz.getName());
     }
 
     @Override
     public void unregister(Object value) {
         Validations.validateThat(value).isNotNull();
-        ObjectKey<?> objectKey = this.objects.entrySet()
-                .stream()
-                .filter(entry -> entry.getValue().equals(value))
-                .map(Map.Entry::getKey)
-                .findFirst()
-                .orElseThrow(() -> new IllegalArgumentException("Value not registered: " + value.getClass().getName()));
-        this.objects.remove(objectKey);
+        boolean isRemoved = this.objects.values().remove(value);
+        Validations.validateThatBoolean(isRemoved).isTrue(() -> "Value not registered: " + value.getClass().getName());
     }
 
     @Override
     public void unregisterByName(String name) {
         Validations.validateThatString(name).isNotBlank();
-        ObjectKey<?> objectKey = this.objects.keySet()
-                .stream()
-                .filter(key -> key.name().equals(name))
-                .findFirst()
-                .orElseThrow(() -> new IllegalArgumentException("Value not registered by name: " + name));
-        this.objects.remove(objectKey);
+        boolean isRemoved = this.objects.keySet().removeIf(key -> key.name().equals(name));
+        Validations.validateThatBoolean(isRemoved).isTrue(() -> "Value not registered by name: " + name);
     }
 
     @Override
     public void unregisterByKey(ObjectKey<?> key) {
         Validations.validateThat(key).isNotNull();
-        this.objects.remove(key);
+        Object removed = this.objects.remove(key);
+        Validations.validateThat(removed).isNotNull(() -> "Value not registered by key: " + key);
     }
 
     @Override
